@@ -35,7 +35,33 @@
 </form>
 <hr>
 <div class="list-group">
-    <a class="list-group-item" ng-repeat="student in students">{{student.fullname}}&nbsp;&#x7c;&nbsp;{{student.school.name}}&nbsp;&#x7c;&nbsp;{{student.gradyear}}
-    <i class="glyphicon glyphicon-remove pull-right"
-        ng-click="removeStudent(student)"></i></a>
+        
+  <table id="list-school" class="table table-striped">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama Lengkap</th>
+            <th>Nama Sekolah</th>
+            <th>Tahun Angkatan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="student in students track by $index">
+            <td>{{ $index }}</td>
+            <td>{{ student.fullname }}</td>
+            <td><strong>{{ student.school.name }}</strong></td>
+            <td>{{ student.gradyear }}</td>
+            <td>
+              <span>
+          <a class="btn" ui-sref="edit({studentId:student.id})">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="removeStudent(student)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 </div>

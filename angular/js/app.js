@@ -20,6 +20,11 @@ angular
         url: '/student',
         templateUrl: 'views/student.html',
         controller: 'StudentController'
+      })
+      .state('edit', {
+        url: '/student/:studentId',
+        templateUrl: 'views/student.edit.html',
+        controller: 'StudentEditController'
       });
 
     $urlRouterProvider.otherwise('school');

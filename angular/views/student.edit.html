@@ -1,0 +1,37 @@
+<h1>{{studentId}}</h1>
+<hr>
+<form name="studentForm" novalidate ng-submit="saveStudent()">
+    <div class="form-group" ng-class="{'has-error': studentForm.fullname.$invalid
+        && studentForm.fullname.$dirty}">
+        <input type="text" class="form-control focus" name="fullname" placeholder="Nama lengkap" autocomplete="off" required ng-model="currentStudent.fullname">
+        <span class="has-error control-label" ng-show="
+        studentForm.fullnamename.$invalid && studentForm.fullname.$dirty">
+      Nama lengkap is required.
+    </span>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && studentForm.gradyear.$invalid }">
+        <p class="input-group">
+            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="currentStudent.gradyear" is-open="status.opened"
+                placeholder="Tahun angkatan" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
+                close-text="Close" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+              <div ng-show="submitted && studentForm.gradyear.$invalid" class="help-block">
+            <p ng-show="studentForm.gradyear.$error.required">Graduation year is required</p>
+        </div>
+        </p>
+    </div>
+    <div class="form-group" ng-class="{'has-error': studentForm.school.$invalid
+        && studentForm.school.$dirty}">
+        <select name="school" class="col-md-3 form-control" data-ng-model="currentStudent.school" id="school" ng-options="school.name for school in schools"
+            required>
+            <option id="selected-school" ng-selected="currentStudent.school">{{currentStudent.school.name}}</option>
+       </select>
+        <div ng-show="submitted && studentForm.school.$invalid" class="help-block">
+            <p ng-show="studentForm.school.$error.required">School is required</p>
+        </div>
+    </div>
+    <button class="btn btn-default" ng-disabled="studentForm.$invalid">Save</button>
+</form>
+<hr>
