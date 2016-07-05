@@ -1,0 +1,40 @@
+<h1>School list</h1>
+<hr>
+<form name="schoolForm" novalidate ng-submit="addSchool()">
+  <div class="form-group"
+      ng-class="{'has-error': schoolForm.name.$invalid
+        && schoolForm.name.$dirty}">
+    <input type="text" class="form-control focus" name="name"
+        placeholder="Content" autocomplete="off" required
+        ng-model="newSchool.name">
+    <span class="has-error control-label" ng-show="
+        schoolForm.name.$invalid && schoolForm.name.$dirty">
+      Name is required.
+    </span>
+  </div>
+  <div class="form-group"
+      ng-class="{'has-error': schoolForm.address.$invalid
+        && schoolForm.address.$dirty}">
+    <textarea type="text" class="form-control focus" name="address"
+        placeholder="Address" autocomplete="off" required
+        ng-model="newSchool.address"></textarea>
+    <span class="has-error control-label" ng-show="
+        schoolForm.address.$invalid && schoolForm.address.$dirty">
+      Address is required.
+    </span>
+  </div>
+  <div class="form-group"
+      ng-class="{'has-error': schoolForm.phone.$invalid
+        && schoolForm.phone.$dirty}">
+    <input type="text" class="form-control focus" name="phone"
+        placeholder="Phone" autocomplete="off"
+        ng-model="newSchool.phone">
+  </div>
+  <button class="btn btn-default" ng-disabled="schoolForm.$invalid">Add</button>
+</form>
+<hr>
+<div class="list-group">
+  <a class="list-group-item" ng-repeat="school in schools">{{school.name}}&nbsp;
+    <i class="glyphicon glyphicon-remove pull-right"
+        ng-click="removeSchool(school)"></i></a>
+</div>
