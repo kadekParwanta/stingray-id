@@ -12,9 +12,14 @@ angular
       $urlRouterProvider) {
     $stateProvider
       .state('school', {
-        url: '',
+        url: '/school',
         templateUrl: 'views/school.html',
         controller: 'SchoolController'
+      })
+      .state('student', {
+        url: '/student',
+        templateUrl: 'views/student.html',
+        controller: 'StudentController'
       });
 
     $urlRouterProvider.otherwise('school');

@@ -35,5 +35,9 @@
   "School": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Student": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }
