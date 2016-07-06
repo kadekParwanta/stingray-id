@@ -52,35 +52,36 @@ angular
     };
     
     getSchools();
-    
+
     $scope.today = function () {
-            $scope.newStudent.gradyear = new Date().getFullYear();
-        };
-        $scope.today();
-
-        $scope.clear = function () {
-            $scope.newStudent.gradyear = null;
-        };
-
-        $scope.open = function ($event) {
-            $scope.status.opened = true;
-        };
-
-        $scope.setDate = function (year, month, day) {
-            $scope.newStudent.gradyear = new Date(year, month, day).getFullYear();
-        };
-
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            startingDay: 1,
-            minMode: 'year'
-        };
-
-        $scope.formats = ['yyyy'];
-        $scope.format = $scope.formats[0];
-
-        $scope.status = {
-            opened: false
-        };
+      $scope.newStudent.gradyear = new Date().getFullYear();
+    };
     
+    $scope.today();
+
+    $scope.clear = function () {
+      $scope.newStudent.gradyear = null;
+    };
+
+    $scope.open = function ($event) {
+      $scope.status.opened = true;
+    };
+
+    $scope.setDate = function (year, month, day) {
+      $scope.newStudent.gradyear = new Date(year, month, day).getFullYear();
+    };
+
+    $scope.dateOptions = {
+      formatYear: 'yyyy',
+      startingDay: 1,
+      minMode: 'year'
+    };
+
+    $scope.formats = ['yyyy'];
+    $scope.format = $scope.formats[0];
+
+    $scope.status = {
+      opened: false
+    };
+
   }]);
