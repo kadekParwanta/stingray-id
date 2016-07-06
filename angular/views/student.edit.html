@@ -11,7 +11,7 @@
     </div>
     <div class="form-group" ng-class="{ 'has-error' : submitted && studentForm.gradyear.$invalid }">
         <p class="input-group">
-            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="currentStudent.gradyear" is-open="status.opened"
+            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="gradyear" is-open="status.opened"
                 placeholder="Tahun angkatan" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
                 close-text="Close" />
             <span class="input-group-btn">

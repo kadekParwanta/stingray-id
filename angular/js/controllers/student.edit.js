@@ -17,12 +17,14 @@ angular
         .$promise
         .then(function(student) {
           $scope.currentStudent = student;
+          $scope.setDate(student.gradyear, 1, 1);
         });
     }
     
     getStudentById($scope.currentStudentId);
-
+    
     $scope.saveStudent = function() {
+        $scope.currentStudent.gradyear = $scope.gradyear.getFullYear();
         $scope.currentStudent.$save()
         .then(function(student) {
           $state.go('student');
@@ -40,35 +42,34 @@ angular
     };
     
     getSchools();
-    
+
     $scope.today = function () {
-            $scope.currentStudent.gradyear = new Date().getFullYear();
-        };
-        $scope.today();
+        $scope.gradyear = new Date();
+    };
 
-        $scope.clear = function () {
-            $scope.currentStudent.gradyear = null;
-        };
+    $scope.clear = function () {
+        $scope.gradyear = null;
+    };
 
-        $scope.open = function ($event) {
-            $scope.status.opened = true;
-        };
+    $scope.open = function ($event) {
+        $scope.status.opened = true;
+    };
 
-        $scope.setDate = function (year, month, day) {
-            $scope.currentStudent.gradyear = new Date(year, month, day).getFullYear();
-        };
+    $scope.setDate = function (year, month, day) {
+        $scope.gradyear = new Date(year, month, day);
+    };    
 
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            startingDay: 1,
-            minMode: 'year'
-        };
+    $scope.dateOptions = {
+        formatYear: 'yyyy',
+        startingDay: 1,
+        minMode: 'year'
+    };
 
-        $scope.formats = ['yyyy'];
-        $scope.format = $scope.formats[0];
+    $scope.formats = ['yyyy'];
+    $scope.format = $scope.formats[0];
 
-        $scope.status = {
-            opened: false
-        };
-    
+    $scope.status = {
+        opened: false
+    };
+
   }]);

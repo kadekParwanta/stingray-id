@@ -20,6 +20,7 @@ angular
     getStudents();
 
     $scope.addStudent = function() {
+      $scope.newStudent.gradyear = $scope.gradyear.getFullYear();
       Student
         .create($scope.newStudent)
         .$promise
@@ -54,13 +55,13 @@ angular
     getSchools();
 
     $scope.today = function () {
-      $scope.newStudent.gradyear = new Date().getFullYear();
+      $scope.gradyear = new Date();
     };
     
     $scope.today();
 
     $scope.clear = function () {
-      $scope.newStudent.gradyear = null;
+      $scope.gradyear = null;
     };
 
     $scope.open = function ($event) {
@@ -68,7 +69,7 @@ angular
     };
 
     $scope.setDate = function (year, month, day) {
-      $scope.newStudent.gradyear = new Date(year, month, day).getFullYear();
+      $scope.gradyear = new Date(year, month, day);
     };
 
     $scope.dateOptions = {

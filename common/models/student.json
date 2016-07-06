@@ -10,12 +10,12 @@
       "type": "string",
       "required": true
     },
-    "gradyear": {
-      "type": "date",
-      "required": true
-    },
     "school": {
       "type": "object"
+    },
+    "gradyear": {
+      "type": "number",
+      "required": true
     }
   },
   "validations": [],
