@@ -9,6 +9,18 @@
       Nama lengkap is required.
     </span>
     </div>
+    
+    <div class="form-group" ng-class="{'has-error': studentForm.school.$invalid
+        && studentForm.school.$dirty}">
+        <select name="school" class="form-control focus" data-ng-model="newStudent.school" id="school" ng-options="school.name for school in schools"
+            required>
+            <option value="">---Please select---</option>
+       </select>
+        <div ng-show="submitted && studentForm.school.$invalid" class="help-block">
+            <p ng-show="studentForm.school.$error.required">School is required</p>
+        </div>
+    </div>
+    
     <div class="form-group" ng-class="{ 'has-error' : submitted && studentForm.gradyear.$invalid }">
         <p class="input-group">
             <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="gradyear" is-open="status.opened"
@@ -22,16 +34,7 @@
         </div>
         </p>
     </div>
-    <div class="form-group" ng-class="{'has-error': studentForm.school.$invalid
-        && studentForm.school.$dirty}">
-        <select name="school" class="col-md-3 form-control" data-ng-model="newStudent.school" id="school" ng-options="school.name for school in schools"
-            required>
-       </select>
-        <div ng-show="submitted && studentForm.school.$invalid" class="help-block">
-            <p ng-show="studentForm.school.$error.required">School is required</p>
-        </div>
-    </div>
-    <button class="btn btn-default" ng-disabled="studentForm.$invalid">Add</button>
+    <button class="btn btn-default btn-success" ng-disabled="studentForm.$invalid">Add</button>
 </form>
 <hr>
 <div class="list-group">

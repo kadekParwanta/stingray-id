@@ -18,6 +18,7 @@ angular
         .then(function(student) {
           $scope.currentStudent = student;
           $scope.setDate(student.gradyear, 1, 1);
+          $scope.school = student.school;
         });
     }
     
