@@ -7,7 +7,8 @@ angular
   .module('app', [
     'lbServices',
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'datatables'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
       $urlRouterProvider) {
