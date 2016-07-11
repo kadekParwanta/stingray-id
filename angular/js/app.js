@@ -27,6 +27,16 @@ angular
         url: '/student/:studentId',
         templateUrl: 'views/student.edit.html',
         controller: 'StudentEditController'
+      })
+      .state('yearbook', {
+        url: '/yearbook',
+        templateUrl: 'views/yearbook.html',
+        controller: 'YearbookController'
+      })
+      .state('create-yearbook', {
+        url: '/yearbook/:yearbookId',
+        templateUrl: 'views/yearbook.create.html',
+        controller: 'YearbookController'
       });
 
     $urlRouterProvider.otherwise('school');

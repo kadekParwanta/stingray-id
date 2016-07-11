@@ -39,5 +39,9 @@
   "Student": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Yearbook": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

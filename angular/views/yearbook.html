@@ -1,0 +1,41 @@
+<h1>Yearbook list</h1>
+
+<div class="list-group">
+        
+  <table datatable="ng" id="list-school" class="table table-striped">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>ID</th>
+            <th>Nama Sekolah</th>
+            <th>Tahun Angkatan</th>
+            <th>Harga (Rp)</th>
+            <th>Cover URL</th>
+            <th>EPUB URL</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="yearbook in yearbooks track by $index">
+            <td>{{ $index + 1}}</td>
+            <td>{{ yearbook.id }}</td>
+            <td><strong>{{ yearbook.school.name }}</strong></td>
+            <td>{{ yearbook.year }}</td>
+            <td>{{ yearbook.price }}</td>
+            <td>{{ yearbook.cover_url }}</td>
+            <td>{{ yearbook.epub_url }}</td>
+            <td>
+              <span>
+          <a class="btn" ui-sref="create-yearbook({yearbookId:yearbook.id})">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="removeYearbook(yearbook)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+<button class="btn btn-default btn-success" ng-click="addYearbook()">Create New</button>

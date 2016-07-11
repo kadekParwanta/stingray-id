@@ -1,0 +1,59 @@
+<h1>{{currentYearbook.content_id}}</h1>
+<hr>
+<form name="yearbookForm" class="form-horizontal col-md-12" novalidate ng-submit="saveYearbook()">
+    <div class="form-group" ng-class="{'has-error': yearbookForm.content_id.$invalid
+        && yearbookForm.content_id.$dirty}">
+        <label class="col-md-2 control-label">Content ID</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control focus" name="content_id" placeholder="Content ID" autocomplete="off" required ng-model="currentYearbook.id" disabled>
+        </div>
+        <div ng-show="submitted && yearbookForm.content_id.$invalid" class="help-block">
+            <p ng-show="yearbookForm.content_id.$error.required">Fullname year is required</p>
+        </div>
+    </div>
+
+
+    <div class="form-group" ng-class="{'has-error': yearbookForm.school.$invalid
+        && yearbookForm.school.$dirty}">
+        <label class="col-md-2 control-label">Sekolah</label>
+        <div class="col-md-10">
+            <select name="school" class="form-control focus" data-ng-model="school" id="school" ng-options="school.name for school in schools track by school.name"
+                required></select>
+        </div>
+        <div ng-show="submitted && yearbookForm.school.$invalid" class="help-block">
+            <p ng-show="yearbookForm.school.$error.required">School is required</p>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error' : submitted && yearbookForm.gradyear.$invalid }">
+        <label class="col-md-2 control-label">Angkatan</label>
+        <div class="col-md-10">
+            <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="year" is-open="status.opened" placeholder="Tahun angkatan"
+                    datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
+                />
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+                <div ng-show="submitted && yearbookForm.gradyear.$invalid" class="help-block">
+                    <p ng-show="yearbookForm.gradyear.$error.required">Graduation year is required</p>
+                </div>
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': yearbookForm.price.$invalid
+        && yearbookForm.price.$dirty}">
+        <label class="col-md-2 control-label">Harga</label>
+        <div class="col-md-10">
+            <select name="yearbookprice" class="form-control focus" data-ng-model="yearbookprice" id="yearbookprice" ng-options="yearbookprice for yearbookprice in yearbookprices"
+                required></select>
+        </div>
+        <div ng-show="submitted && yearbookForm.price.$invalid" class="help-block">
+            <p ng-show="yearbookForm.price.$error.required">Harga is required</p>
+        </div>
+    </div>
+
+    <button class="btn btn-default btn-info pull-right" ng-disabled="yearbookForm.$invalid">Save</button>
+</form>
+<hr>
