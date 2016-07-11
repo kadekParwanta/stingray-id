@@ -59,12 +59,7 @@
         && yearbookForm.coverurl.$dirty}">
         <label class="col-md-2 control-label">Cover</label>
         <div class="col-md-3">
-            <div ng-show="uploader.isHTML5">
-                <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
-                    Base drop zone
-                </div>
-            </div>
-
+            <img ng-src="{{image}}"> </img>
             <input nv-file-select uploader="uploader" type="file" />
 
         </div>

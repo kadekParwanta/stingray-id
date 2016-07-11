@@ -26,6 +26,8 @@ angular
             $scope.today();
           } 
           $scope.school = yearbook.school;
+          $scope.image = 'http://127.0.0.1'+yearbook.cover_url; 
+          $scope.yearbookprice = yearbook.price;
         });
     }
 
@@ -66,8 +68,17 @@ angular
     }
 
     $scope.saveYearbook = function () {
-        $scope.item.upload();
-
+        if ($scope.item) {
+            $scope.item.upload();
+        } else {
+            $scope.currentYearbook.year = $scope.year.getFullYear();
+            $scope.currentYearbook.school = $scope.school;
+            $scope.currentYearbook.price = $scope.yearbookprice;
+            $scope.currentYearbook.$save()
+                .then(function (student) {
+                    $state.go('yearbook');
+                });
+        }
     };
 
     function getYearbooks() {
