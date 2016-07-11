@@ -1,11 +1,12 @@
 <h1>{{currentYearbook.content_id}}</h1>
 <hr>
-<form name="yearbookForm" class="form-horizontal col-md-12" novalidate ng-submit="saveYearbook()">
+<form name="yearbookForm" class="form-horizontal col-md-12" novalidate ng-submit="saveYearbook()" nv-file-drop="" uploader="uploader">
     <div class="form-group" ng-class="{'has-error': yearbookForm.content_id.$invalid
         && yearbookForm.content_id.$dirty}">
         <label class="col-md-2 control-label">Content ID</label>
         <div class="col-md-10">
-            <input type="text" class="form-control focus" name="content_id" placeholder="Content ID" autocomplete="off" required ng-model="currentYearbook.id" disabled>
+            <input type="text" class="form-control focus" name="content_id" placeholder="Content ID" autocomplete="off" required ng-model="currentYearbook.id"
+                disabled>
         </div>
         <div ng-show="submitted && yearbookForm.content_id.$invalid" class="help-block">
             <p ng-show="yearbookForm.content_id.$error.required">Fullname year is required</p>
@@ -51,6 +52,24 @@
         </div>
         <div ng-show="submitted && yearbookForm.price.$invalid" class="help-block">
             <p ng-show="yearbookForm.price.$error.required">Harga is required</p>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': yearbookForm.coverurl.$invalid
+        && yearbookForm.coverurl.$dirty}">
+        <label class="col-md-2 control-label">Cover</label>
+        <div class="col-md-3">
+            <div ng-show="uploader.isHTML5">
+                <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
+                    Base drop zone
+                </div>
+            </div>
+
+            <input nv-file-select uploader="uploader" type="file" />
+
+        </div>
+        <div ng-show="submitted && yearbookForm.coverurl.$invalid" class="help-block">
+            <p ng-show="yearbookForm.coverurl.$error.required">Harga is required</p>
         </div>
     </div>
 

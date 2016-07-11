@@ -8,7 +8,8 @@ angular
     'lbServices',
     'ui.router',
     'ui.bootstrap',
-    'datatables'
+    'datatables',
+    'angularFileUpload'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
       $urlRouterProvider) {
