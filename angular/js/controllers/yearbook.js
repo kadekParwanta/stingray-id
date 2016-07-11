@@ -90,6 +90,15 @@ angular
         });
     }
 
+    $scope.removeContainer = function(id){
+        Container
+        .destroyContainer({'container':id})
+        .$promise
+        .then(function(data){
+          getYearbooks();
+        });
+    }
+
     getYearbooks();
 
     $scope.addYearbook = function() {
@@ -123,7 +132,7 @@ angular
         .deleteById(item)
         .$promise
         .then(function() {
-          getYearbooks();
+            $scope.removeContainer(item.id);
         });
     };
     
