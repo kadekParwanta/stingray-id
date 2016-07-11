@@ -22,7 +22,7 @@
             <td><strong>{{ yearbook.school.name }}</strong></td>
             <td>{{ yearbook.year }}</td>
             <td>{{ yearbook.price }}</td>
-            <td>{{ yearbook.cover_url }}</td>
+            <td><img ng-src="https://stingray-id.herokuapp.com{{ yearbook.cover_url }}"> </img> <a href="https://stingray-id.herokuapp.com{{ yearbook.cover_url }}">{{ yearbook.cover_url }}</a></td>
             <td>{{ yearbook.epub_url }}</td>
             <td>
               <span>
