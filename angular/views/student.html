@@ -51,7 +51,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="student in students track by $index">
-            <td>{{ $index }}</td>
+            <td>{{ $index + 1}}</td>
             <td>{{ student.fullname }}</td>
             <td><strong>{{ student.school.name }}</strong></td>
             <td>{{ student.gradyear }}</td>
