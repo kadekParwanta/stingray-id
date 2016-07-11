@@ -12,5 +12,12 @@
     "name": "mongodb",
     "user": "heroku_nrhw3b6g",
     "connector": "mongodb"
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./server/storage",
+    "maxFileSize": "52428800"
   }
 }
