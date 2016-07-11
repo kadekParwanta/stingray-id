@@ -26,7 +26,7 @@ angular
             $scope.today();
           } 
           $scope.school = yearbook.school;
-          $scope.image = 'http://127.0.0.1'+yearbook.cover_url; 
+          $scope.image = 'https://stingray-id.herokuapp.com'+yearbook.cover_url; 
           $scope.yearbookprice = yearbook.price;
         });
     }
