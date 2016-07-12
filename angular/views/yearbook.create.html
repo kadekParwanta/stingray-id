@@ -1,7 +1,6 @@
 <h1>{{currentYearbook.content_id}}</h1>
 <hr>
-<form name="yearbookForm" class="form-horizontal col-md-12" novalidate ng-submit="saveYearbook()" nv-file-drop="" uploader="uploader"
-    filters="queueLimit, customFilter">
+<form name="yearbookForm" class="form-horizontal col-md-12" novalidate ng-submit="saveYearbook()" nv-file-drop="" uploader="uploader">
     <div class="form-group" ng-class="{'has-error': yearbookForm.content_id.$invalid
         && yearbookForm.content_id.$dirty}">
         <label class="col-md-2 control-label">Content ID</label>

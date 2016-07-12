@@ -176,7 +176,6 @@ angular
             formData: [{ key: 'value' }]
         });
 
-        pushFilter(uploader);
         registerHandler(uploader);
     }
 
