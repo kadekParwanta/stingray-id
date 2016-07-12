@@ -5,8 +5,9 @@
 
 angular
   .module('app')
-  .controller('YearbookController', ['$scope', '$state', 'Yearbook', 'School','$stateParams', 'FileUploader','Container', function($scope,
-      $state, Yearbook, School,$stateParams,FileUploader, Container) {
+  .controller('YearbookController', ['$scope', '$state', 'Yearbook', 'School','$stateParams', 'FileUploader','Container', 
+  '$rootScope', function($scope,
+      $state, Yearbook, School,$stateParams,FileUploader, Container, $rootScope) {
     $scope.yearbooks = [];
     $scope.newYearbook = '';
     $scope.yearbookprices = [0,1000,2000,3000,4000,5000];
@@ -26,7 +27,6 @@ angular
             $scope.today();
           } 
           $scope.school = yearbook.school;
-          $scope.image = 'https://stingray-id.herokuapp.com'+yearbook.cover_url; 
           $scope.yearbookprice = yearbook.price;
         });
     }
@@ -37,23 +37,14 @@ angular
         .$promise
         .then(function(container) {
           $scope.container = container;
-          $scope.setupUploader(container);
+          $scope.load();
         });
     }
     
     if ($scope.currentYearbookId) {
         getYearbookById($scope.currentYearbookId);
         getContainerByName($scope.currentYearbookId);
-
-        var uploader = $scope.uploader = new FileUploader({
-            scope: $scope,
-            url: '/api/containers/' + $scope.currentYearbookId + '/upload',
-            formData: [{ key: 'value' }]
-        });
-
-        pushFilter(uploader);
-        registerHandler(uploader);
-
+        setupUploader($scope.currentYearbookId);
     }
 
     $scope.createContainer = function(id) {
@@ -63,13 +54,12 @@ angular
             .then(function (container) {
                 $scope.container = container;
                 $state.go('create-yearbook', ({ yearbookId: id }));
-                $scope.setupUploader(container);
             });
     }
 
     $scope.saveYearbook = function () {
-        if ($scope.item) {
-            $scope.item.upload();
+        if ($scope.uploader.queue.length > 0) {
+            $scope.uploader.uploadAll()
         } else {
             $scope.currentYearbook.year = $scope.year.getFullYear();
             $scope.currentYearbook.school = $scope.school;
@@ -179,10 +169,10 @@ angular
       opened: false
     };
 
-    $scope.setupUploader = function(container) {
+    function setupUploader(containerName) {
         var uploader = $scope.uploader = new FileUploader({
-            scope: $scope,
-            url: '/api/containers/' + container.name + '/upload',
+            scope: $rootScope,
+            url: '/api/containers/' + containerName + '/upload',
             formData: [{ key: 'value' }]
         });
 
@@ -194,10 +184,9 @@ angular
     function pushFilter(uploader) {
         // ADDING FILTERS
         uploader.filters.push({
-            name: 'filterName',
+            name: 'customFilter',
             fn: function(item /*{File|FileLikeObject}*/, options) {
-                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+                return this.queue.length < 3;
             }
         });
     }
@@ -206,13 +195,18 @@ angular
     // REGISTER HANDLERS
     function registerHandler(uploader) {
         // --------------------
+        uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+            console.info('onWhenAddingFileFailed', item, filter, options);
+        };
+
         uploader.onAfterAddingFile = function (item) {
             console.info('After adding a file', item);
-            $scope.item = item;
+            $scope.items = item;
         };
         // --------------------
         uploader.onAfterAddingAll = function (items) {
             console.info('After adding all files', items);
+            $scope.items = items;
         };
         // --------------------
         uploader.onWhenAddingFileFailed = function (item, filter, options) {
@@ -246,20 +240,41 @@ angular
         // --------------------
         uploader.onCompleteItem = function (item, response, status, headers) {
             console.info('Complete',item, response, status, headers);
+        };
+        // --------------------
+        uploader.onCompleteAll = function () {
+            console.info('Complete all');
             $scope.currentYearbook.year = $scope.year.getFullYear();
             $scope.currentYearbook.school = $scope.school;
             $scope.currentYearbook.price = $scope.yearbookprice;
-            var file = response.result.files.file[0];
-            $scope.currentYearbook.cover_url= '/api/containers/'+file.container+'/download/'+file.name
+            $scope.currentYearbook.cover_url= '/api/containers/'+$scope.container.name+'/download/'+$scope.items[0].file.name
+            $scope.currentYearbook.epub_url= '/api/containers/'+$scope.container.name+'/download/'+$scope.items[1].file.name
             $scope.currentYearbook.$save()
                 .then(function (student) {
                     $state.go('yearbook');
                 });
         };
-        // --------------------
-        uploader.onCompleteAll = function () {
-            console.info('Complete all');
-        };
+
+        console.info('uploader', uploader);
+    }
+
+    $scope.load = function () {
+        Container
+        .getFiles({container:$scope.container.name})
+        .$promise
+        .then(function(data) {
+          $scope.files = data;
+        });
+    }
+
+    $scope.delete = function (index, id) {
+        var fileId = encodeURIComponent(id);
+        Container
+        .removeFile({container:$scope.container.name, file:fileId})
+        .$promise
+        .then(function(data) {
+          $scope.files.splice(index, 1);
+        });
     }
 
   }]);
