@@ -5,12 +5,14 @@
 
 angular
     .module('app')
-    .controller('RPJMDesController', ['$scope', '$state', 'RPJMDes', function ($scope,
-        $state, RPJMDes) {
+    .controller('RPJMDesController', ['$scope', '$state', 'RPJMDes', 'Bidang', function ($scope,
+        $state, RPJMDes, Bidang) {
         $scope.RPJMDesList = [];
+        $scope.selectedBidang;
+
         function getRPJMDesList() {
             RPJMDes
-                .find()
+                .find({filter: {include:'Bidang'}})
                 .$promise
                 .then(function (results) {
                     $scope.RPJMDesList = results;
@@ -20,6 +22,8 @@ angular
 
         $scope.addRPJMDes = function () {
             $scope.newRPJMDes.Tahun = $scope.year;
+            $scope.newRPJMDes.BidangId = $scope.selectedBidang.id;
+
             RPJMDes
                 .create($scope.newRPJMDes)
                 .$promise
@@ -44,6 +48,18 @@ angular
                     getRPJMDesList();
                 });
         };
+
+        $scope.bidangList = [];
+        function getBidangList() {
+            Bidang
+                .find()
+                .$promise
+                .then(function (results) {
+                    $scope.bidangList = results;
+                });
+        };
+
+        getBidangList();
 
         $scope.today = function () {
             $scope.year = new Date();

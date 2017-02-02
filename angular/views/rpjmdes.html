@@ -1,7 +1,22 @@
 <h1>RPJMDes list</h1>
 <hr>
 <form name="RPJMDesForm" novalidate ng-submit="addRPJMDes()">
-    <div class="form-group row row" ng-class="{'has-error': RPJMDesForm.SubBidang.$invalid
+    <div class="form-group row" ng-class="{'has-error': RPJMDesForm.Bidang.$invalid
+        && RPJMDesForm.Bidang.$dirty}">
+        <label class="col-md-2 col-form-label control-label">Bidang</label>
+        <div class="col-md-10">
+            <select name="Bidang" class="form-control focus" data-ng-model="selectedBidang" id="Bidang" ng-options="bidang.Nama for bidang in bidangList"
+                required>
+            <option value="">---Please select---</option>
+       </select>
+            <span class="has-error control-label" ng-show="
+        RPJMDesForm.Bidang.$invalid && RPJMDesForm.Bidang.$dirty">
+      Bidang is required.
+    </span>
+        </div>
+    </div>
+
+    <div class="form-group row" ng-class="{'has-error': RPJMDesForm.SubBidang.$invalid
         && RPJMDesForm.SubBidang.$dirty}">
         <label class="col-md-2 col-form-label control-label">Sub Bidang</label>
         <div class="col-md-10">
@@ -58,6 +73,7 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>Bidang</th>
                 <th>SubBidang</th>
                 <th>Jenis</th>
                 <th>Lokasi</th>
@@ -70,12 +86,13 @@
         <tbody>
             <tr ng-repeat="RPJMDes in RPJMDesList track by $index">
                 <td>{{ $index + 1}}</td>
+                <td>{{ RPJMDes.Bidang.Nama }}</td>
                 <td>{{ RPJMDes.SubBidang }}</td>
                 <td>{{ RPJMDes.Jenis }}</td>
                 <td>{{ RPJMDes.Lokasi }}</td>
                 <td>{{ RPJMDes.PrakiraanVolume }}</td>
                 <td>{{ RPJMDes.Sasaran }}</td>
-                <td>{{ RPJMDes.Tahun }}</td>
+                <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
                 <td>
                     <span>
           <a class="btn" ui-sref="editRPJMDes({RPJMDesId:RPJMDes.id})">
