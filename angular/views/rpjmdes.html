@@ -1,40 +1,40 @@
 <h1>RPJMDes list</h1>
 <hr>
 <form name="RPJMDesForm" novalidate ng-submit="addRPJMDes()">
-  <div class="form-group"
-      ng-class="{'has-error': RPJMDesForm.SubBidang.$invalid
+    <div class="form-group row row" ng-class="{'has-error': RPJMDesForm.SubBidang.$invalid
         && RPJMDesForm.SubBidang.$dirty}">
-    <input type="text" class="form-control focus" name="SubBidang"
-        placeholder="SubBidang" autocomplete="off" required
-        ng-model="newRPJMDes.SubBidang">
-    <span class="has-error control-label" ng-show="
+        <label class="col-md-2 col-form-label control-label">Sub Bidang</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control focus" name="SubBidang" placeholder="SubBidang" autocomplete="off" required ng-model="newRPJMDes.SubBidang">
+            <span class="has-error control-label" ng-show="
         RPJMDesForm.SubBidang.$invalid && RPJMDesForm.SubBidang.$dirty">
-      SubBidang is required.
+      Sub Bidang is required.
     </span>
-  </div>
-  <div class="form-group"
-      ng-class="{'has-error': RPJMDesForm.Jenis.$invalid
+        </div>
+    </div>
+    <div class="form-group row" ng-class="{'has-error': RPJMDesForm.Jenis.$invalid
         && RPJMDesForm.Jenis.$dirty}">
-    <textarea type="text" class="form-control focus" name="Jenis"
-        placeholder="Jenis" autocomplete="off" required
-        ng-model="newRPJMDes.Jenis"></textarea>
-  </div>
-  <div class="form-group"
-      ng-class="{'has-error': RPJMDesForm.PrakiraanVolume.$invalid
+        <label class="col-md-2 col-form-label control-label">Jenis</label>
+        <div class="col-md-10">
+            <textarea type="text" class="form-control focus" name="Jenis" placeholder="Jenis" autocomplete="off" required ng-model="newRPJMDes.Jenis"></textarea>
+        </div>
+    </div>
+    <div class="form-group row" ng-class="{'has-error': RPJMDesForm.PrakiraanVolume.$invalid
         && RPJMDesForm.PrakiraanVolume.$dirty}">
-    <input type="number" class="form-control focus" name="PrakiraanVolume"
-        placeholder="PrakiraanVolume" autocomplete="off"
-        ng-model="newRPJMDes.PrakiraanVolume">
-  </div>
-  <div class="form-group"
-      ng-class="{'has-error': RPJMDesForm.Sasaran.$invalid
+        <label class="col-md-2 col-form-label control-label">Prakiraan Volume</label>
+        <div class="col-md-10">
+            <input type="number" class="form-control focus" name="PrakiraanVolume" placeholder="PrakiraanVolume" autocomplete="off" ng-model="newRPJMDes.PrakiraanVolume">
+        </div>
+    </div>
+    <div class="form-group row" ng-class="{'has-error': RPJMDesForm.Sasaran.$invalid
         && RPJMDesForm.Sasaran.$dirty}">
-    <input type="text" class="form-control focus" name="Sasaran"
-        placeholder="Sasaran" autocomplete="off"
-        ng-model="newRPJMDes.Sasaran">
-  </div>
-  <div class="form-group" ng-class="{ 'has-error' : submitted && RPJMDesForm.Tahun.$invalid }">
-        <label class="col-md-2 control-label">Tahun</label>
+        <label class="col-md-2 col-form-label control-label">Sasaran</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control focus" name="Sasaran" placeholder="Sasaran" autocomplete="off" ng-model="newRPJMDes.Sasaran">
+        </div>
+    </div>
+    <div class="form-group row" ng-class="{ 'has-error' : submitted && RPJMDesForm.Tahun.$invalid  && RPJMDesForm.Tahun.$dirty}">
+        <label class="col-md-2 col-form-label control-label">Tahun</label>
         <div class="col-md-10">
             <p class="input-group">
                 <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="year" is-open="status.opened" placeholder="Tahun"
@@ -49,11 +49,11 @@
             </p>
         </div>
     </div>
-  <button class="btn btn-default btn-success" ng-disabled="RPJMDesForm.$invalid">Add</button>
+    <button class="btn btn-default btn-success" ng-disabled="RPJMDesForm.$invalid">Add</button>
 </form>
 <hr>
 <div class="list-group">
-  <a class="list-group-item" ng-repeat="RPJMDes in RPJMDesList">{{RPJMDes.SubBidang}}&nbsp;
+    <a class="list-group-item" ng-repeat="RPJMDes in RPJMDesList">{{RPJMDes.SubBidang}}&nbsp;
     <i class="glyphicon glyphicon-remove pull-right"
         ng-click="removeRPJMDes(RPJMDes)"></i></a>
 </div>

@@ -25,8 +25,12 @@ angular
                 .$promise
                 .then(function (school) {
                     $scope.newRPJMDes = '';
-                    $scope.RPJMDesForm.name.$setPristine();
-                    $scope.RPJMDesForm.address.$setPristine();
+                    $scope.RPJMDesForm.SubBidang.$setPristine();
+                    $scope.RPJMDesForm.Jenis.$setPristine();
+                    $scope.RPJMDesForm.Lokasi.$setPristine();
+                    $scope.RPJMDesForm.PrakiraanVolume.$setPristine();
+                    $scope.RPJMDesForm.Sasaran.$setPristine();
+                    $scope.RPJMDesForm.Tahun.$setPristine();
                     $('.focus').focus();
                     getRPJMDesList();
                 });
