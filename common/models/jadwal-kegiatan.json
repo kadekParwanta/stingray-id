@@ -1,0 +1,41 @@
+{
+  "name": "JadwalKegiatan",
+  "plural": "JadwalKegiatan",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "kode": {
+      "type": "number"
+    },
+    "uraian": {
+      "type": "string"
+    },
+    "jumlah": {
+      "type": "number"
+    },
+    "bulan": {
+      "type": "date"
+    },
+    "tipe": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "pendapatan": {
+      "type": "hasMany",
+      "model": "Pendapatan",
+      "foreignKey": ""
+    },
+    "biaya": {
+      "type": "hasMany",
+      "model": "Biaya",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

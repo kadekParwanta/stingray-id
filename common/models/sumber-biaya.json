@@ -1,0 +1,23 @@
+{
+  "name": "SumberBiaya",
+  "plural": "SumberBiaya",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Jumlah": {
+      "type": "number",
+      "required": true
+    },
+    "Sumber": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Pendapatan",
+  "plural": "Pendapatan",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "kode": {
+      "type": "number"
+    },
+    "nama": {
+      "type": "string"
+    },
+    "jumlah": {
+      "type": "number"
+    },
+    "bulan": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "details": {
+      "type": "hasMany",
+      "model": "Pendapatan",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -14,22 +14,22 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "mongodb"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "mongodb",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "mongodb",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "mongodb",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mongodb",
     "public": false
   },
   "School": {
@@ -46,6 +46,58 @@
   },
   "Container": {
     "dataSource": "storage",
+    "public": true
+  },
+  "Desa": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Organisasi": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Jabatan": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "APBDesItem": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "JadwalKegiatan": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "RPJMDes": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "APBDes": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Pendapatan": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Biaya": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Bidang": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "WaktuPelaksanaan": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "SumberBiaya": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "PolaPelaksanaan": {
+    "dataSource": "mongodb",
     "public": true
   }
 }

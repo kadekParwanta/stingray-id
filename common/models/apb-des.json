@@ -1,0 +1,29 @@
+{
+  "name": "APBDes",
+  "plural": "APBDes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "tahun": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "items": {
+      "type": "hasMany",
+      "model": "APBDesItem",
+      "foreignKey": ""
+    },
+    "desa": {
+      "type": "belongsTo",
+      "model": "Desa",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

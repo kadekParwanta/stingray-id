@@ -1,0 +1,62 @@
+{
+  "name": "RPJMDes",
+  "plural": "RPJMDes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "No": {
+      "type": "number"
+    },
+    "SubBidang": {
+      "type": "string"
+    },
+    "Jenis": {
+      "type": "string"
+    },
+    "Lokasi": {
+      "type": "string"
+    },
+    "PrakiraanVolume": {
+      "type": "number"
+    },
+    "Sasaran": {
+      "type": "string"
+    },
+    "Tahun": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "Bidang": {
+      "type": "belongsTo",
+      "model": "Bidang",
+      "foreignKey": ""
+    },
+    "WaktuPelaksanaan": {
+      "type": "hasAndBelongsToMany",
+      "model": "WaktuPelaksanaan",
+      "foreignKey": ""
+    },
+    "SumberBiaya": {
+      "type": "hasOne",
+      "model": "SumberBiaya",
+      "foreignKey": ""
+    },
+    "PolaPelaksanaan": {
+      "type": "hasAndBelongsToMany",
+      "model": "PolaPelaksanaan",
+      "foreignKey": ""
+    },
+    "Desa": {
+      "type": "belongsTo",
+      "model": "Desa",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

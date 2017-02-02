@@ -1,0 +1,19 @@
+{
+  "name": "WaktuPelaksanaan",
+  "plural": "WaktuPelaksanaan",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Nama": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

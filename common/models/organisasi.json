@@ -1,0 +1,24 @@
+{
+  "name": "Organisasi",
+  "plural": "Organisasi",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nama": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "Jabatan": {
+      "type": "hasMany",
+      "model": "Jabatan",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Desa",
+  "plural": "Desa",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "jalan": {
+      "type": "string"
+    },
+    "desa": {
+      "type": "string",
+      "required": true
+    },
+    "kecamatan": {
+      "type": "string"
+    },
+    "kabupaten": {
+      "type": "string"
+    },
+    "provinsi": {
+      "type": "string"
+    },
+    "kodepos": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "OrganisasiDesa": {
+      "type": "hasMany",
+      "model": "Organisasi",
+      "foreignKey": "orgDesaId"
+    },
+    "OrganisasiMasyarakat": {
+      "type": "hasMany",
+      "model": "Organisasi",
+      "foreignKey": "orgMasDesaId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

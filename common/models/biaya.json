@@ -1,0 +1,20 @@
+{
+  "name": "Biaya",
+  "plural": "Biaya",
+  "base": "Pendapatan",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "details": {
+      "type": "hasMany",
+      "model": "Biaya",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

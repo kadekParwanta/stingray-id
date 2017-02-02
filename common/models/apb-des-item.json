@@ -1,0 +1,33 @@
+{
+  "name": "APBDesItem",
+  "plural": "APBDesItem",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "kode": {
+      "type": "number"
+    },
+    "uraian": {
+      "type": "string"
+    },
+    "satuan": {
+      "type": "string"
+    },
+    "harga": {
+      "type": "number"
+    },
+    "jumlah": {
+      "type": "number"
+    },
+    "keterangan": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
