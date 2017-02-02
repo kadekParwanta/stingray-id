@@ -5,20 +5,35 @@
 
 angular
     .module('app')
-    .controller('RPJMDesController', ['$scope', '$state', 'RPJMDes', 'Bidang', function ($scope,
-        $state, RPJMDes, Bidang) {
+    .controller('RPJMDesController', ['$scope', '$state', 'RPJMDes', 'Bidang', 'WaktuPelaksanaan','$q', function ($scope,
+        $state, RPJMDes, Bidang, WaktuPelaksanaan, $q) {
         $scope.RPJMDesList = [];
         $scope.selectedBidang;
+        $scope.waktuPelaksanaanList = [];
+        $scope.selectedWaktuPelaksanaan = [];
 
         function getRPJMDesList() {
             RPJMDes
-                .find({filter: {include:'Bidang'}})
+                .find({ filter: { include: 'Bidang' } })
                 .$promise
                 .then(function (results) {
                     $scope.RPJMDesList = results;
                 });
         }
         getRPJMDesList();
+
+
+
+        function assignWaktuPelaksanaan(rpjmdes, waktuPelaksanaanList) {
+            var promises = waktuPelaksanaanList.map(function (waktuPelaksanaan) {
+                var deferred = $q.defer();
+                RPJMDes.WaktuPelaksanaan.link({ id: rpjmdes.id, fk: waktuPelaksanaan.id }, null, function (data) {
+                    deferred.resolve(data);
+                });
+                return deferred.promise;
+            });
+            return $q.all(promises);
+        }
 
         $scope.addRPJMDes = function () {
             $scope.newRPJMDes.Tahun = $scope.year;
@@ -27,16 +42,23 @@ angular
             RPJMDes
                 .create($scope.newRPJMDes)
                 .$promise
-                .then(function (school) {
+                .then(function (rpjmdes) {
                     $scope.newRPJMDes = '';
                     $scope.RPJMDesForm.SubBidang.$setPristine();
                     $scope.RPJMDesForm.Jenis.$setPristine();
                     $scope.RPJMDesForm.Lokasi.$setPristine();
                     $scope.RPJMDesForm.PrakiraanVolume.$setPristine();
                     $scope.RPJMDesForm.Sasaran.$setPristine();
-                    $scope.RPJMDesForm.Tahun.$setPristine();
                     $('.focus').focus();
-                    getRPJMDesList();
+                    if ($scope.selectedWaktuPelaksanaan.length > 0) {
+                        assignWaktuPelaksanaan(rpjmdes, $scope.selectedWaktuPelaksanaan).then(function () {
+                            getRPJMDesList();
+                        })
+                    } else {
+                        getRPJMDesList();
+                    }
+
+
                 });
         };
 
@@ -60,6 +82,31 @@ angular
         };
 
         getBidangList();
+
+        function getWaktuPelaksanaanList() {
+            WaktuPelaksanaan
+                .find()
+                .$promise
+                .then(function (results) {
+                    $scope.waktuPelaksanaanList = results;
+                });
+        }
+        getWaktuPelaksanaanList();
+
+        $scope.$watch('selected', function (nowSelected) {
+            // reset to nothing, could use `splice` to preserve non-angular references
+            $scope.selectedWaktuPelaksanaan = [];
+
+            if (!nowSelected) {
+                // sometimes selected is null or undefined
+                return;
+            }
+
+            // here's the magic
+            angular.forEach(nowSelected, function (val) {
+                $scope.selectedWaktuPelaksanaan.push(val);
+            });
+        });
 
         $scope.today = function () {
             $scope.year = new Date();

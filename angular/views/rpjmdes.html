@@ -34,6 +34,26 @@
             <textarea type="text" class="form-control focus" name="Jenis" placeholder="Jenis" autocomplete="off" required ng-model="newRPJMDes.Jenis"></textarea>
         </div>
     </div>
+    <div class="form-group row" ng-class="{'has-error': RPJMDesForm.Lokasi.$invalid
+        && RPJMDesForm.Lokasi.$dirty}">
+        <label class="col-md-2 col-form-label control-label">Lokasi</label>
+        <div class="col-md-10">
+            <textarea type="text" class="form-control focus" name="Lokasi" placeholder="Lokasi" autocomplete="off" required ng-model="newRPJMDes.Lokasi"></textarea>
+        </div>
+    </div>
+    <div class="form-group row" ng-class="{'has-error': RPJMDesForm.WaktuPelaksanaan.$invalid
+        && RPJMDesForm.WaktuPelaksanaan.$dirty}">
+        <label class="col-md-2 col-form-label control-label">Waktu Pelaksanaan</label>
+        <div class="col-md-10">
+            <select multiple name="WaktuPelaksanaan" class="form-control focus" data-ng-model="selectedWaktuPelaksanaan" id="WaktuPelaksanaan" ng-options="waktuPelaksanaan.Nama for waktuPelaksanaan in waktuPelaksanaanList"
+                required>
+       </select>
+            <span class="has-error control-label" ng-show="
+        RPJMDesForm.WaktuPelaksanaan.$invalid && RPJMDesForm.WaktuPelaksanaan.$dirty">
+      WaktuPelaksanaan is required.
+    </span>
+        </div>
+    </div>
     <div class="form-group row" ng-class="{'has-error': RPJMDesForm.PrakiraanVolume.$invalid
         && RPJMDesForm.PrakiraanVolume.$dirty}">
         <label class="col-md-2 col-form-label control-label">Prakiraan Volume</label>
@@ -79,6 +99,7 @@
                 <th>Lokasi</th>
                 <th>PrakiraanVolume</th>
                 <th>Sasaran</th>
+                <!--<th colspan="6">Waktu Pelaksanaan</th>-->
                 <th>Tahun</th>
                 <th>Actions</th>
             </tr>
@@ -92,6 +113,12 @@
                 <td>{{ RPJMDes.Lokasi }}</td>
                 <td>{{ RPJMDes.PrakiraanVolume }}</td>
                 <td>{{ RPJMDes.Sasaran }}</td>
+                <!--<td>Tahun 1</td>
+                <td>Tahun 2</td>
+                <td>Tahun 3</td>
+                <td>Tahun 4</td>
+                <td>Tahun 5</td>
+                <td>Tahun 6</td>-->
                 <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
                 <td>
                     <span>
