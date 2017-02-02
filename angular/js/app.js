@@ -38,6 +38,11 @@ angular
         url: '/yearbook/:yearbookId',
         templateUrl: 'views/yearbook.create.html',
         controller: 'YearbookController'
+      })
+      .state('rpjmdes', {
+        url: '/rpjmdes',
+        templateUrl: 'views/rpjmdes.html',
+        controller: 'RPJMDesController'
       });
 
     $urlRouterProvider.otherwise('school');
