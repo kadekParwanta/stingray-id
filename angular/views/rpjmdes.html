@@ -52,8 +52,41 @@
     <button class="btn btn-default btn-success" ng-disabled="RPJMDesForm.$invalid">Add</button>
 </form>
 <hr>
+
 <div class="list-group">
-    <a class="list-group-item" ng-repeat="RPJMDes in RPJMDesList">{{RPJMDes.SubBidang}}&nbsp;
-    <i class="glyphicon glyphicon-remove pull-right"
-        ng-click="removeRPJMDes(RPJMDes)"></i></a>
+    <table datatable="ng" id="list-rpjmdes" class="table table-striped">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>SubBidang</th>
+                <th>Jenis</th>
+                <th>Lokasi</th>
+                <th>PrakiraanVolume</th>
+                <th>Sasaran</th>
+                <th>Tahun</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="RPJMDes in RPJMDesList track by $index">
+                <td>{{ $index + 1}}</td>
+                <td>{{ RPJMDes.SubBidang }}</td>
+                <td>{{ RPJMDes.Jenis }}</td>
+                <td>{{ RPJMDes.Lokasi }}</td>
+                <td>{{ RPJMDes.PrakiraanVolume }}</td>
+                <td>{{ RPJMDes.Sasaran }}</td>
+                <td>{{ RPJMDes.Tahun }}</td>
+                <td>
+                    <span>
+          <a class="btn" ui-sref="editRPJMDes({RPJMDesId:RPJMDes.id})">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="removeRPJMDes(RPJMDes)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
