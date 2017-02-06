@@ -1,0 +1,25 @@
+{
+  "name": "RKP",
+  "plural": "RKP",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Tahun": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "rPJMDes": {
+      "type": "hasAndBelongsToMany",
+      "model": "RPJMDes",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

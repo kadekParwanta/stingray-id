@@ -99,5 +99,9 @@
   "PolaPelaksanaan": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "RKP": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }
