@@ -88,12 +88,12 @@
 </form>
 <hr>
 
+<h3>{{bidangList[0].Nama}}</h3>
 <div class="list-group">
     <table datatable="ng" id="list-rpjmdes" class="table table-striped">
         <thead>
             <tr>
                 <th>No</th>
-                <th>Bidang</th>
                 <th>SubBidang</th>
                 <th>Jenis</th>
                 <th>Lokasi</th>
@@ -105,9 +105,146 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="RPJMDes in RPJMDesList track by $index">
+            <tr ng-repeat="RPJMDes in Bidang1 track by $index">
                 <td>{{ $index + 1}}</td>
-                <td>{{ RPJMDes.Bidang.Nama }}</td>
+                <td>{{ RPJMDes.SubBidang }}</td>
+                <td>{{ RPJMDes.Jenis }}</td>
+                <td>{{ RPJMDes.Lokasi }}</td>
+                <td>{{ RPJMDes.PrakiraanVolume }}</td>
+                <td>{{ RPJMDes.Sasaran }}</td>
+                <!--<td>Tahun 1</td>
+                <td>Tahun 2</td>
+                <td>Tahun 3</td>
+                <td>Tahun 4</td>
+                <td>Tahun 5</td>
+                <td>Tahun 6</td>-->
+                <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
+                <td>
+                    <span>
+          <a class="btn" ui-sref="rpjmdes-edit({rpjmdesId:RPJMDes.id})">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="removeRPJMDes(RPJMDes)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3>{{bidangList[1].Nama}}</h3>
+<div class="list-group">
+    <table datatable="ng" id="list-rpjmdes" class="table table-striped">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>SubBidang</th>
+                <th>Jenis</th>
+                <th>Lokasi</th>
+                <th>PrakiraanVolume</th>
+                <th>Sasaran</th>
+                <!--<th colspan="6">Waktu Pelaksanaan</th>-->
+                <th>Tahun</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="RPJMDes in Bidang2 track by $index">
+                <td>{{ $index + 1}}</td>
+                <td>{{ RPJMDes.SubBidang }}</td>
+                <td>{{ RPJMDes.Jenis }}</td>
+                <td>{{ RPJMDes.Lokasi }}</td>
+                <td>{{ RPJMDes.PrakiraanVolume }}</td>
+                <td>{{ RPJMDes.Sasaran }}</td>
+                <!--<td>Tahun 1</td>
+                <td>Tahun 2</td>
+                <td>Tahun 3</td>
+                <td>Tahun 4</td>
+                <td>Tahun 5</td>
+                <td>Tahun 6</td>-->
+                <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
+                <td>
+                    <span>
+          <a class="btn" ui-sref="editRPJMDes({RPJMDesId:RPJMDes.id})">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="removeRPJMDes(RPJMDes)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3>{{bidangList[2].Nama}}</h3>
+<div class="list-group">
+    <table datatable="ng" id="list-rpjmdes" class="table table-striped">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>SubBidang</th>
+                <th>Jenis</th>
+                <th>Lokasi</th>
+                <th>PrakiraanVolume</th>
+                <th>Sasaran</th>
+                <!--<th colspan="6">Waktu Pelaksanaan</th>-->
+                <th>Tahun</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="RPJMDes in Bidang3 track by $index">
+                <td>{{ $index + 1}}</td>
+                <td>{{ RPJMDes.SubBidang }}</td>
+                <td>{{ RPJMDes.Jenis }}</td>
+                <td>{{ RPJMDes.Lokasi }}</td>
+                <td>{{ RPJMDes.PrakiraanVolume }}</td>
+                <td>{{ RPJMDes.Sasaran }}</td>
+                <!--<td>Tahun 1</td>
+                <td>Tahun 2</td>
+                <td>Tahun 3</td>
+                <td>Tahun 4</td>
+                <td>Tahun 5</td>
+                <td>Tahun 6</td>-->
+                <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
+                <td>
+                    <span>
+          <a class="btn" ui-sref="editRPJMDes({RPJMDesId:RPJMDes.id})">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="removeRPJMDes(RPJMDes)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3>{{bidangList[3].Nama}}</h3>
+<div class="list-group">
+    <table datatable="ng" id="list-rpjmdes" class="table table-striped">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>SubBidang</th>
+                <th>Jenis</th>
+                <th>Lokasi</th>
+                <th>PrakiraanVolume</th>
+                <th>Sasaran</th>
+                <!--<th colspan="6">Waktu Pelaksanaan</th>-->
+                <th>Tahun</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="RPJMDes in Bidang4 track by $index">
+                <td>{{ $index + 1}}</td>
                 <td>{{ RPJMDes.SubBidang }}</td>
                 <td>{{ RPJMDes.Jenis }}</td>
                 <td>{{ RPJMDes.Lokasi }}</td>

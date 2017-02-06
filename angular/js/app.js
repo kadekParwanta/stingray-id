@@ -45,5 +45,5 @@ angular
         controller: 'RPJMDesController'
       });
 
-    $urlRouterProvider.otherwise('school');
+    $urlRouterProvider.otherwise('rpjmdes');
   }]);

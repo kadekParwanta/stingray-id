@@ -11,15 +11,40 @@ angular
         $scope.selectedBidang;
         $scope.waktuPelaksanaanList = [];
         $scope.selectedWaktuPelaksanaan = [];
+        $scope.Bidang1 = [];
+        $scope.Bidang2 = [];
+        $scope.Bidang3 = [];
+        $scope.Bidang4 = [];
 
         function getRPJMDesList() {
             RPJMDes
-                .find({ filter: { include: 'Bidang' } })
-                .$promise
-                .then(function (results) {
+                .find({
+                    filter: {
+                        include: {
+                            relation: 'Bidang'
+                        }
+                    }
+                }, function (results) {
                     $scope.RPJMDesList = results;
-                });
+                    populateRPJMDes(results);
+                })
         }
+
+        function populateRPJMDes(data) {
+            angular.forEach(data, function(rpjmdes){
+                var bidang = rpjmdes.Bidang;
+                if (bidang.No === 1) {
+                    $scope.Bidang1.push(rpjmdes);
+                } else if (bidang.No === 2) {
+                    $scope.Bidang2.push(rpjmdes);
+                } else if (bidang.No === 3) {
+                    $scope.Bidang3.push(rpjmdes);
+                } else if (bidang.No === 4) {
+                    $scope.Bidang4.push(rpjmdes);
+                }
+            })
+        }
+
         getRPJMDesList();
 
 
