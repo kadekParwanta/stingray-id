@@ -5,13 +5,14 @@
 
 angular
     .module('app')
-    .controller('RPJMDesController', ['$scope', '$state', 'RPJMDes', 'Bidang', 'WaktuPelaksanaan','$q', 'SumberBiaya', function ($scope,
-        $state, RPJMDes, Bidang, WaktuPelaksanaan, $q, SumberBiaya) {
+    .controller('RPJMDesController', ['$scope', '$state', 'RPJMDes', 'Bidang', 'WaktuPelaksanaan','$q', 'SumberBiaya', 'PolaPelaksanaan', function ($scope,
+        $state, RPJMDes, Bidang, WaktuPelaksanaan, $q, SumberBiaya, PolaPelaksanaan) {
         $scope.RPJMDesList = [];
         $scope.selectedBidang;
         $scope.waktuPelaksanaanList = [];
         $scope.selectedWaktuPelaksanaan = [];
         $scope.sumberBiaya = {};
+        $scope.selectedPolaPelaksanaan = [];
         $scope.Bidang1 = [];
         $scope.Bidang2 = [];
         $scope.Bidang3 = [];
@@ -21,7 +22,7 @@ angular
             RPJMDes
                 .find({
                     filter: {
-                        include: ['Bidang','WaktuPelaksanaan','SumberBiaya']
+                        include: ['Bidang','WaktuPelaksanaan','SumberBiaya', 'PolaPelaksanaan']
                     }
                 }, function (results) {
                     $scope.RPJMDesList = results;
@@ -59,6 +60,17 @@ angular
             return $q.all(promises);
         }
 
+        function assignPolaPelaksanaan(rpjmdes, polaPelaksanaanList) {
+            var promises = polaPelaksanaanList.map(function (polaPelaksanaan) {
+                var deferred = $q.defer();
+                RPJMDes.PolaPelaksanaan.link({ id: rpjmdes.id, fk: polaPelaksanaan.id }, null, function (data) {
+                    deferred.resolve(data);
+                });
+                return deferred.promise;
+            });
+            return $q.all(promises);
+        }
+
         $scope.addRPJMDes = function () {
             $scope.newRPJMDes.Tahun = $scope.year;
             $scope.newRPJMDes.BidangId = $scope.selectedBidang.id;
@@ -77,7 +89,13 @@ angular
                     if ($scope.selectedWaktuPelaksanaan.length > 0) {
                         assignWaktuPelaksanaan(rpjmdes, $scope.selectedWaktuPelaksanaan).then(function () {
                             $scope.addSumberBiaya(rpjmdes.id, function (data) {
-                                getRPJMDesList();
+                                if ($scope.selectedPolaPelaksanaan.length > 0) {
+                                    assignPolaPelaksanaan(rpjmdes, $scope.selectedPolaPelaksanaan).then(function () {
+                                        getRPJMDesList();
+                                    })
+                                } else {
+                                    getRPJMDesList();
+                                }
                             })
 
                         })
@@ -134,6 +152,18 @@ angular
                 });
         }
         getWaktuPelaksanaanList();
+
+        $scope.polaPelaksanaanList = [];
+        function getPolaPelaksanaanList() {
+            PolaPelaksanaan
+                .find()
+                .$promise
+                .then(function (results) {
+                    $scope.polaPelaksanaanList = results;
+                });
+        };
+
+        getPolaPelaksanaanList();
 
         $scope.$watch('selected', function (nowSelected) {
             // reset to nothing, could use `splice` to preserve non-angular references

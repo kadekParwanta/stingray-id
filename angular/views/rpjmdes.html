@@ -82,9 +82,23 @@
             <span class="has-error control-label" ng-show="
         RPJMDesForm.SumberBiaya.$invalid && RPJMDesForm.SumberBiaya.$dirty">
       Sumber Biaya is required.
-    </span>
-        
+    </span>        
     </div>
+
+    <div class="form-group row" ng-class="{'has-error': RPJMDesForm.PolaPelaksanaan.$invalid
+        && RPJMDesForm.PolaPelaksanaan.$dirty}">
+        <label class="col-md-2 col-form-label control-label">PolaPelaksanaan</label>
+        <div class="col-md-10">
+            <select multiple name="PolaPelaksanaan" class="form-control focus" data-ng-model="selectedPolaPelaksanaan" id="PolaPelaksanaan" ng-options="polaPelaksanaan.Nama for polaPelaksanaan in polaPelaksanaanList"
+                required>
+       </select>
+            <span class="has-error control-label" ng-show="
+        RPJMDesForm.PolaPelaksanaan.$invalid && RPJMDesForm.PolaPelaksanaan.$dirty">
+      PolaPelaksanaan is required.
+    </span>
+        </div>
+    </div>
+    
     <div class="form-group row" ng-class="{ 'has-error' : submitted && RPJMDesForm.Tahun.$invalid  && RPJMDesForm.Tahun.$dirty}">
         <label class="col-md-2 col-form-label control-label">Tahun</label>
         <div class="col-md-10">
@@ -117,6 +131,7 @@
                 <th rowspan="2">PrakiraanVolume</th>
                 <th rowspan="2">Sasaran</th>
                 <th colspan="6">Tahun Pelaksanaan</th>
+                <th colspan="2">Sumber Biaya</th>
                 <th rowspan="2">Tahun</th>
                 <th rowspan="2">Actions</th>
             </tr>
@@ -135,6 +150,8 @@
                 <td>4</td>
                 <td>5</td>
                 <td>6</td>
+                <td>Jumlah</td>
+                <td>Sumber</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -151,6 +168,8 @@
                 <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 4') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 4')? 'X':''}}</td>
                 <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 5') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 5')? 'X':''}}</td>
                 <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 6') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[5].Nama == 'Tahun 6')? 'X':''}}</td>
+                <td>{{ RPJMDes.SumberBiaya.Jumlah}}</td>
+                <td>{{ RPJMDes.SumberBiaya.Sumber}}</td>
                 <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
                 <td>
                     <span>
@@ -179,6 +198,7 @@
                 <th rowspan="2">PrakiraanVolume</th>
                 <th rowspan="2">Sasaran</th>
                 <th colspan="6">Tahun Pelaksanaan</th>
+                <th colspan="2">Sumber Biaya</th>
                 <th rowspan="2">Tahun</th>
                 <th rowspan="2">Actions</th>
             </tr>
@@ -197,6 +217,8 @@
                 <td>4</td>
                 <td>5</td>
                 <td>6</td>
+                <td>Jumlah</td>
+                <td>Sumber</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -213,6 +235,8 @@
                 <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 4') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 4')? 'X':''}}</td>
                 <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 5') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 5')? 'X':''}}</td>
                 <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 6') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[5].Nama == 'Tahun 6')? 'X':''}}</td>
+                <td>{{ RPJMDes.SumberBiaya.Jumlah}}</td>
+                <td>{{ RPJMDes.SumberBiaya.Sumber}}</td>
                 <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
                 <td>
                     <span>
@@ -241,6 +265,7 @@
                 <th rowspan="2">PrakiraanVolume</th>
                 <th rowspan="2">Sasaran</th>
                 <th colspan="6">Tahun Pelaksanaan</th>
+                <th colspan="2">Sumber Biaya</th>
                 <th rowspan="2">Tahun</th>
                 <th rowspan="2">Actions</th>
             </tr>
@@ -259,6 +284,8 @@
                 <td>4</td>
                 <td>5</td>
                 <td>6</td>
+                <td>Jumlah</td>
+                <td>Sumber</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -275,6 +302,8 @@
                 <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 4') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 4')? 'X':''}}</td>
                 <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 5') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 5')? 'X':''}}</td>
                 <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 6') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[5].Nama == 'Tahun 6')? 'X':''}}</td>
+                <td>{{ RPJMDes.SumberBiaya.Jumlah}}</td>
+                <td>{{ RPJMDes.SumberBiaya.Sumber}}</td>
                 <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
                 <td>
                     <span>
@@ -303,6 +332,7 @@
                 <th rowspan="2">PrakiraanVolume</th>
                 <th rowspan="2">Sasaran</th>
                 <th colspan="6">Tahun Pelaksanaan</th>
+                <th colspan="2">Sumber Biaya</th>
                 <th rowspan="2">Tahun</th>
                 <th rowspan="2">Actions</th>
             </tr>
@@ -321,6 +351,8 @@
                 <td>4</td>
                 <td>5</td>
                 <td>6</td>
+                <td>Jumlah</td>
+                <td>Sumber</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -337,6 +369,8 @@
                 <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 4') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 4')? 'X':''}}</td>
                 <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 5') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 5')? 'X':''}}</td>
                 <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 6') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[5].Nama == 'Tahun 6')? 'X':''}}</td>
+                <td>{{ RPJMDes.SumberBiaya.Jumlah}}</td>
+                <td>{{ RPJMDes.SumberBiaya.Sumber}}</td>
                 <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
                 <td>
                     <span>
