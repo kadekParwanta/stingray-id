@@ -21,9 +21,7 @@ angular
             RPJMDes
                 .find({
                     filter: {
-                        include: {
-                            relation: 'Bidang'
-                        }
+                        include: ['Bidang','WaktuPelaksanaan','SumberBiaya']
                     }
                 }, function (results) {
                     $scope.RPJMDesList = results;

@@ -107,21 +107,37 @@
 
 <h3>{{bidangList[0].Nama}}</h3>
 <div class="list-group">
-    <table datatable="ng" id="list-rpjmdes" class="table table-striped">
+    <table id="list-rpjmdes" class="table table-striped">
         <thead>
             <tr>
-                <th>No</th>
-                <th>SubBidang</th>
-                <th>Jenis</th>
-                <th>Lokasi</th>
-                <th>PrakiraanVolume</th>
-                <th>Sasaran</th>
-                <!--<th colspan="6">Waktu Pelaksanaan</th>-->
-                <th>Tahun</th>
-                <th>Actions</th>
+                <th rowspan="2">No</th>
+                <th rowspan="2">SubBidang</th>
+                <th rowspan="2">Jenis</th>
+                <th rowspan="2">Lokasi</th>
+                <th rowspan="2">PrakiraanVolume</th>
+                <th rowspan="2">Sasaran</th>
+                <th colspan="6">Tahun Pelaksanaan</th>
+                <th rowspan="2">Tahun</th>
+                <th rowspan="2">Actions</th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td></td>
+                <td></td>
+            </tr>
             <tr ng-repeat="RPJMDes in Bidang1 track by $index">
                 <td>{{ $index + 1}}</td>
                 <td>{{ RPJMDes.SubBidang }}</td>
@@ -129,12 +145,12 @@
                 <td>{{ RPJMDes.Lokasi }}</td>
                 <td>{{ RPJMDes.PrakiraanVolume }}</td>
                 <td>{{ RPJMDes.Sasaran }}</td>
-                <!--<td>Tahun 1</td>
-                <td>Tahun 2</td>
-                <td>Tahun 3</td>
-                <td>Tahun 4</td>
-                <td>Tahun 5</td>
-                <td>Tahun 6</td>-->
+                <td>{{RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 1'? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 2') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 2')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 3') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 3')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 3')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 4') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 4')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 5') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 5')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 6') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[5].Nama == 'Tahun 6')? 'X':''}}</td>
                 <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
                 <td>
                     <span>
@@ -153,21 +169,37 @@
 <hr>
 <h3>{{bidangList[1].Nama}}</h3>
 <div class="list-group">
-    <table datatable="ng" id="list-rpjmdes" class="table table-striped">
+    <table id="list-rpjmdes" class="table table-striped">
         <thead>
             <tr>
-                <th>No</th>
-                <th>SubBidang</th>
-                <th>Jenis</th>
-                <th>Lokasi</th>
-                <th>PrakiraanVolume</th>
-                <th>Sasaran</th>
-                <!--<th colspan="6">Waktu Pelaksanaan</th>-->
-                <th>Tahun</th>
-                <th>Actions</th>
+                <th rowspan="2">No</th>
+                <th rowspan="2">SubBidang</th>
+                <th rowspan="2">Jenis</th>
+                <th rowspan="2">Lokasi</th>
+                <th rowspan="2">PrakiraanVolume</th>
+                <th rowspan="2">Sasaran</th>
+                <th colspan="6">Tahun Pelaksanaan</th>
+                <th rowspan="2">Tahun</th>
+                <th rowspan="2">Actions</th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td></td>
+                <td></td>
+            </tr>
             <tr ng-repeat="RPJMDes in Bidang2 track by $index">
                 <td>{{ $index + 1}}</td>
                 <td>{{ RPJMDes.SubBidang }}</td>
@@ -175,12 +207,12 @@
                 <td>{{ RPJMDes.Lokasi }}</td>
                 <td>{{ RPJMDes.PrakiraanVolume }}</td>
                 <td>{{ RPJMDes.Sasaran }}</td>
-                <!--<td>Tahun 1</td>
-                <td>Tahun 2</td>
-                <td>Tahun 3</td>
-                <td>Tahun 4</td>
-                <td>Tahun 5</td>
-                <td>Tahun 6</td>-->
+                <td>{{RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 1'? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 2') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 2')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 3') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 3')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 3')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 4') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 4')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 5') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 5')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 6') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[5].Nama == 'Tahun 6')? 'X':''}}</td>
                 <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
                 <td>
                     <span>
@@ -199,21 +231,37 @@
 <hr>
 <h3>{{bidangList[2].Nama}}</h3>
 <div class="list-group">
-    <table datatable="ng" id="list-rpjmdes" class="table table-striped">
+    <table id="list-rpjmdes" class="table table-striped">
         <thead>
             <tr>
-                <th>No</th>
-                <th>SubBidang</th>
-                <th>Jenis</th>
-                <th>Lokasi</th>
-                <th>PrakiraanVolume</th>
-                <th>Sasaran</th>
-                <!--<th colspan="6">Waktu Pelaksanaan</th>-->
-                <th>Tahun</th>
-                <th>Actions</th>
+                <th rowspan="2">No</th>
+                <th rowspan="2">SubBidang</th>
+                <th rowspan="2">Jenis</th>
+                <th rowspan="2">Lokasi</th>
+                <th rowspan="2">PrakiraanVolume</th>
+                <th rowspan="2">Sasaran</th>
+                <th colspan="6">Tahun Pelaksanaan</th>
+                <th rowspan="2">Tahun</th>
+                <th rowspan="2">Actions</th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td></td>
+                <td></td>
+            </tr>
             <tr ng-repeat="RPJMDes in Bidang3 track by $index">
                 <td>{{ $index + 1}}</td>
                 <td>{{ RPJMDes.SubBidang }}</td>
@@ -221,12 +269,12 @@
                 <td>{{ RPJMDes.Lokasi }}</td>
                 <td>{{ RPJMDes.PrakiraanVolume }}</td>
                 <td>{{ RPJMDes.Sasaran }}</td>
-                <!--<td>Tahun 1</td>
-                <td>Tahun 2</td>
-                <td>Tahun 3</td>
-                <td>Tahun 4</td>
-                <td>Tahun 5</td>
-                <td>Tahun 6</td>-->
+                <td>{{RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 1'? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 2') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 2')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 3') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 3')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 3')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 4') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 4')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 5') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 5')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 6') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[5].Nama == 'Tahun 6')? 'X':''}}</td>
                 <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
                 <td>
                     <span>
@@ -245,21 +293,37 @@
 <hr>
 <h3>{{bidangList[3].Nama}}</h3>
 <div class="list-group">
-    <table datatable="ng" id="list-rpjmdes" class="table table-striped">
+    <table id="list-rpjmdes" class="table table-striped">
         <thead>
             <tr>
-                <th>No</th>
-                <th>SubBidang</th>
-                <th>Jenis</th>
-                <th>Lokasi</th>
-                <th>PrakiraanVolume</th>
-                <th>Sasaran</th>
-                <!--<th colspan="6">Waktu Pelaksanaan</th>-->
-                <th>Tahun</th>
-                <th>Actions</th>
+                <th rowspan="2">No</th>
+                <th rowspan="2">SubBidang</th>
+                <th rowspan="2">Jenis</th>
+                <th rowspan="2">Lokasi</th>
+                <th rowspan="2">PrakiraanVolume</th>
+                <th rowspan="2">Sasaran</th>
+                <th colspan="6">Tahun Pelaksanaan</th>
+                <th rowspan="2">Tahun</th>
+                <th rowspan="2">Actions</th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td></td>
+                <td></td>
+            </tr>
             <tr ng-repeat="RPJMDes in Bidang4 track by $index">
                 <td>{{ $index + 1}}</td>
                 <td>{{ RPJMDes.SubBidang }}</td>
@@ -267,12 +331,12 @@
                 <td>{{ RPJMDes.Lokasi }}</td>
                 <td>{{ RPJMDes.PrakiraanVolume }}</td>
                 <td>{{ RPJMDes.Sasaran }}</td>
-                <!--<td>Tahun 1</td>
-                <td>Tahun 2</td>
-                <td>Tahun 3</td>
-                <td>Tahun 4</td>
-                <td>Tahun 5</td>
-                <td>Tahun 6</td>-->
+                <td>{{RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 1'? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 2') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 2')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 3') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 3')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 3')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 4') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 4')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 4')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 5') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 5')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 5')? 'X':''}}</td>
+                <td>{{(RPJMDes.WaktuPelaksanaan[0].Nama == 'Tahun 6') || (RPJMDes.WaktuPelaksanaan[1].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[2].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[3].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[4].Nama == 'Tahun 6')|| (RPJMDes.WaktuPelaksanaan[5].Nama == 'Tahun 6')? 'X':''}}</td>
                 <td>{{ RPJMDes.Tahun | date :  "yyyy"}}</td>
                 <td>
                     <span>
