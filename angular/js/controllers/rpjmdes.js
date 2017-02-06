@@ -5,12 +5,13 @@
 
 angular
     .module('app')
-    .controller('RPJMDesController', ['$scope', '$state', 'RPJMDes', 'Bidang', 'WaktuPelaksanaan','$q', function ($scope,
-        $state, RPJMDes, Bidang, WaktuPelaksanaan, $q) {
+    .controller('RPJMDesController', ['$scope', '$state', 'RPJMDes', 'Bidang', 'WaktuPelaksanaan','$q', 'SumberBiaya', function ($scope,
+        $state, RPJMDes, Bidang, WaktuPelaksanaan, $q, SumberBiaya) {
         $scope.RPJMDesList = [];
         $scope.selectedBidang;
         $scope.waktuPelaksanaanList = [];
         $scope.selectedWaktuPelaksanaan = [];
+        $scope.sumberBiaya = {};
         $scope.Bidang1 = [];
         $scope.Bidang2 = [];
         $scope.Bidang3 = [];
@@ -77,10 +78,15 @@ angular
                     $('.focus').focus();
                     if ($scope.selectedWaktuPelaksanaan.length > 0) {
                         assignWaktuPelaksanaan(rpjmdes, $scope.selectedWaktuPelaksanaan).then(function () {
-                            getRPJMDesList();
+                            $scope.addSumberBiaya(rpjmdes.id, function (data) {
+                                getRPJMDesList();
+                            })
+
                         })
                     } else {
-                        getRPJMDesList();
+                        $scope.addSumberBiaya(rpjmdes.id, function (data) {
+                            getRPJMDesList();
+                        })
                     }
 
 
@@ -95,6 +101,19 @@ angular
                     getRPJMDesList();
                 });
         };
+
+        $scope.addSumberBiaya = function (id, cb) {
+            if ($scope.sumberBiaya) {
+                SumberBiaya.create({
+                    Jumlah: $scope.sumberBiaya.Jumlah,
+                    Sumber: $scope.sumberBiaya.Sumber,
+                    rPJMDesId: id
+                }, cb)
+            } else {
+                return cb("");
+            }
+
+        }
 
         $scope.bidangList = [];
         function getBidangList() {

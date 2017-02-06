@@ -41,19 +41,6 @@
             <textarea type="text" class="form-control focus" name="Lokasi" placeholder="Lokasi" autocomplete="off" required ng-model="newRPJMDes.Lokasi"></textarea>
         </div>
     </div>
-    <div class="form-group row" ng-class="{'has-error': RPJMDesForm.WaktuPelaksanaan.$invalid
-        && RPJMDesForm.WaktuPelaksanaan.$dirty}">
-        <label class="col-md-2 col-form-label control-label">Waktu Pelaksanaan</label>
-        <div class="col-md-10">
-            <select multiple name="WaktuPelaksanaan" class="form-control focus" data-ng-model="selectedWaktuPelaksanaan" id="WaktuPelaksanaan" ng-options="waktuPelaksanaan.Nama for waktuPelaksanaan in waktuPelaksanaanList"
-                required>
-       </select>
-            <span class="has-error control-label" ng-show="
-        RPJMDesForm.WaktuPelaksanaan.$invalid && RPJMDesForm.WaktuPelaksanaan.$dirty">
-      WaktuPelaksanaan is required.
-    </span>
-        </div>
-    </div>
     <div class="form-group row" ng-class="{'has-error': RPJMDesForm.PrakiraanVolume.$invalid
         && RPJMDesForm.PrakiraanVolume.$dirty}">
         <label class="col-md-2 col-form-label control-label">Prakiraan Volume</label>
@@ -67,6 +54,36 @@
         <div class="col-md-10">
             <input type="text" class="form-control focus" name="Sasaran" placeholder="Sasaran" autocomplete="off" ng-model="newRPJMDes.Sasaran">
         </div>
+    </div>
+    
+    <div class="form-group row" ng-class="{'has-error': RPJMDesForm.WaktuPelaksanaan.$invalid
+        && RPJMDesForm.WaktuPelaksanaan.$dirty}">
+        <label class="col-md-2 col-form-label control-label">Waktu Pelaksanaan</label>
+        <div class="col-md-10">
+            <select multiple name="WaktuPelaksanaan" class="form-control focus" data-ng-model="selectedWaktuPelaksanaan" id="WaktuPelaksanaan" ng-options="waktuPelaksanaan.Nama for waktuPelaksanaan in waktuPelaksanaanList"
+                required>
+       </select>
+            <span class="has-error control-label" ng-show="
+        RPJMDesForm.WaktuPelaksanaan.$invalid && RPJMDesForm.WaktuPelaksanaan.$dirty">
+      WaktuPelaksanaan is required.
+    </span>
+        </div>
+    </div>
+    
+    <div class="form-group row" ng-class="{'has-error': RPJMDesForm.SumberBiaya.$invalid
+        && RPJMDesForm.SumberBiaya.$dirty}">
+        <label class="col-md-2 col-form-label control-label">Sumber Biaya</label>
+        <div class="col-md-5">
+            <input type="number" class="form-control focus" name="Jumlah" placeholder="Jumlah" autocomplete="off" required ng-model="sumberBiaya.Jumlah">
+        </div>
+        <div class="col-md-5">
+            <input type="text" class="form-control focus" name="Sumber" placeholder="Sumber" autocomplete="off" required ng-model="sumberBiaya.Sumber">
+        </div>
+            <span class="has-error control-label" ng-show="
+        RPJMDesForm.SumberBiaya.$invalid && RPJMDesForm.SumberBiaya.$dirty">
+      Sumber Biaya is required.
+    </span>
+        
     </div>
     <div class="form-group row" ng-class="{ 'has-error' : submitted && RPJMDesForm.Tahun.$invalid  && RPJMDesForm.Tahun.$dirty}">
         <label class="col-md-2 col-form-label control-label">Tahun</label>
