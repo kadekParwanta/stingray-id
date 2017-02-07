@@ -10994,6 +10994,92 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               url: urlBase + "/RPJMDes/change-stream",
               method: "POST",
             },
+
+            // INTERNAL. Use RKP.rPJMDes.findById() instead.
+            "::findById::RKP::rPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RKP/:id/rPJMDes/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.destroyById() instead.
+            "::destroyById::RKP::rPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RKP/:id/rPJMDes/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.updateById() instead.
+            "::updateById::RKP::rPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RKP/:id/rPJMDes/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.link() instead.
+            "::link::RKP::rPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RKP/:id/rPJMDes/rel/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.unlink() instead.
+            "::unlink::RKP::rPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RKP/:id/rPJMDes/rel/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.exists() instead.
+            "::exists::RKP::rPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RKP/:id/rPJMDes/rel/:fk",
+              method: "HEAD",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes() instead.
+            "::get::RKP::rPJMDes": {
+              isArray: true,
+              url: urlBase + "/RKP/:id/rPJMDes",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.create() instead.
+            "::create::RKP::rPJMDes": {
+              url: urlBase + "/RKP/:id/rPJMDes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.createMany() instead.
+            "::createMany::RKP::rPJMDes": {
+              isArray: true,
+              url: urlBase + "/RKP/:id/rPJMDes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.destroyAll() instead.
+            "::delete::RKP::rPJMDes": {
+              url: urlBase + "/RKP/:id/rPJMDes",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.count() instead.
+            "::count::RKP::rPJMDes": {
+              url: urlBase + "/RKP/:id/rPJMDes/count",
+              method: "GET",
+            },
           }
         );
 
@@ -19552,6 +19638,1307 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         */
         R.modelName = "PolaPelaksanaan";
 
+
+
+        return R;
+      }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.RKP
+ * @header lbServices.RKP
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `RKP` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+  module.factory(
+    "RKP",
+    [
+      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
+      function(LoopBackResource, LoopBackAuth, $injector, $q) {
+        var R = LoopBackResource(
+        urlBase + "/RKP/:id",
+          { 'id': '@id' },
+          {
+
+            // INTERNAL. Use RKP.rPJMDes.findById() instead.
+            "prototype$__findById__rPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RKP/:id/rPJMDes/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.destroyById() instead.
+            "prototype$__destroyById__rPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RKP/:id/rPJMDes/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.updateById() instead.
+            "prototype$__updateById__rPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RKP/:id/rPJMDes/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.link() instead.
+            "prototype$__link__rPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RKP/:id/rPJMDes/rel/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.unlink() instead.
+            "prototype$__unlink__rPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RKP/:id/rPJMDes/rel/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.exists() instead.
+            "prototype$__exists__rPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RKP/:id/rPJMDes/rel/:fk",
+              method: "HEAD",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes() instead.
+            "prototype$__get__rPJMDes": {
+              isArray: true,
+              url: urlBase + "/RKP/:id/rPJMDes",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.create() instead.
+            "prototype$__create__rPJMDes": {
+              url: urlBase + "/RKP/:id/rPJMDes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.destroyAll() instead.
+            "prototype$__delete__rPJMDes": {
+              url: urlBase + "/RKP/:id/rPJMDes",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RKP.rPJMDes.count() instead.
+            "prototype$__count__rPJMDes": {
+              url: urlBase + "/RKP/:id/rPJMDes/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#create
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+            "create": {
+              url: urlBase + "/RKP",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#createMany
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+            "createMany": {
+              isArray: true,
+              url: urlBase + "/RKP",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#upsert
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Patch an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+            "upsert": {
+              url: urlBase + "/RKP",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#replaceOrCreate
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Replace an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+            "replaceOrCreate": {
+              url: urlBase + "/RKP/replaceOrCreate",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#upsertWithWhere
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source based on the where criteria.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+            "upsertWithWhere": {
+              url: urlBase + "/RKP/upsertWithWhere",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#exists
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Check whether a model instance exists in the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `exists` – `{boolean=}` -
+             */
+            "exists": {
+              url: urlBase + "/RKP/:id/exists",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#findById
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Find a model instance by {{id}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `filter` – `{object=}` - Filter defining fields and include
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+            "findById": {
+              url: urlBase + "/RKP/:id",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#replaceById
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Replace attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+            "replaceById": {
+              url: urlBase + "/RKP/:id/replace",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#find
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Find all instances of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+            "find": {
+              isArray: true,
+              url: urlBase + "/RKP",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#findOne
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Find first instance of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+            "findOne": {
+              url: urlBase + "/RKP/findOne",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#updateAll
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Update instances of the model matched by {{where}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Information related to the outcome of the operation
+             */
+            "updateAll": {
+              url: urlBase + "/RKP/update",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#deleteById
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Delete a model instance by {{id}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+            "deleteById": {
+              url: urlBase + "/RKP/:id",
+              method: "DELETE",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#count
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Count instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+            "count": {
+              url: urlBase + "/RKP/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#prototype$updateAttributes
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Patch attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+            "prototype$updateAttributes": {
+              url: urlBase + "/RKP/:id",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#createChangeStream
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Create a change stream.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `changes` – `{ReadableStream=}` -
+             */
+            "createChangeStream": {
+              url: urlBase + "/RKP/change-stream",
+              method: "POST",
+            },
+          }
+        );
+
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#patchOrCreate
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Patch an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R["patchOrCreate"] = R["upsert"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#updateOrCreate
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Patch an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R["updateOrCreate"] = R["upsert"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#patchOrCreateWithWhere
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source based on the where criteria.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#update
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Update instances of the model matched by {{where}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Information related to the outcome of the operation
+             */
+        R["update"] = R["updateAll"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#destroyById
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Delete a model instance by {{id}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R["destroyById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#removeById
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Delete a model instance by {{id}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R["removeById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#patchAttributes
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Patch attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R["patchAttributes"] = R["prototype$updateAttributes"];
+
+
+        /**
+        * @ngdoc property
+        * @name lbServices.RKP#modelName
+        * @propertyOf lbServices.RKP
+        * @description
+        * The name of the model represented by this $resource,
+        * i.e. `RKP`.
+        */
+        R.modelName = "RKP";
+
+    /**
+     * @ngdoc object
+     * @name lbServices.RKP.rPJMDes
+     * @header lbServices.RKP.rPJMDes
+     * @object
+     * @description
+     *
+     * The object `RKP.rPJMDes` groups methods
+     * manipulating `RPJMDes` instances related to `RKP`.
+     *
+     * Call {@link lbServices.RKP#rPJMDes RKP.rPJMDes()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#rPJMDes
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Queries rPJMDes of RKP.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.rPJMDes = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::get::RKP::rPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.rPJMDes#count
+             * @methodOf lbServices.RKP.rPJMDes
+             *
+             * @description
+             *
+             * Counts rPJMDes of RKP.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.rPJMDes.count = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::count::RKP::rPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.rPJMDes#create
+             * @methodOf lbServices.RKP.rPJMDes
+             *
+             * @description
+             *
+             * Creates a new instance in rPJMDes of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.rPJMDes.create = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::create::RKP::rPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.rPJMDes#createMany
+             * @methodOf lbServices.RKP.rPJMDes
+             *
+             * @description
+             *
+             * Creates a new instance in rPJMDes of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.rPJMDes.createMany = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::createMany::RKP::rPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.rPJMDes#destroyAll
+             * @methodOf lbServices.RKP.rPJMDes
+             *
+             * @description
+             *
+             * Deletes all rPJMDes of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             *  - `where` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.rPJMDes.destroyAll = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::delete::RKP::rPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.rPJMDes#destroyById
+             * @methodOf lbServices.RKP.rPJMDes
+             *
+             * @description
+             *
+             * Delete a related item by id for rPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             *  - `fk` – `{*}` - Foreign key for rPJMDes
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.rPJMDes.destroyById = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::destroyById::RKP::rPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.rPJMDes#exists
+             * @methodOf lbServices.RKP.rPJMDes
+             *
+             * @description
+             *
+             * Check the existence of rPJMDes relation to an item by id.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             *  - `fk` – `{*}` - Foreign key for rPJMDes
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.rPJMDes.exists = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::exists::RKP::rPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.rPJMDes#findById
+             * @methodOf lbServices.RKP.rPJMDes
+             *
+             * @description
+             *
+             * Find a related item by id for rPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             *  - `fk` – `{*}` - Foreign key for rPJMDes
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.rPJMDes.findById = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::findById::RKP::rPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.rPJMDes#link
+             * @methodOf lbServices.RKP.rPJMDes
+             *
+             * @description
+             *
+             * Add a related item by id for rPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             *  - `fk` – `{*}` - Foreign key for rPJMDes
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.rPJMDes.link = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::link::RKP::rPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.rPJMDes#unlink
+             * @methodOf lbServices.RKP.rPJMDes
+             *
+             * @description
+             *
+             * Remove the rPJMDes relation to an item by id.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             *  - `fk` – `{*}` - Foreign key for rPJMDes
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.rPJMDes.unlink = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::unlink::RKP::rPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.rPJMDes#updateById
+             * @methodOf lbServices.RKP.rPJMDes
+             *
+             * @description
+             *
+             * Update a related item by id for rPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             *  - `fk` – `{*}` - Foreign key for rPJMDes
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.rPJMDes.updateById = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::updateById::RKP::rPJMDes"];
+          return action.apply(R, arguments);
+        };
 
 
         return R;

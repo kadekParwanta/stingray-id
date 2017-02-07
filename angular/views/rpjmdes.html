@@ -1,9 +1,9 @@
-<h1>RPJMDes</h1>
+<h1>RPJMDesa</h1>
 <hr>
 <uib-accordion close-others="true">
-<div uib-accordion-group class="panel-default" is-open="status[0].open">
+<div uib-accordion-group class="panel-default" is-open="accordStatus[0].open">
     <uib-accordion-heading>
-        A. {{bidangList[0].Nama}} <span class="pull-right "><strong>{{Bidang1Total}}</strong><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status[0].open, 'glyphicon-chevron-right': !status[0].open}"></i></span>
+        {{bidangList[0].No}} - {{bidangList[0].Nama}}<span class="pull-right "><strong>{{Bidang1Total}}</strong><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': accordStatus[0].open, 'glyphicon-chevron-right': !accordStatus[0].open}"></i></span>
       </uib-accordion-heading>
 <div class="list-group" style="overflow-y: auto;">
     <table datatable="ng" id="list-rpjmdes" class="table table-bordered table-striped hover" dt-options="vm.dtOptions">
@@ -69,9 +69,9 @@
     </table>
 </div>
 </div>
-<div uib-accordion-group class="panel-default" is-open="status[1].open">
+<div uib-accordion-group class="panel-default" is-open="accordStatus[1].open">
     <uib-accordion-heading>
-        B. {{bidangList[1].Nama}} <span class="pull-right "><strong>{{Bidang2Total}}</strong><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status[1].open, 'glyphicon-chevron-right': !status[1].open}"></i></span>
+        {{bidangList[1].No}} - {{bidangList[1].Nama}}<span class="pull-right "><strong>{{Bidang2Total}}</strong><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': accordStatus[1].open, 'glyphicon-chevron-right': !accordStatus[1].open}"></i></span>
       </uib-accordion-heading>
 <div class="list-group" style="overflow-y: auto;">
     <table datatable="ng" id="list-rpjmdes" class="table table-bordered table-striped hover">
@@ -137,9 +137,9 @@
     </table>
 </div>
 </div>
-<div uib-accordion-group class="panel-default" is-open="status[2].open">
+<div uib-accordion-group class="panel-default" is-open="accordStatus[2].open">
     <uib-accordion-heading>
-        C. {{bidangList[2].Nama}} <span class="pull-right "><strong>{{Bidang3Total}}</strong><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status[2].open, 'glyphicon-chevron-right': !status[2].open}"></i></span>
+        {{bidangList[2].No}} - {{bidangList[2].Nama}}<span class="pull-right "><strong>{{Bidang3Total}}</strong><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': accordStatus[2].open, 'glyphicon-chevron-right': !accordStatus[2].open}"></i></span>
       </uib-accordion-heading>
 <div class="list-group" style="overflow-y: auto;">
     <table datatable="ng" id="list-rpjmdes" class="table table-bordered table-striped hover">
@@ -206,9 +206,9 @@
 </div>
 </div>
 
-<div uib-accordion-group class="panel-default" is-open="status[3].open">
+<div uib-accordion-group class="panel-default" is-open="accordStatus[3].open">
     <uib-accordion-heading>
-        D. {{bidangList[3].Nama}} <span class="pull-right "><strong>{{Bidang4Total}}</strong><i class="glyphicon" ng-class="{'glyphicon-chevron-down': status[3].open, 'glyphicon-chevron-right': !status[3].open}"></i></span>
+        {{bidangList[3].No}} - {{bidangList[3].Nama}}<span class="pull-right "><strong>{{Bidang4Total}}</strong><i class="glyphicon" ng-class="{'glyphicon-chevron-down': accordStatus[3].open, 'glyphicon-chevron-right': !accordStatus[3].open}"></i></span>
       </uib-accordion-heading>
 <div class="list-group" style="overflow-y: auto;" style="overflow-y: auto;">
     <table datatable="ng" id="list-rpjmdes" class="table table-bordered table-striped hover">

@@ -43,6 +43,11 @@ angular
         url: '/rpjmdes',
         templateUrl: 'views/rpjmdes.html',
         controller: 'RPJMDesController'
+      })
+      .state('rkp', {
+        url: '/rkp',
+        templateUrl: 'views/rkp.html',
+        controller: 'RKPController'
       });
 
     $urlRouterProvider.otherwise('rpjmdes');

@@ -5,7 +5,7 @@
 
 angular
     .module('app')
-    .controller('RPJMDesController', ['$scope', '$state', 'RPJMDes', 'Bidang', 'WaktuPelaksanaan','$q', 'SumberBiaya', 'PolaPelaksanaan', function ($scope,
+    .controller('RKPController', ['$scope', '$state', 'RPJMDes', 'Bidang', 'WaktuPelaksanaan','$q', 'SumberBiaya', 'PolaPelaksanaan', function ($scope,
         $state, RPJMDes, Bidang, WaktuPelaksanaan, $q, SumberBiaya, PolaPelaksanaan) {
         $scope.RPJMDesList = [];
         $scope.selectedBidang;
@@ -21,7 +21,6 @@ angular
         $scope.Bidang3Total = 0;
         $scope.Bidang4 = [];
         $scope.Bidang4Total = 0;
-        $scope.accordStatus = [{open:false},{open:false},{open:false},{open:false}]
 
         function getRPJMDesList() {
             RPJMDes
