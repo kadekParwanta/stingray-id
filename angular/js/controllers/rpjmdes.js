@@ -72,9 +72,13 @@ angular
         function assignWaktuPelaksanaan(rpjmdes, waktuPelaksanaanList) {
             var promises = waktuPelaksanaanList.map(function (waktuPelaksanaan) {
                 var deferred = $q.defer();
-                RPJMDes.WaktuPelaksanaan.link({ id: rpjmdes.id, fk: waktuPelaksanaan.id }, null, function (data) {
-                    deferred.resolve(data);
-                });
+                if (waktuPelaksanaan) {
+                    RPJMDes.WaktuPelaksanaan.link({ id: rpjmdes.id, fk: waktuPelaksanaan.id }, null, function (data) {
+                        deferred.resolve(data);
+                    });
+                } else {
+                    deferred.resolve("");
+                }
                 return deferred.promise;
             });
             return $q.all(promises);
@@ -83,9 +87,13 @@ angular
         function assignPolaPelaksanaan(rpjmdes, polaPelaksanaanList) {
             var promises = polaPelaksanaanList.map(function (polaPelaksanaan) {
                 var deferred = $q.defer();
-                RPJMDes.PolaPelaksanaan.link({ id: rpjmdes.id, fk: polaPelaksanaan.id }, null, function (data) {
-                    deferred.resolve(data);
-                });
+                if (polaPelaksanaan) {
+                    RPJMDes.PolaPelaksanaan.link({ id: rpjmdes.id, fk: polaPelaksanaan.id }, null, function (data) {
+                        deferred.resolve(data);
+                    });
+                } else {
+                    deferred.resolve("");
+                }
                 return deferred.promise;
             });
             return $q.all(promises);
