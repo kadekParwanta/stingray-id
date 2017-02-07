@@ -37,8 +37,14 @@
       <div class="collapse navbar-collapse" ng-class="!isCollapsed && 'in'">
       <div class="left pull-left">
         <ul class="navbar-nav nav">
-          <li><a ui-sref='rpjmdes'>RPJMDes</a></li>
-          <li><a ui-sref='rpjmdes'>RKP</a></li>
+          <li uib-dropdown>
+            <a ui-sref='rpjmdes' uib-dropdown-toggle>Perencanaan <b class="caret"></b></a>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+              <li><a ui-sref='rpjmdes'>RPJMDesa</a></li>
+              <li><a href="#">RKP</a></li>
+            </ul>
+          </li>
+          <li><a ui-sref='rpjmdes'>RAB</a></li>
         </ul>
       </div>
 
