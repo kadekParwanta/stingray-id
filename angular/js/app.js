@@ -48,6 +48,11 @@ angular
         url: '/rkp',
         templateUrl: 'views/rkp.html',
         controller: 'RKPController'
+      })
+      .state('setting', {
+        url: '/setting',
+        templateUrl: 'views/setting.html',
+        controller: 'SettingController'
       });
 
     $urlRouterProvider.otherwise('rpjmdes');
