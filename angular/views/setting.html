@@ -51,3 +51,41 @@
     
     <button class="btn btn-default btn-success" ng-disabled="RPJMForm.$invalid">Add</button>
 </form>
+
+<div class="list-group" style="overflow-y: auto;" style="overflow-y: auto;">
+    <table datatable="ng" id="list-rpjm" class="table table-bordered table-striped hover">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>TahunMulai</th>
+                <th>TahunSelesai</th>
+                <th>Regulasi</th>
+                <th>Perihal</th>
+                <th>Keterangan</th>
+                <th>IsActive</th>
+                <th >Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="RPJM in RPJMList track by $index">
+                <td>{{ $index + 1}}</td>
+                <td>{{ RPJM.TahunMulai}}</td>
+                <td>{{ RPJM.TahunSelesai}}</td>
+                <td>{{ RPJM.Regulasi}}</td>
+                <td>{{ RPJM.Perihal}}</td>
+                <td>{{ RPJM.Keterangan}}</td>
+                <td>{{ RPJM.IsActive?'&#10004;':''}}</td>
+                <td>
+                    <span>
+          <a class="btn" ui-sref="rpjmdes-edit({rpjmdesId:RPJMDes.id})">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="removeRPJM(RPJM)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

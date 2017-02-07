@@ -13,18 +13,30 @@ angular
         $scope.TahunMulai;
         $scope.TahunSelesai;
 
+        init();
+
         $scope.addRPJM = function () {
             $scope.newRPJM.TahunMulai = $scope.TahunMulai.getFullYear();
             $scope.newRPJM.TahunSelesai = $scope.TahunSelesai.getFullYear();
             RPJM.create($scope.newRPJM, function (rpjm) {
-                $scope.getRPJMList();
+                getRPJMList();
             })
         }
 
-        $scope.getRPJMList = function () {
+        $scope.removeRPJM = function (item) {
+            RPJM.deleteById(item, function () {
+                    getRPJMList();
+                });
+        };
+
+        function getRPJMList () {
             RPJM.find(function (rpjmlist) {
                 $scope.RPJMList = rpjmlist;
             })
+        }
+
+        function init() {
+            getRPJMList();
         }
 
         $scope.today = function () {
