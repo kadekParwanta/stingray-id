@@ -5,7 +5,61 @@
 
 angular
     .module('app')
-    .controller('SettingController', ['$scope', '$state', 'RPJMDes', 'Bidang', 'WaktuPelaksanaan','$q', 'SumberBiaya', 'PolaPelaksanaan', function ($scope,
-        $state, RPJMDes, Bidang, WaktuPelaksanaan, $q, SumberBiaya, PolaPelaksanaan) {
+    .controller('SettingController', ['$scope', '$state', 'RPJM', function ($scope,
+        $state, RPJM) {
 
+        $scope.newRPJM = {IsActive:true};
+        $scope.RPJMList = [];
+        $scope.TahunMulai;
+        $scope.TahunSelesai;
+
+        $scope.addRPJM = function () {
+            $scope.newRPJM.TahunMulai = $scope.TahunMulai.getFullYear();
+            $scope.newRPJM.TahunSelesai = $scope.TahunSelesai.getFullYear();
+            RPJM.create($scope.newRPJM, function (rpjm) {
+                $scope.getRPJMList();
+            })
+        }
+
+        $scope.getRPJMList = function () {
+            RPJM.find(function (rpjmlist) {
+                $scope.RPJMList = rpjmlist;
+            })
+        }
+
+        $scope.today = function () {
+            $scope.TahunMulai = new Date();
+            $scope.TahunSelesai = new Date();
+            $scope.TahunSelesai.setFullYear($scope.TahunSelesai.getFullYear() + 6);
+        };
+
+        $scope.today();
+
+        $scope.clear = function () {
+            $scope.TahunMulai = null;
+            $scope.TahunSelesai = null;
+        };
+
+        $scope.openTahunMulai = function ($event) {
+            $scope.statusTahunMulai.opened = true;
+        };
+        $scope.openTahunSelesai = function ($event) {
+            $scope.statusTahunSelesai.opened = true;
+        };
+
+        $scope.dateOptions = {
+            formatYear: 'yyyy',
+            startingDay: 1,
+            minMode: 'year'
+        };
+
+        $scope.formats = ['yyyy'];
+        $scope.format = $scope.formats[0];
+
+        $scope.statusTahunMulai = {
+            opened: false
+        };
+        $scope.statusTahunSelesai = {
+            opened: false
+        };
     }]);

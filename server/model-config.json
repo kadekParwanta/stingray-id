@@ -103,5 +103,9 @@
   "RKP": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "RPJM": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

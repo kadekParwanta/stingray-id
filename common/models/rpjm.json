@@ -1,0 +1,43 @@
+{
+  "name": "RPJM",
+  "plural": "RPJM",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "TahunMulai": {
+      "type": "string",
+      "required": true
+    },
+    "TahunSelesai": {
+      "type": "string",
+      "required": true
+    },
+    "Regulasi": {
+      "type": "string"
+    },
+    "Perihal": {
+      "type": "string"
+    },
+    "Keterangan": {
+      "type": "string"
+    },
+    "IsActive": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "rPJMDes": {
+      "type": "hasMany",
+      "model": "RPJMDes",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
