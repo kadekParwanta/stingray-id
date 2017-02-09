@@ -32,10 +32,10 @@
   },
   "validations": [],
   "relations": {
-    "rPJMDes": {
+    "Bidang": {
       "type": "hasMany",
-      "model": "RPJMDes",
-      "foreignKey": ""
+      "model": "Bidang",
+      "foreignKey": "RPJMId"
     }
   },
   "acls": [],

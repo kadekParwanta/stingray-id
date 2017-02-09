@@ -55,9 +55,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "User",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/Users/:id",
           { 'id': '@id' },
           {
@@ -263,8 +263,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              *  - `id` – `{*}` - User id
              *
-             *  - `where` – `{object=}` -
-             *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
              *
@@ -400,7 +398,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -429,81 +427,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/Users",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.User#replaceOrCreate
-             * @methodOf lbServices.User
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `User` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/Users/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.User#upsertWithWhere
-             * @methodOf lbServices.User
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `User` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/Users/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -545,7 +468,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -571,43 +494,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/Users/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.User#replaceById
-             * @methodOf lbServices.User
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `User` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/Users/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -684,7 +570,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -704,7 +590,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/Users/update",
@@ -718,7 +604,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -783,7 +669,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -884,7 +770,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * The response body contains properties of the AccessToken created on login.
              * Depending on the value of `include` parameter, the body may contain additional properties:
-             *   - `user` - `U+007BUserU+007D` - Data of the currently logged in user. (`include=user`)
+             *   - `user` - `{User}` - Data of the currently logged in user. (`include=user`)
              *
              */
             "login": {
@@ -1057,11 +943,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
                   LoopBackAuth.currentUserData = response.data;
                   return response.resource;
                 },
-                responseError: function(responseError) {
-                  LoopBackAuth.clearUser();
-                  LoopBackAuth.clearStorage();
-                  return $q.reject(responseError);
-                },
               },
               __isGetCurrentUser__: true,
             },
@@ -1072,47 +953,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.User#patchOrCreate
-             * @methodOf lbServices.User
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `User` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.User#updateOrCreate
              * @methodOf lbServices.User
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -1142,46 +988,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.User#patchOrCreateWithWhere
-             * @methodOf lbServices.User
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `User` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.User#update
              * @methodOf lbServices.User
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -1201,7 +1013,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -1212,7 +1024,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -1242,7 +1054,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -1264,40 +1076,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.User#patchAttributes
-             * @methodOf lbServices.User
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - User id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `User` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
         /**
          * @ngdoc method
@@ -1376,9 +1154,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "School",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/Schools/:id",
           { 'id': '@id' },
           {
@@ -1467,7 +1245,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -1496,81 +1274,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/Schools",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.School#replaceOrCreate
-             * @methodOf lbServices.School
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `School` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/Schools/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.School#upsertWithWhere
-             * @methodOf lbServices.School
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `School` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/Schools/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -1612,7 +1315,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -1638,43 +1341,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/Schools/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.School#replaceById
-             * @methodOf lbServices.School
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `School` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/Schools/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -1751,7 +1417,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -1771,7 +1437,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/Schools/update",
@@ -1785,7 +1451,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -1850,11 +1516,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - School id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -1923,47 +1589,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.School#patchOrCreate
-             * @methodOf lbServices.School
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `School` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.School#updateOrCreate
              * @methodOf lbServices.School
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -1993,46 +1624,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.School#patchOrCreateWithWhere
-             * @methodOf lbServices.School
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `School` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.School#update
              * @methodOf lbServices.School
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2052,7 +1649,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -2063,7 +1660,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2093,7 +1690,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2115,40 +1712,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.School#patchAttributes
-             * @methodOf lbServices.School
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - School id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `School` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -2186,9 +1749,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "Student",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/Students/:id",
           { 'id': '@id' },
           {
@@ -2277,7 +1840,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2306,81 +1869,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/Students",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Student#replaceOrCreate
-             * @methodOf lbServices.Student
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Student` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/Students/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Student#upsertWithWhere
-             * @methodOf lbServices.Student
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Student` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/Students/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -2422,7 +1910,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2448,43 +1936,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/Students/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Student#replaceById
-             * @methodOf lbServices.Student
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Student` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/Students/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -2561,7 +2012,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2581,7 +2032,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/Students/update",
@@ -2595,7 +2046,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2660,11 +2111,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Student id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -2733,47 +2184,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Student#patchOrCreate
-             * @methodOf lbServices.Student
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Student` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Student#updateOrCreate
              * @methodOf lbServices.Student
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2803,46 +2219,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Student#patchOrCreateWithWhere
-             * @methodOf lbServices.Student
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Student` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Student#update
              * @methodOf lbServices.Student
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2862,7 +2244,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -2873,7 +2255,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2903,7 +2285,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2925,40 +2307,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Student#patchAttributes
-             * @methodOf lbServices.Student
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Student id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Student` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -2996,9 +2344,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "Yearbook",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/Yearbooks/:id",
           { 'id': '@id' },
           {
@@ -3087,7 +2435,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -3116,81 +2464,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/Yearbooks",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Yearbook#replaceOrCreate
-             * @methodOf lbServices.Yearbook
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Yearbook` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/Yearbooks/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Yearbook#upsertWithWhere
-             * @methodOf lbServices.Yearbook
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Yearbook` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/Yearbooks/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -3232,7 +2505,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -3258,43 +2531,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/Yearbooks/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Yearbook#replaceById
-             * @methodOf lbServices.Yearbook
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Yearbook` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/Yearbooks/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -3371,7 +2607,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -3391,7 +2627,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/Yearbooks/update",
@@ -3405,7 +2641,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -3470,11 +2706,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Yearbook id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -3543,47 +2779,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Yearbook#patchOrCreate
-             * @methodOf lbServices.Yearbook
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Yearbook` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Yearbook#updateOrCreate
              * @methodOf lbServices.Yearbook
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -3613,46 +2814,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Yearbook#patchOrCreateWithWhere
-             * @methodOf lbServices.Yearbook
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Yearbook` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Yearbook#update
              * @methodOf lbServices.Yearbook
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -3672,7 +2839,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -3683,7 +2850,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -3713,7 +2880,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -3735,40 +2902,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Yearbook#patchAttributes
-             * @methodOf lbServices.Yearbook
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Yearbook id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Yearbook` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -3806,9 +2939,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "Container",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/Containers/:id",
           { 'id': '@id' },
           {
@@ -4187,9 +3320,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "Desa",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/Desa/:id",
           { 'id': '@id' },
           {
@@ -4382,7 +3515,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -4411,81 +3544,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/Desa",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Desa#replaceOrCreate
-             * @methodOf lbServices.Desa
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Desa` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/Desa/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Desa#upsertWithWhere
-             * @methodOf lbServices.Desa
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Desa` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/Desa/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -4527,7 +3585,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -4553,43 +3611,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/Desa/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Desa#replaceById
-             * @methodOf lbServices.Desa
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Desa` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/Desa/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -4666,7 +3687,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -4686,7 +3707,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/Desa/update",
@@ -4700,7 +3721,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -4765,11 +3786,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -4850,47 +3871,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Desa#patchOrCreate
-             * @methodOf lbServices.Desa
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Desa` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Desa#updateOrCreate
              * @methodOf lbServices.Desa
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -4920,46 +3906,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Desa#patchOrCreateWithWhere
-             * @methodOf lbServices.Desa
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Desa` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Desa#update
              * @methodOf lbServices.Desa
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -4979,7 +3931,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -4990,7 +3942,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -5020,7 +3972,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -5042,40 +3994,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Desa#patchAttributes
-             * @methodOf lbServices.Desa
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Desa id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Desa` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -5114,7 +4032,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `filter` – `{object=}` -
              *
@@ -5150,7 +4068,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -5185,7 +4103,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -5223,7 +4141,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -5261,9 +4179,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
-             *
-             *  - `where` – `{object=}` -
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -5294,7 +4210,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for OrganisasiDesa
              *
@@ -5327,7 +4243,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for OrganisasiDesa
              *
@@ -5363,7 +4279,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for OrganisasiDesa
              *
@@ -5417,7 +4333,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `filter` – `{object=}` -
              *
@@ -5453,7 +4369,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -5488,7 +4404,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -5526,7 +4442,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -5564,9 +4480,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
-             *
-             *  - `where` – `{object=}` -
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -5597,7 +4511,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for OrganisasiMasyarakat
              *
@@ -5630,7 +4544,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for OrganisasiMasyarakat
              *
@@ -5666,7 +4580,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Desa id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for OrganisasiMasyarakat
              *
@@ -5719,9 +4633,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "Organisasi",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/Organisasi/:id",
           { 'id': '@id' },
           {
@@ -5862,7 +4776,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -5891,81 +4805,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/Organisasi",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Organisasi#replaceOrCreate
-             * @methodOf lbServices.Organisasi
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Organisasi` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/Organisasi/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Organisasi#upsertWithWhere
-             * @methodOf lbServices.Organisasi
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Organisasi` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/Organisasi/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -6007,7 +4846,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -6033,43 +4872,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/Organisasi/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Organisasi#replaceById
-             * @methodOf lbServices.Organisasi
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Organisasi` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/Organisasi/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -6146,7 +4948,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -6166,7 +4968,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/Organisasi/update",
@@ -6180,7 +4982,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -6245,11 +5047,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Organisasi id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -6436,47 +5238,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Organisasi#patchOrCreate
-             * @methodOf lbServices.Organisasi
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Organisasi` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Organisasi#updateOrCreate
              * @methodOf lbServices.Organisasi
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -6506,46 +5273,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Organisasi#patchOrCreateWithWhere
-             * @methodOf lbServices.Organisasi
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Organisasi` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Organisasi#update
              * @methodOf lbServices.Organisasi
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -6565,7 +5298,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -6576,7 +5309,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -6606,7 +5339,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -6628,40 +5361,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Organisasi#patchAttributes
-             * @methodOf lbServices.Organisasi
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Organisasi id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Organisasi` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -6700,7 +5399,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Organisasi id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `filter` – `{object=}` -
              *
@@ -6736,7 +5435,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Organisasi id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -6771,7 +5470,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Organisasi id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -6809,7 +5508,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Organisasi id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -6847,9 +5546,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Organisasi id
-             *
-             *  - `where` – `{object=}` -
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -6880,7 +5577,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Organisasi id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for Jabatan
              *
@@ -6913,7 +5610,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Organisasi id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for Jabatan
              *
@@ -6949,7 +5646,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Organisasi id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for Jabatan
              *
@@ -7002,9 +5699,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "Jabatan",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/Jabatan/:id",
           { 'id': '@id' },
           {
@@ -7093,7 +5790,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -7122,81 +5819,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/Jabatan",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Jabatan#replaceOrCreate
-             * @methodOf lbServices.Jabatan
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Jabatan` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/Jabatan/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Jabatan#upsertWithWhere
-             * @methodOf lbServices.Jabatan
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Jabatan` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/Jabatan/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -7238,7 +5860,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -7264,43 +5886,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/Jabatan/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Jabatan#replaceById
-             * @methodOf lbServices.Jabatan
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Jabatan` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/Jabatan/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -7377,7 +5962,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -7397,7 +5982,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/Jabatan/update",
@@ -7411,7 +5996,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -7476,11 +6061,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Jabatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -7608,47 +6193,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Jabatan#patchOrCreate
-             * @methodOf lbServices.Jabatan
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Jabatan` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Jabatan#updateOrCreate
              * @methodOf lbServices.Jabatan
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -7678,46 +6228,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Jabatan#patchOrCreateWithWhere
-             * @methodOf lbServices.Jabatan
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Jabatan` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Jabatan#update
              * @methodOf lbServices.Jabatan
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -7737,7 +6253,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -7748,7 +6264,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -7778,7 +6294,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -7800,40 +6316,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Jabatan#patchAttributes
-             * @methodOf lbServices.Jabatan
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Jabatan id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Jabatan` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -7871,9 +6353,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "APBDesItem",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/APBDesItem/:id",
           { 'id': '@id' },
           {
@@ -7962,7 +6444,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -7991,81 +6473,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/APBDesItem",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.APBDesItem#replaceOrCreate
-             * @methodOf lbServices.APBDesItem
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `APBDesItem` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/APBDesItem/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.APBDesItem#upsertWithWhere
-             * @methodOf lbServices.APBDesItem
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `APBDesItem` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/APBDesItem/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -8107,7 +6514,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -8133,43 +6540,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/APBDesItem/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.APBDesItem#replaceById
-             * @methodOf lbServices.APBDesItem
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `APBDesItem` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/APBDesItem/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -8246,7 +6616,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -8266,7 +6636,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/APBDesItem/update",
@@ -8280,7 +6650,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -8345,11 +6715,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - APBDesItem id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -8477,47 +6847,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.APBDesItem#patchOrCreate
-             * @methodOf lbServices.APBDesItem
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `APBDesItem` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.APBDesItem#updateOrCreate
              * @methodOf lbServices.APBDesItem
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -8547,46 +6882,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.APBDesItem#patchOrCreateWithWhere
-             * @methodOf lbServices.APBDesItem
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `APBDesItem` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.APBDesItem#update
              * @methodOf lbServices.APBDesItem
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -8606,7 +6907,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -8617,7 +6918,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -8647,7 +6948,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -8669,40 +6970,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.APBDesItem#patchAttributes
-             * @methodOf lbServices.APBDesItem
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - APBDesItem id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `APBDesItem` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -8740,9 +7007,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "JadwalKegiatan",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/JadwalKegiatan/:id",
           { 'id': '@id' },
           {
@@ -8935,7 +7202,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -8964,81 +7231,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/JadwalKegiatan",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.JadwalKegiatan#replaceOrCreate
-             * @methodOf lbServices.JadwalKegiatan
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `JadwalKegiatan` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/JadwalKegiatan/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.JadwalKegiatan#upsertWithWhere
-             * @methodOf lbServices.JadwalKegiatan
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `JadwalKegiatan` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/JadwalKegiatan/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -9080,7 +7272,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -9106,43 +7298,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/JadwalKegiatan/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.JadwalKegiatan#replaceById
-             * @methodOf lbServices.JadwalKegiatan
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `JadwalKegiatan` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/JadwalKegiatan/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -9219,7 +7374,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -9239,7 +7394,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/JadwalKegiatan/update",
@@ -9253,7 +7408,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -9318,11 +7473,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -9391,47 +7546,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.JadwalKegiatan#patchOrCreate
-             * @methodOf lbServices.JadwalKegiatan
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `JadwalKegiatan` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.JadwalKegiatan#updateOrCreate
              * @methodOf lbServices.JadwalKegiatan
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -9461,46 +7581,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.JadwalKegiatan#patchOrCreateWithWhere
-             * @methodOf lbServices.JadwalKegiatan
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `JadwalKegiatan` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.JadwalKegiatan#update
              * @methodOf lbServices.JadwalKegiatan
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -9520,7 +7606,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -9531,7 +7617,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -9561,7 +7647,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -9583,40 +7669,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.JadwalKegiatan#patchAttributes
-             * @methodOf lbServices.JadwalKegiatan
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - JadwalKegiatan id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `JadwalKegiatan` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -9655,7 +7707,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `filter` – `{object=}` -
              *
@@ -9691,7 +7743,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -9726,7 +7778,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -9764,7 +7816,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -9802,9 +7854,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
-             *
-             *  - `where` – `{object=}` -
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -9835,7 +7885,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for pendapatan
              *
@@ -9868,7 +7918,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for pendapatan
              *
@@ -9904,7 +7954,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for pendapatan
              *
@@ -9958,7 +8008,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `filter` – `{object=}` -
              *
@@ -9994,7 +8044,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -10029,7 +8079,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -10067,7 +8117,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -10105,9 +8155,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
-             *
-             *  - `where` – `{object=}` -
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -10138,7 +8186,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for biaya
              *
@@ -10171,7 +8219,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for biaya
              *
@@ -10207,7 +8255,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - JadwalKegiatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for biaya
              *
@@ -10260,9 +8308,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "RPJMDes",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/RPJMDes/:id",
           { 'id': '@id' },
           {
@@ -10545,7 +8593,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -10574,81 +8622,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/RPJMDes",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes#replaceOrCreate
-             * @methodOf lbServices.RPJMDes
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/RPJMDes/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes#upsertWithWhere
-             * @methodOf lbServices.RPJMDes
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/RPJMDes/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -10690,7 +8663,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -10716,43 +8689,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/RPJMDes/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes#replaceById
-             * @methodOf lbServices.RPJMDes
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/RPJMDes/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -10829,7 +8765,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -10849,7 +8785,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/RPJMDes/update",
@@ -10863,7 +8799,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -10928,11 +8864,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -10993,6 +8929,65 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "createChangeStream": {
               url: urlBase + "/RPJMDes/change-stream",
               method: "POST",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes.findById() instead.
+            "::findById::Bidang::RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Bidang/:id/RPJMDes/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes.destroyById() instead.
+            "::destroyById::Bidang::RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Bidang/:id/RPJMDes/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes.updateById() instead.
+            "::updateById::Bidang::RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Bidang/:id/RPJMDes/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes() instead.
+            "::get::Bidang::RPJMDes": {
+              isArray: true,
+              url: urlBase + "/Bidang/:id/RPJMDes",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes.create() instead.
+            "::create::Bidang::RPJMDes": {
+              url: urlBase + "/Bidang/:id/RPJMDes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes.createMany() instead.
+            "::createMany::Bidang::RPJMDes": {
+              isArray: true,
+              url: urlBase + "/Bidang/:id/RPJMDes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes.destroyAll() instead.
+            "::delete::Bidang::RPJMDes": {
+              url: urlBase + "/Bidang/:id/RPJMDes",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes.count() instead.
+            "::count::Bidang::RPJMDes": {
+              url: urlBase + "/Bidang/:id/RPJMDes/count",
+              method: "GET",
             },
 
             // INTERNAL. Use RKP.rPJMDes.findById() instead.
@@ -11080,104 +9075,10 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               url: urlBase + "/RKP/:id/rPJMDes/count",
               method: "GET",
             },
-
-            // INTERNAL. Use RPJM.rPJMDes.findById() instead.
-            "::findById::RPJM::rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RPJM/:id/rPJMDes/:fk",
-              method: "GET",
-            },
-
-            // INTERNAL. Use RPJM.rPJMDes.destroyById() instead.
-            "::destroyById::RPJM::rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RPJM/:id/rPJMDes/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use RPJM.rPJMDes.updateById() instead.
-            "::updateById::RPJM::rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RPJM/:id/rPJMDes/:fk",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use RPJM.rPJMDes() instead.
-            "::get::RPJM::rPJMDes": {
-              isArray: true,
-              url: urlBase + "/RPJM/:id/rPJMDes",
-              method: "GET",
-            },
-
-            // INTERNAL. Use RPJM.rPJMDes.create() instead.
-            "::create::RPJM::rPJMDes": {
-              url: urlBase + "/RPJM/:id/rPJMDes",
-              method: "POST",
-            },
-
-            // INTERNAL. Use RPJM.rPJMDes.createMany() instead.
-            "::createMany::RPJM::rPJMDes": {
-              isArray: true,
-              url: urlBase + "/RPJM/:id/rPJMDes",
-              method: "POST",
-            },
-
-            // INTERNAL. Use RPJM.rPJMDes.destroyAll() instead.
-            "::delete::RPJM::rPJMDes": {
-              url: urlBase + "/RPJM/:id/rPJMDes",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use RPJM.rPJMDes.count() instead.
-            "::count::RPJM::rPJMDes": {
-              url: urlBase + "/RPJM/:id/rPJMDes/count",
-              method: "GET",
-            },
           }
         );
 
 
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes#patchOrCreate
-             * @methodOf lbServices.RPJMDes
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
 
             /**
              * @ngdoc method
@@ -11186,7 +9087,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -11216,46 +9117,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.RPJMDes#patchOrCreateWithWhere
-             * @methodOf lbServices.RPJMDes
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.RPJMDes#update
              * @methodOf lbServices.RPJMDes
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -11275,7 +9142,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -11286,7 +9153,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -11316,7 +9183,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -11338,40 +9205,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes#patchAttributes
-             * @methodOf lbServices.RPJMDes
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - RPJMDes id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -11396,7 +9229,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `refresh` – `{boolean=}` -
              *
@@ -11432,7 +9265,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `refresh` – `{boolean=}` -
              *
@@ -11482,7 +9315,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `filter` – `{object=}` -
              *
@@ -11518,7 +9351,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -11553,7 +9386,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -11591,7 +9424,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -11629,9 +9462,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
-             *
-             *  - `where` – `{object=}` -
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -11662,7 +9493,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
              *
@@ -11695,7 +9526,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
              *
@@ -11731,7 +9562,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
              *
@@ -11767,7 +9598,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
              *
@@ -11807,7 +9638,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
              *
@@ -11840,7 +9671,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
              *
@@ -11894,7 +9725,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `refresh` – `{boolean=}` -
              *
@@ -11930,7 +9761,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -11968,7 +9799,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -12006,7 +9837,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -12037,7 +9868,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -12089,7 +9920,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `filter` – `{object=}` -
              *
@@ -12125,7 +9956,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -12160,7 +9991,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -12198,7 +10029,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -12236,9 +10067,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
-             *
-             *  - `where` – `{object=}` -
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -12269,7 +10098,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for PolaPelaksanaan
              *
@@ -12302,7 +10131,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for PolaPelaksanaan
              *
@@ -12338,7 +10167,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for PolaPelaksanaan
              *
@@ -12374,7 +10203,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for PolaPelaksanaan
              *
@@ -12414,7 +10243,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for PolaPelaksanaan
              *
@@ -12447,7 +10276,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJMDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for PolaPelaksanaan
              *
@@ -12500,9 +10329,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "APBDes",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/APBDes/:id",
           { 'id': '@id' },
           {
@@ -12649,7 +10478,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -12678,81 +10507,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/APBDes",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.APBDes#replaceOrCreate
-             * @methodOf lbServices.APBDes
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `APBDes` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/APBDes/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.APBDes#upsertWithWhere
-             * @methodOf lbServices.APBDes
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `APBDes` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/APBDes/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -12794,7 +10548,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -12820,43 +10574,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/APBDes/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.APBDes#replaceById
-             * @methodOf lbServices.APBDes
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `APBDes` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/APBDes/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -12933,7 +10650,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -12953,7 +10670,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/APBDes/update",
@@ -12967,7 +10684,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -13032,11 +10749,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - APBDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -13105,47 +10822,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.APBDes#patchOrCreate
-             * @methodOf lbServices.APBDes
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `APBDes` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.APBDes#updateOrCreate
              * @methodOf lbServices.APBDes
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -13175,46 +10857,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.APBDes#patchOrCreateWithWhere
-             * @methodOf lbServices.APBDes
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `APBDes` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.APBDes#update
              * @methodOf lbServices.APBDes
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -13234,7 +10882,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -13245,7 +10893,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -13275,7 +10923,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -13297,40 +10945,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.APBDes#patchAttributes
-             * @methodOf lbServices.APBDes
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - APBDes id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `APBDes` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -13369,7 +10983,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - APBDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `filter` – `{object=}` -
              *
@@ -13405,7 +11019,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - APBDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -13440,7 +11054,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - APBDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -13478,7 +11092,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - APBDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -13516,9 +11130,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - APBDes id
-             *
-             *  - `where` – `{object=}` -
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -13549,7 +11161,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - APBDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for items
              *
@@ -13582,7 +11194,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - APBDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for items
              *
@@ -13618,7 +11230,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - APBDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for items
              *
@@ -13658,7 +11270,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - APBDes id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `refresh` – `{boolean=}` -
              *
@@ -13707,9 +11319,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "Pendapatan",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/Pendapatan/:id",
           { 'id': '@id' },
           {
@@ -13850,7 +11462,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -13879,81 +11491,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/Pendapatan",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Pendapatan#replaceOrCreate
-             * @methodOf lbServices.Pendapatan
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Pendapatan` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/Pendapatan/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Pendapatan#upsertWithWhere
-             * @methodOf lbServices.Pendapatan
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Pendapatan` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/Pendapatan/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -13995,7 +11532,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -14021,43 +11558,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/Pendapatan/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Pendapatan#replaceById
-             * @methodOf lbServices.Pendapatan
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Pendapatan` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/Pendapatan/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -14134,7 +11634,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -14154,7 +11654,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/Pendapatan/update",
@@ -14168,7 +11668,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -14233,11 +11733,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -14424,47 +11924,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Pendapatan#patchOrCreate
-             * @methodOf lbServices.Pendapatan
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Pendapatan` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Pendapatan#updateOrCreate
              * @methodOf lbServices.Pendapatan
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -14494,46 +11959,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Pendapatan#patchOrCreateWithWhere
-             * @methodOf lbServices.Pendapatan
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Pendapatan` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Pendapatan#update
              * @methodOf lbServices.Pendapatan
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -14553,7 +11984,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -14564,7 +11995,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -14594,7 +12025,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -14616,40 +12047,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Pendapatan#patchAttributes
-             * @methodOf lbServices.Pendapatan
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Pendapatan id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Pendapatan` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -14688,7 +12085,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `filter` – `{object=}` -
              *
@@ -14724,7 +12121,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -14759,7 +12156,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -14797,7 +12194,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -14835,9 +12232,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
-             *
-             *  - `where` – `{object=}` -
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -14868,7 +12263,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for details
              *
@@ -14901,7 +12296,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for details
              *
@@ -14937,7 +12332,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for details
              *
@@ -14990,9 +12385,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "Biaya",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/Biaya/:id",
           { 'id': '@id' },
           {
@@ -15133,7 +12528,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -15162,81 +12557,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/Biaya",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Biaya#replaceOrCreate
-             * @methodOf lbServices.Biaya
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Biaya` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/Biaya/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Biaya#upsertWithWhere
-             * @methodOf lbServices.Biaya
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Biaya` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/Biaya/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -15278,7 +12598,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -15304,43 +12624,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/Biaya/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Biaya#replaceById
-             * @methodOf lbServices.Biaya
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Biaya` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/Biaya/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -15417,7 +12700,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -15437,7 +12720,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/Biaya/update",
@@ -15451,7 +12734,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -15516,11 +12799,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Biaya id
+             *  - `id` – `{*}` - Pendapatan id
              *
              * @param {Object} postData Request data.
              *
@@ -15707,47 +12990,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Biaya#patchOrCreate
-             * @methodOf lbServices.Biaya
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Biaya` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Biaya#updateOrCreate
              * @methodOf lbServices.Biaya
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -15777,46 +13025,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Biaya#patchOrCreateWithWhere
-             * @methodOf lbServices.Biaya
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Biaya` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Biaya#update
              * @methodOf lbServices.Biaya
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -15836,7 +13050,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -15847,7 +13061,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -15877,7 +13091,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -15899,40 +13113,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Biaya#patchAttributes
-             * @methodOf lbServices.Biaya
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Biaya id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Biaya` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -15971,7 +13151,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Biaya id
+             *  - `id` – `{*}` - Pendapatan id
              *
              *  - `filter` – `{object=}` -
              *
@@ -16007,7 +13187,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Biaya id
+             *  - `id` – `{*}` - Pendapatan id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -16042,7 +13222,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Biaya id
+             *  - `id` – `{*}` - Pendapatan id
              *
              * @param {Object} postData Request data.
              *
@@ -16080,7 +13260,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Biaya id
+             *  - `id` – `{*}` - Pendapatan id
              *
              * @param {Object} postData Request data.
              *
@@ -16118,9 +13298,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Biaya id
-             *
-             *  - `where` – `{object=}` -
+             *  - `id` – `{*}` - Pendapatan id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -16151,7 +13329,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Biaya id
+             *  - `id` – `{*}` - Pendapatan id
              *
              *  - `fk` – `{*}` - Foreign key for details
              *
@@ -16184,7 +13362,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Biaya id
+             *  - `id` – `{*}` - Pendapatan id
              *
              *  - `fk` – `{*}` - Foreign key for details
              *
@@ -16220,7 +13398,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Biaya id
+             *  - `id` – `{*}` - Pendapatan id
              *
              *  - `fk` – `{*}` - Foreign key for details
              *
@@ -16273,12 +13451,64 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "Bidang",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/Bidang/:id",
           { 'id': '@id' },
           {
+
+            // INTERNAL. Use Bidang.RPJMDes.findById() instead.
+            "prototype$__findById__RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Bidang/:id/RPJMDes/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes.destroyById() instead.
+            "prototype$__destroyById__RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Bidang/:id/RPJMDes/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes.updateById() instead.
+            "prototype$__updateById__RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Bidang/:id/RPJMDes/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes() instead.
+            "prototype$__get__RPJMDes": {
+              isArray: true,
+              url: urlBase + "/Bidang/:id/RPJMDes",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes.create() instead.
+            "prototype$__create__RPJMDes": {
+              url: urlBase + "/Bidang/:id/RPJMDes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes.destroyAll() instead.
+            "prototype$__delete__RPJMDes": {
+              url: urlBase + "/Bidang/:id/RPJMDes",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Bidang.RPJMDes.count() instead.
+            "prototype$__count__RPJMDes": {
+              url: urlBase + "/Bidang/:id/RPJMDes/count",
+              method: "GET",
+            },
 
             /**
              * @ngdoc method
@@ -16364,7 +13594,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -16393,81 +13623,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/Bidang",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Bidang#replaceOrCreate
-             * @methodOf lbServices.Bidang
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Bidang` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/Bidang/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Bidang#upsertWithWhere
-             * @methodOf lbServices.Bidang
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Bidang` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/Bidang/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -16509,7 +13664,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -16535,43 +13690,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/Bidang/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Bidang#replaceById
-             * @methodOf lbServices.Bidang
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Bidang` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/Bidang/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -16648,7 +13766,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -16668,7 +13786,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/Bidang/update",
@@ -16682,7 +13800,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -16747,11 +13865,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Bidang id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -16819,45 +13937,69 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               url: urlBase + "/RPJMDes/:id/Bidang",
               method: "GET",
             },
+
+            // INTERNAL. Use RPJM.Bidang.findById() instead.
+            "::findById::RPJM::Bidang": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/Bidang/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.Bidang.destroyById() instead.
+            "::destroyById::RPJM::Bidang": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/Bidang/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJM.Bidang.updateById() instead.
+            "::updateById::RPJM::Bidang": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/Bidang/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use RPJM.Bidang() instead.
+            "::get::RPJM::Bidang": {
+              isArray: true,
+              url: urlBase + "/RPJM/:id/Bidang",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.Bidang.create() instead.
+            "::create::RPJM::Bidang": {
+              url: urlBase + "/RPJM/:id/Bidang",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RPJM.Bidang.createMany() instead.
+            "::createMany::RPJM::Bidang": {
+              isArray: true,
+              url: urlBase + "/RPJM/:id/Bidang",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RPJM.Bidang.destroyAll() instead.
+            "::delete::RPJM::Bidang": {
+              url: urlBase + "/RPJM/:id/Bidang",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJM.Bidang.count() instead.
+            "::count::RPJM::Bidang": {
+              url: urlBase + "/RPJM/:id/Bidang/count",
+              method: "GET",
+            },
           }
         );
 
 
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Bidang#patchOrCreate
-             * @methodOf lbServices.Bidang
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Bidang` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
 
             /**
              * @ngdoc method
@@ -16866,7 +14008,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -16896,46 +14038,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Bidang#patchOrCreateWithWhere
-             * @methodOf lbServices.Bidang
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Bidang` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.Bidang#update
              * @methodOf lbServices.Bidang
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -16955,7 +14063,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -16966,7 +14074,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -16996,7 +14104,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -17019,18 +14127,115 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              */
         R["removeById"] = R["deleteById"];
 
+
+        /**
+        * @ngdoc property
+        * @name lbServices.Bidang#modelName
+        * @propertyOf lbServices.Bidang
+        * @description
+        * The name of the model represented by this $resource,
+        * i.e. `Bidang`.
+        */
+        R.modelName = "Bidang";
+
+    /**
+     * @ngdoc object
+     * @name lbServices.Bidang.RPJMDes
+     * @header lbServices.Bidang.RPJMDes
+     * @object
+     * @description
+     *
+     * The object `Bidang.RPJMDes` groups methods
+     * manipulating `RPJMDes` instances related to `Bidang`.
+     *
+     * Call {@link lbServices.Bidang#RPJMDes Bidang.RPJMDes()}
+     * to query all related instances.
+     */
+
+
             /**
              * @ngdoc method
-             * @name lbServices.Bidang#patchAttributes
+             * @name lbServices.Bidang#RPJMDes
              * @methodOf lbServices.Bidang
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Queries RPJMDes of Bidang.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Bidang id
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.RPJMDes = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::get::Bidang::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RPJMDes#count
+             * @methodOf lbServices.Bidang.RPJMDes
+             *
+             * @description
+             *
+             * Counts RPJMDes of Bidang.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.RPJMDes.count = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::count::Bidang::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RPJMDes#create
+             * @methodOf lbServices.Bidang.RPJMDes
+             *
+             * @description
+             *
+             * Creates a new instance in RPJMDes of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -17048,22 +14253,192 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Bidang` object.)
+             * This usually means the response is a `RPJMDes` object.)
              * </em>
              */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
+        R.RPJMDes.create = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::create::Bidang::RPJMDes"];
+          return action.apply(R, arguments);
+        };
 
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RPJMDes#createMany
+             * @methodOf lbServices.Bidang.RPJMDes
+             *
+             * @description
+             *
+             * Creates a new instance in RPJMDes of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.RPJMDes.createMany = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::createMany::Bidang::RPJMDes"];
+          return action.apply(R, arguments);
+        };
 
-        /**
-        * @ngdoc property
-        * @name lbServices.Bidang#modelName
-        * @propertyOf lbServices.Bidang
-        * @description
-        * The name of the model represented by this $resource,
-        * i.e. `Bidang`.
-        */
-        R.modelName = "Bidang";
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RPJMDes#destroyAll
+             * @methodOf lbServices.Bidang.RPJMDes
+             *
+             * @description
+             *
+             * Deletes all RPJMDes of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RPJMDes.destroyAll = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::delete::Bidang::RPJMDes"];
+          return action.apply(R, arguments);
+        };
 
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RPJMDes#destroyById
+             * @methodOf lbServices.Bidang.RPJMDes
+             *
+             * @description
+             *
+             * Delete a related item by id for RPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RPJMDes
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RPJMDes.destroyById = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::destroyById::Bidang::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RPJMDes#findById
+             * @methodOf lbServices.Bidang.RPJMDes
+             *
+             * @description
+             *
+             * Find a related item by id for RPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RPJMDes
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.RPJMDes.findById = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::findById::Bidang::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RPJMDes#updateById
+             * @methodOf lbServices.Bidang.RPJMDes
+             *
+             * @description
+             *
+             * Update a related item by id for RPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RPJMDes
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.RPJMDes.updateById = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::updateById::Bidang::RPJMDes"];
+          return action.apply(R, arguments);
+        };
 
 
         return R;
@@ -17089,9 +14464,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "WaktuPelaksanaan",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/WaktuPelaksanaan/:id",
           { 'id': '@id' },
           {
@@ -17180,7 +14555,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -17209,81 +14584,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/WaktuPelaksanaan",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.WaktuPelaksanaan#replaceOrCreate
-             * @methodOf lbServices.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/WaktuPelaksanaan/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.WaktuPelaksanaan#upsertWithWhere
-             * @methodOf lbServices.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/WaktuPelaksanaan/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -17325,7 +14625,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -17351,43 +14651,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/WaktuPelaksanaan/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.WaktuPelaksanaan#replaceById
-             * @methodOf lbServices.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/WaktuPelaksanaan/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -17464,7 +14727,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -17484,7 +14747,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/WaktuPelaksanaan/update",
@@ -17498,7 +14761,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -17563,11 +14826,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - WaktuPelaksanaan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -17722,47 +14985,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.WaktuPelaksanaan#patchOrCreate
-             * @methodOf lbServices.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.WaktuPelaksanaan#updateOrCreate
              * @methodOf lbServices.WaktuPelaksanaan
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -17792,46 +15020,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.WaktuPelaksanaan#patchOrCreateWithWhere
-             * @methodOf lbServices.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.WaktuPelaksanaan#update
              * @methodOf lbServices.WaktuPelaksanaan
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -17851,7 +15045,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -17862,7 +15056,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -17892,7 +15086,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -17914,40 +15108,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.WaktuPelaksanaan#patchAttributes
-             * @methodOf lbServices.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - WaktuPelaksanaan id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -17985,9 +15145,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "SumberBiaya",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/SumberBiaya/:id",
           { 'id': '@id' },
           {
@@ -18076,7 +15236,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -18105,81 +15265,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/SumberBiaya",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.SumberBiaya#replaceOrCreate
-             * @methodOf lbServices.SumberBiaya
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `SumberBiaya` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/SumberBiaya/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.SumberBiaya#upsertWithWhere
-             * @methodOf lbServices.SumberBiaya
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `SumberBiaya` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/SumberBiaya/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -18221,7 +15306,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -18247,43 +15332,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/SumberBiaya/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.SumberBiaya#replaceById
-             * @methodOf lbServices.SumberBiaya
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `SumberBiaya` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/SumberBiaya/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -18360,7 +15408,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -18380,7 +15428,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/SumberBiaya/update",
@@ -18394,7 +15442,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -18459,11 +15507,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - SumberBiaya id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -18563,47 +15611,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.SumberBiaya#patchOrCreate
-             * @methodOf lbServices.SumberBiaya
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `SumberBiaya` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.SumberBiaya#updateOrCreate
              * @methodOf lbServices.SumberBiaya
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -18633,46 +15646,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.SumberBiaya#patchOrCreateWithWhere
-             * @methodOf lbServices.SumberBiaya
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `SumberBiaya` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.SumberBiaya#update
              * @methodOf lbServices.SumberBiaya
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -18692,7 +15671,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -18703,7 +15682,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -18733,7 +15712,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -18755,40 +15734,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.SumberBiaya#patchAttributes
-             * @methodOf lbServices.SumberBiaya
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - SumberBiaya id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `SumberBiaya` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -18826,9 +15771,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "PolaPelaksanaan",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/PolaPelaksanaan/:id",
           { 'id': '@id' },
           {
@@ -18917,7 +15862,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -18946,81 +15891,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/PolaPelaksanaan",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.PolaPelaksanaan#replaceOrCreate
-             * @methodOf lbServices.PolaPelaksanaan
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `PolaPelaksanaan` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/PolaPelaksanaan/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.PolaPelaksanaan#upsertWithWhere
-             * @methodOf lbServices.PolaPelaksanaan
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `PolaPelaksanaan` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/PolaPelaksanaan/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -19062,7 +15932,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -19088,43 +15958,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/PolaPelaksanaan/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.PolaPelaksanaan#replaceById
-             * @methodOf lbServices.PolaPelaksanaan
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `PolaPelaksanaan` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/PolaPelaksanaan/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -19201,7 +16034,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -19221,7 +16054,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/PolaPelaksanaan/update",
@@ -19235,7 +16068,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -19300,11 +16133,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PolaPelaksanaan id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -19459,47 +16292,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.PolaPelaksanaan#patchOrCreate
-             * @methodOf lbServices.PolaPelaksanaan
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `PolaPelaksanaan` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.PolaPelaksanaan#updateOrCreate
              * @methodOf lbServices.PolaPelaksanaan
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -19529,46 +16327,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.PolaPelaksanaan#patchOrCreateWithWhere
-             * @methodOf lbServices.PolaPelaksanaan
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `PolaPelaksanaan` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.PolaPelaksanaan#update
              * @methodOf lbServices.PolaPelaksanaan
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -19588,7 +16352,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -19599,7 +16363,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -19629,7 +16393,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -19651,40 +16415,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.PolaPelaksanaan#patchAttributes
-             * @methodOf lbServices.PolaPelaksanaan
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PolaPelaksanaan id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `PolaPelaksanaan` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -19722,9 +16452,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "RKP",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/RKP/:id",
           { 'id': '@id' },
           {
@@ -19892,7 +16622,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -19921,81 +16651,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/RKP",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RKP#replaceOrCreate
-             * @methodOf lbServices.RKP
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RKP` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/RKP/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RKP#upsertWithWhere
-             * @methodOf lbServices.RKP
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RKP` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/RKP/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -20037,7 +16692,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -20063,43 +16718,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/RKP/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RKP#replaceById
-             * @methodOf lbServices.RKP
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RKP` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/RKP/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -20176,7 +16794,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -20196,7 +16814,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/RKP/update",
@@ -20210,7 +16828,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -20275,11 +16893,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RKP id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -20348,47 +16966,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.RKP#patchOrCreate
-             * @methodOf lbServices.RKP
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RKP` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.RKP#updateOrCreate
              * @methodOf lbServices.RKP
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -20418,46 +17001,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.RKP#patchOrCreateWithWhere
-             * @methodOf lbServices.RKP
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RKP` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.RKP#update
              * @methodOf lbServices.RKP
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -20477,7 +17026,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -20488,7 +17037,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -20518,7 +17067,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -20540,40 +17089,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              */
         R["removeById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RKP#patchAttributes
-             * @methodOf lbServices.RKP
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - RKP id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RKP` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
 
 
         /**
@@ -20612,7 +17127,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RKP id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `filter` – `{object=}` -
              *
@@ -20648,7 +17163,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RKP id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -20683,7 +17198,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RKP id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -20721,7 +17236,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RKP id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -20759,9 +17274,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RKP id
-             *
-             *  - `where` – `{object=}` -
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -20792,7 +17305,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RKP id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for rPJMDes
              *
@@ -20825,7 +17338,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RKP id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for rPJMDes
              *
@@ -20861,7 +17374,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RKP id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for rPJMDes
              *
@@ -20897,7 +17410,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RKP id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for rPJMDes
              *
@@ -20937,7 +17450,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RKP id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for rPJMDes
              *
@@ -20970,7 +17483,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RKP id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `fk` – `{*}` - Foreign key for rPJMDes
              *
@@ -21023,62 +17536,62 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   module.factory(
     "RPJM",
     [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
         urlBase + "/RPJM/:id",
           { 'id': '@id' },
           {
 
-            // INTERNAL. Use RPJM.rPJMDes.findById() instead.
-            "prototype$__findById__rPJMDes": {
+            // INTERNAL. Use RPJM.Bidang.findById() instead.
+            "prototype$__findById__Bidang": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/RPJM/:id/rPJMDes/:fk",
+              url: urlBase + "/RPJM/:id/Bidang/:fk",
               method: "GET",
             },
 
-            // INTERNAL. Use RPJM.rPJMDes.destroyById() instead.
-            "prototype$__destroyById__rPJMDes": {
+            // INTERNAL. Use RPJM.Bidang.destroyById() instead.
+            "prototype$__destroyById__Bidang": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/RPJM/:id/rPJMDes/:fk",
+              url: urlBase + "/RPJM/:id/Bidang/:fk",
               method: "DELETE",
             },
 
-            // INTERNAL. Use RPJM.rPJMDes.updateById() instead.
-            "prototype$__updateById__rPJMDes": {
+            // INTERNAL. Use RPJM.Bidang.updateById() instead.
+            "prototype$__updateById__Bidang": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/RPJM/:id/rPJMDes/:fk",
+              url: urlBase + "/RPJM/:id/Bidang/:fk",
               method: "PUT",
             },
 
-            // INTERNAL. Use RPJM.rPJMDes() instead.
-            "prototype$__get__rPJMDes": {
+            // INTERNAL. Use RPJM.Bidang() instead.
+            "prototype$__get__Bidang": {
               isArray: true,
-              url: urlBase + "/RPJM/:id/rPJMDes",
+              url: urlBase + "/RPJM/:id/Bidang",
               method: "GET",
             },
 
-            // INTERNAL. Use RPJM.rPJMDes.create() instead.
-            "prototype$__create__rPJMDes": {
-              url: urlBase + "/RPJM/:id/rPJMDes",
+            // INTERNAL. Use RPJM.Bidang.create() instead.
+            "prototype$__create__Bidang": {
+              url: urlBase + "/RPJM/:id/Bidang",
               method: "POST",
             },
 
-            // INTERNAL. Use RPJM.rPJMDes.destroyAll() instead.
-            "prototype$__delete__rPJMDes": {
-              url: urlBase + "/RPJM/:id/rPJMDes",
+            // INTERNAL. Use RPJM.Bidang.destroyAll() instead.
+            "prototype$__delete__Bidang": {
+              url: urlBase + "/RPJM/:id/Bidang",
               method: "DELETE",
             },
 
-            // INTERNAL. Use RPJM.rPJMDes.count() instead.
-            "prototype$__count__rPJMDes": {
-              url: urlBase + "/RPJM/:id/rPJMDes/count",
+            // INTERNAL. Use RPJM.Bidang.count() instead.
+            "prototype$__count__Bidang": {
+              url: urlBase + "/RPJM/:id/Bidang/count",
               method: "GET",
             },
 
@@ -21166,7 +17679,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -21195,81 +17708,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "upsert": {
               url: urlBase + "/RPJM",
               method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJM#replaceOrCreate
-             * @methodOf lbServices.RPJM
-             *
-             * @description
-             *
-             * Replace an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJM` object.)
-             * </em>
-             */
-            "replaceOrCreate": {
-              url: urlBase + "/RPJM/replaceOrCreate",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJM#upsertWithWhere
-             * @methodOf lbServices.RPJM
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJM` object.)
-             * </em>
-             */
-            "upsertWithWhere": {
-              url: urlBase + "/RPJM/upsertWithWhere",
-              method: "POST",
             },
 
             /**
@@ -21311,7 +17749,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Find a model instance by {{id}} from the data source.
+             * Find a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -21337,43 +17775,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "findById": {
               url: urlBase + "/RPJM/:id",
               method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJM#replaceById
-             * @methodOf lbServices.RPJM
-             *
-             * @description
-             *
-             * Replace attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJM` object.)
-             * </em>
-             */
-            "replaceById": {
-              url: urlBase + "/RPJM/:id/replace",
-              method: "POST",
             },
 
             /**
@@ -21450,7 +17851,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -21470,7 +17871,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
             "updateAll": {
               url: urlBase + "/RPJM/update",
@@ -21484,7 +17885,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -21549,11 +17950,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Patch attributes for a model instance and persist it into the data source.
+             * Update attributes for a model instance and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJM id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -21622,47 +18023,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.RPJM#patchOrCreate
-             * @methodOf lbServices.RPJM
-             *
-             * @description
-             *
-             * Patch an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJM` object.)
-             * </em>
-             */
-        R["patchOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.RPJM#updateOrCreate
              * @methodOf lbServices.RPJM
              *
              * @description
              *
-             * Patch an existing model instance or insert a new one into the data source.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -21692,46 +18058,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.RPJM#patchOrCreateWithWhere
-             * @methodOf lbServices.RPJM
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source based on the where criteria.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJM` object.)
-             * </em>
-             */
-        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
-
-            /**
-             * @ngdoc method
              * @name lbServices.RPJM#update
              * @methodOf lbServices.RPJM
              *
              * @description
              *
-             * Update instances of the model matched by {{where}} from the data source.
+             * Update instances of the model matched by where from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -21751,7 +18083,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Information related to the outcome of the operation
+             * The number of instances updated
              */
         R["update"] = R["updateAll"];
 
@@ -21762,7 +18094,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -21792,7 +18124,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Delete a model instance by {{id}} from the data source.
+             * Delete a model instance by id from the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -21815,40 +18147,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              */
         R["removeById"] = R["deleteById"];
 
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJM#patchAttributes
-             * @methodOf lbServices.RPJM
-             *
-             * @description
-             *
-             * Patch attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - RPJM id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJM` object.)
-             * </em>
-             */
-        R["patchAttributes"] = R["prototype$updateAttributes"];
-
 
         /**
         * @ngdoc property
@@ -21862,31 +18160,31 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
     /**
      * @ngdoc object
-     * @name lbServices.RPJM.rPJMDes
-     * @header lbServices.RPJM.rPJMDes
+     * @name lbServices.RPJM.Bidang
+     * @header lbServices.RPJM.Bidang
      * @object
      * @description
      *
-     * The object `RPJM.rPJMDes` groups methods
-     * manipulating `RPJMDes` instances related to `RPJM`.
+     * The object `RPJM.Bidang` groups methods
+     * manipulating `Bidang` instances related to `RPJM`.
      *
-     * Call {@link lbServices.RPJM#rPJMDes RPJM.rPJMDes()}
+     * Call {@link lbServices.RPJM#Bidang RPJM.Bidang()}
      * to query all related instances.
      */
 
 
             /**
              * @ngdoc method
-             * @name lbServices.RPJM#rPJMDes
+             * @name lbServices.RPJM#Bidang
              * @methodOf lbServices.RPJM
              *
              * @description
              *
-             * Queries rPJMDes of RPJM.
+             * Queries Bidang of RPJM.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJM id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `filter` – `{object=}` -
              *
@@ -21902,27 +18200,27 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
+             * This usually means the response is a `Bidang` object.)
              * </em>
              */
-        R.rPJMDes = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::get::RPJM::rPJMDes"];
+        R.Bidang = function() {
+          var TargetResource = $injector.get("Bidang");
+          var action = TargetResource["::get::RPJM::Bidang"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.RPJM.rPJMDes#count
-             * @methodOf lbServices.RPJM.rPJMDes
+             * @name lbServices.RPJM.Bidang#count
+             * @methodOf lbServices.RPJM.Bidang
              *
              * @description
              *
-             * Counts rPJMDes of RPJM.
+             * Counts Bidang of RPJM.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJM id
+             *  - `id` – `{*}` - PersistedModel id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -21940,24 +18238,24 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              *  - `count` – `{number=}` -
              */
-        R.rPJMDes.count = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::count::RPJM::rPJMDes"];
+        R.Bidang.count = function() {
+          var TargetResource = $injector.get("Bidang");
+          var action = TargetResource["::count::RPJM::Bidang"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.RPJM.rPJMDes#create
-             * @methodOf lbServices.RPJM.rPJMDes
+             * @name lbServices.RPJM.Bidang#create
+             * @methodOf lbServices.RPJM.Bidang
              *
              * @description
              *
-             * Creates a new instance in rPJMDes of this model.
+             * Creates a new instance in Bidang of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJM id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -21975,27 +18273,27 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
+             * This usually means the response is a `Bidang` object.)
              * </em>
              */
-        R.rPJMDes.create = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::create::RPJM::rPJMDes"];
+        R.Bidang.create = function() {
+          var TargetResource = $injector.get("Bidang");
+          var action = TargetResource["::create::RPJM::Bidang"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.RPJM.rPJMDes#createMany
-             * @methodOf lbServices.RPJM.rPJMDes
+             * @name lbServices.RPJM.Bidang#createMany
+             * @methodOf lbServices.RPJM.Bidang
              *
              * @description
              *
-             * Creates a new instance in rPJMDes of this model.
+             * Creates a new instance in Bidang of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJM id
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {Object} postData Request data.
              *
@@ -22013,29 +18311,27 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
+             * This usually means the response is a `Bidang` object.)
              * </em>
              */
-        R.rPJMDes.createMany = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::createMany::RPJM::rPJMDes"];
+        R.Bidang.createMany = function() {
+          var TargetResource = $injector.get("Bidang");
+          var action = TargetResource["::createMany::RPJM::Bidang"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.RPJM.rPJMDes#destroyAll
-             * @methodOf lbServices.RPJM.rPJMDes
+             * @name lbServices.RPJM.Bidang#destroyAll
+             * @methodOf lbServices.RPJM.Bidang
              *
              * @description
              *
-             * Deletes all rPJMDes of this model.
+             * Deletes all Bidang of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJM id
-             *
-             *  - `where` – `{object=}` -
+             *  - `id` – `{*}` - PersistedModel id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -22049,26 +18345,26 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * This method returns no data.
              */
-        R.rPJMDes.destroyAll = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::delete::RPJM::rPJMDes"];
+        R.Bidang.destroyAll = function() {
+          var TargetResource = $injector.get("Bidang");
+          var action = TargetResource["::delete::RPJM::Bidang"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.RPJM.rPJMDes#destroyById
-             * @methodOf lbServices.RPJM.rPJMDes
+             * @name lbServices.RPJM.Bidang#destroyById
+             * @methodOf lbServices.RPJM.Bidang
              *
              * @description
              *
-             * Delete a related item by id for rPJMDes.
+             * Delete a related item by id for Bidang.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJM id
+             *  - `id` – `{*}` - PersistedModel id
              *
-             *  - `fk` – `{*}` - Foreign key for rPJMDes
+             *  - `fk` – `{*}` - Foreign key for Bidang
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -22082,26 +18378,26 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * This method returns no data.
              */
-        R.rPJMDes.destroyById = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::destroyById::RPJM::rPJMDes"];
+        R.Bidang.destroyById = function() {
+          var TargetResource = $injector.get("Bidang");
+          var action = TargetResource["::destroyById::RPJM::Bidang"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.RPJM.rPJMDes#findById
-             * @methodOf lbServices.RPJM.rPJMDes
+             * @name lbServices.RPJM.Bidang#findById
+             * @methodOf lbServices.RPJM.Bidang
              *
              * @description
              *
-             * Find a related item by id for rPJMDes.
+             * Find a related item by id for Bidang.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJM id
+             *  - `id` – `{*}` - PersistedModel id
              *
-             *  - `fk` – `{*}` - Foreign key for rPJMDes
+             *  - `fk` – `{*}` - Foreign key for Bidang
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -22115,29 +18411,29 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
+             * This usually means the response is a `Bidang` object.)
              * </em>
              */
-        R.rPJMDes.findById = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::findById::RPJM::rPJMDes"];
+        R.Bidang.findById = function() {
+          var TargetResource = $injector.get("Bidang");
+          var action = TargetResource["::findById::RPJM::Bidang"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.RPJM.rPJMDes#updateById
-             * @methodOf lbServices.RPJM.rPJMDes
+             * @name lbServices.RPJM.Bidang#updateById
+             * @methodOf lbServices.RPJM.Bidang
              *
              * @description
              *
-             * Update a related item by id for rPJMDes.
+             * Update a related item by id for Bidang.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - RPJM id
+             *  - `id` – `{*}` - PersistedModel id
              *
-             *  - `fk` – `{*}` - Foreign key for rPJMDes
+             *  - `fk` – `{*}` - Foreign key for Bidang
              *
              * @param {Object} postData Request data.
              *
@@ -22155,12 +18451,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
+             * This usually means the response is a `Bidang` object.)
              * </em>
              */
-        R.rPJMDes.updateById = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::updateById::RPJM::rPJMDes"];
+        R.Bidang.updateById = function() {
+          var TargetResource = $injector.get("Bidang");
+          var action = TargetResource["::updateById::RPJM::Bidang"];
           return action.apply(R, arguments);
         };
 

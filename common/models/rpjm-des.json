@@ -34,7 +34,7 @@
     "Bidang": {
       "type": "belongsTo",
       "model": "Bidang",
-      "foreignKey": ""
+      "foreignKey": "BidangId"
     },
     "WaktuPelaksanaan": {
       "type": "hasAndBelongsToMany",
