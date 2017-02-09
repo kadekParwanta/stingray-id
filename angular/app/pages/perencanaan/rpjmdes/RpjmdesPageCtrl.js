@@ -9,7 +9,7 @@
         .controller('RpjmdesPageCtrl', RpjmdesPageCtrl);
 
     /** @ngInject */
-    function RpjmdesPageCtrl($scope, RPJM, $timeout, $filter) {
+    function RpjmdesPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, RPJMDes) {
         var vm = this;
         $scope.RPJMDesList = [];
         $scope.bidangList = [];
@@ -35,7 +35,7 @@
             core: {
                 multiple: false,
                 animation: true,
-                error : function(error) {
+                error: function (error) {
                     $log.error('treeCtrl: error from js tree - ' + angular.toJson(error));
                 },
                 check_callback: true,
@@ -145,7 +145,7 @@
 
                 var bidangList = result.Bidang;
                 $scope.bidangList = bidangList;
-                populateRPJMDes(bidangList);         
+                populateRPJMDes(bidangList);
             })
         }
 
@@ -199,14 +199,14 @@
             });
         };
 
-        function onSelected(e,data){
+        function onSelected(e, data) {
             var node = data.node;
             var parent = node.parent;
             var selectedId = node.id;
             if (parent !== "#") {
-                var bidang = $filter('filter')($scope.bidangList, {id:parent})[0];
+                var bidang = $filter('filter')($scope.bidangList, { id: parent })[0];
                 $scope.bidangTitle = bidang.Nama;
-                $scope.selectedNode = $filter('filter')(bidang.RPJMDes, {id:selectedId})[0];
+                $scope.selectedNode = $filter('filter')(bidang.RPJMDes, { id: selectedId })[0];
                 $scope.$apply();
             } else {
                 $scope.bidangTitle = "Mohon pilih item di samping";
@@ -218,6 +218,51 @@
             return !$scope.ignoreChanges;
         };
 
+        $scope.open = function (page, size) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: page,
+                size: size,
+                controller: RpjmdesModalInstanceCtrl,
+                controllerAs: 'vm',
+                resolve: {
+                    items: function () {
+                        return $scope.items;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (newRPJMDes) {
+                if (newRPJMDes.BidangId) {
+                    RPJMDes.create(newRPJMDes, function (rpjmdes) {
+                        $scope.treeData.push({
+                            id: rpjmdes.id,
+                            parent: newRPJMDes.BidangId,
+                            text: rpjmdes.SubBidang,
+                            state: { opened: true }
+                        });
+                        $scope.basicConfig.version++;
+                    })
+                }
+            })
+        };
+
+    }
+
+    angular.module('BlurAdmin.pages.perencanaan')
+        .controller('RpjmdesModalInstanceCtrl', RpjmdesModalInstanceCtrl);
+
+    function RpjmdesModalInstanceCtrl($uibModalInstance) {
+        var vm = this;
+        vm.newRPJMDes = {};
+
+        vm.ok = function () {
+            $uibModalInstance.close(vm.newRPJMDes);
+        }
+
+        vm.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        }
     }
 
 })();
