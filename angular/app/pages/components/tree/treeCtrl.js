@@ -90,6 +90,7 @@
     };
 
     $scope.readyCB = function() {
+      console.log("readyCB "+this.basicTree);
       $timeout(function() {
         $scope.ignoreChanges = false;
       });

@@ -9,7 +9,7 @@
         .controller('RpjmdesPageCtrl', RpjmdesPageCtrl);
 
     /** @ngInject */
-    function RpjmdesPageCtrl($scope, RPJM, $timeout) {
+    function RpjmdesPageCtrl($scope, RPJM, $timeout, $filter) {
         var vm = this;
         $scope.RPJMDesList = [];
         $scope.bidangList = [];
@@ -22,6 +22,9 @@
         $scope.Bidang2Total = 0;
         $scope.Bidang3Total = 0;
         $scope.Bidang4Total = 0;
+        $scope.basicTree;
+        $scope.selectedNode;
+        $scope.bidangTitle = "Mohon pilih item di samping";
 
         $scope.ignoreChanges = false;
         var newId = 0;
@@ -31,6 +34,10 @@
         $scope.basicConfig = {
             core: {
                 multiple: false,
+                animation: true,
+                error : function(error) {
+                    $log.error('treeCtrl: error from js tree - ' + angular.toJson(error));
+                },
                 check_callback: true,
                 worker: true
             },
@@ -42,7 +49,7 @@
                     'icon': 'ion-document-text'
                 }
             },
-            'plugins': ['types'],
+            'plugins': ['types', 'ui'],
             'version': 1
         };
 
@@ -138,7 +145,7 @@
 
                 var bidangList = result.Bidang;
                 $scope.bidangList = bidangList;
-                populateRPJMDes(bidangList);
+                populateRPJMDes(bidangList);         
             })
         }
 
@@ -183,11 +190,29 @@
         };
 
         $scope.readyCB = function () {
+            var element = angular.element('#basicTree');
+            element.on("select_node.jstree", onSelected)
+            $scope.basicTree = element.jstree(true);
+            $scope.selectedNode = $scope.basicTree.get_selected()[0];
             $timeout(function () {
                 $scope.ignoreChanges = false;
             });
         };
 
+        function onSelected(e,data){
+            var node = data.node;
+            var parent = node.parent;
+            var selectedId = node.id;
+            if (parent !== "#") {
+                var bidang = $filter('filter')($scope.bidangList, {id:parent})[0];
+                $scope.bidangTitle = bidang.Nama;
+                $scope.selectedNode = $filter('filter')(bidang.RPJMDes, {id:selectedId})[0];
+                $scope.$apply();
+            } else {
+                $scope.bidangTitle = "Mohon pilih item di samping";
+                $scope.$apply();
+            }
+        }
 
         $scope.applyModelChanges = function () {
             return !$scope.ignoreChanges;

@@ -1,0 +1,76 @@
+<div class="form-group has-success">
+  <label class="control-label" for="inputSuccess1">Sub Bidang</label>
+  <input type="text" class="form-control" id="inputSuccess1" ng-model="selectedNode.SubBidang">
+</div>
+<div class="form-group has-warning">
+  <label class="control-label" for="inputWarning1">Jenis</label>
+  <input type="text" class="form-control" id="inputWarning1" ng-model="selectedNode.Jenis">
+</div>
+<div class="form-group has-error">
+  <label class="control-label" for="inputError1">Lokasi</label>
+  <input type="text" class="form-control" id="inputError1" ng-model="selectedNode.Lokasi">
+</div>
+<div class="form-group">
+  <label class="control-label" for="inputError1">Waktu Pelaksanaan</label>
+  <div class="has-success">
+  <div class="checkbox">
+    <label class="custom-checkbox">
+      <input type="checkbox" id="checkboxSuccess" value="option1" ng-checked="selectedNode.WaktuPelaksanaan[0].Nama == 'Tahun 1'">
+      <span>Tahun 1</span>
+    </label>
+  </div>
+</div>
+<div class="has-success">
+  <div class="checkbox">
+    <label class="custom-checkbox">
+      <input type="checkbox" id="checkboxWarning" value="option1" ng-checked="(selectedNode.WaktuPelaksanaan[0].Nama == 'Tahun 2') || (selectedNode.WaktuPelaksanaan[1].Nama == 'Tahun 2')">
+      <span>Tahun 2</span>
+    </label>
+  </div>
+</div>
+<div class="has-success">
+  <div class="checkbox">
+    <label class="custom-checkbox">
+      <input type="checkbox" id="checkboxError" value="option1" ng-checked="(selectedNode.WaktuPelaksanaan[0].Nama == 'Tahun 3') || (selectedNode.WaktuPelaksanaan[1].Nama == 'Tahun 3')|| (selectedNode.WaktuPelaksanaan[2].Nama == 'Tahun 3')">
+      <span>Tahun 3</span>
+    </label>
+  </div>
+</div>
+<div class="has-success">
+  <div class="checkbox">
+    <label class="custom-checkbox">
+      <input type="checkbox" id="checkboxSuccess" value="option1" ng-checked="(selectedNode.WaktuPelaksanaan[0].Nama == 'Tahun 4') || (selectedNode.WaktuPelaksanaan[1].Nama == 'Tahun 4')|| (selectedNode.WaktuPelaksanaan[2].Nama == 'Tahun 4')|| (selectedNode.WaktuPelaksanaan[3].Nama == 'Tahun 4')">
+      <span>Tahun 4</span>
+    </label>
+  </div>
+</div>
+<div class="has-success">
+  <div class="checkbox">
+    <label class="custom-checkbox">
+      <input type="checkbox" id="checkboxWarning" value="option1" ng-checked="(selectedNode.WaktuPelaksanaan[0].Nama == 'Tahun 5') || (selectedNode.WaktuPelaksanaan[1].Nama == 'Tahun 5')|| (selectedNode.WaktuPelaksanaan[2].Nama == 'Tahun 5')|| (selectedNode.WaktuPelaksanaan[3].Nama == 'Tahun 5')|| (selectedNode.WaktuPelaksanaan[4].Nama == 'Tahun 5')">
+      <span>Tahun 5</span>
+    </label>
+  </div>
+</div>
+<div class="has-success">
+  <div class="checkbox">
+    <label class="custom-checkbox">
+      <input type="checkbox" id="checkboxWarning" value="option1" ng-checked="(selectedNode.WaktuPelaksanaan[0].Nama == 'Tahun 6') || (selectedNode.WaktuPelaksanaan[1].Nama == 'Tahun 6')|| (selectedNode.WaktuPelaksanaan[2].Nama == 'Tahun 6')|| (selectedNode.WaktuPelaksanaan[3].Nama == 'Tahun 6')|| (selectedNode.WaktuPelaksanaan[4].Nama == 'Tahun 6')|| (selectedNode.WaktuPelaksanaan[5].Nama == 'Tahun 6')">
+      <span>Tahun 6</span>
+    </label>
+  </div>
+</div>
+</div>
+
+<div class="form-group has-success has-feedback">
+  <label class="control-label" for="inputSuccess2">PrakiraanVolume</label>
+  <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" ng-model="selectedNode.PrakiraanVolume">
+  <i class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+  <span id="inputSuccess2Status" class="sr-only">(success)</span>
+</div>
+<div class="form-group has-warning has-feedback">
+  <label class="control-label" for="inputWarning2">Sasaran</label>
+  <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status" ng-model="selectedNode.Sasaran">
+  <i class="ion-alert-circled form-control-feedback" aria-hidden="true"></i>
+  <span id="inputWarning2Status" class="sr-only">(warning)</span>
+</div>
