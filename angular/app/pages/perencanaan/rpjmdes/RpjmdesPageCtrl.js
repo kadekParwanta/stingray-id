@@ -9,10 +9,11 @@
         .controller('RpjmdesPageCtrl', RpjmdesPageCtrl);
 
     /** @ngInject */
-    function RpjmdesPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, RPJMDes) {
+    function RpjmdesPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan) {
         var vm = this;
         $scope.RPJMDesList = [];
         $scope.bidangList = [];
+        $scope.waktuPelaksanaanList
         $scope.Bidang1 = [];
         $scope.Bidang2 = [];
         $scope.Bidang3 = [];
@@ -123,7 +124,6 @@
                 }
             }, function (results) {
                 $scope.bidangList = results;
-                populateRPJMDes(results);
             });
         };
 
@@ -146,7 +146,30 @@
                 var bidangList = result.Bidang;
                 $scope.bidangList = bidangList;
                 populateRPJMDes(bidangList);
+                getWaktuPelaksanaanList();
             })
+        }
+
+        function getWaktuPelaksanaanList() {
+            WaktuPelaksanaan.find(function (results) {
+                $scope.waktuPelaksanaanList = results;
+            });
+        };
+
+        function assignWaktuPelaksanaan(rpjmdes, waktuPelaksanaanList) {
+            var promises = waktuPelaksanaanList.map(function (waktupelaksanaan) {
+                var deferred = $q.defer();
+                if (waktupelaksanaan) {
+                    RPJMDes.WaktuPelaksanaan.link({ id: rpjmdes.id, fk: waktupelaksanaan.id }, null, function (data) {
+                        deferred.resolve(data);
+                    });
+                } else {
+                    deferred.resolve("");
+                }
+                return deferred.promises;
+            });
+
+            return $q.all(promises);
         }
 
         getActiveRPJM();
@@ -226,22 +249,28 @@
                 controller: RpjmdesModalInstanceCtrl,
                 controllerAs: 'vm',
                 resolve: {
-                    items: function () {
-                        return $scope.items;
+                    bidangList: function () {
+                        return $scope.bidangList;
+                    },
+                    waktuPelaksanaanList: function () {
+                        return $scope.waktuPelaksanaanList;
                     }
                 }
             });
 
-            modalInstance.result.then(function (newRPJMDes) {
+            modalInstance.result.then(function (data) {
+                var newRPJMDes = data.rpjmdes;
                 if (newRPJMDes.BidangId) {
                     RPJMDes.create(newRPJMDes, function (rpjmdes) {
-                        $scope.treeData.push({
-                            id: rpjmdes.id,
-                            parent: newRPJMDes.BidangId,
-                            text: rpjmdes.SubBidang,
-                            state: { opened: true }
-                        });
-                        $scope.basicConfig.version++;
+                        assignWaktuPelaksanaan(rpjmdes, data.waktuPelaksanaan).then(function () {
+                            $scope.treeData.push({
+                                id: rpjmdes.id,
+                                parent: newRPJMDes.BidangId,
+                                text: rpjmdes.SubBidang,
+                                state: { opened: true }
+                            });
+                            $scope.basicConfig.version++;
+                        })
                     })
                 }
             })
@@ -252,12 +281,18 @@
     angular.module('BlurAdmin.pages.perencanaan')
         .controller('RpjmdesModalInstanceCtrl', RpjmdesModalInstanceCtrl);
 
-    function RpjmdesModalInstanceCtrl($uibModalInstance) {
+    function RpjmdesModalInstanceCtrl($uibModalInstance, bidangList, waktuPelaksanaanList) {
         var vm = this;
+        vm.bidangList = bidangList;
+        vm.waktuPelaksanaanList = waktuPelaksanaanList;
+        vm.selectedWaktuPelaksanaan = [];
         vm.newRPJMDes = {};
 
         vm.ok = function () {
-            $uibModalInstance.close(vm.newRPJMDes);
+            $uibModalInstance.close({
+                rpjmdes: vm.newRPJMDes,
+                waktuPelaksanaan: vm.selectedWaktuPelaksanaan
+            });
         }
 
         vm.cancel = function () {

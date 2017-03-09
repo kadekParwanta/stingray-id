@@ -6,9 +6,51 @@
     <h4 class="modal-title" id="myModalLabel">Buat RPJM baru</h4>
   </div>
   <div class="modal-body">
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-    dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-    suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+    <div class="form-group">
+      <label class="control-label" for="inputBidang">Bidang</label>
+      <select class="form-control selectpicker with-search" data-live-search="true" title="Bidang" selectpicker ng-model="vm.newRPJMDes.BidangId"
+        ng-options="item.id as item.Nama for item in vm.bidangList">
+    </select>
+    </div>
+    <div class="form-group has-success">
+      <label class="control-label" for="inputSubBidang">Sub Bidang</label>
+      <input type="text" class="form-control" id="inputSubBidang" ng-model="vm.newRPJMDes.SubBidang">
+    </div>
+    <div class="form-group has-warning">
+      <label class="control-label" for="inputJenis">Jenis</label>
+      <input type="text" class="form-control" id="inputJenis" ng-model="vm.newRPJMDes.Jenis">
+    </div>
+    <div class="form-group has-error">
+      <label class="control-label" for="inputLokasi">Lokasi</label>
+      <textarea type="text" class="form-control" id="inputLokasi" ng-model="vm.newRPJMDes.Lokasi"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="inputWaktu">Waktu Pelaksanaan</label>
+      <div ng-repeat="waktuPelaksanaan in vm.waktuPelaksanaanList track by $index">
+
+        <div class="has-success">
+          <div class="checkbox">
+            <label class="custom-checkbox">
+              <input type="checkbox" id="checkboxSuccess" ng-model="vm.selectedWaktuPelaksanaan[$index]" ng-true-value="{{waktuPelaksanaan}}">
+              <span>{{waktuPelaksanaan.Nama}}</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group has-success has-feedback">
+      <label class="control-label" for="inputVolume">PrakiraanVolume</label>
+      <input type="text" class="form-control" id="inputVolume" aria-describedby="inputSuccess2Status" ng-model="vm.newRPJMDes.PrakiraanVolume">
+      <i class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+      <span id="inputSuccess2Status" class="sr-only">(success)</span>
+    </div>
+    <div class="form-group has-warning has-feedback">
+      <label class="control-label" for="inputSasaran">Sasaran</label>
+      <input type="text" class="form-control" id="inputSasaran" aria-describedby="inputWarning2Status" ng-model="vm.newRPJMDes.Sasaran">
+      <i class="ion-alert-circled form-control-feedback" aria-hidden="true"></i>
+      <span id="inputWarning2Status" class="sr-only">(warning)</span>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-primary" ng-click="vm.ok()">Save</button>
