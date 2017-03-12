@@ -24,10 +24,14 @@
       if (rpjmId === "0") {
         RPJM.create($scope.rpjm, function(rpjm){
           $state.go('perencanaan.setting');
+        }, function(err){
+          alert(err.data.error.message);
         })
       } else {
         RPJM.prototype$updateAttributes($scope.rpjm, function(rpjm){
           $state.go('perencanaan.setting');
+        }, function(err){
+          alert(err.data.error.message);
         })
       }
     }
