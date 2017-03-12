@@ -11,55 +11,21 @@
   <textarea type="text" class="form-control" id="inputError1" ng-model="selectedNode.Lokasi"></textarea>
 </div>
 <div class="form-group">
-  <label class="control-label" for="inputError1">Waktu Pelaksanaan</label>
-  <div class="has-success">
-  <div class="checkbox">
-    <label class="custom-checkbox">
-      <input type="checkbox" id="checkboxSuccess" value="option1" ng-checked="selectedNode.WaktuPelaksanaan[0].Nama == 'Tahun 1'">
-      <span>Tahun 1</span>
-    </label>
+  <label class="control-label" for="inputWaktu">Waktu Pelaksanaan</label>
+  <div ng-repeat="waktuPelaksanaan in waktuPelaksanaanList">
+
+    <div class="has-success">
+      <div class="checkbox">
+        <label class="custom-checkbox">
+              <input type="checkbox" id="checkboxSuccess" ng-model="selectedNode.WaktuPelaksanaan[waktuPelaksanaan.No-1]" ng-true-value="{{waktuPelaksanaan}}"
+              ng-checked="(selectedNode.WaktuPelaksanaan[0].No ===waktuPelaksanaan.No) || (selectedNode.WaktuPelaksanaan[1].No ===waktuPelaksanaan.No)|| 
+              (selectedNode.WaktuPelaksanaan[2].No ===waktuPelaksanaan.No)|| (selectedNode.WaktuPelaksanaan[3].No ===waktuPelaksanaan.No)|| 
+              (selectedNode.WaktuPelaksanaan[4].No ===waktuPelaksanaan.No)|| (selectedNode.WaktuPelaksanaan[5].No ===waktuPelaksanaan.No)">
+              <span>{{waktuPelaksanaan.Nama}}</span>
+            </label>
+      </div>
+    </div>
   </div>
-</div>
-<div class="has-success">
-  <div class="checkbox">
-    <label class="custom-checkbox">
-      <input type="checkbox" id="checkboxWarning" value="option1" ng-checked="(selectedNode.WaktuPelaksanaan[0].Nama == 'Tahun 2') || (selectedNode.WaktuPelaksanaan[1].Nama == 'Tahun 2')">
-      <span>Tahun 2</span>
-    </label>
-  </div>
-</div>
-<div class="has-success">
-  <div class="checkbox">
-    <label class="custom-checkbox">
-      <input type="checkbox" id="checkboxError" value="option1" ng-checked="(selectedNode.WaktuPelaksanaan[0].Nama == 'Tahun 3') || (selectedNode.WaktuPelaksanaan[1].Nama == 'Tahun 3')|| (selectedNode.WaktuPelaksanaan[2].Nama == 'Tahun 3')">
-      <span>Tahun 3</span>
-    </label>
-  </div>
-</div>
-<div class="has-success">
-  <div class="checkbox">
-    <label class="custom-checkbox">
-      <input type="checkbox" id="checkboxSuccess" value="option1" ng-checked="(selectedNode.WaktuPelaksanaan[0].Nama == 'Tahun 4') || (selectedNode.WaktuPelaksanaan[1].Nama == 'Tahun 4')|| (selectedNode.WaktuPelaksanaan[2].Nama == 'Tahun 4')|| (selectedNode.WaktuPelaksanaan[3].Nama == 'Tahun 4')">
-      <span>Tahun 4</span>
-    </label>
-  </div>
-</div>
-<div class="has-success">
-  <div class="checkbox">
-    <label class="custom-checkbox">
-      <input type="checkbox" id="checkboxWarning" value="option1" ng-checked="(selectedNode.WaktuPelaksanaan[0].Nama == 'Tahun 5') || (selectedNode.WaktuPelaksanaan[1].Nama == 'Tahun 5')|| (selectedNode.WaktuPelaksanaan[2].Nama == 'Tahun 5')|| (selectedNode.WaktuPelaksanaan[3].Nama == 'Tahun 5')|| (selectedNode.WaktuPelaksanaan[4].Nama == 'Tahun 5')">
-      <span>Tahun 5</span>
-    </label>
-  </div>
-</div>
-<div class="has-success">
-  <div class="checkbox">
-    <label class="custom-checkbox">
-      <input type="checkbox" id="checkboxWarning" value="option1" ng-checked="(selectedNode.WaktuPelaksanaan[0].Nama == 'Tahun 6') || (selectedNode.WaktuPelaksanaan[1].Nama == 'Tahun 6')|| (selectedNode.WaktuPelaksanaan[2].Nama == 'Tahun 6')|| (selectedNode.WaktuPelaksanaan[3].Nama == 'Tahun 6')|| (selectedNode.WaktuPelaksanaan[4].Nama == 'Tahun 6')|| (selectedNode.WaktuPelaksanaan[5].Nama == 'Tahun 6')">
-      <span>Tahun 6</span>
-    </label>
-  </div>
-</div>
 </div>
 
 <div class="form-group has-success has-feedback">

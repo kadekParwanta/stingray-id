@@ -121,7 +121,7 @@
             RPJM.findOne({
                 filter: {
                     where: { IsActive: true },
-                    include: { 
+                    include: [{ 
                         relation: "Bidang", 
                         scope: {
                             order: "No ASC",
@@ -132,7 +132,13 @@
                             }
                         }
                     }
+                },
+                {
+                    relation:"WaktuPelaksanaan",
+                    scope: {
+                        order: "No ASC"
                     }
+                }]
                 }
             }, function (result) {
                 $scope.activeRPJM = {
@@ -144,8 +150,8 @@
                 }
 
                 $scope.bidangList = result.Bidang;
+                $scope.waktuPelaksanaanList = result.WaktuPelaksanaan;
                 populateRPJMDes($scope.bidangList);
-                getWaktuPelaksanaanList();
             })
         }
 

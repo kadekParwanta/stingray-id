@@ -36,6 +36,11 @@
       "type": "hasMany",
       "model": "Bidang",
       "foreignKey": "RPJMId"
+    },
+    "WaktuPelaksanaan": {
+      "type": "hasMany",
+      "model": "WaktuPelaksanaan",
+      "foreignKey": "RPJMId"
     }
   },
   "acls": [],

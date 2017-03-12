@@ -7,6 +7,9 @@
     "validateUpsert": true
   },
   "properties": {
+    "No": {
+      "type": "number"
+    },
     "Nama": {
       "type": "string",
       "required": true

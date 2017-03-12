@@ -24,18 +24,23 @@ module.exports = function (Rpjm) {
                 })
 
                 Promise.all(promises).then(function (rpjmList) {
-                    createBidang(ctx, function (err, bidangList) {
+                    createRelationsData(ctx, function (err, data) {
                         next();
                     })
                 })
             });
         } else {
-            createBidang(ctx, function (err, bidangList) {
+            createRelationsData(ctx, function (err, data) {
                 next();
             })
         }
     });
 
+    function createRelationsData(ctx, cb){
+        createBidang(ctx, function(err, data){
+            createWaktuPelaksanaan(ctx, cb);
+        })
+    }
     function createBidang(ctx, cb) {
         var Bidang = app.models.Bidang;
         if (ctx.isNewInstance) {
@@ -45,6 +50,25 @@ module.exports = function (Rpjm) {
                 { "No": 3, "Nama": "Bidang3", "RPJMId": ctx.instance.id },
                 { "No": 4, "Nama": "Bidang4", "RPJMId": ctx.instance.id }
             ], cb)
+        } else {
+            cb(null, false);
+        }
+    }
+
+    function createWaktuPelaksanaan(ctx, cb) {
+        var WaktuPelaksanaan = app.models.WaktuPelaksanaan;
+        var TahunMulai = parseInt(ctx.instance.TahunMulai);
+        var TahunSelesai = parseInt(ctx.instance.TahunSelesai);
+
+        var delta = TahunSelesai - TahunMulai;
+        var data = [];
+        for (var i=0; i<= delta; i++) {
+            var nama = TahunMulai + i;
+            data.push({ "Nama": nama, "RPJMId": ctx.instance.id });
+        }
+
+        if (ctx.isNewInstance) {
+            WaktuPelaksanaan.create(data, cb)
         } else {
             cb(null, false);
         }
