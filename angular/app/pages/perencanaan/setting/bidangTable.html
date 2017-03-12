@@ -1,0 +1,29 @@
+<div class="horizontal-scroll">
+  <table class="table" st-table="smartTableData">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="Bidang in BidangList">
+        <td>{{ Bidang.No}}</td>
+        <td>{{ Bidang.Nama }}</td>
+        <td>
+          <span>
+          <a class="btn" ui-sref="perencanaan.bidang({id:Bidang.id})">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="deleteBidang(Bidang)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="button-wrapper"><button type="button" class="btn btn-primary btn-raised" ng-click="open('app/pages/perencanaan/setting/bidangDetailModal.html', 'md')">Create</button></div>
