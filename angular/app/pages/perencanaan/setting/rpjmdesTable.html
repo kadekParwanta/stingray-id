@@ -1,0 +1,36 @@
+<div class="horizontal-scroll">
+  <table class="table" st-table="smartTableData">
+    <thead>
+            <tr>
+                <th>TahunMulai</th>
+                <th>TahunSelesai</th>
+                <th>Regulasi</th>
+                <th>Perihal</th>
+                <th>Keterangan</th>
+                <th>IsActive</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="RPJM in RPJMList track by $index">
+                <td>{{ $index + 1}}</td>
+                <td>{{ RPJM.TahunMulai }}</td>
+                <td>{{ RPJM.TahunSelesai }}</td>
+                <td>{{ RPJM.Regulasi }}</td>
+                <td>{{ RPJM.Perihal }}</td>
+                <td>{{ RPJM.Keterangan }}</td>
+                <td>{{RPJM.IsActive? '&#10004;':''}}</td>
+                <td>
+                    <span>
+          <a class="btn" ui-sref="perencanaan.rpjm({id:RPJM.id})">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="deleteRPJM(RPJM)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+                </td>
+            </tr>
+        </tbody>
+  </table>
+</div>
