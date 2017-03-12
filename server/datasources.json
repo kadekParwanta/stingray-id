@@ -4,13 +4,8 @@
     "connector": "memory"
   },
   "mongodb": {
-    "host": "ds011765.mlab.com",
-    "port": 11765,
-    "url": "mongodb://heroku_nrhw3b6g:3qd896u99au72akhtgpdr02v01@ds011765.mlab.com:11765/heroku_nrhw3b6g",
-    "database": "heroku_nrhw3b6g",
-    "password": "3qd896u99au72akhtgpdr02v01",
+    "url": "${MONGODB_URI}",
     "name": "mongodb",
-    "user": "heroku_nrhw3b6g",
     "connector": "mongodb"
   },
   "storage": {
