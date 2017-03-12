@@ -268,13 +268,7 @@
                 if (newRPJMDes.BidangId) {
                     RPJMDes.create(newRPJMDes, function (rpjmdes) {
                         assignWaktuPelaksanaan(rpjmdes, data.waktuPelaksanaan).then(function () {
-                            $scope.treeData.push({
-                                id: rpjmdes.id,
-                                parent: newRPJMDes.BidangId,
-                                text: rpjmdes.SubBidang,
-                                state: { opened: true }
-                            });
-                            $scope.basicConfig.version++;
+                            $scope.refresh();
                         })
                     })
                 }
