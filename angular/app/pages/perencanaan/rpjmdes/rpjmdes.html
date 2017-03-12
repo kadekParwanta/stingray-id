@@ -1,5 +1,5 @@
 <div class="widgets">
-  <div class="row" ng-controller="RpjmdesPageCtrl">
+  <div class="row">
     <div class="col-md-12">
       <div ba-panel ba-panel-title="Ringkasan RPJMDesa {{activeRPJM.TahunMulai}} - {{activeRPJM.TahunSelesai}}" ba-panel-class="with-scroll">
         <div class="row">
@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="col-sm-5">
-            <div id="basicTree" js-tree="basicConfig" ng-model="treeData" tree="basicTree" tree-events="ready:readyCB"></div>
+            <div id="basicTree" js-tree="basicConfig" ng-model="treeData" should-apply="applyModelChanges()" tree="basicTree" tree-events="ready:readyCB"></div>
           </div>
           <div class="col-sm-5">
             <div ba-panel ba-panel-title="{{bidangTitle}}" ba-panel-class="with-scroll">

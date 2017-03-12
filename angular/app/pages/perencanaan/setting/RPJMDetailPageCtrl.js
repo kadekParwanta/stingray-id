@@ -17,7 +17,7 @@
 
     function init() {
       if (rpjmId !== "0") {
-        RPJM.findById({ id: rpjmId, filter : { include: "Bidang" }}, function (rpjm) {
+        RPJM.findById({ id: rpjmId, filter : { include: {relation : "Bidang", scope : {order:"No ASC"}}}}, function (rpjm) {
           $scope.rpjm = rpjm;
           $scope.BidangList = rpjm.Bidang;
         })

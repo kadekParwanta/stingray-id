@@ -2,6 +2,7 @@
 
 module.exports = function (Rpjm) {
     var Promise = require('bluebird');
+    var app = require('../../server/server')
 
     Rpjm.validatesUniquenessOf('TahunMulai');
 
@@ -22,12 +23,30 @@ module.exports = function (Rpjm) {
                     })
                 })
 
-                Promise.all(promises).then(function(rpjmList){
-                    next();
+                Promise.all(promises).then(function (rpjmList) {
+                    createBidang(ctx, function (err, bidangList) {
+                        next();
+                    })
                 })
             });
         } else {
-            next();
+            createBidang(ctx, function (err, bidangList) {
+                next();
+            })
         }
     });
+
+    function createBidang(ctx, cb) {
+        var Bidang = app.models.Bidang;
+        if (ctx.isNewInstance) {
+            Bidang.create([
+                { "No": 1, "Nama": "Bidang1", "RPJMId": ctx.instance.id },
+                { "No": 2, "Nama": "Bidang2", "RPJMId": ctx.instance.id },
+                { "No": 3, "Nama": "Bidang3", "RPJMId": ctx.instance.id },
+                { "No": 4, "Nama": "Bidang4", "RPJMId": ctx.instance.id }
+            ], cb)
+        } else {
+            cb(null, false);
+        }
+    }
 };

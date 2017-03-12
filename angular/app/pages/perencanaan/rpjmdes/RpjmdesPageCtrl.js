@@ -19,6 +19,7 @@
         $scope.Bidang3 = [];
         $scope.Bidang4 = [];
         $scope.treeData = [];
+        vm.treeData = [];
         $scope.Bidang1Total = 0;
         $scope.Bidang2Total = 0;
         $scope.Bidang3Total = 0;
@@ -29,16 +30,11 @@
 
         $scope.ignoreChanges = false;
         var newId = 0;
-        $scope.ignoreChanges = false;
         $scope.newNode = {};
 
         $scope.basicConfig = {
             core: {
                 multiple: false,
-                animation: true,
-                error: function (error) {
-                    $log.error('treeCtrl: error from js tree - ' + angular.toJson(error));
-                },
                 check_callback: true,
                 worker: true
             },
@@ -54,8 +50,8 @@
             'version': 1
         };
 
-        function populateRPJMDes(data) {
-            $scope.treeData.length = 0;
+        function populateRPJMDes(bidangList) {
+            vm.treeData.length = 0;
             $scope.Bidang1.length = 0;
             $scope.Bidang2.length = 0;
             $scope.Bidang3.length = 0;
@@ -64,8 +60,9 @@
             $scope.Bidang2Total = 0;
             $scope.Bidang3Total = 0;
             $scope.Bidang4Total = 0;
+
             angular.forEach($scope.bidangList, function (bidang) {
-                $scope.treeData.push({
+                vm.treeData.push({
                     "id": bidang.id,
                     "parent": "#",
                     "type": "folder",
@@ -74,6 +71,9 @@
                         "opened": true
                     }
                 })
+                $scope.treeData = vm.treeData;
+                $scope.basicConfig.version++;
+
                 var rpjmdesList = bidang.RPJMDes;
                 if (rpjmdesList.length > 0) {
                     angular.forEach(rpjmdesList, function (rpjmdes, index) {
@@ -117,22 +117,22 @@
             })
         }
 
-        function getBidangList() {
-            Bidang.find({
-                filter: {
-                    include: { 'RPJMDes': ['WaktuPelaksanaan', 'SumberBiaya', 'PolaPelaksanaan'] }
-                }
-            }, function (results) {
-                $scope.bidangList = results;
-            });
-        };
-
-
         function getActiveRPJM() {
             RPJM.findOne({
                 filter: {
                     where: { IsActive: true },
-                    include: { Bidang: { RPJMDes: ['WaktuPelaksanaan', 'SumberBiaya', 'PolaPelaksanaan'] } }
+                    include: { 
+                        relation: "Bidang", 
+                        scope: {
+                            order: "No ASC",
+                            include:{
+                                relation: "RPJMDes", 
+                                scope: {
+                                    include:  ['WaktuPelaksanaan', 'SumberBiaya', 'PolaPelaksanaan']
+                            }
+                        }
+                    }
+                    }
                 }
             }, function (result) {
                 $scope.activeRPJM = {
@@ -143,9 +143,8 @@
                     Keterangan: result.Keterangan
                 }
 
-                var bidangList = result.Bidang;
-                $scope.bidangList = bidangList;
-                populateRPJMDes(bidangList);
+                $scope.bidangList = result.Bidang;
+                populateRPJMDes($scope.bidangList);
                 getWaktuPelaksanaanList();
             })
         }
@@ -275,8 +274,8 @@
                 }
             })
         };
-
     }
+
 
     angular.module('BlurAdmin.pages.perencanaan')
         .controller('RpjmdesModalInstanceCtrl', RpjmdesModalInstanceCtrl);
