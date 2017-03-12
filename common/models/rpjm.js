@@ -64,7 +64,8 @@ module.exports = function (Rpjm) {
         var data = [];
         for (var i=0; i<= delta; i++) {
             var nama = TahunMulai + i;
-            data.push({ "Nama": nama, "RPJMId": ctx.instance.id });
+            var no = i+1;
+            data.push({"No":no, "Nama": nama, "RPJMId": ctx.instance.id });
         }
 
         if (ctx.isNewInstance) {
