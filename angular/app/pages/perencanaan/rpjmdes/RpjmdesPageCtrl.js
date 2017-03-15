@@ -122,24 +122,24 @@
             RPJM.findOne({
                 filter: {
                     where: { IsActive: true },
-                    include: [{ 
-                        relation: "Bidang", 
+                    include: [{
+                        relation: "Bidang",
                         scope: {
                             order: "No ASC",
-                            include:{
-                                relation: "RPJMDes", 
+                            include: {
+                                relation: "RPJMDes",
                                 scope: {
-                                    include:  ['WaktuPelaksanaan', 'SumberBiaya', 'PolaPelaksanaan']
+                                    include: ['WaktuPelaksanaan', 'SumberBiaya', 'PolaPelaksanaan']
+                                }
                             }
                         }
-                    }
-                },
-                {
-                    relation:"WaktuPelaksanaan",
-                    scope: {
-                        order: "No ASC"
-                    }
-                }]
+                    },
+                    {
+                        relation: "WaktuPelaksanaan",
+                        scope: {
+                            order: "No ASC"
+                        }
+                    }]
                 }
             }, function (result) {
                 $scope.activeRPJM = {
@@ -262,7 +262,7 @@
                     waktuPelaksanaanList: function () {
                         return $scope.waktuPelaksanaanList;
                     },
-                    selectedBidang: function(){
+                    selectedBidang: function () {
                         return $scope.selectedBidang;
                     }
                 }
@@ -279,6 +279,53 @@
                 }
             })
         };
+
+        $scope.deleteRPJMDes = function (rpjmdes) {
+            RPJMDes.deleteById({ id: rpjmdes.id }, function () {
+                $scope.refresh();
+            })
+        }
+
+        $scope.editRPJMDes = function (rpjmdes) {
+            RPJMDes.prototype$updateAttributes({
+                id: rpjmdes.id,
+                SubBidang: rpjmdes.SubBidang,
+                Jenis: rpjmdes.Jenis,
+                Lokasi: rpjmdes.Lokasi,
+                PrakiraanVolume: rpjmdes.PrakiraanVolume,
+                Sasaran: rpjmdes.Sasaran
+            }, function (result) {
+                unlinkAllWaktuPelaksanaan(rpjmdes).then(function (res) {
+                    var waktuPelaksanaan = Object.keys(rpjmdes.WaktuPelaksanaan).map(function (key) { return rpjmdes.WaktuPelaksanaan[key]; });
+                    assignWaktuPelaksanaan(rpjmdes, waktuPelaksanaan).then(function () {
+                        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+                        $scope.refresh();
+                    })
+                })
+            })
+        }
+
+        function unlinkAllWaktuPelaksanaan(rpjmdes) {
+            var promises = $scope.waktuPelaksanaanList.map(function (waktuPelaksanaan) {
+                var deferred = $q.defer();
+                RPJMDes.WaktuPelaksanaan.exists({ id: rpjmdes.id, fk: waktuPelaksanaan.id },
+                    function (res) {
+                        RPJMDes.WaktuPelaksanaan.unlink({ id: rpjmdes.id, fk: waktuPelaksanaan.id },
+                            null, function (result) {
+                                deferred.resolve(result);
+                            }, function (err) {
+                                deferred.reject();
+                            });
+                    }, function (err) {
+                        console.log(err);
+                        deferred.resolve();
+                    });
+
+                return deferred.promise;
+            });
+
+            return $q.all(promises);
+        }
     }
 
 

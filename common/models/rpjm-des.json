@@ -65,6 +65,11 @@
       "foreignKey": "RPJMDesId"
     }
   },
+  "mixins": {
+    "CascadeDelete": {
+       "relations": ["RKP"]
+    }
+  },
   "acls": [],
   "methods": {}
 }

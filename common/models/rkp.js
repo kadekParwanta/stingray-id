@@ -8,12 +8,15 @@ module.exports = function (Rkp) {
         var Counter = app.models.Counter;
         var BidangId = ctx.args.data.BidangId;
         var RPJMDesId = ctx.args.data.RPJMDesId;
+        var WaktuPelaksanaanId = ctx.args.data.WaktuPelaksanaanId;
         var parentId;
         if (BidangId) {
             parentId = BidangId;
         } else if (RPJMDesId) {
             parentId = RPJMDesId;
         }
+
+        parentId = parentId + "-" + WaktuPelaksanaanId;
 
         // Create counter with projectId as the collection name if not exist
         Counter.findOne({ where: { collection: parentId } }, function (err, counter) {
@@ -34,14 +37,19 @@ module.exports = function (Rkp) {
         if (ctx.isNewInstance) {
             var BidangId = ctx.instance.__data.BidangId;
             var RPJMDesId = ctx.instance.__data.RPJMDesId;
+            var WaktuPelaksanaanId = ctx.instance.__data.WaktuPelaksanaanId.toHexString();
+
             var parentId;
             if (BidangId) {
-                parentId = BidangId;
+                parentId = BidangId.toHexString();
             } else if (RPJMDesId) {
-                parentId = RPJMDesId;
+                parentId = RPJMDesId.toHexString();
             }
+            
+            parentId = parentId + "-" + WaktuPelaksanaanId;
+
             MongoConnector.collection('Counter').findAndModify(
-                { collection: parentId.toHexString() },
+                { collection: parentId },
                 [['_id', 'asc']],
                 { $inc: { value: 1 } },
                 { new: true },

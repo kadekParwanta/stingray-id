@@ -43,6 +43,11 @@
       "foreignKey": "RPJMId"
     }
   },
+  "mixins": {
+    "CascadeDelete": {
+       "relations": ["Bidang","WaktuPelaksanaan"]
+    }
+  },
   "acls": [],
   "methods": {}
 }
