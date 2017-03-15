@@ -8327,60 +8327,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
-            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.findById() instead.
-            "prototype$__findById__WaktuPelaksanaan": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/:fk",
-              method: "GET",
-            },
-
-            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.destroyById() instead.
-            "prototype$__destroyById__WaktuPelaksanaan": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.updateById() instead.
-            "prototype$__updateById__WaktuPelaksanaan": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/:fk",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.link() instead.
-            "prototype$__link__WaktuPelaksanaan": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/rel/:fk",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.unlink() instead.
-            "prototype$__unlink__WaktuPelaksanaan": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/rel/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.exists() instead.
-            "prototype$__exists__WaktuPelaksanaan": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/rel/:fk",
-              method: "HEAD",
-            },
-
             // INTERNAL. Use RPJMDes.SumberBiaya() instead.
             "prototype$__get__SumberBiaya": {
               url: urlBase + "/RPJMDes/:id/SumberBiaya",
@@ -8459,29 +8405,58 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "HEAD",
             },
 
-            // INTERNAL. Use RPJMDes.WaktuPelaksanaan() instead.
-            "prototype$__get__WaktuPelaksanaan": {
-              isArray: true,
-              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan",
+            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.findById() instead.
+            "prototype$__findById__WaktuPelaksanaan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/:fk",
               method: "GET",
             },
 
-            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.create() instead.
-            "prototype$__create__WaktuPelaksanaan": {
-              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan",
-              method: "POST",
-            },
-
-            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.destroyAll() instead.
-            "prototype$__delete__WaktuPelaksanaan": {
-              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan",
+            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.destroyById() instead.
+            "prototype$__destroyById__WaktuPelaksanaan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/:fk",
               method: "DELETE",
             },
 
-            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.count() instead.
-            "prototype$__count__WaktuPelaksanaan": {
-              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/count",
-              method: "GET",
+            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.updateById() instead.
+            "prototype$__updateById__WaktuPelaksanaan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.link() instead.
+            "prototype$__link__WaktuPelaksanaan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/rel/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.unlink() instead.
+            "prototype$__unlink__WaktuPelaksanaan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/rel/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.exists() instead.
+            "prototype$__exists__WaktuPelaksanaan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/rel/:fk",
+              method: "HEAD",
             },
 
             // INTERNAL. Use RPJMDes.PolaPelaksanaan() instead.
@@ -8506,6 +8481,31 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             // INTERNAL. Use RPJMDes.PolaPelaksanaan.count() instead.
             "prototype$__count__PolaPelaksanaan": {
               url: urlBase + "/RPJMDes/:id/PolaPelaksanaan/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJMDes.WaktuPelaksanaan() instead.
+            "prototype$__get__WaktuPelaksanaan": {
+              isArray: true,
+              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.create() instead.
+            "prototype$__create__WaktuPelaksanaan": {
+              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.destroyAll() instead.
+            "prototype$__delete__WaktuPelaksanaan": {
+              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJMDes.WaktuPelaksanaan.count() instead.
+            "prototype$__count__WaktuPelaksanaan": {
+              url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/count",
               method: "GET",
             },
 
@@ -8990,6 +8990,92 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.findById() instead.
+            "::findById::WaktuPelaksanaan::RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.destroyById() instead.
+            "::destroyById::WaktuPelaksanaan::RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.updateById() instead.
+            "::updateById::WaktuPelaksanaan::RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.link() instead.
+            "::link::WaktuPelaksanaan::RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/rel/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.unlink() instead.
+            "::unlink::WaktuPelaksanaan::RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/rel/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.exists() instead.
+            "::exists::WaktuPelaksanaan::RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/rel/:fk",
+              method: "HEAD",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes() instead.
+            "::get::WaktuPelaksanaan::RPJMDes": {
+              isArray: true,
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes",
+              method: "GET",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.create() instead.
+            "::create::WaktuPelaksanaan::RPJMDes": {
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.createMany() instead.
+            "::createMany::WaktuPelaksanaan::RPJMDes": {
+              isArray: true,
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.destroyAll() instead.
+            "::delete::WaktuPelaksanaan::RPJMDes": {
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.count() instead.
+            "::count::WaktuPelaksanaan::RPJMDes": {
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/count",
+              method: "GET",
+            },
+
             // INTERNAL. Use RKP.rPJMDes.findById() instead.
             "::findById::RKP::rPJMDes": {
               params: {
@@ -9073,6 +9159,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             // INTERNAL. Use RKP.rPJMDes.count() instead.
             "::count::RKP::rPJMDes": {
               url: urlBase + "/RKP/:id/rPJMDes/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Rpjmdeswaktu.rPJMDes() instead.
+            "::get::Rpjmdeswaktu::rPJMDes": {
+              url: urlBase + "/rpjmdeswaktus/:id/rPJMDes",
               method: "GET",
             },
           }
@@ -9287,416 +9379,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         R.Bidang = function() {
           var TargetResource = $injector.get("Bidang");
           var action = TargetResource["::get::RPJMDes::Bidang"];
-          return action.apply(R, arguments);
-        };
-    /**
-     * @ngdoc object
-     * @name lbServices.RPJMDes.WaktuPelaksanaan
-     * @header lbServices.RPJMDes.WaktuPelaksanaan
-     * @object
-     * @description
-     *
-     * The object `RPJMDes.WaktuPelaksanaan` groups methods
-     * manipulating `WaktuPelaksanaan` instances related to `RPJMDes`.
-     *
-     * Call {@link lbServices.RPJMDes#WaktuPelaksanaan RPJMDes.WaktuPelaksanaan()}
-     * to query all related instances.
-     */
-
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes#WaktuPelaksanaan
-             * @methodOf lbServices.RPJMDes
-             *
-             * @description
-             *
-             * Queries WaktuPelaksanaan of RPJMDes.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `filter` – `{object=}` -
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-        R.WaktuPelaksanaan = function() {
-          var TargetResource = $injector.get("WaktuPelaksanaan");
-          var action = TargetResource["::get::RPJMDes::WaktuPelaksanaan"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes.WaktuPelaksanaan#count
-             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Counts WaktuPelaksanaan of RPJMDes.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * Data properties:
-             *
-             *  - `count` – `{number=}` -
-             */
-        R.WaktuPelaksanaan.count = function() {
-          var TargetResource = $injector.get("WaktuPelaksanaan");
-          var action = TargetResource["::count::RPJMDes::WaktuPelaksanaan"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes.WaktuPelaksanaan#create
-             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Creates a new instance in WaktuPelaksanaan of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-        R.WaktuPelaksanaan.create = function() {
-          var TargetResource = $injector.get("WaktuPelaksanaan");
-          var action = TargetResource["::create::RPJMDes::WaktuPelaksanaan"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes.WaktuPelaksanaan#createMany
-             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Creates a new instance in WaktuPelaksanaan of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-        R.WaktuPelaksanaan.createMany = function() {
-          var TargetResource = $injector.get("WaktuPelaksanaan");
-          var action = TargetResource["::createMany::RPJMDes::WaktuPelaksanaan"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes.WaktuPelaksanaan#destroyAll
-             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Deletes all WaktuPelaksanaan of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.WaktuPelaksanaan.destroyAll = function() {
-          var TargetResource = $injector.get("WaktuPelaksanaan");
-          var action = TargetResource["::delete::RPJMDes::WaktuPelaksanaan"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes.WaktuPelaksanaan#destroyById
-             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Delete a related item by id for WaktuPelaksanaan.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.WaktuPelaksanaan.destroyById = function() {
-          var TargetResource = $injector.get("WaktuPelaksanaan");
-          var action = TargetResource["::destroyById::RPJMDes::WaktuPelaksanaan"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes.WaktuPelaksanaan#exists
-             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Check the existence of WaktuPelaksanaan relation to an item by id.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-        R.WaktuPelaksanaan.exists = function() {
-          var TargetResource = $injector.get("WaktuPelaksanaan");
-          var action = TargetResource["::exists::RPJMDes::WaktuPelaksanaan"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes.WaktuPelaksanaan#findById
-             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Find a related item by id for WaktuPelaksanaan.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-        R.WaktuPelaksanaan.findById = function() {
-          var TargetResource = $injector.get("WaktuPelaksanaan");
-          var action = TargetResource["::findById::RPJMDes::WaktuPelaksanaan"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes.WaktuPelaksanaan#link
-             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Add a related item by id for WaktuPelaksanaan.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-        R.WaktuPelaksanaan.link = function() {
-          var TargetResource = $injector.get("WaktuPelaksanaan");
-          var action = TargetResource["::link::RPJMDes::WaktuPelaksanaan"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes.WaktuPelaksanaan#unlink
-             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Remove the WaktuPelaksanaan relation to an item by id.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.WaktuPelaksanaan.unlink = function() {
-          var TargetResource = $injector.get("WaktuPelaksanaan");
-          var action = TargetResource["::unlink::RPJMDes::WaktuPelaksanaan"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RPJMDes.WaktuPelaksanaan#updateById
-             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
-             *
-             * @description
-             *
-             * Update a related item by id for WaktuPelaksanaan.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `WaktuPelaksanaan` object.)
-             * </em>
-             */
-        R.WaktuPelaksanaan.updateById = function() {
-          var TargetResource = $injector.get("WaktuPelaksanaan");
-          var action = TargetResource["::updateById::RPJMDes::WaktuPelaksanaan"];
           return action.apply(R, arguments);
         };
     /**
@@ -10302,6 +9984,416 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         R.PolaPelaksanaan.updateById = function() {
           var TargetResource = $injector.get("PolaPelaksanaan");
           var action = TargetResource["::updateById::RPJMDes::PolaPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.RPJMDes.WaktuPelaksanaan
+     * @header lbServices.RPJMDes.WaktuPelaksanaan
+     * @object
+     * @description
+     *
+     * The object `RPJMDes.WaktuPelaksanaan` groups methods
+     * manipulating `WaktuPelaksanaan` instances related to `RPJMDes`.
+     *
+     * Call {@link lbServices.RPJMDes#WaktuPelaksanaan RPJMDes.WaktuPelaksanaan()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes#WaktuPelaksanaan
+             * @methodOf lbServices.RPJMDes
+             *
+             * @description
+             *
+             * Queries WaktuPelaksanaan of RPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.WaktuPelaksanaan = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::get::RPJMDes::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.WaktuPelaksanaan#count
+             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Counts WaktuPelaksanaan of RPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.WaktuPelaksanaan.count = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::count::RPJMDes::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.WaktuPelaksanaan#create
+             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Creates a new instance in WaktuPelaksanaan of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.WaktuPelaksanaan.create = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::create::RPJMDes::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.WaktuPelaksanaan#createMany
+             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Creates a new instance in WaktuPelaksanaan of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.WaktuPelaksanaan.createMany = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::createMany::RPJMDes::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.WaktuPelaksanaan#destroyAll
+             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Deletes all WaktuPelaksanaan of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.WaktuPelaksanaan.destroyAll = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::delete::RPJMDes::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.WaktuPelaksanaan#destroyById
+             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Delete a related item by id for WaktuPelaksanaan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.WaktuPelaksanaan.destroyById = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::destroyById::RPJMDes::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.WaktuPelaksanaan#exists
+             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Check the existence of WaktuPelaksanaan relation to an item by id.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.WaktuPelaksanaan.exists = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::exists::RPJMDes::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.WaktuPelaksanaan#findById
+             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Find a related item by id for WaktuPelaksanaan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.WaktuPelaksanaan.findById = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::findById::RPJMDes::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.WaktuPelaksanaan#link
+             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Add a related item by id for WaktuPelaksanaan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.WaktuPelaksanaan.link = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::link::RPJMDes::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.WaktuPelaksanaan#unlink
+             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Remove the WaktuPelaksanaan relation to an item by id.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.WaktuPelaksanaan.unlink = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::unlink::RPJMDes::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.WaktuPelaksanaan#updateById
+             * @methodOf lbServices.RPJMDes.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Update a related item by id for WaktuPelaksanaan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.WaktuPelaksanaan.updateById = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::updateById::RPJMDes::WaktuPelaksanaan"];
           return action.apply(R, arguments);
         };
 
@@ -14471,6 +14563,85 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           { 'id': '@id' },
           {
 
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.findById() instead.
+            "prototype$__findById__RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.destroyById() instead.
+            "prototype$__destroyById__RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.updateById() instead.
+            "prototype$__updateById__RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.link() instead.
+            "prototype$__link__RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/rel/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.unlink() instead.
+            "prototype$__unlink__RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/rel/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.exists() instead.
+            "prototype$__exists__RPJMDes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/rel/:fk",
+              method: "HEAD",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes() instead.
+            "prototype$__get__RPJMDes": {
+              isArray: true,
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes",
+              method: "GET",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.create() instead.
+            "prototype$__create__RPJMDes": {
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.destroyAll() instead.
+            "prototype$__delete__RPJMDes": {
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RPJMDes.count() instead.
+            "prototype$__count__RPJMDes": {
+              url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/count",
+              method: "GET",
+            },
+
             /**
              * @ngdoc method
              * @name lbServices.WaktuPelaksanaan#create
@@ -14978,6 +15149,71 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               url: urlBase + "/RPJMDes/:id/WaktuPelaksanaan/count",
               method: "GET",
             },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.findById() instead.
+            "::findById::RPJM::WaktuPelaksanaan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.destroyById() instead.
+            "::destroyById::RPJM::WaktuPelaksanaan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.updateById() instead.
+            "::updateById::RPJM::WaktuPelaksanaan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan() instead.
+            "::get::RPJM::WaktuPelaksanaan": {
+              isArray: true,
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.create() instead.
+            "::create::RPJM::WaktuPelaksanaan": {
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.createMany() instead.
+            "::createMany::RPJM::WaktuPelaksanaan": {
+              isArray: true,
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.destroyAll() instead.
+            "::delete::RPJM::WaktuPelaksanaan": {
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.count() instead.
+            "::count::RPJM::WaktuPelaksanaan": {
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Rpjmdeswaktu.waktuPelaksanaan() instead.
+            "::get::Rpjmdeswaktu::waktuPelaksanaan": {
+              url: urlBase + "/rpjmdeswaktus/:id/waktuPelaksanaan",
+              method: "GET",
+            },
           }
         );
 
@@ -15120,6 +15356,416 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         */
         R.modelName = "WaktuPelaksanaan";
 
+    /**
+     * @ngdoc object
+     * @name lbServices.WaktuPelaksanaan.RPJMDes
+     * @header lbServices.WaktuPelaksanaan.RPJMDes
+     * @object
+     * @description
+     *
+     * The object `WaktuPelaksanaan.RPJMDes` groups methods
+     * manipulating `RPJMDes` instances related to `WaktuPelaksanaan`.
+     *
+     * Call {@link lbServices.WaktuPelaksanaan#RPJMDes WaktuPelaksanaan.RPJMDes()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan#RPJMDes
+             * @methodOf lbServices.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Queries RPJMDes of WaktuPelaksanaan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.RPJMDes = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::get::WaktuPelaksanaan::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RPJMDes#count
+             * @methodOf lbServices.WaktuPelaksanaan.RPJMDes
+             *
+             * @description
+             *
+             * Counts RPJMDes of WaktuPelaksanaan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.RPJMDes.count = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::count::WaktuPelaksanaan::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RPJMDes#create
+             * @methodOf lbServices.WaktuPelaksanaan.RPJMDes
+             *
+             * @description
+             *
+             * Creates a new instance in RPJMDes of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.RPJMDes.create = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::create::WaktuPelaksanaan::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RPJMDes#createMany
+             * @methodOf lbServices.WaktuPelaksanaan.RPJMDes
+             *
+             * @description
+             *
+             * Creates a new instance in RPJMDes of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.RPJMDes.createMany = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::createMany::WaktuPelaksanaan::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RPJMDes#destroyAll
+             * @methodOf lbServices.WaktuPelaksanaan.RPJMDes
+             *
+             * @description
+             *
+             * Deletes all RPJMDes of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RPJMDes.destroyAll = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::delete::WaktuPelaksanaan::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RPJMDes#destroyById
+             * @methodOf lbServices.WaktuPelaksanaan.RPJMDes
+             *
+             * @description
+             *
+             * Delete a related item by id for RPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RPJMDes
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RPJMDes.destroyById = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::destroyById::WaktuPelaksanaan::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RPJMDes#exists
+             * @methodOf lbServices.WaktuPelaksanaan.RPJMDes
+             *
+             * @description
+             *
+             * Check the existence of RPJMDes relation to an item by id.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RPJMDes
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.RPJMDes.exists = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::exists::WaktuPelaksanaan::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RPJMDes#findById
+             * @methodOf lbServices.WaktuPelaksanaan.RPJMDes
+             *
+             * @description
+             *
+             * Find a related item by id for RPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RPJMDes
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.RPJMDes.findById = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::findById::WaktuPelaksanaan::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RPJMDes#link
+             * @methodOf lbServices.WaktuPelaksanaan.RPJMDes
+             *
+             * @description
+             *
+             * Add a related item by id for RPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RPJMDes
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.RPJMDes.link = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::link::WaktuPelaksanaan::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RPJMDes#unlink
+             * @methodOf lbServices.WaktuPelaksanaan.RPJMDes
+             *
+             * @description
+             *
+             * Remove the RPJMDes relation to an item by id.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RPJMDes
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RPJMDes.unlink = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::unlink::WaktuPelaksanaan::RPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RPJMDes#updateById
+             * @methodOf lbServices.WaktuPelaksanaan.RPJMDes
+             *
+             * @description
+             *
+             * Update a related item by id for RPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RPJMDes
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.RPJMDes.updateById = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::updateById::WaktuPelaksanaan::RPJMDes"];
+          return action.apply(R, arguments);
+        };
 
 
         return R;
@@ -17570,6 +18216,33 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "PUT",
             },
 
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.findById() instead.
+            "prototype$__findById__WaktuPelaksanaan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.destroyById() instead.
+            "prototype$__destroyById__WaktuPelaksanaan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.updateById() instead.
+            "prototype$__updateById__WaktuPelaksanaan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan/:fk",
+              method: "PUT",
+            },
+
             // INTERNAL. Use RPJM.Bidang() instead.
             "prototype$__get__Bidang": {
               isArray: true,
@@ -17592,6 +18265,31 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             // INTERNAL. Use RPJM.Bidang.count() instead.
             "prototype$__count__Bidang": {
               url: urlBase + "/RPJM/:id/Bidang/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan() instead.
+            "prototype$__get__WaktuPelaksanaan": {
+              isArray: true,
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.create() instead.
+            "prototype$__create__WaktuPelaksanaan": {
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.destroyAll() instead.
+            "prototype$__delete__WaktuPelaksanaan": {
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJM.WaktuPelaksanaan.count() instead.
+            "prototype$__count__WaktuPelaksanaan": {
+              url: urlBase + "/RPJM/:id/WaktuPelaksanaan/count",
               method: "GET",
             },
 
@@ -18457,6 +19155,986 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         R.Bidang.updateById = function() {
           var TargetResource = $injector.get("Bidang");
           var action = TargetResource["::updateById::RPJM::Bidang"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.RPJM.WaktuPelaksanaan
+     * @header lbServices.RPJM.WaktuPelaksanaan
+     * @object
+     * @description
+     *
+     * The object `RPJM.WaktuPelaksanaan` groups methods
+     * manipulating `WaktuPelaksanaan` instances related to `RPJM`.
+     *
+     * Call {@link lbServices.RPJM#WaktuPelaksanaan RPJM.WaktuPelaksanaan()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM#WaktuPelaksanaan
+             * @methodOf lbServices.RPJM
+             *
+             * @description
+             *
+             * Queries WaktuPelaksanaan of RPJM.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.WaktuPelaksanaan = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::get::RPJM::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.WaktuPelaksanaan#count
+             * @methodOf lbServices.RPJM.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Counts WaktuPelaksanaan of RPJM.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.WaktuPelaksanaan.count = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::count::RPJM::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.WaktuPelaksanaan#create
+             * @methodOf lbServices.RPJM.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Creates a new instance in WaktuPelaksanaan of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.WaktuPelaksanaan.create = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::create::RPJM::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.WaktuPelaksanaan#createMany
+             * @methodOf lbServices.RPJM.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Creates a new instance in WaktuPelaksanaan of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.WaktuPelaksanaan.createMany = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::createMany::RPJM::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.WaktuPelaksanaan#destroyAll
+             * @methodOf lbServices.RPJM.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Deletes all WaktuPelaksanaan of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.WaktuPelaksanaan.destroyAll = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::delete::RPJM::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.WaktuPelaksanaan#destroyById
+             * @methodOf lbServices.RPJM.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Delete a related item by id for WaktuPelaksanaan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.WaktuPelaksanaan.destroyById = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::destroyById::RPJM::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.WaktuPelaksanaan#findById
+             * @methodOf lbServices.RPJM.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Find a related item by id for WaktuPelaksanaan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.WaktuPelaksanaan.findById = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::findById::RPJM::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.WaktuPelaksanaan#updateById
+             * @methodOf lbServices.RPJM.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Update a related item by id for WaktuPelaksanaan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for WaktuPelaksanaan
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.WaktuPelaksanaan.updateById = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::updateById::RPJM::WaktuPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+
+
+        return R;
+      }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.Rpjmdeswaktu
+ * @header lbServices.Rpjmdeswaktu
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `Rpjmdeswaktu` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+  module.factory(
+    "Rpjmdeswaktu",
+    [
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
+        urlBase + "/rpjmdeswaktus/:id",
+          { 'id': '@id' },
+          {
+
+            // INTERNAL. Use Rpjmdeswaktu.rPJMDes() instead.
+            "prototype$__get__rPJMDes": {
+              url: urlBase + "/rpjmdeswaktus/:id/rPJMDes",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Rpjmdeswaktu.waktuPelaksanaan() instead.
+            "prototype$__get__waktuPelaksanaan": {
+              url: urlBase + "/rpjmdeswaktus/:id/waktuPelaksanaan",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#create
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Rpjmdeswaktu` object.)
+             * </em>
+             */
+            "create": {
+              url: urlBase + "/rpjmdeswaktus",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#createMany
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Rpjmdeswaktu` object.)
+             * </em>
+             */
+            "createMany": {
+              isArray: true,
+              url: urlBase + "/rpjmdeswaktus",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#upsert
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Rpjmdeswaktu` object.)
+             * </em>
+             */
+            "upsert": {
+              url: urlBase + "/rpjmdeswaktus",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#exists
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Check whether a model instance exists in the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `exists` – `{boolean=}` -
+             */
+            "exists": {
+              url: urlBase + "/rpjmdeswaktus/:id/exists",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#findById
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Find a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `filter` – `{object=}` - Filter defining fields and include
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Rpjmdeswaktu` object.)
+             * </em>
+             */
+            "findById": {
+              url: urlBase + "/rpjmdeswaktus/:id",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#find
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Find all instances of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Rpjmdeswaktu` object.)
+             * </em>
+             */
+            "find": {
+              isArray: true,
+              url: urlBase + "/rpjmdeswaktus",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#findOne
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Find first instance of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Rpjmdeswaktu` object.)
+             * </em>
+             */
+            "findOne": {
+              url: urlBase + "/rpjmdeswaktus/findOne",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#updateAll
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+            "updateAll": {
+              url: urlBase + "/rpjmdeswaktus/update",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#deleteById
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Rpjmdeswaktu` object.)
+             * </em>
+             */
+            "deleteById": {
+              url: urlBase + "/rpjmdeswaktus/:id",
+              method: "DELETE",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#count
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Count instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+            "count": {
+              url: urlBase + "/rpjmdeswaktus/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#prototype$updateAttributes
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Update attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Rpjmdeswaktu` object.)
+             * </em>
+             */
+            "prototype$updateAttributes": {
+              url: urlBase + "/rpjmdeswaktus/:id",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#createChangeStream
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Create a change stream.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `changes` – `{ReadableStream=}` -
+             */
+            "createChangeStream": {
+              url: urlBase + "/rpjmdeswaktus/change-stream",
+              method: "POST",
+            },
+          }
+        );
+
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#updateOrCreate
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Rpjmdeswaktu` object.)
+             * </em>
+             */
+        R["updateOrCreate"] = R["upsert"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#update
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+        R["update"] = R["updateAll"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#destroyById
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Rpjmdeswaktu` object.)
+             * </em>
+             */
+        R["destroyById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#removeById
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Rpjmdeswaktu` object.)
+             * </em>
+             */
+        R["removeById"] = R["deleteById"];
+
+
+        /**
+        * @ngdoc property
+        * @name lbServices.Rpjmdeswaktu#modelName
+        * @propertyOf lbServices.Rpjmdeswaktu
+        * @description
+        * The name of the model represented by this $resource,
+        * i.e. `Rpjmdeswaktu`.
+        */
+        R.modelName = "Rpjmdeswaktu";
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#rPJMDes
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Fetches belongsTo relation rPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RPJMDes` object.)
+             * </em>
+             */
+        R.rPJMDes = function() {
+          var TargetResource = $injector.get("RPJMDes");
+          var action = TargetResource["::get::Rpjmdeswaktu::rPJMDes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Rpjmdeswaktu#waktuPelaksanaan
+             * @methodOf lbServices.Rpjmdeswaktu
+             *
+             * @description
+             *
+             * Fetches belongsTo relation waktuPelaksanaan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `WaktuPelaksanaan` object.)
+             * </em>
+             */
+        R.waktuPelaksanaan = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::get::Rpjmdeswaktu::waktuPelaksanaan"];
           return action.apply(R, arguments);
         };
 

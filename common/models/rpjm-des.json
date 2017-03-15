@@ -39,7 +39,7 @@
     "WaktuPelaksanaan": {
       "type": "hasAndBelongsToMany",
       "model": "WaktuPelaksanaan",
-      "foreignKey": ""
+      "through": "rpjmdeswaktu"
     },
     "SumberBiaya": {
       "type": "hasOne",

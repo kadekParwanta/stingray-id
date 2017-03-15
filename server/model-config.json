@@ -107,5 +107,9 @@
   "RPJM": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "rpjmdeswaktu": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }
