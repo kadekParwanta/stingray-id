@@ -265,10 +265,12 @@
       } else if (node.type === 'folder'){
         $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: selectedId })[0];
         $scope.selectedRPJMDes.SubBidang = "-";
+        $scope.selectedNode = {};
         $scope.$apply();
       } else {
         $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: parent })[0];
         $scope.selectedRPJMDes = $filter('filter')($scope.RPJMDesList[$scope.currentTabIndex], { id: selectedId })[0];
+        $scope.selectedNode = {};
         $scope.$apply();
       }
     }

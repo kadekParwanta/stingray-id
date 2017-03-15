@@ -238,6 +238,7 @@
                 $scope.selectedNode = $filter('filter')(bidang.RPJMDes, { id: selectedId })[0];
                 $scope.$apply();
             } else {
+                $scope.selectedNode = {};
                 $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: selectedId })[0];
                 $scope.bidangTitle = "Mohon pilih item di samping";
                 $scope.$apply();
