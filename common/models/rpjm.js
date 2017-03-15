@@ -45,10 +45,10 @@ module.exports = function (Rpjm) {
         var Bidang = app.models.Bidang;
         if (ctx.isNewInstance) {
             Bidang.create([
-                { "No": 1, "Nama": "Bidang1", "RPJMId": ctx.instance.id },
-                { "No": 2, "Nama": "Bidang2", "RPJMId": ctx.instance.id },
-                { "No": 3, "Nama": "Bidang3", "RPJMId": ctx.instance.id },
-                { "No": 4, "Nama": "Bidang4", "RPJMId": ctx.instance.id }
+                { "No": 1, "Nama": "Penyelenggaraan Pemerintahan Desa", "RPJMId": ctx.instance.id },
+                { "No": 2, "Nama": "Pelaksanaan Pembangunan Desa", "RPJMId": ctx.instance.id },
+                { "No": 3, "Nama": "Pembinaan Kemasyarakatan Desa", "RPJMId": ctx.instance.id },
+                { "No": 4, "Nama": "Pemberdayaan Masyarakat Desa", "RPJMId": ctx.instance.id }
             ], cb)
         } else {
             cb(null, false);
