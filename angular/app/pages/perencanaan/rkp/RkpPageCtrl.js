@@ -166,6 +166,8 @@
           $scope.treesData[i] = treesData[i];
           $scope.basicConfigs[i].version++;
         }
+
+        $scope.waktuPelaksanaanList[$scope.currentTabIndex].active = true;
       })
     }
 
@@ -210,8 +212,10 @@
 
     getActiveRPJM();
 
+    
     $scope.refresh = function () {
       var ind = getActiveTab().No -1;
+      $scope.currentTabIndex = ind;
       $scope.ignoreChanges = true;
       newId = 0;
       getActiveRPJM();
