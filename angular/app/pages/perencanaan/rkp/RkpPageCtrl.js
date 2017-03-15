@@ -89,7 +89,7 @@
           angular.forEach(result, function (rpjmdes, index, arr) {
             var bidang = rpjmdes.Bidang;
             treeData.push({
-              "id": rpjmdes.id + "-rpjmdes",
+              "id": rpjmdes.id,
               "parent": bidang.id,
               "type": "default",
               "text": bidang.No + "." + (index + 1) + " " + rpjmdes.SubBidang,
@@ -142,7 +142,7 @@
               parent = bidang;
             } else if (RPJMDes) {
               parent = RPJMDes;
-              parent.id = RPJMDes.id + "-rpjmdes";
+              parent.id = RPJMDes.id;
               parent.No = RPJMDes.Bidang.No + "." + RPJMDes.No;
             }
             treeData.push({
@@ -237,15 +237,17 @@
     };
 
     $scope.readyCB = function () {
-      var ind = getActiveTab().No -1;
-      var elementName = '#basicTree'+ind;
-      var element = angular.element(elementName);
-      element.on("select_node.jstree", onSelected)
-      $scope.basicTrees[ind] = element.jstree(true);
-      $scope.selectedNode = $scope.basicTrees[ind].get_selected()[0];
-      $timeout(function () {
-        $scope.ignoreChanges = false;
-      });
+      $scope.waktuPelaksanaanList.forEach(function (item, ind) {
+        var elementName = '#basicTree' + ind;
+        var element = angular.element(elementName);
+        element.on("select_node.jstree", onSelected);
+        $scope.basicTrees[ind] = element.jstree(true);
+        $scope.selectedNode = $scope.basicTrees[ind].get_selected()[0];
+        $timeout(function () {
+          $scope.ignoreChanges = false;
+        });
+      })
+
     };
 
     function onSelected(e, data) {
@@ -253,18 +255,14 @@
       var parent = node.parent;
       var selectedId = node.id;
       $scope.currentTabIndex = getActiveTab().No -1;
-      if (parent !== "#" && parent.includes("-rpjmdes")) {
-        $scope.bidangTitle = bidang.Nama;
+      if (node.type === 'pricetag') {
         $scope.selectedNode = $filter('filter')($scope.RKPList[$scope.currentTabIndex], { id: selectedId })[0];
         $scope.$apply();
-      } else if (parent === "#"){
-        $scope.bidangTitle = "Mohon pilih item di samping";
+      } else if (node.type === 'folder'){
         $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: selectedId })[0];
         $scope.selectedRPJMDes.SubBidang = "-";
         $scope.$apply();
       } else {
-        $scope.bidangTitle = "Mohon pilih item di samping";
-        selectedId = selectedId.replace("-rpjmdes", "");
         $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: parent })[0];
         $scope.selectedRPJMDes = $filter('filter')($scope.RPJMDesList[$scope.currentTabIndex], { id: selectedId })[0];
         $scope.$apply();
