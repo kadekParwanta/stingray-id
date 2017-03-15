@@ -21,7 +21,7 @@
           abstract: true,
           title: 'Perencanaan',
           sidebarMeta: {
-            icon: 'ion-ios-location-outline',
+            icon: 'ion-android-checkbox-outline',
             order: 500,
           },
         })

@@ -9,7 +9,8 @@
     'ui.router',
 
     'BlurAdmin.pages.dashboard',
-    'BlurAdmin.pages.perencanaan'
+    'BlurAdmin.pages.perencanaan',
+    'BlurAdmin.pages.penganggaran'
   ])
       .config(routeConfig);
 
