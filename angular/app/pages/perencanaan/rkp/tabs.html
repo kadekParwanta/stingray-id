@@ -1,5 +1,5 @@
 <uib-tabset>
-  <uib-tab index="$index + 1" ng-repeat="waktuPelaksanaan in waktuPelaksanaanList">
+  <uib-tab index="$index + 1" ng-repeat="waktuPelaksanaan in waktuPelaksanaanList" active="waktuPelaksanaan.active">
     <uib-tab-heading>
       {{waktuPelaksanaan.Nama}}
     </uib-tab-heading>
@@ -7,7 +7,7 @@
       <div class="col-sm-3">
             <div class="control-side text-center">
               <div>
-                <button class="btn btn-primary" ng-click="open('app/pages/perencanaan/rpjmdes/newRPJMDesModal.html', 'md')">Add</button>
+                <button class="btn btn-primary" ng-click="open('app/pages/perencanaan/rkp/modal.html', 'md')">Add</button>
               </div>
               <div>
                 <button class="btn btn-primary" ng-click="collapse()">Collapse All</button>
@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="col-sm-9">
-            <div id="basicTree" js-tree="basicConfigs[$index]" ng-model="treesData[$index]" should-apply="applyModelChanges()" tree="basicTree" tree-events="ready:readyCB"></div>
+            <div id="{{'basicTree'+$index}}" js-tree="basicConfigs[$index]" ng-model="treesData[$index]" should-apply="applyModelChanges()" tree="basicTrees[$index]" tree-events="ready:readyCB"></div>
           </div>
     </div>
   </uib-tab>

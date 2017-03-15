@@ -9,13 +9,13 @@
     .controller('RkpPageCtrl', RkpPageCtrl);
 
   /** @ngInject */
-  function RkpPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan) {
+  function RkpPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP) {
     var vm = this;
     vm.treeData = [];
     vm.treesData = [];
 
     $scope.basicTree;
-    $scope.basicTrees;
+    $scope.basicTrees = [];
     $scope.selectedNode;
     $scope.bidangTitle = "Mohon pilih item di samping";
 
@@ -25,8 +25,13 @@
     $scope.activeRPJM = {};
     $scope.waktuPelaksanaanList = [];
     $scope.bidangList = [];
+    $scope.RKPList = [];
+    $scope.RPJMDesList = [];
     $scope.treesData = [];
     $scope.basicConfigs = [];
+    $scope.currentTabIndex = 0;
+    $scope.selectedBidang = {};
+    $scope.selectedRPJMDes = {};
 
     $scope.basicConfig = {
       core: {
@@ -50,6 +55,7 @@
     };
 
     function populateRPJMDes(bidangList) {
+      vm.treeData.length = 0;
       angular.forEach(bidangList, function (bidang) {
         vm.treeData.push({
           "id": bidang.id,
@@ -66,7 +72,7 @@
     }
 
     function getRPJMDesByWaktu(waktuPelaksanaanList) {
-      var promises = waktuPelaksanaanList.map(function (waktupelaksanaan) {
+      var promises = waktuPelaksanaanList.map(function (waktupelaksanaan, i) {
         var deferred = $q.defer();
 
         WaktuPelaksanaan.RPJMDes({
@@ -77,15 +83,16 @@
             ]
           }
         }, function (result) {
+          $scope.RPJMDesList[i] = result;
           var treeData = angular.copy(vm.treeData);
 
           angular.forEach(result, function (rpjmdes, index, arr) {
             var bidang = rpjmdes.Bidang;
             treeData.push({
-              "id": rpjmdes.id,
+              "id": rpjmdes.id + "-rpjmdes",
               "parent": bidang.id,
               "type": "default",
-              "text": bidang.No + "." + (index +1) + " " + rpjmdes.SubBidang,
+              "text": bidang.No + "." + (index + 1) + " " + rpjmdes.SubBidang,
               "state": {
                 "opened": true
               }
@@ -116,12 +123,15 @@
           filter: {
             include: [
               { relation: "Bidang" },
-              { relation: "RPJMDes", scope:{
-                include : {relation: "Bidang"}
-              } }
+              {
+                relation: "RPJMDes", scope: {
+                  include: { relation: "Bidang" }
+                }
+              }
             ]
           }
         }, function (result) {
+          $scope.RKPList[i] = result;
           var treeData = angular.copy($scope.treesData[i]);
 
           angular.forEach(result, function (item, index, arr) {
@@ -130,8 +140,9 @@
             var parent = {};
             if (bidang) {
               parent = bidang;
-            } else if (RPJMDes){
+            } else if (RPJMDes) {
               parent = RPJMDes;
+              parent.id = RPJMDes.id + "-rpjmdes";
               parent.No = RPJMDes.Bidang.No + "." + RPJMDes.No;
             }
             treeData.push({
@@ -191,51 +202,47 @@
       })
     }
 
-    getActiveRPJM();
-
-
-    $scope.addNewNode = function () {
-      $scope.ignoreChanges = true;
-      var selected = this.basicTree.jstree(true).get_selected()[0];
-      if (selected)
-        $scope.treeData.push({
-          id: (newId++).toString(),
-          parent: selected,
-          text: "New node " + newId,
-          state: { opened: true }
-        });
-      $scope.basicConfig.version++;
+    function getActiveTab() {
+      return $scope.waktuPelaksanaanList.filter(function (waktu) {
+        return waktu.active;
+      })[0];
     };
 
+    getActiveRPJM();
 
     $scope.refresh = function () {
+      var ind = getActiveTab().No -1;
       $scope.ignoreChanges = true;
       newId = 0;
       getActiveRPJM();
-      $scope.basicConfig.version++;
+      $scope.basicConfigs[ind].version++;
     };
 
     $scope.expand = function () {
+      var ind = getActiveTab().No -1;
       $scope.ignoreChanges = true;
-      $scope.treeData.forEach(function (n) {
+      $scope.treesData[ind].forEach(function (n) {
         n.state.opened = true;
       });
-      $scope.basicConfig.version++;
+      $scope.basicConfigs[ind].version++;
     };
 
     $scope.collapse = function () {
+      var ind = getActiveTab().No -1;
       $scope.ignoreChanges = true;
-      $scope.treeData.forEach(function (n) {
+      $scope.treesData[ind].forEach(function (n) {
         n.state.opened = false;
       });
-      $scope.basicConfig.version++;
+      $scope.basicConfigs[ind].version++;
     };
 
     $scope.readyCB = function () {
-      var element = angular.element('#basicTree');
+      var ind = getActiveTab().No -1;
+      var elementName = '#basicTree'+ind;
+      var element = angular.element(elementName);
       element.on("select_node.jstree", onSelected)
-      $scope.basicTree = element.jstree(true);
-      $scope.selectedNode = $scope.basicTree.get_selected()[0];
+      $scope.basicTrees[ind] = element.jstree(true);
+      $scope.selectedNode = $scope.basicTrees[ind].get_selected()[0];
       $timeout(function () {
         $scope.ignoreChanges = false;
       });
@@ -245,13 +252,21 @@
       var node = data.node;
       var parent = node.parent;
       var selectedId = node.id;
-      if (parent !== "#") {
-        var bidang = $filter('filter')($scope.bidangList, { id: parent })[0];
+      $scope.currentTabIndex = getActiveTab().No -1;
+      if (parent !== "#" && parent.includes("-rpjmdes")) {
         $scope.bidangTitle = bidang.Nama;
-        $scope.selectedNode = $filter('filter')(bidang.RPJMDes, { id: selectedId })[0];
+        $scope.selectedNode = $filter('filter')($scope.RKPList[$scope.currentTabIndex], { id: selectedId })[0];
+        $scope.$apply();
+      } else if (parent === "#"){
+        $scope.bidangTitle = "Mohon pilih item di samping";
+        $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: selectedId })[0];
+        $scope.selectedRPJMDes.SubBidang = "-";
         $scope.$apply();
       } else {
         $scope.bidangTitle = "Mohon pilih item di samping";
+        selectedId = selectedId.replace("-rpjmdes", "");
+        $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: parent })[0];
+        $scope.selectedRPJMDes = $filter('filter')($scope.RPJMDesList[$scope.currentTabIndex], { id: selectedId })[0];
         $scope.$apply();
       }
     }
@@ -260,6 +275,73 @@
       return !$scope.ignoreChanges;
     };
 
+    $scope.open = function (page, size) {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: page,
+        size: size,
+        controller: RkpModalInstanceCtrl,
+        controllerAs: 'vm',
+        resolve: {
+          bidang: function () {
+            return $scope.selectedBidang;
+          },
+          rpjmdes: function () {
+            return $scope.selectedRPJMDes;
+          }
+
+        }
+      });
+
+      modalInstance.result.then(function (data) {
+        var rpjmdes = data.rpjmdes;
+        var bidang = data.bidang;
+        var newRKP = data.rkp;
+        var currentWaktuPelaksanaan = getActiveTab();
+        if (rpjmdes.SubBidang === "-") {
+          RKP.create({
+            BidangId: bidang.id,
+            WaktuPelaksanaanId : currentWaktuPelaksanaan.id,
+            Nama: newRKP.Nama
+          }, function(res){
+            $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+            $scope.refresh();
+          })
+        } else {
+          RKP.create({
+            RPJMDesId: rpjmdes.id,
+            WaktuPelaksanaanId : currentWaktuPelaksanaan.id,
+            Nama: newRKP.Nama
+          }, function(res){
+            $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+            $scope.refresh();
+          })
+        }
+      })
+    };
+
+  }
+
+  angular.module('BlurAdmin.pages.perencanaan')
+    .controller('RkpModalInstanceCtrl', RkpModalInstanceCtrl);
+
+  function RkpModalInstanceCtrl($uibModalInstance, bidang, rpjmdes) {
+    var vm = this;
+    vm.rpjmdes = rpjmdes;
+    vm.bidang = bidang;
+    vm.newRKP = {};
+
+    vm.ok = function () {
+      $uibModalInstance.close({
+        rkp: vm.newRKP,
+        bidang: vm.bidang,
+        rpjmdes:vm.rpjmdes
+      });
+    }
+
+    vm.cancel = function () {
+      $uibModalInstance.dismiss('cancel');
+    }
   }
 
 })();
