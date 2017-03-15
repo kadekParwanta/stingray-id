@@ -8405,6 +8405,33 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "HEAD",
             },
 
+            // INTERNAL. Use RPJMDes.RKP.findById() instead.
+            "prototype$__findById__RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJMDes/:id/RKP/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP.destroyById() instead.
+            "prototype$__destroyById__RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJMDes/:id/RKP/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP.updateById() instead.
+            "prototype$__updateById__RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJMDes/:id/RKP/:fk",
+              method: "PUT",
+            },
+
             // INTERNAL. Use RPJMDes.WaktuPelaksanaan.findById() instead.
             "prototype$__findById__WaktuPelaksanaan": {
               params: {
@@ -8481,6 +8508,31 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             // INTERNAL. Use RPJMDes.PolaPelaksanaan.count() instead.
             "prototype$__count__PolaPelaksanaan": {
               url: urlBase + "/RPJMDes/:id/PolaPelaksanaan/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP() instead.
+            "prototype$__get__RKP": {
+              isArray: true,
+              url: urlBase + "/RPJMDes/:id/RKP",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP.create() instead.
+            "prototype$__create__RKP": {
+              url: urlBase + "/RPJMDes/:id/RKP",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP.destroyAll() instead.
+            "prototype$__delete__RKP": {
+              url: urlBase + "/RPJMDes/:id/RKP",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP.count() instead.
+            "prototype$__count__RKP": {
+              url: urlBase + "/RPJMDes/:id/RKP/count",
               method: "GET",
             },
 
@@ -9076,89 +9128,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
-            // INTERNAL. Use RKP.rPJMDes.findById() instead.
-            "::findById::RKP::rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RKP/:id/rPJMDes/:fk",
-              method: "GET",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.destroyById() instead.
-            "::destroyById::RKP::rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RKP/:id/rPJMDes/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.updateById() instead.
-            "::updateById::RKP::rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RKP/:id/rPJMDes/:fk",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.link() instead.
-            "::link::RKP::rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RKP/:id/rPJMDes/rel/:fk",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.unlink() instead.
-            "::unlink::RKP::rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RKP/:id/rPJMDes/rel/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.exists() instead.
-            "::exists::RKP::rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RKP/:id/rPJMDes/rel/:fk",
-              method: "HEAD",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes() instead.
-            "::get::RKP::rPJMDes": {
-              isArray: true,
-              url: urlBase + "/RKP/:id/rPJMDes",
-              method: "GET",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.create() instead.
-            "::create::RKP::rPJMDes": {
-              url: urlBase + "/RKP/:id/rPJMDes",
-              method: "POST",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.createMany() instead.
-            "::createMany::RKP::rPJMDes": {
-              isArray: true,
-              url: urlBase + "/RKP/:id/rPJMDes",
-              method: "POST",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.destroyAll() instead.
-            "::delete::RKP::rPJMDes": {
-              url: urlBase + "/RKP/:id/rPJMDes",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.count() instead.
-            "::count::RKP::rPJMDes": {
-              url: urlBase + "/RKP/:id/rPJMDes/count",
+            // INTERNAL. Use RKP.RPJMDes() instead.
+            "::get::RKP::RPJMDes": {
+              url: urlBase + "/RKP/:id/RPJMDes",
               method: "GET",
             },
 
@@ -9984,6 +9956,307 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         R.PolaPelaksanaan.updateById = function() {
           var TargetResource = $injector.get("PolaPelaksanaan");
           var action = TargetResource["::updateById::RPJMDes::PolaPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.RPJMDes.RKP
+     * @header lbServices.RPJMDes.RKP
+     * @object
+     * @description
+     *
+     * The object `RPJMDes.RKP` groups methods
+     * manipulating `RKP` instances related to `RPJMDes`.
+     *
+     * Call {@link lbServices.RPJMDes#RKP RPJMDes.RKP()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes#RKP
+             * @methodOf lbServices.RPJMDes
+             *
+             * @description
+             *
+             * Queries RKP of RPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::get::RPJMDes::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.RKP#count
+             * @methodOf lbServices.RPJMDes.RKP
+             *
+             * @description
+             *
+             * Counts RKP of RPJMDes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.RKP.count = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::count::RPJMDes::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.RKP#create
+             * @methodOf lbServices.RPJMDes.RKP
+             *
+             * @description
+             *
+             * Creates a new instance in RKP of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP.create = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::create::RPJMDes::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.RKP#createMany
+             * @methodOf lbServices.RPJMDes.RKP
+             *
+             * @description
+             *
+             * Creates a new instance in RKP of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP.createMany = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::createMany::RPJMDes::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.RKP#destroyAll
+             * @methodOf lbServices.RPJMDes.RKP
+             *
+             * @description
+             *
+             * Deletes all RKP of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RKP.destroyAll = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::delete::RPJMDes::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.RKP#destroyById
+             * @methodOf lbServices.RPJMDes.RKP
+             *
+             * @description
+             *
+             * Delete a related item by id for RKP.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RKP
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RKP.destroyById = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::destroyById::RPJMDes::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.RKP#findById
+             * @methodOf lbServices.RPJMDes.RKP
+             *
+             * @description
+             *
+             * Find a related item by id for RKP.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RKP
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP.findById = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::findById::RPJMDes::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJMDes.RKP#updateById
+             * @methodOf lbServices.RPJMDes.RKP
+             *
+             * @description
+             *
+             * Update a related item by id for RKP.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RKP
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP.updateById = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::updateById::RPJMDes::RKP"];
           return action.apply(R, arguments);
         };
     /**
@@ -13577,6 +13850,33 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "PUT",
             },
 
+            // INTERNAL. Use Bidang.RKP.findById() instead.
+            "prototype$__findById__RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Bidang/:id/RKP/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Bidang.RKP.destroyById() instead.
+            "prototype$__destroyById__RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Bidang/:id/RKP/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Bidang.RKP.updateById() instead.
+            "prototype$__updateById__RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Bidang/:id/RKP/:fk",
+              method: "PUT",
+            },
+
             // INTERNAL. Use Bidang.RPJMDes() instead.
             "prototype$__get__RPJMDes": {
               isArray: true,
@@ -13599,6 +13899,31 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             // INTERNAL. Use Bidang.RPJMDes.count() instead.
             "prototype$__count__RPJMDes": {
               url: urlBase + "/Bidang/:id/RPJMDes/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Bidang.RKP() instead.
+            "prototype$__get__RKP": {
+              isArray: true,
+              url: urlBase + "/Bidang/:id/RKP",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Bidang.RKP.create() instead.
+            "prototype$__create__RKP": {
+              url: urlBase + "/Bidang/:id/RKP",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Bidang.RKP.destroyAll() instead.
+            "prototype$__delete__RKP": {
+              url: urlBase + "/Bidang/:id/RKP",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Bidang.RKP.count() instead.
+            "prototype$__count__RKP": {
+              url: urlBase + "/Bidang/:id/RKP/count",
               method: "GET",
             },
 
@@ -14027,6 +14352,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             // INTERNAL. Use RPJMDes.Bidang() instead.
             "::get::RPJMDes::Bidang": {
               url: urlBase + "/RPJMDes/:id/Bidang",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RKP.Bidang() instead.
+            "::get::RKP::Bidang": {
+              url: urlBase + "/RKP/:id/Bidang",
               method: "GET",
             },
 
@@ -14531,6 +14862,307 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           var action = TargetResource["::updateById::Bidang::RPJMDes"];
           return action.apply(R, arguments);
         };
+    /**
+     * @ngdoc object
+     * @name lbServices.Bidang.RKP
+     * @header lbServices.Bidang.RKP
+     * @object
+     * @description
+     *
+     * The object `Bidang.RKP` groups methods
+     * manipulating `RKP` instances related to `Bidang`.
+     *
+     * Call {@link lbServices.Bidang#RKP Bidang.RKP()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang#RKP
+             * @methodOf lbServices.Bidang
+             *
+             * @description
+             *
+             * Queries RKP of Bidang.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::get::Bidang::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RKP#count
+             * @methodOf lbServices.Bidang.RKP
+             *
+             * @description
+             *
+             * Counts RKP of Bidang.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.RKP.count = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::count::Bidang::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RKP#create
+             * @methodOf lbServices.Bidang.RKP
+             *
+             * @description
+             *
+             * Creates a new instance in RKP of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP.create = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::create::Bidang::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RKP#createMany
+             * @methodOf lbServices.Bidang.RKP
+             *
+             * @description
+             *
+             * Creates a new instance in RKP of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP.createMany = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::createMany::Bidang::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RKP#destroyAll
+             * @methodOf lbServices.Bidang.RKP
+             *
+             * @description
+             *
+             * Deletes all RKP of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RKP.destroyAll = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::delete::Bidang::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RKP#destroyById
+             * @methodOf lbServices.Bidang.RKP
+             *
+             * @description
+             *
+             * Delete a related item by id for RKP.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RKP
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RKP.destroyById = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::destroyById::Bidang::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RKP#findById
+             * @methodOf lbServices.Bidang.RKP
+             *
+             * @description
+             *
+             * Find a related item by id for RKP.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RKP
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP.findById = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::findById::Bidang::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Bidang.RKP#updateById
+             * @methodOf lbServices.Bidang.RKP
+             *
+             * @description
+             *
+             * Update a related item by id for RKP.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RKP
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP.updateById = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::updateById::Bidang::RKP"];
+          return action.apply(R, arguments);
+        };
 
 
         return R;
@@ -14562,6 +15194,33 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         urlBase + "/WaktuPelaksanaan/:id",
           { 'id': '@id' },
           {
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.findById() instead.
+            "prototype$__findById__RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.destroyById() instead.
+            "prototype$__destroyById__RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.updateById() instead.
+            "prototype$__updateById__RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP/:fk",
+              method: "PUT",
+            },
 
             // INTERNAL. Use WaktuPelaksanaan.RPJMDes.findById() instead.
             "prototype$__findById__RPJMDes": {
@@ -14615,6 +15274,31 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               },
               url: urlBase + "/WaktuPelaksanaan/:id/RPJMDes/rel/:fk",
               method: "HEAD",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP() instead.
+            "prototype$__get__RKP": {
+              isArray: true,
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP",
+              method: "GET",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.create() instead.
+            "prototype$__create__RKP": {
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP",
+              method: "POST",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.destroyAll() instead.
+            "prototype$__delete__RKP": {
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.count() instead.
+            "prototype$__count__RKP": {
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP/count",
+              method: "GET",
             },
 
             // INTERNAL. Use WaktuPelaksanaan.RPJMDes() instead.
@@ -15150,6 +15834,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
+            // INTERNAL. Use RKP.WaktuPelaksanaan() instead.
+            "::get::RKP::WaktuPelaksanaan": {
+              url: urlBase + "/RKP/:id/WaktuPelaksanaan",
+              method: "GET",
+            },
+
             // INTERNAL. Use RPJM.WaktuPelaksanaan.findById() instead.
             "::findById::RPJM::WaktuPelaksanaan": {
               params: {
@@ -15356,6 +16046,307 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         */
         R.modelName = "WaktuPelaksanaan";
 
+    /**
+     * @ngdoc object
+     * @name lbServices.WaktuPelaksanaan.RKP
+     * @header lbServices.WaktuPelaksanaan.RKP
+     * @object
+     * @description
+     *
+     * The object `WaktuPelaksanaan.RKP` groups methods
+     * manipulating `RKP` instances related to `WaktuPelaksanaan`.
+     *
+     * Call {@link lbServices.WaktuPelaksanaan#RKP WaktuPelaksanaan.RKP()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan#RKP
+             * @methodOf lbServices.WaktuPelaksanaan
+             *
+             * @description
+             *
+             * Queries RKP of WaktuPelaksanaan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::get::WaktuPelaksanaan::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RKP#count
+             * @methodOf lbServices.WaktuPelaksanaan.RKP
+             *
+             * @description
+             *
+             * Counts RKP of WaktuPelaksanaan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.RKP.count = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::count::WaktuPelaksanaan::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RKP#create
+             * @methodOf lbServices.WaktuPelaksanaan.RKP
+             *
+             * @description
+             *
+             * Creates a new instance in RKP of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP.create = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::create::WaktuPelaksanaan::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RKP#createMany
+             * @methodOf lbServices.WaktuPelaksanaan.RKP
+             *
+             * @description
+             *
+             * Creates a new instance in RKP of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP.createMany = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::createMany::WaktuPelaksanaan::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RKP#destroyAll
+             * @methodOf lbServices.WaktuPelaksanaan.RKP
+             *
+             * @description
+             *
+             * Deletes all RKP of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RKP.destroyAll = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::delete::WaktuPelaksanaan::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RKP#destroyById
+             * @methodOf lbServices.WaktuPelaksanaan.RKP
+             *
+             * @description
+             *
+             * Delete a related item by id for RKP.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RKP
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RKP.destroyById = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::destroyById::WaktuPelaksanaan::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RKP#findById
+             * @methodOf lbServices.WaktuPelaksanaan.RKP
+             *
+             * @description
+             *
+             * Find a related item by id for RKP.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RKP
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP.findById = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::findById::WaktuPelaksanaan::RKP"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.WaktuPelaksanaan.RKP#updateById
+             * @methodOf lbServices.WaktuPelaksanaan.RKP
+             *
+             * @description
+             *
+             * Update a related item by id for RKP.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for RKP
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RKP` object.)
+             * </em>
+             */
+        R.RKP.updateById = function() {
+          var TargetResource = $injector.get("RKP");
+          var action = TargetResource["::updateById::WaktuPelaksanaan::RKP"];
+          return action.apply(R, arguments);
+        };
     /**
      * @ngdoc object
      * @name lbServices.WaktuPelaksanaan.RPJMDes
@@ -17105,82 +18096,21 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           { 'id': '@id' },
           {
 
-            // INTERNAL. Use RKP.rPJMDes.findById() instead.
-            "prototype$__findById__rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RKP/:id/rPJMDes/:fk",
+            // INTERNAL. Use RKP.RPJMDes() instead.
+            "prototype$__get__RPJMDes": {
+              url: urlBase + "/RKP/:id/RPJMDes",
               method: "GET",
             },
 
-            // INTERNAL. Use RKP.rPJMDes.destroyById() instead.
-            "prototype$__destroyById__rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RKP/:id/rPJMDes/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.updateById() instead.
-            "prototype$__updateById__rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RKP/:id/rPJMDes/:fk",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.link() instead.
-            "prototype$__link__rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RKP/:id/rPJMDes/rel/:fk",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.unlink() instead.
-            "prototype$__unlink__rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RKP/:id/rPJMDes/rel/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.exists() instead.
-            "prototype$__exists__rPJMDes": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/RKP/:id/rPJMDes/rel/:fk",
-              method: "HEAD",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes() instead.
-            "prototype$__get__rPJMDes": {
-              isArray: true,
-              url: urlBase + "/RKP/:id/rPJMDes",
+            // INTERNAL. Use RKP.Bidang() instead.
+            "prototype$__get__Bidang": {
+              url: urlBase + "/RKP/:id/Bidang",
               method: "GET",
             },
 
-            // INTERNAL. Use RKP.rPJMDes.create() instead.
-            "prototype$__create__rPJMDes": {
-              url: urlBase + "/RKP/:id/rPJMDes",
-              method: "POST",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.destroyAll() instead.
-            "prototype$__delete__rPJMDes": {
-              url: urlBase + "/RKP/:id/rPJMDes",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use RKP.rPJMDes.count() instead.
-            "prototype$__count__rPJMDes": {
-              url: urlBase + "/RKP/:id/rPJMDes/count",
+            // INTERNAL. Use RKP.WaktuPelaksanaan() instead.
+            "prototype$__get__WaktuPelaksanaan": {
+              url: urlBase + "/RKP/:id/WaktuPelaksanaan",
               method: "GET",
             },
 
@@ -17605,6 +18535,183 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               url: urlBase + "/RKP/change-stream",
               method: "POST",
             },
+
+            // INTERNAL. Use RPJMDes.RKP.findById() instead.
+            "::findById::RPJMDes::RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJMDes/:id/RKP/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP.destroyById() instead.
+            "::destroyById::RPJMDes::RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJMDes/:id/RKP/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP.updateById() instead.
+            "::updateById::RPJMDes::RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJMDes/:id/RKP/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP() instead.
+            "::get::RPJMDes::RKP": {
+              isArray: true,
+              url: urlBase + "/RPJMDes/:id/RKP",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP.create() instead.
+            "::create::RPJMDes::RKP": {
+              url: urlBase + "/RPJMDes/:id/RKP",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP.createMany() instead.
+            "::createMany::RPJMDes::RKP": {
+              isArray: true,
+              url: urlBase + "/RPJMDes/:id/RKP",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP.destroyAll() instead.
+            "::delete::RPJMDes::RKP": {
+              url: urlBase + "/RPJMDes/:id/RKP",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJMDes.RKP.count() instead.
+            "::count::RPJMDes::RKP": {
+              url: urlBase + "/RPJMDes/:id/RKP/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Bidang.RKP.findById() instead.
+            "::findById::Bidang::RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Bidang/:id/RKP/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Bidang.RKP.destroyById() instead.
+            "::destroyById::Bidang::RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Bidang/:id/RKP/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Bidang.RKP.updateById() instead.
+            "::updateById::Bidang::RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Bidang/:id/RKP/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Bidang.RKP() instead.
+            "::get::Bidang::RKP": {
+              isArray: true,
+              url: urlBase + "/Bidang/:id/RKP",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Bidang.RKP.create() instead.
+            "::create::Bidang::RKP": {
+              url: urlBase + "/Bidang/:id/RKP",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Bidang.RKP.createMany() instead.
+            "::createMany::Bidang::RKP": {
+              isArray: true,
+              url: urlBase + "/Bidang/:id/RKP",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Bidang.RKP.destroyAll() instead.
+            "::delete::Bidang::RKP": {
+              url: urlBase + "/Bidang/:id/RKP",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Bidang.RKP.count() instead.
+            "::count::Bidang::RKP": {
+              url: urlBase + "/Bidang/:id/RKP/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.findById() instead.
+            "::findById::WaktuPelaksanaan::RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.destroyById() instead.
+            "::destroyById::WaktuPelaksanaan::RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.updateById() instead.
+            "::updateById::WaktuPelaksanaan::RKP": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP() instead.
+            "::get::WaktuPelaksanaan::RKP": {
+              isArray: true,
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP",
+              method: "GET",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.create() instead.
+            "::create::WaktuPelaksanaan::RKP": {
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP",
+              method: "POST",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.createMany() instead.
+            "::createMany::WaktuPelaksanaan::RKP": {
+              isArray: true,
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP",
+              method: "POST",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.destroyAll() instead.
+            "::delete::WaktuPelaksanaan::RKP": {
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use WaktuPelaksanaan.RKP.count() instead.
+            "::count::WaktuPelaksanaan::RKP": {
+              url: urlBase + "/WaktuPelaksanaan/:id/RKP/count",
+              method: "GET",
+            },
           }
         );
 
@@ -17747,108 +18854,21 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         */
         R.modelName = "RKP";
 
-    /**
-     * @ngdoc object
-     * @name lbServices.RKP.rPJMDes
-     * @header lbServices.RKP.rPJMDes
-     * @object
-     * @description
-     *
-     * The object `RKP.rPJMDes` groups methods
-     * manipulating `RPJMDes` instances related to `RKP`.
-     *
-     * Call {@link lbServices.RKP#rPJMDes RKP.rPJMDes()}
-     * to query all related instances.
-     */
-
 
             /**
              * @ngdoc method
-             * @name lbServices.RKP#rPJMDes
+             * @name lbServices.RKP#RPJMDes
              * @methodOf lbServices.RKP
              *
              * @description
              *
-             * Queries rPJMDes of RKP.
+             * Fetches belongsTo relation RPJMDes.
              *
              * @param {Object=} parameters Request parameters.
              *
              *  - `id` – `{*}` - PersistedModel id
              *
-             *  - `filter` – `{object=}` -
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
-             * </em>
-             */
-        R.rPJMDes = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::get::RKP::rPJMDes"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RKP.rPJMDes#count
-             * @methodOf lbServices.RKP.rPJMDes
-             *
-             * @description
-             *
-             * Counts rPJMDes of RKP.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * Data properties:
-             *
-             *  - `count` – `{number=}` -
-             */
-        R.rPJMDes.count = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::count::RKP::rPJMDes"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RKP.rPJMDes#create
-             * @methodOf lbServices.RKP.rPJMDes
-             *
-             * @description
-             *
-             * Creates a new instance in rPJMDes of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
+             *  - `refresh` – `{boolean=}` -
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -17865,128 +18885,26 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * This usually means the response is a `RPJMDes` object.)
              * </em>
              */
-        R.rPJMDes.create = function() {
+        R.RPJMDes = function() {
           var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::create::RKP::rPJMDes"];
+          var action = TargetResource["::get::RKP::RPJMDes"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.RKP.rPJMDes#createMany
-             * @methodOf lbServices.RKP.rPJMDes
+             * @name lbServices.RKP#Bidang
+             * @methodOf lbServices.RKP
              *
              * @description
              *
-             * Creates a new instance in rPJMDes of this model.
+             * Fetches belongsTo relation Bidang.
              *
              * @param {Object=} parameters Request parameters.
              *
              *  - `id` – `{*}` - PersistedModel id
              *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
-             * </em>
-             */
-        R.rPJMDes.createMany = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::createMany::RKP::rPJMDes"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RKP.rPJMDes#destroyAll
-             * @methodOf lbServices.RKP.rPJMDes
-             *
-             * @description
-             *
-             * Deletes all rPJMDes of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.rPJMDes.destroyAll = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::delete::RKP::rPJMDes"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RKP.rPJMDes#destroyById
-             * @methodOf lbServices.RKP.rPJMDes
-             *
-             * @description
-             *
-             * Delete a related item by id for rPJMDes.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for rPJMDes
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.rPJMDes.destroyById = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::destroyById::RKP::rPJMDes"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RKP.rPJMDes#exists
-             * @methodOf lbServices.RKP.rPJMDes
-             *
-             * @description
-             *
-             * Check the existence of rPJMDes relation to an item by id.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for rPJMDes
+             *  - `refresh` – `{boolean=}` -
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -18000,29 +18918,29 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
+             * This usually means the response is a `Bidang` object.)
              * </em>
              */
-        R.rPJMDes.exists = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::exists::RKP::rPJMDes"];
+        R.Bidang = function() {
+          var TargetResource = $injector.get("Bidang");
+          var action = TargetResource["::get::RKP::Bidang"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.RKP.rPJMDes#findById
-             * @methodOf lbServices.RKP.rPJMDes
+             * @name lbServices.RKP#WaktuPelaksanaan
+             * @methodOf lbServices.RKP
              *
              * @description
              *
-             * Find a related item by id for rPJMDes.
+             * Fetches belongsTo relation WaktuPelaksanaan.
              *
              * @param {Object=} parameters Request parameters.
              *
              *  - `id` – `{*}` - PersistedModel id
              *
-             *  - `fk` – `{*}` - Foreign key for rPJMDes
+             *  - `refresh` – `{boolean=}` -
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -18036,125 +18954,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
+             * This usually means the response is a `WaktuPelaksanaan` object.)
              * </em>
              */
-        R.rPJMDes.findById = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::findById::RKP::rPJMDes"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RKP.rPJMDes#link
-             * @methodOf lbServices.RKP.rPJMDes
-             *
-             * @description
-             *
-             * Add a related item by id for rPJMDes.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for rPJMDes
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
-             * </em>
-             */
-        R.rPJMDes.link = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::link::RKP::rPJMDes"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RKP.rPJMDes#unlink
-             * @methodOf lbServices.RKP.rPJMDes
-             *
-             * @description
-             *
-             * Remove the rPJMDes relation to an item by id.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for rPJMDes
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.rPJMDes.unlink = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::unlink::RKP::rPJMDes"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RKP.rPJMDes#updateById
-             * @methodOf lbServices.RKP.rPJMDes
-             *
-             * @description
-             *
-             * Update a related item by id for rPJMDes.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for rPJMDes
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `RPJMDes` object.)
-             * </em>
-             */
-        R.rPJMDes.updateById = function() {
-          var TargetResource = $injector.get("RPJMDes");
-          var action = TargetResource["::updateById::RKP::rPJMDes"];
+        R.WaktuPelaksanaan = function() {
+          var TargetResource = $injector.get("WaktuPelaksanaan");
+          var action = TargetResource["::get::RKP::WaktuPelaksanaan"];
           return action.apply(R, arguments);
         };
 

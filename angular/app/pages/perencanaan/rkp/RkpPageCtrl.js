@@ -35,6 +35,9 @@
         worker: true
       },
       'types': {
+        'pricetag': {
+          'icon': 'ion-pricetag'
+        },
         'folder': {
           'icon': 'ion-ios-folder'
         },
@@ -82,7 +85,7 @@
               "id": rpjmdes.id,
               "parent": bidang.id,
               "type": "default",
-              "text": bidang.No + "." + (index + 1) + " " + rpjmdes.SubBidang,
+              "text": bidang.No + "." + rpjmdes.No + " " + rpjmdes.SubBidang,
               "state": {
                 "opened": true
               }
@@ -97,6 +100,58 @@
       $q.all(promises).then(function (treesData) {
         for (var i = 0; i < treesData.length; i++) {
           $scope.basicConfigs[i] = $scope.basicConfig;
+          $scope.treesData[i] = treesData[i];
+          $scope.basicConfigs[i].version++;
+        }
+        getRKPByWaktu(waktuPelaksanaanList);
+      })
+    }
+
+    function getRKPByWaktu(waktuPelaksanaanList) {
+      var promises = waktuPelaksanaanList.map(function (waktupelaksanaan, i) {
+        var deferred = $q.defer();
+
+        WaktuPelaksanaan.RKP({
+          id: waktupelaksanaan.id,
+          filter: {
+            include: [
+              { relation: "Bidang" },
+              { relation: "RPJMDes", scope:{
+                include : {relation: "Bidang"}
+              } }
+            ]
+          }
+        }, function (result) {
+          var treeData = angular.copy($scope.treesData[i]);
+
+          angular.forEach(result, function (item, index, arr) {
+            var bidang = item.Bidang;
+            var RPJMDes = item.RPJMDes;
+            var parent = {};
+            if (bidang) {
+              parent = bidang;
+            } else if (RPJMDes){
+              parent = RPJMDes;
+              parent.No = RPJMDes.Bidang.No + "." + RPJMDes.No;
+            }
+            treeData.push({
+              "id": item.id,
+              "parent": parent.id,
+              "type": "pricetag",
+              "text": parent.No + "." + item.No + " " + item.Nama,
+              "state": {
+                "opened": true
+              }
+            })
+          })
+          deferred.resolve(treeData);
+        })
+
+        return deferred.promise;
+      })
+
+      $q.all(promises).then(function (treesData) {
+        for (var i = 0; i < treesData.length; i++) {
           $scope.treesData[i] = treesData[i];
           $scope.basicConfigs[i].version++;
         }

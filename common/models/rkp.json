@@ -7,17 +7,32 @@
     "validateUpsert": true
   },
   "properties": {
-    "Tahun": {
-      "type": "date",
-      "required": true
+    "No": {
+      "type": "number"
+    },
+    "Nama": {
+      "type": "string"
+    },
+    "createdDate":{
+      "type": "date"
     }
   },
   "validations": [],
   "relations": {
-    "rPJMDes": {
-      "type": "hasAndBelongsToMany",
+    "RPJMDes": {
+      "type": "belongsTo",
       "model": "RPJMDes",
-      "foreignKey": ""
+      "foreignKey": "RPJMDesId"
+    },
+    "Bidang": {
+      "type": "belongsTo",
+      "model": "Bidang",
+      "foreignKey": "BidangId"
+    },
+    "WaktuPelaksanaan": {
+      "type": "belongsTo",
+      "model": "WaktuPelaksanaan",
+      "foreignKey": "WaktuPelaksanaanId"
     }
   },
   "acls": [],

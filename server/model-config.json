@@ -111,5 +111,9 @@
   "rpjmdeswaktu": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Counter":{
+    "dataSource": "mongodb",
+    "public": false
   }
 }

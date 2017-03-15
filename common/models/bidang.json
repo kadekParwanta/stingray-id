@@ -22,6 +22,11 @@
       "type": "hasMany",
       "model": "RPJMDes",
       "foreignKey": "BidangId"
+    },
+    "RKP": {
+      "type": "hasMany",
+      "model": "RKP",
+      "foreignKey": "BidangId"
     }
   },
   "acls": [],

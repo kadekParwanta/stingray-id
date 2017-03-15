@@ -81,7 +81,7 @@
                             "id": rpjmdes.id,
                             "parent": bidang.id,
                             "type": "default",
-                            "text": bidang.No + "." + (index + 1) + " " + rpjmdes.SubBidang,
+                            "text": bidang.No + "." + rpjmdes.No + " " + rpjmdes.SubBidang,
                             "state": {
                                 "opened": true
                             }

@@ -21,6 +21,11 @@
       "type": "hasAndBelongsToMany",
       "model": "RPJMDes",
       "through": "rpjmdeswaktu"
+    },
+    "RKP": {
+      "type": "hasMany",
+      "model": "RKP",
+      "foreignKey": "WaktuPelaksanaanId"
     }
   },
   "acls": [],

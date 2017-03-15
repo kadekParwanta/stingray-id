@@ -27,6 +27,9 @@
     },
     "Tahun": {
       "type": "date"
+    },
+    "createdDate":{
+      "type": "date"
     }
   },
   "validations": [],
@@ -55,6 +58,11 @@
       "type": "belongsTo",
       "model": "Desa",
       "foreignKey": ""
+    },
+    "RKP": {
+      "type": "hasMany",
+      "model": "RKP",
+      "foreignKey": "RPJMDesId"
     }
   },
   "acls": [],
