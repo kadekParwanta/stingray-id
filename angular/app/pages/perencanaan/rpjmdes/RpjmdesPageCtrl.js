@@ -26,6 +26,7 @@
         $scope.Bidang4Total = 0;
         $scope.basicTree;
         $scope.selectedNode;
+        $scope.selectedBidang;
         $scope.bidangTitle = "Mohon pilih item di samping";
 
         $scope.ignoreChanges = false;
@@ -237,6 +238,7 @@
                 $scope.selectedNode = $filter('filter')(bidang.RPJMDes, { id: selectedId })[0];
                 $scope.$apply();
             } else {
+                $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: selectedId })[0];
                 $scope.bidangTitle = "Mohon pilih item di samping";
                 $scope.$apply();
             }
@@ -259,6 +261,9 @@
                     },
                     waktuPelaksanaanList: function () {
                         return $scope.waktuPelaksanaanList;
+                    },
+                    selectedBidang: function(){
+                        return $scope.selectedBidang;
                     }
                 }
             });
@@ -280,12 +285,13 @@
     angular.module('BlurAdmin.pages.perencanaan')
         .controller('RpjmdesModalInstanceCtrl', RpjmdesModalInstanceCtrl);
 
-    function RpjmdesModalInstanceCtrl($uibModalInstance, bidangList, waktuPelaksanaanList) {
+    function RpjmdesModalInstanceCtrl($uibModalInstance, bidangList, waktuPelaksanaanList, selectedBidang) {
         var vm = this;
         vm.bidangList = bidangList;
         vm.waktuPelaksanaanList = waktuPelaksanaanList;
         vm.selectedWaktuPelaksanaan = [];
         vm.newRPJMDes = {};
+        if (selectedBidang) vm.newRPJMDes.BidangId = selectedBidang.id;
 
         vm.ok = function () {
             $uibModalInstance.close({
