@@ -26,7 +26,26 @@
       }
     }
 
-    init()
+    init();
+
+    $scope.editBidang = function (bidang) {
+      Bidang.prototype$updateAttributes({
+        id: bidang.id,
+        Nama: bidang.Nama,
+        No: bidang.No
+      }, function (result) {
+        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+      })
+    }
+
+    $scope.deleteBidang = function (bidang) {
+      Bidang.deleteById({ id: bidang.id }, function () {
+        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+        var ind = $scope.BidangList.indexOf(bidang);
+        $scope.BidangList.splice(ind, 1);
+
+      })
+    }
 
     $scope.save = function () {
       if ($scope.isNewRPJM) {
