@@ -277,6 +277,23 @@
       return !$scope.ignoreChanges;
     };
 
+    $scope.deleteRKP = function(rkp) {
+      RKP.deleteById({ id: rkp.id }, function () {
+                $scope.refresh();
+                $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+            })
+    }
+
+    $scope.editRKP = function(rkp) {
+      RKP.prototype$updateAttributes({
+                id: rkp.id,
+                Nama: rkp.Nama
+            }, function (result) {
+              $scope.refresh();
+              $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+            })
+    }
+
     $scope.open = function (page, size) {
       var modalInstance = $uibModal.open({
         animation: true,
