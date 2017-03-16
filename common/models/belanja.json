@@ -1,0 +1,27 @@
+{
+  "name": "Belanja",
+  "plural": "Belanja",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "No": {
+      "type": "number"
+    },
+    "Nama": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "RAB": {
+      "type": "hasMany",
+      "model": "RAB",
+      "foreignKey": "BelanjaId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

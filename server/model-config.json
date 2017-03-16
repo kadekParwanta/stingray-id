@@ -120,5 +120,13 @@
   "SumberBiayaItem": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Belanja": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "RAB": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

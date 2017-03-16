@@ -13,6 +13,7 @@
     var vm = this;
     vm.treeData = [];
     vm.treesData = [];
+    vm.belanjaTreeData = [];
 
     $scope.basicTree;
     $scope.basicTrees = [];
@@ -34,6 +35,30 @@
     $scope.currentTabIndex = 0;
     $scope.selectedBidang = {};
     $scope.selectedRPJMDes = {};
+    $scope.belanjaTree = {};
+    $scope.belanjaTreeData = [];
+
+    $scope.belanjaConfig = {
+      core: {
+        multiple: false,
+        check_callback: true,
+        worker: true
+      },
+      types: {
+        pricetag: {
+          icon: 'ion-pricetag'
+        },
+        folder: {
+          icon: 'ion-ios-folder'
+        },
+        default: {
+          icon: 'ion-document-text'
+        }
+      },
+      plugins: ['types', 'ui'],
+      version: 1
+    }
+
 
     $scope.basicConfig = {
       core: {
@@ -128,6 +153,11 @@
               {
                 relation: "SumberBiaya", scope: {
                   include: { relation: "Sumber" }
+                }
+              },
+              {
+                relation: "Belanja", scope: {
+                  include: { relation: "RAB" }
                 }
               },
               {
@@ -265,6 +295,59 @@
 
     };
 
+    function populateBelanjaTree(rkp) {
+      vm.belanjaTreeData.length = 0;
+      vm.belanjaTreeData.push({
+        "id": rkp.id,
+        "parent": "#",
+        "type": "folder",
+        "text": rkp.No + rkp.Nama,
+        "state": {
+          "opened": true
+        }
+      })
+
+      var belanja = rkp.Belanja;
+      belanja.forEach(function (entry) {
+        vm.belanjaTreeData.push({
+          "id": entry.id,
+          "parent": rkp.id,
+          "type": "default",
+          "text": rkp.No + "." + entry.No + " " +  entry.Nama,
+          "state": {
+            "opened": true
+          }
+        })
+
+        var rab = entry.RAB;
+        rab.forEach(function (item) {
+          vm.belanjaTreeData.push({
+            "id": item.id,
+            "parent": entry.id,
+            "type": "pricetag",
+            "text": rkp.No + "." + entry.No + "." +item.No + " " + item.Nama,
+            "state": {
+              "opened": true
+            }
+          })
+        })
+      })
+
+      $scope.belanjaTreeData = vm.belanjaTreeData;
+      $scope.belanjaConfig.version ++;
+    }
+
+    $scope.belanjaTreereadyCB = function() {
+      var elementName = '#belanjaTree';
+        var element = angular.element(elementName);
+        element.on("select_node.jstree", onBelanjaSelected);
+        $scope.belanjaTree = element.jstree(true);
+        $scope.selectedBelanjaNode = $scope.belanjaTree.get_selected()[0];
+        $timeout(function () {
+          $scope.ignoreChanges = false;
+        });
+    }
+
     var formatter = new Intl.NumberFormat('id', {
       style: 'currency',
       currency: 'IDR',
@@ -288,13 +371,8 @@
           $scope.selectedNode.SumberBiaya.forEach(function(entry){
             $scope.selectedNode.TotalBiaya += entry.Jumlah;
           })
-        } else {
-          $scope.defaultSumberBiaya.RKPId = $scope.selectedNode.id;
-          $scope.selectedSumberBiaya = [
-            $scope.defaultSumberBiaya
-          ];
         }
-        
+        populateBelanjaTree($scope.selectedNode);
         $scope.$apply();
       } else if (node.type === 'folder'){
         $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: selectedId })[0];
@@ -307,6 +385,13 @@
         $scope.selectedNode = false;
         $scope.$apply();
       }
+    }
+
+    function onBelanjaSelected(e, data) {
+      var node = data.node;
+      var parent = node.parent;
+      var selectedId = node.id;
+      console.log("onBelanjaSelected" + selectedId);
     }
 
     $scope.applyModelChanges = function () {

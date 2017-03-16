@@ -39,7 +39,9 @@ module.exports = function (Rpjm) {
     function createRelationsData(ctx, cb){
         createBidang(ctx, function(err, data){
             createWaktuPelaksanaan(ctx, function(err, data){
-                createPolaPelaksanaan(ctx, cb);
+                createPolaPelaksanaan(ctx, function(err, data){
+                    createSumberBiayaItem(ctx, cb);
+                });
             });
                 
         })

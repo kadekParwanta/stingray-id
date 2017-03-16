@@ -1,0 +1,33 @@
+{
+  "name": "RAB",
+  "plural": "RAB",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "No": {
+      "type": "number"
+    },
+    "Volume": {
+      "type": "number"
+    },
+    "Satuan": {
+      "type": "string"
+    },
+    "HargaSatuan": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "SumberBiaya": {
+      "type": "hasOne",
+      "model": "SumberBiaya",
+      "foreignKey": "RABId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

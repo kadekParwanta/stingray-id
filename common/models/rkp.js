@@ -67,4 +67,23 @@ module.exports = function (Rkp) {
         }
 
     });
+
+    Rkp.observe('after save', function (ctx, next) {
+        createBelanja(ctx, function(err, data){
+            next();
+        });
+    });
+
+    function createBelanja(ctx, cb) {
+        var Belanja = app.models.Belanja;
+        if (ctx.isNewInstance) {
+            Belanja.create([
+                { "No": 1, "Nama": "Belanja Pegawai", "RKPId": ctx.instance.id },
+                { "No": 2, "Nama": "Belanja Barang dan Jasa", "RKPId": ctx.instance.id },
+                { "No": 3, "Nama": "Belanja Modal", "RKPId": ctx.instance.id },
+            ], cb)
+        } else {
+            cb(null, false);
+        }
+    }
 };

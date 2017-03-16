@@ -6,6 +6,13 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "CascadeDelete": {
+      "relations": [
+        "SumberBiaya"
+      ]
+    }
+  },
   "properties": {
     "No": {
       "type": "number"
@@ -38,13 +45,6 @@
       "type": "date"
     }
   },
-  "mixins": {
-    "CascadeDelete": {
-      "relations": [
-        "SumberBiaya"
-      ]
-    }
-  },
   "validations": [],
   "relations": {
     "RPJMDes": {
@@ -70,6 +70,11 @@
     "SumberBiaya": {
       "type": "hasMany",
       "model": "SumberBiaya",
+      "foreignKey": "RKPId"
+    },
+    "Belanja": {
+      "type": "hasMany",
+      "model": "Belanja",
       "foreignKey": "RKPId"
     }
   },
