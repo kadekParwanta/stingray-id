@@ -10,7 +10,8 @@
     'ui.bootstrap',
     'BlurAdmin.pages.dashboard',
     'BlurAdmin.pages.perencanaan',
-    'BlurAdmin.pages.penganggaran'
+    'BlurAdmin.pages.penganggaran',
+    'BlurAdmin.pages.pengaturan'
   ])
       .config(routeConfig);
 

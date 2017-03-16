@@ -42,26 +42,6 @@
           sidebarMeta: {
             order: 100,
           },
-        })
-        .state('perencanaan.setting', {
-          url: '/setting',
-          templateUrl: 'app/pages/perencanaan/setting/setting.html',
-          controller: 'SettingPageCtrl',
-          title: 'Setting',
-          sidebarMeta: {
-            order: 100,
-          },
-        })
-        .state('perencanaan.rpjm', {
-          url: '/setting/:id',
-          templateUrl: 'app/pages/perencanaan/setting/rpjmdetail.html',
-          controller: 'RPJMDetailPageCtrl',
-          resolve : {
-            rpjmId : function($stateParams){
-              return $stateParams.id;
-            }
-          },
-          title: 'RPJM'
         });
   }
 

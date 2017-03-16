@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.perencanaan')
+  angular.module('BlurAdmin.pages.pengaturan')
     .controller('RPJMDetailPageCtrl', RPJMDetailPageCtrl);
 
   /** @ngInject */
@@ -50,13 +50,13 @@
     $scope.save = function () {
       if ($scope.isNewRPJM) {
         RPJM.create($scope.rpjm, function (rpjm) {
-          $state.go('perencanaan.setting');
+          $state.go('pengaturan');
         }, function (err) {
           alert(err.data.error.message);
         })
       } else {
         RPJM.prototype$updateAttributes($scope.rpjm, function (rpjm) {
-          $state.go('perencanaan.setting');
+          $state.go('pengaturan');
         }, function (err) {
           alert(err.data.error.message);
         })
