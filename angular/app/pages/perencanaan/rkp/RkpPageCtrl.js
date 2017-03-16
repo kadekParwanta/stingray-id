@@ -298,7 +298,9 @@
         Sasaran: rkp.Sasaran,
         Pelaksana: rkp.Pelaksana,
         PraLamaPelaksanaan: rkp.PraLamaPelaksanaan,
-        PolaPelaksanaanId: rkp.PolaPelaksanaanId
+        PolaPelaksanaanId: rkp.PolaPelaksanaanId,
+        TanggalMulai: rkp.TanggalMulai,
+        TanggalSelesai: rkp.TanggalSelesai
       }, function (result) {
         $scope.refresh();
         $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
@@ -341,7 +343,9 @@
             Sasaran: newRKP.Sasaran,
             Pelaksana: newRKP.Pelaksana,
             PraLamaPelaksanaan: newRKP.PraLamaPelaksanaan,
-            PolaPelaksanaanId: newRKP.PolaPelaksanaanId
+            PolaPelaksanaanId: newRKP.PolaPelaksanaanId,
+            TanggalMulai: newRKP.TanggalMulai,
+            TanggalSelesai: newRKP.TanggalSelesai
           }, function(res){
             $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
             $scope.refresh();
@@ -359,12 +363,90 @@
       })
     };
 
+    //datepicker
+    $scope.today = function () {
+      $scope.selectedNode.TanggalMulai = new Date();
+      $scope.selectedNode.TanggalSelesai = new Date();
+    };
+
+    $scope.clear = function () {
+      $scope.selectedNode.TanggalMulai = null;
+      $scope.selectedNode.TanggalSelesai = null;
+    };
+
+    $scope.inlineOptions = {
+      customClass: getDayClass,
+      minDate: new Date(),
+      showWeeks: true
+    };
+
+    $scope.dateOptions = {
+      dateDisabled: disabled,
+      formatYear: 'yy',
+      // maxDate: new Date(2020, 5, 22),
+      // minDate: new Date(),
+      startingDay: 1
+    };
+
+    // Disable weekend selection
+    function disabled(data) {
+      var date = data.date,
+        mode = data.mode;
+      return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+    }
+
+    $scope.toggleMin = function () {
+      $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+      $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+    };
+
+    $scope.toggleMin();
+
+    $scope.open1 = function () {
+      $scope.popup1.opened = true;
+    };
+
+    $scope.open2 = function () {
+      $scope.popup2.opened = true;
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.popup1 = {
+      opened: false
+    };
+
+    $scope.popup2 = {
+      opened: false
+    };
+
+    function getDayClass(data) {
+      var date = data.date,
+        mode = data.mode;
+      if (mode === 'day') {
+        var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+        for (var i = 0; i < $scope.events.length; i++) {
+          var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+          if (dayToCheck === currentDay) {
+            return $scope.events[i].status;
+          }
+        }
+      }
+
+      return '';
+    }
+
+
   }
 
   angular.module('BlurAdmin.pages.perencanaan')
     .controller('RkpModalInstanceCtrl', RkpModalInstanceCtrl);
 
-  function RkpModalInstanceCtrl($uibModalInstance, bidang, rpjmdes, polaPelaksanaanList) {
+  function RkpModalInstanceCtrl($uibModalInstance, bidang, rpjmdes, polaPelaksanaanList, $scope) {
     var vm = this;
     vm.rpjmdes = rpjmdes;
     vm.bidang = bidang;
@@ -381,6 +463,83 @@
 
     vm.cancel = function () {
       $uibModalInstance.dismiss('cancel');
+    }
+
+    //datepicker
+    $scope.today = function () {
+      vm.newRKP.TanggalMulai = new Date();
+      vm.newRKP.TanggalSelesai = new Date();
+    };
+
+    $scope.clear = function () {
+      vm.newRKP.TanggalMulai = null;
+      vm.newRKP.TanggalSelesai = null;
+    };
+
+    $scope.inlineOptions = {
+      customClass: getDayClass,
+      minDate: new Date(),
+      showWeeks: true
+    };
+
+    $scope.dateOptions = {
+      dateDisabled: disabled,
+      formatYear: 'yy',
+      // maxDate: new Date(2020, 5, 22),
+      // minDate: new Date(),
+      startingDay: 1
+    };
+
+    // Disable weekend selection
+    function disabled(data) {
+      var date = data.date,
+        mode = data.mode;
+      return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+    }
+
+    $scope.toggleMin = function () {
+      $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+      $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+    };
+
+    $scope.toggleMin();
+
+    $scope.open1 = function () {
+      $scope.popup1.opened = true;
+    };
+
+    $scope.open2 = function () {
+      $scope.popup2.opened = true;
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.popup1 = {
+      opened: false
+    };
+
+    $scope.popup2 = {
+      opened: false
+    };
+
+    function getDayClass(data) {
+      var date = data.date,
+        mode = data.mode;
+      if (mode === 'day') {
+        var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+        for (var i = 0; i < $scope.events.length; i++) {
+          var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+          if (dayToCheck === currentDay) {
+            return $scope.events[i].status;
+          }
+        }
+      }
+
+      return '';
     }
   }
 
