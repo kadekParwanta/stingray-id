@@ -1,29 +1,35 @@
 <div class="widgets">
   <div class="row">
     <div class="col-md-12">
-      <div ba-panel ba-panel-title="Ringkasan RPJMDesa {{activeRPJM.TahunMulai}} - {{activeRPJM.TahunSelesai}}" ba-panel-class="with-scroll">
+      <div ba-panel ba-panel-title="RPJMDesa {{activeRPJM.TahunMulai}} - {{activeRPJM.TahunSelesai}}" ba-panel-class="with-scroll panel-group">
         <div class="row">
-          <div class="col-sm-2">
-            <div class="control-side text-center">
-              <div>
-                <button class="btn btn-primary" ng-click="open('app/pages/perencanaan/rpjmdes/newRPJMDesModal.html', 'md')">Add</button>
-              </div>
-              <div>
-                <button class="btn btn-primary" ng-click="collapse()">Collapse All</button>
-              </div>
-              <div>
-                <button class="btn btn-primary" ng-click="expand()">Expand All</button>
-              </div>
-              <div>
-                <button class="btn btn-primary" ng-click="refresh()">Refresh</button>
+          <div class="col-sm-7">
+            <div ba-panel ba-panel-title="Ringkasan" ba-panel-class="with-scroll panel-success">
+              <div class="row">
+                <div class="col-sm-2">
+                  <div class="control-side text-center">
+                    <div>
+                      <button class="btn btn-primary" ng-click="open('app/pages/perencanaan/rpjmdes/newRPJMDesModal.html', 'md')">Add</button>
+                    </div>
+                    <div>
+                      <button class="btn btn-primary" ng-click="collapse()">Collapse All</button>
+                    </div>
+                    <div>
+                      <button class="btn btn-primary" ng-click="expand()">Expand All</button>
+                    </div>
+                    <div>
+                      <button class="btn btn-primary" ng-click="refresh()">Refresh</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10">
+                  <div id="basicTree" js-tree="basicConfig" ng-model="treeData" should-apply="applyModelChanges()" tree="basicTree" tree-events="ready:readyCB"></div>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-sm-5">
-            <div id="basicTree" js-tree="basicConfig" ng-model="treeData" should-apply="applyModelChanges()" tree="basicTree" tree-events="ready:readyCB"></div>
-          </div>
-          <div class="col-sm-5">
-            <div ba-panel ba-panel-title="{{bidangTitle}}" ba-panel-class="with-scroll">
+            <div ba-panel ba-panel-title="{{bidangTitle}}" ba-panel-class="with-scroll panel-info">
               <div include-with-scope="app/pages/perencanaan/rpjmdes/rpjmdesForm.html"></div>
             </div>
           </div>

@@ -6,6 +6,13 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "CascadeDelete": {
+      "relations": [
+        "RAB"
+      ]
+    }
+  },
   "properties": {
     "No": {
       "type": "number"
