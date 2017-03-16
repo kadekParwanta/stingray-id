@@ -1,0 +1,34 @@
+<uib-tabset>
+  <uib-tab index="$index + 1" ng-repeat="waktuPelaksanaan in waktuPelaksanaanList" active="waktuPelaksanaan.active">
+    <uib-tab-heading>
+      {{waktuPelaksanaan.Nama}}
+    </uib-tab-heading>
+    <div class="row">
+      <div class="col-sm-3">
+            <div class="control-side text-center">
+              <div>
+                <button class="btn btn-primary" ng-click="collapse()">Collapse All</button>
+              </div>
+              <div>
+                <button class="btn btn-primary" ng-click="expand()">Expand All</button>
+              </div>
+              <div>
+                <button class="btn btn-primary" ng-click="refresh()">Refresh</button>
+              </div>
+              <div>
+              <i class="jstree-icon jstree-themeicon ion-ios-folder jstree-themeicon-custom" role="presentation"></i> Bidang
+              </div>
+              <div>
+               <i class="jstree-icon jstree-themeicon ion-document-text jstree-themeicon-custom" role="presentation"></i> Sub Bidang
+              </div>
+              <div>
+               <i class="jstree-icon jstree-themeicon ion-pricetag jstree-themeicon-custom" role="presentation"></i> Kegiatan
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div id="{{'basicTree'+$index}}" js-tree="basicConfigs[$index]" ng-model="treesData[$index]" should-apply="applyModelChanges()" tree="basicTrees[$index]" tree-events="ready:readyCB"></div>
+          </div>
+    </div>
+  </uib-tab>
+</uib-tabset>

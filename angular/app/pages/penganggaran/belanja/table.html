@@ -1,0 +1,34 @@
+<div class="horizontal-scroll">
+  <table class="table table-bordered">
+    <tbody>
+    <tr>
+      <td>Kegiatan</td>
+      <td>{{selectedNode.Nama}}</td>
+    </tr>
+    <tr>
+      <td>Sasaran</td>
+      <td>{{selectedNode.Sasaran}}</td>
+    </tr>
+    <tr>
+      <td>Volume</td>
+      <td>{{selectedNode.Volume}}</td>
+    </tr>
+    <tr>
+      <td>Lokasi</td>
+      <td>{{selectedNode.Lokasi}}</td>
+    </tr>
+    <tr>
+      <td>Sumber Dana</td>
+      <td>
+          <div ng-repeat="sumberDana in selectedNode.SumberBiaya">
+              <p>{{$index + 1}} {{sumberDana.Sumber.Nama}} = {{formatCurrency(sumberDana.Jumlah)}}</p>
+          </div>
+          </td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td><strong>{{formatCurrency(selectedNode.TotalBiaya)}}</strong></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
