@@ -41,6 +41,7 @@ module.exports = function (Rpjm) {
             createWaktuPelaksanaan(ctx, cb);
         })
     }
+
     function createBidang(ctx, cb) {
         var Bidang = app.models.Bidang;
         if (ctx.isNewInstance) {
@@ -70,6 +71,19 @@ module.exports = function (Rpjm) {
 
         if (ctx.isNewInstance) {
             WaktuPelaksanaan.create(data, cb)
+        } else {
+            cb(null, false);
+        }
+    }
+
+    function createPolaPelaksanaan(ctx, cb) {
+        var PolaPelaksanaan = app.models.PolaPelaksanaan;
+        if (ctx.isNewInstance) {
+            PolaPelaksanaan.create([
+                {"Nama": "Swakelola", "RPJMId": ctx.instance.id },
+                {"Nama": "Kerja Sama", "RPJMId": ctx.instance.id },
+                {"Nama": "Pihak Ketiga", "RPJMId": ctx.instance.id }
+            ], cb)
         } else {
             cb(null, false);
         }

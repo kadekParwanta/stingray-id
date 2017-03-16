@@ -24,6 +24,7 @@
     $scope.newNode = {};
     $scope.activeRPJM = {};
     $scope.waktuPelaksanaanList = [];
+    $scope.polaPelaksanaanList = [];
     $scope.bidangList = [];
     $scope.RKPList = [];
     $scope.RPJMDesList = [];
@@ -186,8 +187,9 @@
             scope: {
               order: "No ASC"
             }
-          }]
-        }
+          },
+          {relation: "PolaPelaksanaan"}
+          ]}
       }, function (result) {
         $scope.activeRPJM = {
           TahunMulai: result.TahunMulai,
@@ -199,6 +201,7 @@
 
         $scope.bidangList = result.Bidang;
         $scope.waktuPelaksanaanList = result.WaktuPelaksanaan;
+        $scope.polaPelaksanaanList = result.PolaPelaksanaan;
         vm.treesData.length = $scope.waktuPelaksanaanList.length;
         populateRPJMDes($scope.bidangList);
       })
@@ -286,14 +289,20 @@
             })
     }
 
-    $scope.editRKP = function(rkp) {
+    $scope.editRKP = function (rkp) {
       RKP.prototype$updateAttributes({
-                id: rkp.id,
-                Nama: rkp.Nama
-            }, function (result) {
-              $scope.refresh();
-              $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
-            })
+        id: rkp.id,
+        Nama: rkp.Nama,
+        Lokasi: rkp.Lokasi,
+        Volume: rkp.Volume,
+        Sasaran: rkp.Sasaran,
+        Pelaksana: rkp.Pelaksana,
+        PraLamaPelaksanaan: rkp.PraLamaPelaksanaan,
+        PolaPelaksanaanId: rkp.PolaPelaksanaanId
+      }, function (result) {
+        $scope.refresh();
+        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+      })
     }
 
     $scope.open = function (page, size) {
@@ -309,6 +318,9 @@
           },
           rpjmdes: function () {
             return $scope.selectedRPJMDes;
+          },
+          polaPelaksanaanList: function() {
+            return $scope.polaPelaksanaanList;
           }
 
         }
@@ -323,7 +335,13 @@
           RKP.create({
             BidangId: bidang.id,
             WaktuPelaksanaanId : currentWaktuPelaksanaan.id,
-            Nama: newRKP.Nama
+            Nama: newRKP.Nama,
+            Lokasi: newRKP.Lokasi,
+            Volume: newRKP.Volume,
+            Sasaran: newRKP.Sasaran,
+            Pelaksana: newRKP.Pelaksana,
+            PraLamaPelaksanaan: newRKP.PraLamaPelaksanaan,
+            PolaPelaksanaanId: newRKP.PolaPelaksanaanId
           }, function(res){
             $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
             $scope.refresh();
@@ -346,10 +364,11 @@
   angular.module('BlurAdmin.pages.perencanaan')
     .controller('RkpModalInstanceCtrl', RkpModalInstanceCtrl);
 
-  function RkpModalInstanceCtrl($uibModalInstance, bidang, rpjmdes) {
+  function RkpModalInstanceCtrl($uibModalInstance, bidang, rpjmdes, polaPelaksanaanList) {
     var vm = this;
     vm.rpjmdes = rpjmdes;
     vm.bidang = bidang;
+    vm.polaPelaksanaanList = polaPelaksanaanList;
     vm.newRKP = {};
 
     vm.ok = function () {

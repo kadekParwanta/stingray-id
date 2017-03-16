@@ -2,8 +2,38 @@
   <label class="control-label" for="inputSuccess1">Nama</label>
   <input type="text" class="form-control" id="inputSuccess1" ng-model="selectedNode.Nama">
 </div>
+<div class="form-group has-error">
+  <label class="control-label" for="inputLokasi">Lokasi</label>
+  <textarea type="text" class="form-control" id="inputLokasi" ng-model="selectedNode.Lokasi"></textarea>
+</div>
+<div class="form-group has-success has-feedback">
+  <label class="control-label" for="inputVolume">Volume</label>
+  <input type="text" class="form-control" id="inputVolume" aria-describedby="inputSuccess2Status" ng-model="selectedNode.Volume">
+  <i class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+  <span id="inputSuccess2Status" class="sr-only">(success)</span>
+</div>
+<div class="form-group has-warning has-feedback">
+  <label class="control-label" for="inputSasaran">Sasaran</label>
+  <input type="text" class="form-control" id="inputSasaran" aria-describedby="inputWarning2Status" ng-model="selectedNode.Sasaran">
+  <i class="ion-alert-circled form-control-feedback" aria-hidden="true"></i>
+  <span id="inputWarning2Status" class="sr-only">(warning)</span>
+</div>
+<div class="form-group has-warning">
+  <label class="control-label" for="inputJenis">Pelaksana Kegiatan</label>
+  <input type="text" class="form-control" id="inputJenis" ng-model="selectedNode.Pelaksana">
+</div>
+<div class="form-group">
+      <label class="control-label" for="inputBidang">Pola Pelaksanaan</label>
+      <select class="form-control selectpicker with-search" data-live-search="true" title="Bidang" selectpicker ng-model="selectedNode.PolaPelaksanaanId"
+        ng-options="item.id as item.Nama for item in polaPelaksanaanList">
+    </select>
+    </div>
+  <div class="form-group has-success">
+  <label class="control-label" for="inputSuccess1">Prakiraan Lama Pelaksanaan</label>
+  <input type="text" class="form-control" id="inputSuccess1" ng-model="selectedNode.PraLamaPelaksanaan">
+</div>
 
 <div class="button-wrapper">
   <button type="button" class="btn btn-danger btn-raised pull-left" ng-click="deleteRKP(selectedNode)">Hapus</button>
   <button type="button" class="btn btn-primary btn-raised pull-right" ng-click="editRKP(selectedNode)">Simpan</button>
-  </div>
+</div>

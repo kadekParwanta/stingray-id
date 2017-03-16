@@ -15,6 +15,27 @@
     },
     "createdDate":{
       "type": "date"
+    },
+    "Lokasi": {
+      "type": "string"
+    },
+    "Volume": {
+      "type": "string"
+    },
+    "Sasaran": {
+      "type": "string"
+    },
+    "Pelaksana": {
+      "type": "string"
+    },
+    "PraLamaPelaksanaan": {
+      "type": "string"
+    },
+    "TanggalMulai":{
+      "type": "date"
+    },
+    "TanggalSelesai":{
+      "type": "date"
     }
   },
   "validations": [],
@@ -33,6 +54,11 @@
       "type": "belongsTo",
       "model": "WaktuPelaksanaan",
       "foreignKey": "WaktuPelaksanaanId"
+    },
+    "PolaPelaksanaan": {
+      "type": "belongsTo",
+      "model": "PolaPelaksanaan",
+      "foreignKey": "PolaPelaksanaanId"
     }
   },
   "acls": [],

@@ -41,6 +41,11 @@
       "type": "hasMany",
       "model": "WaktuPelaksanaan",
       "foreignKey": "RPJMId"
+    },
+    "PolaPelaksanaan": {
+      "type": "hasMany",
+      "model": "PolaPelaksanaan",
+      "foreignKey": "RPJMId"
     }
   },
   "mixins": {
