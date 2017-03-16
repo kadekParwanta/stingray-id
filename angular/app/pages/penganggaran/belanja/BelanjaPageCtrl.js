@@ -189,6 +189,7 @@
               "parent": parent.id,
               "type": "pricetag",
               "text": parent.No + "." + item.No + " " + item.Nama,
+              "li_attr":{"class":"green"},
               "state": {
                 "opened": true
               }
@@ -328,6 +329,7 @@
             "parent": entry.id,
             "type": "rab",
             "text": rkp.No + "." + entry.No + "." +item.No + " " + item.Nama,
+            "li_attr":{"class":"green"},
             "state": {
               "opened": true
             }
@@ -496,7 +498,7 @@
       currency: 'IDR',
       minimumFractionDigits: 2,
     })
-    
+
     $scope.formatCurrency = function(value) {
       return formatter.format(value);
     }

@@ -83,6 +83,7 @@
                             "parent": bidang.id,
                             "type": "default",
                             "text": bidang.No + "." + rpjmdes.No + " " + rpjmdes.SubBidang,
+                            "li_attr":{"class":"green"},
                             "state": {
                                 "opened": true
                             }

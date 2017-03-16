@@ -153,6 +153,7 @@
               "parent": parent.id,
               "type": "pricetag",
               "text": parent.No + "." + item.No + " " + item.Nama,
+              "li_attr":{"class":"green"},
               "state": {
                 "opened": true
               }
