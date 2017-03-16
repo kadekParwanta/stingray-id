@@ -13,7 +13,7 @@
     "Nama": {
       "type": "string"
     },
-    "createdDate":{
+    "createdDate": {
       "type": "date"
     },
     "Lokasi": {
@@ -31,11 +31,18 @@
     "PraLamaPelaksanaan": {
       "type": "string"
     },
-    "TanggalMulai":{
+    "TanggalMulai": {
       "type": "date"
     },
-    "TanggalSelesai":{
+    "TanggalSelesai": {
       "type": "date"
+    }
+  },
+  "mixins": {
+    "CascadeDelete": {
+      "relations": [
+        "SumberBiaya"
+      ]
     }
   },
   "validations": [],
@@ -59,6 +66,11 @@
       "type": "belongsTo",
       "model": "PolaPelaksanaan",
       "foreignKey": "PolaPelaksanaanId"
+    },
+    "SumberBiaya": {
+      "type": "hasMany",
+      "model": "SumberBiaya",
+      "foreignKey": "RKPId"
     }
   },
   "acls": [],

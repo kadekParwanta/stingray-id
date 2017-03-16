@@ -36,8 +36,8 @@
 <div class="form-group has-success">
   <label class="control-label" for="inputSuccess1">Mulai Pelaksanaan</label>
   <p class="input-group">
-    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedNode.TanggalMulai" is-open="popup1.opened" datepicker-options="dateOptions"
-      ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedNode.TanggalMulai" is-open="popup1.opened"
+      datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
     <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1()"><i class="fa fa-calendar"></i></button>
           </span>
@@ -46,12 +46,31 @@
 <div class="form-group has-success">
   <label class="control-label" for="inputSuccess1">Akhir Pelaksanaan</label>
   <p class="input-group">
-    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedNode.TanggalSelesai" is-open="popup2.opened" datepicker-options="dateOptions"
-      ng-required="true" close-text="Close" />
+    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedNode.TanggalSelesai" is-open="popup2.opened"
+      datepicker-options="dateOptions" ng-required="true" close-text="Close" />
     <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open2()"><i class="fa fa-calendar"></i></button>
           </span>
   </p>
+</div>
+<div class="form-group has-success" style="background-color: #494444; padding: 10px">
+  <label class="control-label" for="inputBidang" style="color: white">Prakiraan Dana dan Sumber Pembiayaan</label>
+  <fieldset data-ng-repeat="sumberBiaya in selectedSumberBiaya" style="margin-top: 10px">
+    <div class="row" >
+      <div class="col-sm-5">
+        <select class="form-control selectpicker with-search" data-live-search="true" title="Bidang" selectpicker ng-model="sumberBiaya.SumberBiayaItemId"
+          ng-options="item.id as item.Nama for item in sumberBiayaItemList">
+    </select>
+      </div>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="inputSuccess1" ng-model="sumberBiaya.Jumlah" placeholder="Jumlah">
+      </div>
+      <div class="col-sm-2"><button class="btn btn-danger" ng-show="$last" ng-click="removeSumberBiaya(sumberBiaya)">-</button></div>
+    </div>
+  </fieldset>
+  <div class="row" style="margin-top: 10px">
+    <div class="col-sm-2"><button class="btn btn-primary pull-left" ng-click="addNewSumberBiaya()">+</button></div>
+  </div>
 </div>
 
 <div class="button-wrapper">

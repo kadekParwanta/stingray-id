@@ -38,7 +38,10 @@ module.exports = function (Rpjm) {
 
     function createRelationsData(ctx, cb){
         createBidang(ctx, function(err, data){
-            createWaktuPelaksanaan(ctx, cb);
+            createWaktuPelaksanaan(ctx, function(err, data){
+                createPolaPelaksanaan(ctx, cb);
+            });
+                
         })
     }
 
@@ -83,6 +86,24 @@ module.exports = function (Rpjm) {
                 {"Nama": "Swakelola", "RPJMId": ctx.instance.id },
                 {"Nama": "Kerja Sama", "RPJMId": ctx.instance.id },
                 {"Nama": "Pihak Ketiga", "RPJMId": ctx.instance.id }
+            ], cb)
+        } else {
+            cb(null, false);
+        }
+    }
+
+    function createSumberBiayaItem(ctx, cb) {
+        var SumberBiayaItem = app.models.SumberBiayaItem;
+        if (ctx.isNewInstance) {
+            SumberBiayaItem.create([
+                {"Nama": "Pendapatan Asli Desa", "RPJMId": ctx.instance.id },
+                {"Nama": "Alokasi Dana Desa", "RPJMId": ctx.instance.id },
+                {"Nama": "Dana Desa", "RPJMId": ctx.instance.id },
+                {"Nama": "Bantuan Keuangan Provinsi", "RPJMId": ctx.instance.id },
+                {"Nama": "Bantuan Keuangan Kabupaten", "RPJMId": ctx.instance.id },
+                {"Nama": "Bagi Hasil Pajak dan Retribusi", "RPJMId": ctx.instance.id },
+                {"Nama": "Swadaya Masyarakat", "RPJMId": ctx.instance.id },
+                {"Nama": "Pendapatan lain lain yang sah", "RPJMId": ctx.instance.id }
             ], cb)
         } else {
             cb(null, false);

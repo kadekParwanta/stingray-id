@@ -6,6 +6,13 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "CascadeDelete": {
+      "relations": [
+        "RKP"
+      ]
+    }
+  },
   "properties": {
     "No": {
       "type": "number"
@@ -28,7 +35,7 @@
     "Tahun": {
       "type": "date"
     },
-    "createdDate":{
+    "createdDate": {
       "type": "date"
     }
   },
@@ -47,27 +54,22 @@
     "SumberBiaya": {
       "type": "hasOne",
       "model": "SumberBiaya",
-      "foreignKey": ""
+      "foreignKey": "RPJMDesId"
     },
     "PolaPelaksanaan": {
-      "type": "hasAndBelongsToMany",
+      "type": "belongsTo",
       "model": "PolaPelaksanaan",
-      "foreignKey": ""
+      "foreignKey": "PolaPelaksanaanId"
     },
     "Desa": {
       "type": "belongsTo",
       "model": "Desa",
-      "foreignKey": ""
+      "foreignKey": "DesaId"
     },
     "RKP": {
       "type": "hasMany",
       "model": "RKP",
       "foreignKey": "RPJMDesId"
-    }
-  },
-  "mixins": {
-    "CascadeDelete": {
-       "relations": ["RKP"]
     }
   },
   "acls": [],

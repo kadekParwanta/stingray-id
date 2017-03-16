@@ -113,8 +113,12 @@
     "dataSource": "mongodb",
     "public": true
   },
-  "Counter":{
+  "Counter": {
     "dataSource": "mongodb",
     "public": false
+  },
+  "SumberBiayaItem": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

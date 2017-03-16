@@ -9,7 +9,7 @@
     .controller('RkpPageCtrl', RkpPageCtrl);
 
   /** @ngInject */
-  function RkpPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP) {
+  function RkpPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP, SumberBiaya) {
     var vm = this;
     vm.treeData = [];
     vm.treesData = [];
@@ -25,6 +25,7 @@
     $scope.activeRPJM = {};
     $scope.waktuPelaksanaanList = [];
     $scope.polaPelaksanaanList = [];
+    $scope.sumberBiayaItemList = [];
     $scope.bidangList = [];
     $scope.RKPList = [];
     $scope.RPJMDesList = [];
@@ -124,6 +125,7 @@
           filter: {
             include: [
               { relation: "Bidang" },
+              { relation: "SumberBiaya" },
               {
                 relation: "RPJMDes", scope: {
                   include: { relation: "Bidang" }
@@ -188,7 +190,8 @@
               order: "No ASC"
             }
           },
-          {relation: "PolaPelaksanaan"}
+          {relation: "PolaPelaksanaan"},
+          {relation: "SumberBiayaItem"}
           ]}
       }, function (result) {
         $scope.activeRPJM = {
@@ -202,6 +205,7 @@
         $scope.bidangList = result.Bidang;
         $scope.waktuPelaksanaanList = result.WaktuPelaksanaan;
         $scope.polaPelaksanaanList = result.PolaPelaksanaan;
+        $scope.sumberBiayaItemList = result.SumberBiayaItem;
         vm.treesData.length = $scope.waktuPelaksanaanList.length;
         populateRPJMDes($scope.bidangList);
       })
@@ -264,6 +268,15 @@
       $scope.currentTabIndex = getActiveTab().No -1;
       if (node.type === 'pricetag') {
         $scope.selectedNode = $filter('filter')($scope.RKPList[$scope.currentTabIndex], { id: selectedId })[0];
+        if ($scope.selectedNode.SumberBiaya && $scope.selectedNode.SumberBiaya.length > 0) {
+          $scope.selectedSumberBiaya = $scope.selectedNode.SumberBiaya;
+        } else {
+          $scope.defaultSumberBiaya.RKPId = $scope.selectedNode.id;
+          $scope.selectedSumberBiaya = [
+            $scope.defaultSumberBiaya
+          ];
+        }
+        
         $scope.$apply();
       } else if (node.type === 'folder'){
         $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: selectedId })[0];
@@ -289,6 +302,30 @@
             })
     }
 
+    function reCreateSumberBiaya(rkp, cb) {
+      var promises = $scope.selectedSumberBiaya.map(function (sumberBiaya) {
+        var deferred = $q.defer();
+        if (sumberBiaya.id) {
+          //update
+          RKP.SumberBiaya.updateById({ id: rkp.id, fk: sumberBiaya.id }, sumberBiaya, function (res) {
+            deferred.resolve(res);
+          })
+        } else {
+          //create
+          SumberBiaya.create(sumberBiaya, function (res) {
+            deferred.resolve(res);
+          });
+        }
+
+        return deferred.promise;;
+      })
+
+      $q.all(promises).then(function (data) {
+        cb();
+      })
+
+    }
+
     $scope.editRKP = function (rkp) {
       RKP.prototype$updateAttributes({
         id: rkp.id,
@@ -302,8 +339,11 @@
         TanggalMulai: rkp.TanggalMulai,
         TanggalSelesai: rkp.TanggalSelesai
       }, function (result) {
-        $scope.refresh();
-        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+        reCreateSumberBiaya(rkp, function (res) {
+          $scope.refresh();
+          $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+        })
+        
       })
     }
 
@@ -362,6 +402,33 @@
         }
       })
     };
+
+    $scope.selectedSumberBiaya = [
+      {}
+    ];
+
+    $scope.defaultSumberBiaya = {
+      Jumlah: null,
+      SumberBiayaItemId: null,
+      RKPId: null
+    }
+
+    $scope.addNewSumberBiaya = function () {
+      var defaultSumberBiaya = angular.copy($scope.defaultSumberBiaya);
+      if ($scope.selectedNode.id) {
+        defaultSumberBiaya = {
+          Jumlah: null,
+          SumberBiayaItemId: null,
+          RKPId: $scope.selectedNode.id
+        }
+      }
+      $scope.selectedSumberBiaya.push(defaultSumberBiaya);
+    }
+
+    $scope.removeSumberBiaya = function(sumberBiaya) {
+      var ind = $scope.selectedSumberBiaya.indexOf(sumberBiaya);
+      $scope.selectedSumberBiaya.splice(ind,1);
+    }
 
     //datepicker
     $scope.today = function () {

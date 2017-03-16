@@ -6,6 +6,14 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "CascadeDelete": {
+      "relations": [
+        "Bidang",
+        "WaktuPelaksanaan"
+      ]
+    }
+  },
   "properties": {
     "TahunMulai": {
       "type": "string",
@@ -46,11 +54,11 @@
       "type": "hasMany",
       "model": "PolaPelaksanaan",
       "foreignKey": "RPJMId"
-    }
-  },
-  "mixins": {
-    "CascadeDelete": {
-       "relations": ["Bidang","WaktuPelaksanaan"]
+    },
+    "SumberBiayaItem": {
+      "type": "hasMany",
+      "model": "SumberBiayaItem",
+      "foreignKey": "RPJMId"
     }
   },
   "acls": [],
