@@ -434,6 +434,9 @@
         resolve: {
           selectedBelanja : function() {
             return $scope.selectedBelanja;
+          },
+          sumberBiayaItemList: function() {
+            return $scope.sumberBiayaItemList;
           }
         }
       });
@@ -452,7 +455,8 @@
         Nama: rab.Nama,
         Volume: rab.Volume,
         Satuan: rab.Satuan,
-        HargaSatuan: rab.HargaSatuan
+        HargaSatuan: rab.HargaSatuan,
+        SumberBiayaId: rab.SumberBiayaId
       }, function (result) {
         $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
       })
@@ -468,8 +472,12 @@
   angular.module('BlurAdmin.pages.perencanaan')
     .controller('BelanjaModalInstanceCtrl', BelanjaModalInstanceCtrl);
 
-  function BelanjaModalInstanceCtrl($uibModalInstance, selectedBelanja) {
+  function BelanjaModalInstanceCtrl($uibModalInstance, selectedBelanja, sumberBiayaItemList, $scope) {
     var vm = this;
+    if (!selectedBelanja) {
+      $uibModalInstance.dismiss('cancel');
+    }
+    vm.sumberBiayaItemList = sumberBiayaItemList;
     vm.newRAB = {};
     vm.newRAB.BelanjaId = selectedBelanja.id;
 
@@ -481,6 +489,16 @@
 
     vm.cancel = function () {
       $uibModalInstance.dismiss('cancel');
+    }
+
+    var formatter = new Intl.NumberFormat('id', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 2,
+    })
+    
+    $scope.formatCurrency = function(value) {
+      return formatter.format(value);
     }
   }
 

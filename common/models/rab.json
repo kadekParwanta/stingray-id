@@ -26,9 +26,9 @@
   "validations": [],
   "relations": {
     "SumberBiaya": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "SumberBiaya",
-      "foreignKey": "RABId"
+      "foreignKey": "SumberBiayaId"
     }
   },
   "acls": [],
