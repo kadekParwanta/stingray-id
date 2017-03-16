@@ -9,7 +9,7 @@
     .controller('BelanjaPageCtrl', BelanjaPageCtrl);
 
   /** @ngInject */
-  function BelanjaPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP, SumberBiaya) {
+  function BelanjaPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP, SumberBiaya, RAB) {
     var vm = this;
     vm.treeData = [];
     vm.treesData = [];
@@ -35,8 +35,10 @@
     $scope.currentTabIndex = 0;
     $scope.selectedBidang = {};
     $scope.selectedRPJMDes = {};
+    $scope.selectedBelanja = {};
     $scope.belanjaTree = {};
     $scope.belanjaTreeData = [];
+    $scope.selectedRABNode;
 
     $scope.belanjaConfig = {
       core: {
@@ -45,14 +47,14 @@
         worker: true
       },
       types: {
-        pricetag: {
+        rkp: {
           icon: 'ion-pricetag'
         },
-        folder: {
-          icon: 'ion-ios-folder'
+        belanja: {
+          icon: 'ion-android-cart'
         },
-        default: {
-          icon: 'ion-document-text'
+        rab: {
+          icon: 'ion-bag'
         }
       },
       plugins: ['types', 'ui'],
@@ -300,7 +302,7 @@
       vm.belanjaTreeData.push({
         "id": rkp.id,
         "parent": "#",
-        "type": "folder",
+        "type": "rkp",
         "text": rkp.No + rkp.Nama,
         "state": {
           "opened": true
@@ -312,7 +314,7 @@
         vm.belanjaTreeData.push({
           "id": entry.id,
           "parent": rkp.id,
-          "type": "default",
+          "type": "belanja",
           "text": rkp.No + "." + entry.No + " " +  entry.Nama,
           "state": {
             "opened": true
@@ -324,7 +326,7 @@
           vm.belanjaTreeData.push({
             "id": item.id,
             "parent": entry.id,
-            "type": "pricetag",
+            "type": "rab",
             "text": rkp.No + "." + entry.No + "." +item.No + " " + item.Nama,
             "state": {
               "opened": true
@@ -342,7 +344,7 @@
         var element = angular.element(elementName);
         element.on("select_node.jstree", onBelanjaSelected);
         $scope.belanjaTree = element.jstree(true);
-        $scope.selectedBelanjaNode = $scope.belanjaTree.get_selected()[0];
+        $scope.selectedRABNode = $scope.belanjaTree.get_selected()[0];
         $timeout(function () {
           $scope.ignoreChanges = false;
         });
@@ -391,8 +393,32 @@
       var node = data.node;
       var parent = node.parent;
       var selectedId = node.id;
-      console.log("onBelanjaSelected" + selectedId);
+      if (node.type === 'rkp') {
+        
+      } else if (node.type === 'belanja') {
+        $scope.selectedBelanja = $filter('filter')($scope.selectedNode.Belanja, { id: selectedId })[0];
+      } else if (node.type === 'rab') {
+        var belanjaList = $filter('filter')($scope.selectedNode.Belanja, { id: parent })[0];
+        $scope.selectedRABNode = $filter('filter')(belanjaList.RAB, { id: selectedId })[0];
+      }
+      $scope.$apply();
     }
+
+    $scope.expandBelanja = function () {
+      $scope.ignoreChanges = true;
+      $scope.belanjaTreeData.forEach(function (n) {
+        n.state.opened = true;
+      });
+      $scope.belanjaConfig.version++;
+    };
+
+    $scope.collapseBelanja = function () {
+      $scope.ignoreChanges = true;
+      $scope.belanjaTreeData.forEach(function (n) {
+        n.state.opened = false;
+      });
+      $scope.belanjaConfig.version++;
+    };
 
     $scope.applyModelChanges = function () {
       return !$scope.ignoreChanges;
@@ -403,28 +429,53 @@
         animation: true,
         templateUrl: page,
         size: size,
-        controller: RkpModalInstanceCtrl,
+        controller: BelanjaModalInstanceCtrl,
         controllerAs: 'vm',
         resolve: {
+          selectedBelanja : function() {
+            return $scope.selectedBelanja;
+          }
         }
       });
 
       modalInstance.result.then(function (data) {
-        //TODO
+        var rab = data.rab;
+        RAB.create(rab, function(res){
+          $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+        })
       })
     };
 
+    $scope.editRAB = function (rab) {
+      RAB.prototype$updateAttributes({
+        id: rab.id,
+        Nama: rab.Nama,
+        Volume: rab.Volume,
+        Satuan: rab.Satuan,
+        HargaSatuan: rab.HargaSatuan
+      }, function (result) {
+        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+      })
+    }
 
+    $scope.deleteRAB = function (rab) {
+      RAB.deleteById({ id: rab.id }, function () {
+        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+      })
+    }
   }
 
   angular.module('BlurAdmin.pages.perencanaan')
     .controller('BelanjaModalInstanceCtrl', BelanjaModalInstanceCtrl);
 
-  function BelanjaModalInstanceCtrl($uibModalInstance) {
+  function BelanjaModalInstanceCtrl($uibModalInstance, selectedBelanja) {
     var vm = this;
+    vm.newRAB = {};
+    vm.newRAB.BelanjaId = selectedBelanja.id;
 
     vm.ok = function () {
       $uibModalInstance.close({
+        rab: vm.newRAB
       });
     }
 

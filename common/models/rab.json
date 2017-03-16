@@ -10,6 +10,9 @@
     "No": {
       "type": "number"
     },
+    "Nama": {
+      "type": "string"
+    },
     "Volume": {
       "type": "number"
     },
