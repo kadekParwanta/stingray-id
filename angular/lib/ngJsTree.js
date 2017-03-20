@@ -1,3 +1,28 @@
+(function ($, undefined) {
+    'use strict';
+    $.jstree.defaults.alltrigger = null;
+    $.jstree.plugins.alltrigger = function (options, parent) {
+        this.init = function (el, opts) {
+            if (options) {
+                this.trigger = function (ev, data) {
+                    parent.trigger.call(this, ev, data);
+                    options(ev.replace('.jstree', '') + '.jstree', data);
+                };
+                var contextTrigger = $.vakata.context._trigger;
+                $.vakata.context._trigger = function (event_name) {
+                    contextTrigger(event_name);
+                    options('context_' + event_name + '.vakata');
+                };
+                var dndTrigger = $.vakata.dnd._trigger;
+                $.vakata.dnd._trigger = function (event_name, e, data) {
+                    dndTrigger(event_name, e, data);
+                    options('dnd_' + event_name + '.vakata', e, data);
+                };
+            }
+            parent.init.call(this, el, opts);
+        };
+    };
+})(jQuery);
 (function (angular) {
     'use strict';
 
@@ -5,15 +30,16 @@
     function jsTreeCtrl() {
         /*jshint validthis:true */
         var nodeSerialId = 1;
+        var vm = this;
 
-        this.nodesFingerprint = function (e) {
+        vm.nodesFingerprint = function (e) {
             if (!e.__uiNodeId) {
                 e.__uiNodeId = nodeSerialId++;
             }
             return '' + e.__uiNodeId + (e.id || '') + (e.text || '') + (e.type || '');
         };
 
-        this.changeWatcher = function (arraySource, tokenFn) {
+        vm.changeWatcher = function (arraySource, tokenFn) {
             var self;
             var getTokens = function () {
                 var result = [], token, el;
@@ -90,20 +116,36 @@
         };
     }
 
-    function jsTreeDirective() {
+    function jsTreeDirective($timeout) {
         return {
             restrict: 'A',
             scope: {
                 treeData: '=ngModel',
-                shouldApply : '&'
+                treeEventsObj: '=?treeEventsObj',
+                shouldApply: '&'
             },
             controller: 'jsTreeCtrl',
             link: function link(scope, elm, attrs, controller) {
 
                 var config = null,
-                    nodesWatcher = controller.changeWatcher(scope.treeData, controller.nodesFingerprint);
+                    nodesWatcher = controller.changeWatcher(scope.treeData, controller.nodesFingerprint),
+                    events = [];
 
                 var blocked = false;
+
+                function treeEventHandler(s, cb) {
+                    return function () {
+                        var args = arguments;
+                        var fn = s.$parent.$eval(cb);
+                        if (!s.$root.$$phase) {
+                            s.$parent.$apply(function () {
+                                fn.apply(s.$parent, args);
+                            });
+                        } else {
+                            fn.apply(s.$parent, args);
+                        }
+                    };
+                }
 
                 function manageEvents(s, e, a) {
                     if (a.treeEvents) {
@@ -111,11 +153,47 @@
                         for (var i = 0; i < evMap.length; i++) {
                             if (evMap[i].length > 0) {
                                 var name = evMap[i].split(':')[0];
-                                var evt = name + '.jstree',
-                                    cb = evMap[i].split(':')[1];
-                                s.tree.on(evt, s.$parent.$eval(cb));
+                                var cb = evMap[i].split(':')[1];
+                                if (name.indexOf('.') === -1) {
+                                    name += '.jstree';
+                                }
+                                events.push(name);
+                                if (name.indexOf('.vakata') === -1) {
+                                    s.tree.on(name, treeEventHandler(s, cb));
+                                } else {
+                                    $(document).on(name, treeEventHandler(s, cb));
+                                }
                             }
                         }
+                    }
+                    if (angular.isObject(s.treeEventsObj)) {
+                        angular.forEach(s.treeEventsObj, function (cb, name) {
+                            if (name.indexOf('.') === -1) {
+                                name += '.jstree';
+                            }
+                            events.push(name);
+                            if (name.indexOf('.vakata') === -1) {
+                                s.tree.on(name, function () {
+                                    var args = arguments;
+                                    if (!s.$root.$$phase) {
+                                        s.$parent.$apply(function () {
+                                            cb.apply(s.$parent, args);
+                                        });
+                                    } else {
+                                        cb.apply(s.$parent, args);
+                                    }
+                                });
+                            } else {
+                                $(document).on(name, function () {
+                                    var args = arguments;
+                                    if (!s.$root.$$phase) {
+                                        s.$parent.$apply(function () { cb.apply(s.$parent, args); });
+                                    } else {
+                                        cb.apply(s.$parent, args);
+                                    }
+                                });
+                            }
+                        });
                     }
                 }
 
@@ -130,14 +208,30 @@
                     else {
                         config.core = { data: scope.treeData };
                     }
+                    if (config.plugins) {
+                        config.plugins.push('alltrigger');
+                    } else {
+                        config.plugins = ['alltrigger'];
+                    }
+                    config.alltrigger = function (name) {
+                        if (!scope.$root.$$phase && events.indexOf(name) === -1) {
+                            scope.$apply();
+                        }
+                    };
                     return result;
                 }
 
                 scope.destroy = function () {
+                    events = [];
                     if (attrs.tree) {
                         if (attrs.tree.indexOf('.') !== -1) {
                             var split = attrs.tree.split('.');
-                            scope.tree = scope.$parent[split[0]][split[1]] = elm;
+                            var tree = split.pop();
+                            var context = scope.$parent;
+                            for (var i = 0; i < split.length; i++) {
+                                context = context[split[i]];
+                            }
+                            scope.tree = context[tree] = elm;
                         }
                         else {
                             scope.tree = scope.$parent[attrs.tree] = elm;
@@ -151,7 +245,9 @@
 
                 scope.init = function () {
                     scope.tree.jstree(config);
-                    manageEvents(scope, elm, attrs);
+                    $timeout(function () {
+                        manageEvents(scope, elm, attrs);
+                    });
                 };
 
                 nodesWatcher.onChanged = function (node) {
@@ -162,15 +258,17 @@
                 };
 
                 nodesWatcher.onAdded = function (node) {
-                    while(blocked) {}
-                    blocked = true;
-                    var parent = scope.tree.jstree(true).get_node(node.parent);
-                    var res = scope.tree.jstree(true).create_node(parent, node, 'inside',function() {
-                        blocked = false;
+                    $timeout(function () {
+                        while (blocked) { }
+                        blocked = true;
+                        var parent = scope.tree.jstree(true).get_node(node.parent);
+                        var res = scope.tree.jstree(true).create_node(parent, node, 'inside', function () {
+                            blocked = false;
+                        });
+                        if (!res) {
+                            blocked = false;
+                        }
                     });
-                    if (!res) {
-                        blocked = false;
-                    }
                 };
 
                 nodesWatcher.onRemoved = function (node) {
@@ -193,8 +291,8 @@
     }
 
     //// Angular Code ////
-    var mi = angular.module('ngJsTree',[]);
-    mi.controller('jsTreeCtrl',jsTreeCtrl);
-    mi.directive('jsTree',jsTreeDirective);
+    var mi = angular.module('ngJsTree', []);
+    mi.controller('jsTreeCtrl', jsTreeCtrl);
+    mi.directive('jsTree', ['$timeout', jsTreeDirective]);
 
 })(angular);
