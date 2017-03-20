@@ -396,9 +396,10 @@
       var parent = node.parent;
       var selectedId = node.id;
       if (node.type === 'rkp') {
-        
+        $scope.selectedRABNode = false;
       } else if (node.type === 'belanja') {
         $scope.selectedBelanja = $filter('filter')($scope.selectedNode.Belanja, { id: selectedId })[0];
+        $scope.selectedRABNode = false;
       } else if (node.type === 'rab') {
         var belanjaList = $filter('filter')($scope.selectedNode.Belanja, { id: parent })[0];
         $scope.selectedRABNode = $filter('filter')(belanjaList.RAB, { id: selectedId })[0];

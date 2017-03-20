@@ -13,7 +13,7 @@
         var vm = this;
         $scope.RPJMDesList = [];
         $scope.bidangList = [];
-        $scope.waktuPelaksanaanList
+        $scope.waktuPelaksanaanList = [];
         $scope.Bidang1 = [];
         $scope.Bidang2 = [];
         $scope.Bidang3 = [];
@@ -266,6 +266,9 @@
                     },
                     selectedBidang: function () {
                         return $scope.selectedBidang;
+                    },
+                    RPJMDesList : function() {
+                        return $scope.RPJMDesList;
                     }
                 }
             });
@@ -307,6 +310,10 @@
             })
         }
 
+        $scope.export = function() {
+            $scope.open('app/pages/perencanaan/rpjmdes/rpjmdesTable.html','lg');
+        }
+
         function unlinkAllWaktuPelaksanaan(rpjmdes) {
             var promises = $scope.waktuPelaksanaanList.map(function (waktuPelaksanaan) {
                 var deferred = $q.defer();
@@ -334,11 +341,12 @@
     angular.module('BlurAdmin.pages.perencanaan')
         .controller('RpjmdesModalInstanceCtrl', RpjmdesModalInstanceCtrl);
 
-    function RpjmdesModalInstanceCtrl($uibModalInstance, bidangList, waktuPelaksanaanList, selectedBidang) {
+    function RpjmdesModalInstanceCtrl($uibModalInstance, bidangList, waktuPelaksanaanList, selectedBidang, RPJMDesList) {
         var vm = this;
         vm.bidangList = bidangList;
         vm.waktuPelaksanaanList = waktuPelaksanaanList;
         vm.selectedWaktuPelaksanaan = [];
+        vm.RPJMDesList = RPJMDesList;
         vm.newRPJMDes = {};
         if (selectedBidang) vm.newRPJMDes.BidangId = selectedBidang.id;
 

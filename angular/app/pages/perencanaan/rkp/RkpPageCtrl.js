@@ -395,7 +395,15 @@
           RKP.create({
             RPJMDesId: rpjmdes.id,
             WaktuPelaksanaanId : currentWaktuPelaksanaan.id,
-            Nama: newRKP.Nama
+            Nama: newRKP.Nama,
+            Lokasi: newRKP.Lokasi,
+            Volume: newRKP.Volume,
+            Sasaran: newRKP.Sasaran,
+            Pelaksana: newRKP.Pelaksana,
+            PraLamaPelaksanaan: newRKP.PraLamaPelaksanaan,
+            PolaPelaksanaanId: newRKP.PolaPelaksanaanId,
+            TanggalMulai: newRKP.TanggalMulai,
+            TanggalSelesai: newRKP.TanggalSelesai
           }, function(res){
             $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
             $scope.refresh();
