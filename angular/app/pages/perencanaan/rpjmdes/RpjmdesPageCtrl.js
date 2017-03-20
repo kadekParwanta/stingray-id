@@ -250,13 +250,14 @@
             return !$scope.ignoreChanges;
         };
 
-        $scope.open = function (page, size) {
+        $scope.open = function (page, size, topClass) {
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: page,
                 size: size,
                 controller: RpjmdesModalInstanceCtrl,
                 controllerAs: 'vm',
+                windowClass: topClass,
                 resolve: {
                     bidangList: function () {
                         return $scope.bidangList;
@@ -311,7 +312,7 @@
         }
 
         $scope.export = function() {
-            $scope.open('app/pages/perencanaan/rpjmdes/rpjmdesTable.html','lg');
+            $scope.open('app/pages/perencanaan/rpjmdes/rpjmdesTable.html','lg', 'app-modal-window');
         }
 
         function unlinkAllWaktuPelaksanaan(rpjmdes) {
