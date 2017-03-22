@@ -9,7 +9,8 @@
   "mixins": {
     "CascadeDelete": {
       "relations": [
-        "SumberBiaya","Belanja"
+        "SumberBiaya",
+        "Belanja"
       ]
     }
   },

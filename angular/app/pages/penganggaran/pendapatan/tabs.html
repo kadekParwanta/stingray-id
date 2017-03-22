@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-sm-7">
+    <div ba-panel ba-panel-class="with-scroll horizontal-tabs tabs-panel">
+      <uib-tabset>
+        <uib-tab index="$index + 1" ng-repeat="waktuPelaksanaan in waktuPelaksanaanList" select="tabSelected(waktuPelaksanaan)">
+          <uib-tab-heading>
+            {{waktuPelaksanaan.Nama}}
+          </uib-tab-heading>
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="control-side text-center">
+                <div>
+                  <button class="btn btn-primary" ng-click="collapse()">Collapse All</button>
+                </div>
+                <div>
+                  <button class="btn btn-primary" ng-click="expand()">Expand All</button>
+                </div>
+                <div>
+                  <button class="btn btn-primary" ng-click="refresh(waktuPelaksanaan)">Refresh</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-9">
+              <div id="{{'basicTree'+$index}}" js-tree="pendapatanConfig" ng-model="treesData[$index]" should-apply="applyModelChanges()"
+                tree="basicTrees[$index]" tree-events="ready:readyCB"></div>
+            </div>
+          </div>
+        </uib-tab>
+      </uib-tabset>
+    </div>
+  </div>
+</div>

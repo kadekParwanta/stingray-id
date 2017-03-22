@@ -1,6 +1,6 @@
 {
-  "name": "Pendapatan",
-  "plural": "Pendapatan",
+  "name": "SubPendapatan",
+  "plural": "SubPendapatan",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -16,10 +16,10 @@
   },
   "validations": [],
   "relations": {
-    "SubPendapatan": {
+    "AnggaranPendapatan": {
       "type": "hasMany",
-      "model": "SubPendapatan",
-      "foreignKey": "PendapatanId"
+      "model": "AnggaranPendapatan",
+      "foreignKey": "SubPendapatanId"
     }
   },
   "acls": [],

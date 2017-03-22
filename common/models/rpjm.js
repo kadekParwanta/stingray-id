@@ -40,7 +40,9 @@ module.exports = function (Rpjm) {
         createBidang(ctx, function(err, data){
             createWaktuPelaksanaan(ctx, function(err, data){
                 createPolaPelaksanaan(ctx, function(err, data){
-                    createSumberBiayaItem(ctx, cb);
+                    createSumberBiayaItem(ctx, function(err, data){
+                        createPendapatan(ctx, cb);
+                    });
                 });
             });
                 
@@ -107,6 +109,47 @@ module.exports = function (Rpjm) {
                 {"Nama": "Swadaya Masyarakat", "RPJMId": ctx.instance.id },
                 {"Nama": "Pendapatan lain lain yang sah", "RPJMId": ctx.instance.id }
             ], cb)
+        } else {
+            cb(null, false);
+        }
+    }
+
+    function createPendapatan(ctx, cb) {
+        var Pendapatan = app.models.Pendapatan;
+        var SubPendapatan = app.models.SubPendapatan;
+        if (ctx.isNewInstance) {
+            Pendapatan.create(
+                { "No": 1, "Nama": "Pendapatan Asli Desa", "RPJMId": ctx.instance.id }, function (err, pendapatanA) {
+                    pendapatanA.SubPendapatan.create([
+                        { "No": 1, "Nama": "Hasil Usaha" },
+                        { "No": 2, "Nama": "Hasil Aset" },
+                        { "No": 3, "Nama": "Swadaya, partisipasi, dan gotong royong" },
+                        { "No": 4, "Nama": "Lain-lain pendapatan asli desa" }
+                    ], function (err, subpendapatanA) {
+                        Pendapatan.create(
+                            { "No": 2, "Nama": "Pendapatan Transfer", "RPJMId": ctx.instance.id }, function (err, pendapatanB) {
+                                pendapatanB.SubPendapatan.create([
+                                    { "No": 1, "Nama": "Dana Desa" },
+                                    { "No": 2, "Nama": "Bagian dari Hasil Pajak dan Retribusi Daerah Kabupaten" },
+                                    { "No": 3, "Nama": "Alokasi Dana Desa(ADD)" },
+                                    { "No": 4, "Nama": "Bantuan Keuangan Provinsi" },
+                                    { "No": 5, "Nama": "Bantuan Keuangan Kabupaten" }
+                                ], function (err, subpendapatanB) {
+                                    Pendapatan.create(
+                                        { "No": 2, "Nama": "Pendapatan Lain-lain", "RPJMId": ctx.instance.id }, function (err, pendapatanC) {
+                                            pendapatanC.SubPendapatan.create([
+                                                { "No": 1, "Nama": "Hibah dan sumbangan dari Pihak Ketiga yang Tidak Mengikat" },
+                                                { "No": 2, "Nama": "Lain-lain pendapatan desa yang sah" }
+                                            ], function (err, subpendapatanC) {
+                                                cb(null, false);
+                                            })
+                                        }
+                                    )
+                                })
+                            }
+                        )
+                    })
+                })
         } else {
             cb(null, false);
         }

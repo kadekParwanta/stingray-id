@@ -128,5 +128,13 @@
   "RAB": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "SubPendapatan": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "AnggaranPendapatan": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

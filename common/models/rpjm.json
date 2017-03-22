@@ -59,6 +59,11 @@
       "type": "hasMany",
       "model": "SumberBiayaItem",
       "foreignKey": "RPJMId"
+    },
+    "Pendapatan": {
+      "type": "hasMany",
+      "model": "Pendapatan",
+      "foreignKey": "RPJMId"
     }
   },
   "acls": [],
