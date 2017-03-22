@@ -1,0 +1,34 @@
+<div class="horizontal-scroll">
+    <table class="table table-bordered">
+        <tbody>
+            <tr ng-if="selectedRPJMDes && selectedBidang">
+                <td>Item</td>
+                <td>
+                    <div ng-repeat="rkp in selectedRPJMDes.RKP">
+                        <p>{{rkp.Nama}} <strong>{{formatCurrency(rkp.Total)}}</strong></p>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-if="selectedRPJMDes && selectedBidang">
+                <td>Total</td>
+                <td><strong>{{formatCurrency(selectedRPJMDes.TotalBiaya/waktuPelaksanaanList.length)}}</strong></td>
+            </tr>
+
+            <tr ng-if="isBidang && selectedBidang">
+                <td>Item</td>
+                <td >
+                    <div ng-repeat="rpjmdes in selectedBidang.RPJMDes">
+                        <p>{{rpjmdes.Nama}} <strong>{{formatCurrency(rpjmdes.Total)}}</strong></p>
+                    </div>
+                    <div ng-repeat="rkp in selectedBidang.RKP">
+                        <p>{{rkp.Nama}} <strong>{{formatCurrency(rkp.Total)}}</strong></p>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-if="isBidang && selectedBidang">
+                <td>Total</td>
+                <td><strong>{{formatCurrency(selectedBidang.TotalBiaya/waktuPelaksanaanList.length)}}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

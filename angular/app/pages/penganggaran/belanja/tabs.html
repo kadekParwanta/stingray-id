@@ -1,34 +1,51 @@
-<uib-tabset>
-  <uib-tab index="$index + 1" ng-repeat="waktuPelaksanaan in waktuPelaksanaanList" select="tabSelected(waktuPelaksanaan)">
-    <uib-tab-heading>
-      {{waktuPelaksanaan.Nama}}
-    </uib-tab-heading>
-    <div class="row">
-      <div class="col-sm-3">
-            <div class="control-side text-center">
-              <div>
-                <button class="btn btn-primary" ng-click="collapse()">Collapse All</button>
-              </div>
-              <div>
-                <button class="btn btn-primary" ng-click="expand()">Expand All</button>
-              </div>
-              <div>
-                <button class="btn btn-primary" ng-click="refresh(waktuPelaksanaan)">Refresh</button>
-              </div>
-              <div>
-              <i class="jstree-icon jstree-themeicon ion-ios-folder jstree-themeicon-custom" role="presentation"></i> Bidang
-              </div>
-              <div>
-               <i class="jstree-icon jstree-themeicon ion-document-text jstree-themeicon-custom" role="presentation"></i> Sub Bidang
-              </div>
-              <div>
-               <i class="jstree-icon jstree-themeicon ion-pricetag jstree-themeicon-custom" role="presentation"></i> Kegiatan
+<div class="row">
+  <div class="col-sm-7">
+    <div ba-panel ba-panel-class="with-scroll horizontal-tabs tabs-panel">
+      <uib-tabset>
+        <uib-tab index="$index + 1" ng-repeat="waktuPelaksanaan in waktuPelaksanaanList" select="tabSelected(waktuPelaksanaan)">
+          <uib-tab-heading>
+            {{waktuPelaksanaan.Nama}}
+          </uib-tab-heading>
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="control-side text-center">
+                <div>
+                  <button class="btn btn-primary" ng-click="collapse()">Collapse All</button>
+                </div>
+                <div>
+                  <button class="btn btn-primary" ng-click="expand()">Expand All</button>
+                </div>
+                <div>
+                  <button class="btn btn-primary" ng-click="refresh(waktuPelaksanaan)">Refresh</button>
+                </div>
+                <div>
+                  <i class="jstree-icon jstree-themeicon ion-ios-folder jstree-themeicon-custom" role="presentation"></i>                  Bidang
+                </div>
+                <div>
+                  <i class="jstree-icon jstree-themeicon ion-document-text jstree-themeicon-custom" role="presentation"></i>                  Sub Bidang
+                </div>
+                <div>
+                  <i class="jstree-icon jstree-themeicon ion-pricetag jstree-themeicon-custom" role="presentation"></i> Kegiatan
+                </div>
               </div>
             </div>
+            <div class="col-sm-9">
+              <div id="{{'basicTree'+$index}}" js-tree="basicConfigs[$index]" ng-model="treesData[$index]" should-apply="applyModelChanges()"
+                tree="basicTrees[$index]" tree-events="ready:readyCB"></div>
+            </div>
           </div>
-          <div class="col-sm-9">
-            <div id="{{'basicTree'+$index}}" js-tree="basicConfigs[$index]" ng-model="treesData[$index]" should-apply="applyModelChanges()" tree="basicTrees[$index]" tree-events="ready:readyCB"></div>
-          </div>
+        </uib-tab>
+      </uib-tabset>
     </div>
-  </uib-tab>
-</uib-tabset>
+  </div>
+  <div class="col-sm-5" ng-show="selectedRKP">
+    <div ba-panel ba-panel-title="{{selectedRKP.parentNo}}.{{selectedRKP.No}} {{selectedRKP.Nama}}" ba-panel-class="with-scroll panel-warning">
+      <div include-with-scope="app/pages/penganggaran/belanja/table.html"></div>
+    </div>
+  </div>
+  <div class="col-sm-5" ng-show="selectedRPJMDes || selectedBidang">
+    <div ba-panel ba-panel-title="-" ba-panel-class="with-scroll panel-warning">
+      <div include-with-scope="app/pages/penganggaran/belanja/rkpTable.html"></div>
+    </div>
+  </div>
+</div>

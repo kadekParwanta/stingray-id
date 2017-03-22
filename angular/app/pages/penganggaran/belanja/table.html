@@ -3,27 +3,27 @@
     <tbody>
     <tr>
       <td>Sasaran</td>
-      <td>{{selectedNode.Sasaran}}</td>
+      <td>{{selectedRKP.Sasaran}}</td>
     </tr>
     <tr>
       <td>Volume</td>
-      <td>{{selectedNode.Volume}}</td>
+      <td>{{selectedRKP.Volume}}</td>
     </tr>
     <tr>
       <td>Lokasi</td>
-      <td>{{selectedNode.Lokasi}}</td>
+      <td>{{selectedRKP.Lokasi}}</td>
     </tr>
     <tr>
       <td>Sumber Dana</td>
       <td>
-          <div ng-repeat="sumberDana in selectedNode.SumberBiaya">
+          <div ng-repeat="sumberDana in selectedRKP.SumberBiaya">
               <p>{{$index + 1}} {{sumberDana.Sumber.Nama}} = {{formatCurrency(sumberDana.Jumlah)}}</p>
           </div>
           </td>
     </tr>
     <tr>
       <td>Total</td>
-      <td><strong>{{formatCurrency(selectedNode.TotalBiaya)}}</strong></td>
+      <td><strong>{{formatCurrency(selectedRKP.TotalBiaya)}}</strong></td>
     </tr>
     </tbody>
   </table>

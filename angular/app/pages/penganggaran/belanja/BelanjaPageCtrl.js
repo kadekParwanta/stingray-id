@@ -9,7 +9,7 @@
     .controller('BelanjaPageCtrl', BelanjaPageCtrl);
 
   /** @ngInject */
-  function BelanjaPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP, SumberBiaya, RAB) {
+  function BelanjaPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP, SumberBiaya, RAB, Bidang) {
     var vm = this;
     vm.treeData = [];
     vm.treesData = [];
@@ -17,7 +17,7 @@
 
     $scope.basicTree;
     $scope.basicTrees = [];
-    $scope.selectedNode;
+    $scope.selectedRKP;
     $scope.bidangTitle = "Mohon pilih item di samping";
 
     $scope.ignoreChanges = false;
@@ -34,7 +34,7 @@
     $scope.basicConfigs = [];
     $scope.selectedBidang = {};
     $scope.selectedRPJMDes = {};
-    $scope.selectedBelanja = {};
+    $scope.selectedBelanja;
     $scope.belanjaTree = {};
     $scope.belanjaTreeData = [];
     $scope.selectedRABNode;
@@ -309,7 +309,7 @@
         var element = angular.element(elementName);
         element.on("select_node.jstree", onSelected);
         $scope.basicTrees[ind] = element.jstree(true);
-        $scope.selectedNode = $scope.basicTrees[ind].get_selected()[0];
+        $scope.selectedRKP = $scope.basicTrees[ind].get_selected()[0];
         $timeout(function () {
           $scope.ignoreChanges = false;
         });
@@ -384,30 +384,119 @@
     function onSelected(e, data) {
       var node = data.node;
       var parent = node.parent;
+      var parents = node.parents;
       var selectedId = node.id;
       var ind = getActiveTab().No -1;
+      $scope.selectedBelanja = false;
       if (node.type === 'pricetag') {
-        $scope.selectedNode = $filter('filter')($scope.RKPList[ind], { id: selectedId })[0];
-        $scope.selectedNode.TotalBiaya = 0;
-        if ($scope.selectedNode.SumberBiaya && $scope.selectedNode.SumberBiaya.length > 0) {
-          $scope.selectedSumberBiaya = $scope.selectedNode.SumberBiaya;
-          $scope.selectedNode.SumberBiaya.forEach(function(entry){
-            $scope.selectedNode.TotalBiaya += entry.Jumlah;
+        var parentNo;
+        if (parents.length === 3) {
+          var rpjmdes = $filter('filter')($scope.RPJMDesList[ind], { id: parents[0] })[0];
+          var bidang = $filter('filter')($scope.bidangList, { id: parents[1] })[0];
+          parentNo = bidang.No + '.' + rpjmdes.No;
+        } else {
+          var rpjmdesOrBidang = $filter('filter')($scope.RPJMDesList[ind], { id: parent })[0] || $filter('filter')($scope.bidangList, { id: parent })[0];
+          parentNo = rpjmdesOrBidang.No;
+        }
+        $scope.selectedRKP = $filter('filter')($scope.RKPList[ind], { id: selectedId })[0];
+        $scope.selectedRKP.TotalBiaya = 0;
+        $scope.selectedRKP.parentNo = parentNo;
+        if ($scope.selectedRKP.SumberBiaya && $scope.selectedRKP.SumberBiaya.length > 0) {
+          $scope.selectedSumberBiaya = $scope.selectedRKP.SumberBiaya;
+          $scope.selectedRKP.SumberBiaya.forEach(function(entry){
+            $scope.selectedRKP.TotalBiaya += entry.Jumlah;
           })
         }
-        populateBelanjaTree($scope.selectedNode);
+        $scope.selectedBidang = false;
+        $scope.selectedRPJMDes = false;
+        $scope.isBidang = false;
+        populateBelanjaTree($scope.selectedRKP);
         $scope.$apply();
       } else if (node.type === 'folder'){
         $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: selectedId })[0];
-        $scope.selectedRPJMDes.SubBidang = "-";
-        $scope.selectedNode = false;
+        $scope.selectedRPJMDes = false;
+        $scope.selectedRKP = false;
+        $scope.isBidang = true;
+        getRKPByBidang($scope.selectedBidang);
         $scope.$apply();
       } else {
         $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: parent })[0];
         $scope.selectedRPJMDes = $filter('filter')($scope.RPJMDesList[ind], { id: selectedId })[0];
-        $scope.selectedNode = false;
+        $scope.selectedRKP = false;
+        $scope.isBidang = false;
+        getRKPByRPJMDes($scope.selectedRPJMDes);
         $scope.$apply();
       }
+    }
+
+    function getRKPByRPJMDes(rpjmdes) {
+      rpjmdes.TotalBiaya = 0;
+      RPJMDes.RKP({
+        id: rpjmdes.id, filter:
+          {
+            where: {
+              WaktuPelaksanaanId: getActiveTab().id
+            },
+            include: {
+              relation: "SumberBiaya"
+            }
+          }
+      }, function (data) {
+        rpjmdes.RKP = [];
+        data.forEach(function(item, index){
+          var sumberBiaya = item.SumberBiaya;
+          item.Total = 0;
+          sumberBiaya.forEach(function(entry){
+            var total = entry.Jumlah;
+            item.Total += total;
+          })
+          rpjmdes.RKP.push(item);
+          rpjmdes.TotalBiaya += item.Total;
+        })
+      })
+    }
+
+    function getRKPByBidang(bidang) {
+      bidang.TotalBiaya = 0;
+      Bidang.findById({
+        id: bidang.id,
+        filter: {
+          include: [
+            { relation: "RKP", scope: {include: {relation: "SumberBiaya" }, where: {WaktuPelaksanaanId: getActiveTab().id}}}, 
+            { relation: "RPJMDes", scope: {include: {relation: "RKP", scope: {include :{relation: "SumberBiaya" }, where: {WaktuPelaksanaanId: getActiveTab().id}}}}}]
+        }
+      }, function (data) {
+        var rkp = data.RKP;
+        var rpjmdes = data.RPJMDes;
+        bidang.RKP = [];
+        bidang.RPJMDes = [];
+
+        rkp.forEach(function (item) {
+          var sumberBiaya = item.SumberBiaya;
+          item.Total = 0;
+          sumberBiaya.forEach(function (entry) {
+            var total = entry.Jumlah;
+            item.Total += total;
+          })
+          bidang.RKP.push(item);
+          bidang.TotalBiaya += item.Total;
+        })
+
+        rpjmdes.forEach(function (item) {
+          var rkp = item.RKP;
+          rkp.forEach(function (item) {
+            var sumberBiaya = item.SumberBiaya;
+            item.Total = 0;
+            sumberBiaya.forEach(function (entry) {
+              var total = entry.Jumlah;
+              item.Total += total;
+            })
+            bidang.RPJMDes.push(item);
+            bidang.TotalBiaya += item.Total;
+          })
+        })
+
+      })
     }
 
     function onBelanjaSelected(e, data) {
@@ -416,12 +505,22 @@
       var selectedId = node.id;
       if (node.type === 'rkp') {
         $scope.selectedRABNode = false;
+        $scope.selectedBelanja = false;
       } else if (node.type === 'belanja') {
-        $scope.selectedBelanja = $filter('filter')($scope.selectedNode.Belanja, { id: selectedId })[0];
+        $scope.selectedBelanja = $filter('filter')($scope.selectedRKP.Belanja, { id: selectedId })[0];
         $scope.selectedRABNode = false;
+        if ($scope.selectedBelanja.RAB) {
+          $scope.selectedBelanja.TotalBiaya = 0;
+          $scope.selectedBelanja.RAB.forEach(function(entry){
+            var harga = entry.Volume * entry.HargaSatuan;
+            $scope.selectedBelanja.TotalBiaya += harga;
+          })
+        }
       } else if (node.type === 'rab') {
-        var belanjaList = $filter('filter')($scope.selectedNode.Belanja, { id: parent })[0];
-        $scope.selectedRABNode = $filter('filter')(belanjaList.RAB, { id: selectedId })[0];
+        var belanja = $filter('filter')($scope.selectedRKP.Belanja, { id: parent })[0];
+        $scope.selectedRABNode = $filter('filter')(belanja.RAB, { id: selectedId })[0];
+        $scope.selectedRABNode.belanjaNo = belanja.No;
+        $scope.selectedBelanja = false;
       }
       $scope.$apply();
     }

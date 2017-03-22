@@ -1,19 +1,14 @@
 <div class="widgets">
     <div class="row">
-        <div class="col-md-6">
-            <div ba-panel ba-panel-class="with-scroll horizontal-tabs tabs-panel medium-panel">
-                <div ng-include="'app/pages/penganggaran/belanja/tabs.html'"></div>
-            </div>
-        </div>
-        <div class="col-md-6" ng-show="selectedNode">
-            <div ba-panel ba-panel-title="{{selectedNode.No}}. {{selectedNode.Nama}}" ba-panel-class="with-scroll panel-info">
-                <div include-with-scope="app/pages/penganggaran/belanja/table.html"></div>
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="1. Pilih RKP" ba-panel-class="with-scroll panel-primary panel-group">
+                <div include-with-scope="app/pages/penganggaran/belanja/tabs.html"></div>
             </div>
         </div>
     </div>
-    <div class="row" ng-show="selectedNode">
+    <div class="row" ng-show="selectedRKP">
         <div class="col-md-12">
-            <div ba-panel ba-panel-title="RAB" ba-panel-class="with-scroll panel-primary panel-group">
+            <div ba-panel ba-panel-title="2. RAB untuk {{selectedRKP.Nama}}" ba-panel-class="with-scroll panel-primary panel-group">
                 <div include-with-scope="app/pages/penganggaran/belanja/belanjaTree.html"></div>
             </div>
         </div>
