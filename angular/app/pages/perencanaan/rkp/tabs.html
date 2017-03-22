@@ -1,5 +1,5 @@
 <uib-tabset>
-  <uib-tab index="$index + 1" ng-repeat="waktuPelaksanaan in waktuPelaksanaanList" active="waktuPelaksanaan.active">
+  <uib-tab ng-repeat="waktuPelaksanaan in waktuPelaksanaanList" select="tabSelected(waktuPelaksanaan)">
     <uib-tab-heading>
       {{waktuPelaksanaan.Nama}}
     </uib-tab-heading>
@@ -16,7 +16,7 @@
                 <button class="btn btn-primary" ng-click="expand()">Expand All</button>
               </div>
               <div>
-                <button class="btn btn-primary" ng-click="refresh()">Refresh</button>
+                <button class="btn btn-primary" ng-click="refresh(waktuPelaksanaan)">Refresh</button>
               </div>
               <div>
               <i class="jstree-icon jstree-themeicon ion-ios-folder jstree-themeicon-custom" role="presentation"></i> Bidang

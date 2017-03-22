@@ -31,9 +31,10 @@
     $scope.RPJMDesList = [];
     $scope.treesData = [];
     $scope.basicConfigs = [];
-    $scope.currentTabIndex = 0;
+    // $scope.currentTabIndex = 1;
     $scope.selectedBidang = {};
     $scope.selectedRPJMDes = {};
+    $scope.selectedWaktuPelaksanaan = {};
 
     $scope.basicConfig = {
       core: {
@@ -70,11 +71,33 @@
         })
       })
 
+      angular.forEach($scope.waktuPelaksanaanList, function(item, index){
+        vm.treesData[index] = vm.treeData;
+      })
+
       getRPJMDesByWaktu($scope.waktuPelaksanaanList);
     }
 
+    function populateRPJMDesByWaktu(bidangList, waktuPelaksanaan) {
+      var index = waktuPelaksanaan.No - 1;
+      vm.treesData[index] = [];
+      angular.forEach(bidangList, function (bidang) {
+        vm.treesData[index].push({
+          "id": bidang.id,
+          "parent": "#",
+          "type": "folder",
+          "text": bidang.No + " " + bidang.Nama,
+          "state": {
+            "opened": true
+          }
+        })
+      })
+
+      getRPJMDesByWaktu([waktuPelaksanaan]);
+    }
+
     function getRPJMDesByWaktu(waktuPelaksanaanList) {
-      var promises = waktuPelaksanaanList.map(function (waktupelaksanaan, i) {
+      var promises = waktuPelaksanaanList.map(function (waktupelaksanaan) {
         var deferred = $q.defer();
 
         WaktuPelaksanaan.RPJMDes({
@@ -85,8 +108,9 @@
             ]
           }
         }, function (result) {
-          $scope.RPJMDesList[i] = result;
-          var treeData = angular.copy(vm.treeData);
+          var indexWaktuPel = waktupelaksanaan.No - 1;
+          $scope.RPJMDesList[indexWaktuPel] = result;
+          var treeData = angular.copy(vm.treesData[indexWaktuPel]);
 
           angular.forEach(result, function (rpjmdes, index, arr) {
             var bidang = rpjmdes.Bidang;
@@ -107,17 +131,17 @@
       })
 
       $q.all(promises).then(function (treesData) {
-        for (var i = 0; i < treesData.length; i++) {
-          $scope.basicConfigs[i] = $scope.basicConfig;
-          $scope.treesData[i] = treesData[i];
-          $scope.basicConfigs[i].version++;
-        }
+        waktuPelaksanaanList.forEach(function(item, index){
+          $scope.treesData[(item.No - 1)] = treesData[index];
+          $scope.basicConfigs[(item.No - 1)] = $scope.basicConfig;
+          $scope.basicConfigs[(item.No - 1)].version++;
+        })
         getRKPByWaktu(waktuPelaksanaanList);
       })
     }
 
     function getRKPByWaktu(waktuPelaksanaanList) {
-      var promises = waktuPelaksanaanList.map(function (waktupelaksanaan, i) {
+      var promises = waktuPelaksanaanList.map(function (waktupelaksanaan) {
         var deferred = $q.defer();
 
         WaktuPelaksanaan.RKP({
@@ -134,8 +158,9 @@
             ]
           }
         }, function (result) {
-          $scope.RKPList[i] = result;
-          var treeData = angular.copy($scope.treesData[i]);
+          var indexWaktuPel = waktupelaksanaan.No - 1;
+          $scope.RKPList[indexWaktuPel] = result;
+          var treeData = angular.copy($scope.treesData[indexWaktuPel]);
 
           angular.forEach(result, function (item, index, arr) {
             var bidang = item.Bidang;
@@ -166,12 +191,10 @@
       })
 
       $q.all(promises).then(function (treesData) {
-        for (var i = 0; i < treesData.length; i++) {
-          $scope.treesData[i] = treesData[i];
-          $scope.basicConfigs[i].version++;
-        }
-
-        $scope.waktuPelaksanaanList[$scope.currentTabIndex].active = true;
+        waktuPelaksanaanList.forEach(function(item, index){
+          $scope.treesData[(item.No - 1)] = treesData[index];
+          $scope.basicConfigs[(item.No - 1)].version++;
+        })
       })
     }
 
@@ -207,27 +230,25 @@
         $scope.waktuPelaksanaanList = result.WaktuPelaksanaan;
         $scope.polaPelaksanaanList = result.PolaPelaksanaan;
         $scope.sumberBiayaItemList = result.SumberBiayaItem;
-        vm.treesData.length = $scope.waktuPelaksanaanList.length;
+        vm.treesData.length = 0;
+        $scope.treesData.length = 0;
         populateRPJMDes($scope.bidangList);
       })
     }
 
     function getActiveTab() {
-      return $scope.waktuPelaksanaanList.filter(function (waktu) {
-        return waktu.active;
-      })[0];
+      return $scope.selectedWaktuPelaksanaan;
     };
+
+    $scope.tabSelected = function(tab) {
+      $scope.selectedWaktuPelaksanaan = tab;
+    }
 
     getActiveRPJM();
 
     
-    $scope.refresh = function () {
-      var ind = getActiveTab().No -1;
-      $scope.currentTabIndex = ind;
-      $scope.ignoreChanges = true;
-      newId = 0;
-      getActiveRPJM();
-      $scope.basicConfigs[ind].version++;
+    $scope.refresh = function (waktuPelaksanaan) {
+      populateRPJMDesByWaktu($scope.bidangList, waktuPelaksanaan);
     };
 
     $scope.expand = function () {
@@ -266,9 +287,9 @@
       var node = data.node;
       var parent = node.parent;
       var selectedId = node.id;
-      $scope.currentTabIndex = getActiveTab().No -1;
+      var ind = getActiveTab().No -1;
       if (node.type === 'pricetag') {
-        $scope.selectedNode = $filter('filter')($scope.RKPList[$scope.currentTabIndex], { id: selectedId })[0];
+        $scope.selectedNode = $filter('filter')($scope.RKPList[ind], { id: selectedId })[0];
         if ($scope.selectedNode.SumberBiaya && $scope.selectedNode.SumberBiaya.length > 0) {
           $scope.selectedSumberBiaya = $scope.selectedNode.SumberBiaya;
         } else {
@@ -286,7 +307,7 @@
         $scope.$apply();
       } else {
         $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: parent })[0];
-        $scope.selectedRPJMDes = $filter('filter')($scope.RPJMDesList[$scope.currentTabIndex], { id: selectedId })[0];
+        $scope.selectedRPJMDes = $filter('filter')($scope.RPJMDesList[ind], { id: selectedId })[0];
         $scope.selectedNode = false;
         $scope.$apply();
       }
@@ -297,8 +318,9 @@
     };
 
     $scope.deleteRKP = function(rkp) {
+      var currentWaktuPelaksanaan = getActiveTab();
       RKP.deleteById({ id: rkp.id }, function () {
-                $scope.refresh();
+                $scope.refresh(currentWaktuPelaksanaan);
                 $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
             })
     }
@@ -328,6 +350,7 @@
     }
 
     $scope.editRKP = function (rkp) {
+      var currentWaktuPelaksanaan = getActiveTab();
       RKP.prototype$updateAttributes({
         id: rkp.id,
         Nama: rkp.Nama,
@@ -341,7 +364,7 @@
         TanggalSelesai: rkp.TanggalSelesai
       }, function (result) {
         reCreateSumberBiaya(rkp, function (res) {
-          $scope.refresh();
+          $scope.refresh(currentWaktuPelaksanaan);
           $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
         })
         
@@ -389,7 +412,7 @@
             TanggalSelesai: newRKP.TanggalSelesai
           }, function(res){
             $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
-            $scope.refresh();
+            $scope.refresh(currentWaktuPelaksanaan);
           })
         } else {
           RKP.create({
@@ -406,7 +429,7 @@
             TanggalSelesai: newRKP.TanggalSelesai
           }, function(res){
             $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
-            $scope.refresh();
+            $scope.refresh(currentWaktuPelaksanaan);
           })
         }
       })
