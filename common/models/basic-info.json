@@ -1,17 +1,16 @@
 {
-  "name": "AnggaranPendapatan",
-  "plural": "AnggaranPendapatan",
-  "base": "BasicInfo",
+  "name": "BasicInfo",
+  "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "Jumlah": {
+    "No": {
       "type": "number"
     },
-    "createdDate": {
-      "type": "date"
+    "Nama": {
+      "type": "string"
     }
   },
   "validations": [],

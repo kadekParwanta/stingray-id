@@ -1,18 +1,23 @@
 {
   "name": "Biaya",
   "plural": "Biaya",
-  "base": "Pendapatan",
+  "base": "BasicInfo",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "properties": {},
+  "properties": {
+    "isAdd": {
+      "type": "boolean",
+      "required": true
+    }
+  },
   "validations": [],
   "relations": {
-    "details": {
+    "SubBiaya": {
       "type": "hasMany",
-      "model": "Biaya",
-      "foreignKey": ""
+      "model": "SubBiaya",
+      "foreignKey": "BiayaId"
     }
   },
   "acls": [],

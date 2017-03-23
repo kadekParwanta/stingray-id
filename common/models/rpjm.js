@@ -41,7 +41,9 @@ module.exports = function (Rpjm) {
             createWaktuPelaksanaan(ctx, function(err, data){
                 createPolaPelaksanaan(ctx, function(err, data){
                     createSumberBiayaItem(ctx, function(err, data){
-                        createPendapatan(ctx, cb);
+                        createPendapatan(ctx, function(err, data){
+                            createBiaya(ctx, cb);
+                        });
                     });
                 });
             });
@@ -145,6 +147,33 @@ module.exports = function (Rpjm) {
                                             })
                                         }
                                     )
+                                })
+                            }
+                        )
+                    })
+                })
+        } else {
+            cb(null, false);
+        }
+    }
+
+    function createBiaya(ctx, cb) {
+        var Biaya = app.models.Biaya;
+        if (ctx.isNewInstance) {
+            Biaya.create(
+                { "No": 1, "Nama": "Penerimaan Pembiayaan", "isAdd":true, "RPJMId": ctx.instance.id }, function (err, biayaA) {
+                    biayaA.SubBiaya.create([
+                        { "No": 1, "Nama": "Sisa lebih perhitungan anggaran (SiLPA) tahun sebelumnya" },
+                        { "No": 2, "Nama": "Pencairan Dana Cadangan" },
+                        { "No": 3, "Nama": "Hasil Kekayaan Desa yang dipisahkan" }
+                    ], function (err, subbiayaA) {
+                        Biaya.create(
+                            { "No": 2, "Nama": "Pengeluaran Pembiayaan", "isAdd":false, "RPJMId": ctx.instance.id }, function (err, biayaB) {
+                                biayaB.SubBiaya.create([
+                                    { "No": 1, "Nama": "Pembentukan Dana Cadangan" },
+                                    { "No": 2, "Nama": "Penyertaan Modal Desa" }
+                                ], function (err, subpendapatanB) {
+                                    cb(null, false);
                                 })
                             }
                         )

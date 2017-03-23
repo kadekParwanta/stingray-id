@@ -11244,55 +11244,55 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           { 'id': '@id' },
           {
 
-            // INTERNAL. Use Pendapatan.details.findById() instead.
-            "prototype$__findById__details": {
+            // INTERNAL. Use Pendapatan.SubPendapatan.findById() instead.
+            "prototype$__findById__SubPendapatan": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/Pendapatan/:id/details/:fk",
+              url: urlBase + "/Pendapatan/:id/SubPendapatan/:fk",
               method: "GET",
             },
 
-            // INTERNAL. Use Pendapatan.details.destroyById() instead.
-            "prototype$__destroyById__details": {
+            // INTERNAL. Use Pendapatan.SubPendapatan.destroyById() instead.
+            "prototype$__destroyById__SubPendapatan": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/Pendapatan/:id/details/:fk",
+              url: urlBase + "/Pendapatan/:id/SubPendapatan/:fk",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Pendapatan.details.updateById() instead.
-            "prototype$__updateById__details": {
+            // INTERNAL. Use Pendapatan.SubPendapatan.updateById() instead.
+            "prototype$__updateById__SubPendapatan": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/Pendapatan/:id/details/:fk",
+              url: urlBase + "/Pendapatan/:id/SubPendapatan/:fk",
               method: "PUT",
             },
 
-            // INTERNAL. Use Pendapatan.details() instead.
-            "prototype$__get__details": {
+            // INTERNAL. Use Pendapatan.SubPendapatan() instead.
+            "prototype$__get__SubPendapatan": {
               isArray: true,
-              url: urlBase + "/Pendapatan/:id/details",
+              url: urlBase + "/Pendapatan/:id/SubPendapatan",
               method: "GET",
             },
 
-            // INTERNAL. Use Pendapatan.details.create() instead.
-            "prototype$__create__details": {
-              url: urlBase + "/Pendapatan/:id/details",
+            // INTERNAL. Use Pendapatan.SubPendapatan.create() instead.
+            "prototype$__create__SubPendapatan": {
+              url: urlBase + "/Pendapatan/:id/SubPendapatan",
               method: "POST",
             },
 
-            // INTERNAL. Use Pendapatan.details.destroyAll() instead.
-            "prototype$__delete__details": {
-              url: urlBase + "/Pendapatan/:id/details",
+            // INTERNAL. Use Pendapatan.SubPendapatan.destroyAll() instead.
+            "prototype$__delete__SubPendapatan": {
+              url: urlBase + "/Pendapatan/:id/SubPendapatan",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Pendapatan.details.count() instead.
-            "prototype$__count__details": {
-              url: urlBase + "/Pendapatan/:id/details/count",
+            // INTERNAL. Use Pendapatan.SubPendapatan.count() instead.
+            "prototype$__count__SubPendapatan": {
+              url: urlBase + "/Pendapatan/:id/SubPendapatan/count",
               method: "GET",
             },
 
@@ -11655,7 +11655,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -11777,62 +11777,62 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
-            // INTERNAL. Use Pendapatan.details.findById() instead.
-            "::findById::Pendapatan::details": {
+            // INTERNAL. Use RPJM.Pendapatan.findById() instead.
+            "::findById::RPJM::Pendapatan": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/Pendapatan/:id/details/:fk",
+              url: urlBase + "/RPJM/:id/Pendapatan/:fk",
               method: "GET",
             },
 
-            // INTERNAL. Use Pendapatan.details.destroyById() instead.
-            "::destroyById::Pendapatan::details": {
+            // INTERNAL. Use RPJM.Pendapatan.destroyById() instead.
+            "::destroyById::RPJM::Pendapatan": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/Pendapatan/:id/details/:fk",
+              url: urlBase + "/RPJM/:id/Pendapatan/:fk",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Pendapatan.details.updateById() instead.
-            "::updateById::Pendapatan::details": {
+            // INTERNAL. Use RPJM.Pendapatan.updateById() instead.
+            "::updateById::RPJM::Pendapatan": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/Pendapatan/:id/details/:fk",
+              url: urlBase + "/RPJM/:id/Pendapatan/:fk",
               method: "PUT",
             },
 
-            // INTERNAL. Use Pendapatan.details() instead.
-            "::get::Pendapatan::details": {
+            // INTERNAL. Use RPJM.Pendapatan() instead.
+            "::get::RPJM::Pendapatan": {
               isArray: true,
-              url: urlBase + "/Pendapatan/:id/details",
+              url: urlBase + "/RPJM/:id/Pendapatan",
               method: "GET",
             },
 
-            // INTERNAL. Use Pendapatan.details.create() instead.
-            "::create::Pendapatan::details": {
-              url: urlBase + "/Pendapatan/:id/details",
+            // INTERNAL. Use RPJM.Pendapatan.create() instead.
+            "::create::RPJM::Pendapatan": {
+              url: urlBase + "/RPJM/:id/Pendapatan",
               method: "POST",
             },
 
-            // INTERNAL. Use Pendapatan.details.createMany() instead.
-            "::createMany::Pendapatan::details": {
+            // INTERNAL. Use RPJM.Pendapatan.createMany() instead.
+            "::createMany::RPJM::Pendapatan": {
               isArray: true,
-              url: urlBase + "/Pendapatan/:id/details",
+              url: urlBase + "/RPJM/:id/Pendapatan",
               method: "POST",
             },
 
-            // INTERNAL. Use Pendapatan.details.destroyAll() instead.
-            "::delete::Pendapatan::details": {
-              url: urlBase + "/Pendapatan/:id/details",
+            // INTERNAL. Use RPJM.Pendapatan.destroyAll() instead.
+            "::delete::RPJM::Pendapatan": {
+              url: urlBase + "/RPJM/:id/Pendapatan",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Pendapatan.details.count() instead.
-            "::count::Pendapatan::details": {
-              url: urlBase + "/Pendapatan/:id/details/count",
+            // INTERNAL. Use RPJM.Pendapatan.count() instead.
+            "::count::RPJM::Pendapatan": {
+              url: urlBase + "/RPJM/:id/Pendapatan/count",
               method: "GET",
             },
           }
@@ -11979,31 +11979,31 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
     /**
      * @ngdoc object
-     * @name lbServices.Pendapatan.details
-     * @header lbServices.Pendapatan.details
+     * @name lbServices.Pendapatan.SubPendapatan
+     * @header lbServices.Pendapatan.SubPendapatan
      * @object
      * @description
      *
-     * The object `Pendapatan.details` groups methods
-     * manipulating `Pendapatan` instances related to `Pendapatan`.
+     * The object `Pendapatan.SubPendapatan` groups methods
+     * manipulating `SubPendapatan` instances related to `Pendapatan`.
      *
-     * Call {@link lbServices.Pendapatan#details Pendapatan.details()}
+     * Call {@link lbServices.Pendapatan#SubPendapatan Pendapatan.SubPendapatan()}
      * to query all related instances.
      */
 
 
             /**
              * @ngdoc method
-             * @name lbServices.Pendapatan#details
+             * @name lbServices.Pendapatan#SubPendapatan
              * @methodOf lbServices.Pendapatan
              *
              * @description
              *
-             * Queries details of Pendapatan.
+             * Queries SubPendapatan of Pendapatan.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `filter` – `{object=}` -
              *
@@ -12019,27 +12019,27 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Pendapatan` object.)
+             * This usually means the response is a `SubPendapatan` object.)
              * </em>
              */
-        R.details = function() {
-          var TargetResource = $injector.get("Pendapatan");
-          var action = TargetResource["::get::Pendapatan::details"];
+        R.SubPendapatan = function() {
+          var TargetResource = $injector.get("SubPendapatan");
+          var action = TargetResource["::get::Pendapatan::SubPendapatan"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Pendapatan.details#count
-             * @methodOf lbServices.Pendapatan.details
+             * @name lbServices.Pendapatan.SubPendapatan#count
+             * @methodOf lbServices.Pendapatan.SubPendapatan
              *
              * @description
              *
-             * Counts details of Pendapatan.
+             * Counts SubPendapatan of Pendapatan.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -12057,24 +12057,24 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              *  - `count` – `{number=}` -
              */
-        R.details.count = function() {
-          var TargetResource = $injector.get("Pendapatan");
-          var action = TargetResource["::count::Pendapatan::details"];
+        R.SubPendapatan.count = function() {
+          var TargetResource = $injector.get("SubPendapatan");
+          var action = TargetResource["::count::Pendapatan::SubPendapatan"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Pendapatan.details#create
-             * @methodOf lbServices.Pendapatan.details
+             * @name lbServices.Pendapatan.SubPendapatan#create
+             * @methodOf lbServices.Pendapatan.SubPendapatan
              *
              * @description
              *
-             * Creates a new instance in details of this model.
+             * Creates a new instance in SubPendapatan of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -12092,27 +12092,27 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Pendapatan` object.)
+             * This usually means the response is a `SubPendapatan` object.)
              * </em>
              */
-        R.details.create = function() {
-          var TargetResource = $injector.get("Pendapatan");
-          var action = TargetResource["::create::Pendapatan::details"];
+        R.SubPendapatan.create = function() {
+          var TargetResource = $injector.get("SubPendapatan");
+          var action = TargetResource["::create::Pendapatan::SubPendapatan"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Pendapatan.details#createMany
-             * @methodOf lbServices.Pendapatan.details
+             * @name lbServices.Pendapatan.SubPendapatan#createMany
+             * @methodOf lbServices.Pendapatan.SubPendapatan
              *
              * @description
              *
-             * Creates a new instance in details of this model.
+             * Creates a new instance in SubPendapatan of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -12130,27 +12130,27 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Pendapatan` object.)
+             * This usually means the response is a `SubPendapatan` object.)
              * </em>
              */
-        R.details.createMany = function() {
-          var TargetResource = $injector.get("Pendapatan");
-          var action = TargetResource["::createMany::Pendapatan::details"];
+        R.SubPendapatan.createMany = function() {
+          var TargetResource = $injector.get("SubPendapatan");
+          var action = TargetResource["::createMany::Pendapatan::SubPendapatan"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Pendapatan.details#destroyAll
-             * @methodOf lbServices.Pendapatan.details
+             * @name lbServices.Pendapatan.SubPendapatan#destroyAll
+             * @methodOf lbServices.Pendapatan.SubPendapatan
              *
              * @description
              *
-             * Deletes all details of this model.
+             * Deletes all SubPendapatan of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -12164,26 +12164,26 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * This method returns no data.
              */
-        R.details.destroyAll = function() {
-          var TargetResource = $injector.get("Pendapatan");
-          var action = TargetResource["::delete::Pendapatan::details"];
+        R.SubPendapatan.destroyAll = function() {
+          var TargetResource = $injector.get("SubPendapatan");
+          var action = TargetResource["::delete::Pendapatan::SubPendapatan"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Pendapatan.details#destroyById
-             * @methodOf lbServices.Pendapatan.details
+             * @name lbServices.Pendapatan.SubPendapatan#destroyById
+             * @methodOf lbServices.Pendapatan.SubPendapatan
              *
              * @description
              *
-             * Delete a related item by id for details.
+             * Delete a related item by id for SubPendapatan.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
-             *  - `fk` – `{*}` - Foreign key for details
+             *  - `fk` – `{*}` - Foreign key for SubPendapatan
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -12197,26 +12197,26 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * This method returns no data.
              */
-        R.details.destroyById = function() {
-          var TargetResource = $injector.get("Pendapatan");
-          var action = TargetResource["::destroyById::Pendapatan::details"];
+        R.SubPendapatan.destroyById = function() {
+          var TargetResource = $injector.get("SubPendapatan");
+          var action = TargetResource["::destroyById::Pendapatan::SubPendapatan"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Pendapatan.details#findById
-             * @methodOf lbServices.Pendapatan.details
+             * @name lbServices.Pendapatan.SubPendapatan#findById
+             * @methodOf lbServices.Pendapatan.SubPendapatan
              *
              * @description
              *
-             * Find a related item by id for details.
+             * Find a related item by id for SubPendapatan.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
-             *  - `fk` – `{*}` - Foreign key for details
+             *  - `fk` – `{*}` - Foreign key for SubPendapatan
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -12230,29 +12230,29 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Pendapatan` object.)
+             * This usually means the response is a `SubPendapatan` object.)
              * </em>
              */
-        R.details.findById = function() {
-          var TargetResource = $injector.get("Pendapatan");
-          var action = TargetResource["::findById::Pendapatan::details"];
+        R.SubPendapatan.findById = function() {
+          var TargetResource = $injector.get("SubPendapatan");
+          var action = TargetResource["::findById::Pendapatan::SubPendapatan"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Pendapatan.details#updateById
-             * @methodOf lbServices.Pendapatan.details
+             * @name lbServices.Pendapatan.SubPendapatan#updateById
+             * @methodOf lbServices.Pendapatan.SubPendapatan
              *
              * @description
              *
-             * Update a related item by id for details.
+             * Update a related item by id for SubPendapatan.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
-             *  - `fk` – `{*}` - Foreign key for details
+             *  - `fk` – `{*}` - Foreign key for SubPendapatan
              *
              * @param {Object} postData Request data.
              *
@@ -12270,12 +12270,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Pendapatan` object.)
+             * This usually means the response is a `SubPendapatan` object.)
              * </em>
              */
-        R.details.updateById = function() {
-          var TargetResource = $injector.get("Pendapatan");
-          var action = TargetResource["::updateById::Pendapatan::details"];
+        R.SubPendapatan.updateById = function() {
+          var TargetResource = $injector.get("SubPendapatan");
+          var action = TargetResource["::updateById::Pendapatan::SubPendapatan"];
           return action.apply(R, arguments);
         };
 
@@ -12310,55 +12310,55 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           { 'id': '@id' },
           {
 
-            // INTERNAL. Use Biaya.details.findById() instead.
-            "prototype$__findById__details": {
+            // INTERNAL. Use Biaya.SubBiaya.findById() instead.
+            "prototype$__findById__SubBiaya": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/Biaya/:id/details/:fk",
+              url: urlBase + "/Biaya/:id/SubBiaya/:fk",
               method: "GET",
             },
 
-            // INTERNAL. Use Biaya.details.destroyById() instead.
-            "prototype$__destroyById__details": {
+            // INTERNAL. Use Biaya.SubBiaya.destroyById() instead.
+            "prototype$__destroyById__SubBiaya": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/Biaya/:id/details/:fk",
+              url: urlBase + "/Biaya/:id/SubBiaya/:fk",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Biaya.details.updateById() instead.
-            "prototype$__updateById__details": {
+            // INTERNAL. Use Biaya.SubBiaya.updateById() instead.
+            "prototype$__updateById__SubBiaya": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/Biaya/:id/details/:fk",
+              url: urlBase + "/Biaya/:id/SubBiaya/:fk",
               method: "PUT",
             },
 
-            // INTERNAL. Use Biaya.details() instead.
-            "prototype$__get__details": {
+            // INTERNAL. Use Biaya.SubBiaya() instead.
+            "prototype$__get__SubBiaya": {
               isArray: true,
-              url: urlBase + "/Biaya/:id/details",
+              url: urlBase + "/Biaya/:id/SubBiaya",
               method: "GET",
             },
 
-            // INTERNAL. Use Biaya.details.create() instead.
-            "prototype$__create__details": {
-              url: urlBase + "/Biaya/:id/details",
+            // INTERNAL. Use Biaya.SubBiaya.create() instead.
+            "prototype$__create__SubBiaya": {
+              url: urlBase + "/Biaya/:id/SubBiaya",
               method: "POST",
             },
 
-            // INTERNAL. Use Biaya.details.destroyAll() instead.
-            "prototype$__delete__details": {
-              url: urlBase + "/Biaya/:id/details",
+            // INTERNAL. Use Biaya.SubBiaya.destroyAll() instead.
+            "prototype$__delete__SubBiaya": {
+              url: urlBase + "/Biaya/:id/SubBiaya",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Biaya.details.count() instead.
-            "prototype$__count__details": {
-              url: urlBase + "/Biaya/:id/details/count",
+            // INTERNAL. Use Biaya.SubBiaya.count() instead.
+            "prototype$__count__SubBiaya": {
+              url: urlBase + "/Biaya/:id/SubBiaya/count",
               method: "GET",
             },
 
@@ -12721,7 +12721,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -12843,62 +12843,62 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
-            // INTERNAL. Use Biaya.details.findById() instead.
-            "::findById::Biaya::details": {
+            // INTERNAL. Use RPJM.Biaya.findById() instead.
+            "::findById::RPJM::Biaya": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/Biaya/:id/details/:fk",
+              url: urlBase + "/RPJM/:id/Biaya/:fk",
               method: "GET",
             },
 
-            // INTERNAL. Use Biaya.details.destroyById() instead.
-            "::destroyById::Biaya::details": {
+            // INTERNAL. Use RPJM.Biaya.destroyById() instead.
+            "::destroyById::RPJM::Biaya": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/Biaya/:id/details/:fk",
+              url: urlBase + "/RPJM/:id/Biaya/:fk",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Biaya.details.updateById() instead.
-            "::updateById::Biaya::details": {
+            // INTERNAL. Use RPJM.Biaya.updateById() instead.
+            "::updateById::RPJM::Biaya": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/Biaya/:id/details/:fk",
+              url: urlBase + "/RPJM/:id/Biaya/:fk",
               method: "PUT",
             },
 
-            // INTERNAL. Use Biaya.details() instead.
-            "::get::Biaya::details": {
+            // INTERNAL. Use RPJM.Biaya() instead.
+            "::get::RPJM::Biaya": {
               isArray: true,
-              url: urlBase + "/Biaya/:id/details",
+              url: urlBase + "/RPJM/:id/Biaya",
               method: "GET",
             },
 
-            // INTERNAL. Use Biaya.details.create() instead.
-            "::create::Biaya::details": {
-              url: urlBase + "/Biaya/:id/details",
+            // INTERNAL. Use RPJM.Biaya.create() instead.
+            "::create::RPJM::Biaya": {
+              url: urlBase + "/RPJM/:id/Biaya",
               method: "POST",
             },
 
-            // INTERNAL. Use Biaya.details.createMany() instead.
-            "::createMany::Biaya::details": {
+            // INTERNAL. Use RPJM.Biaya.createMany() instead.
+            "::createMany::RPJM::Biaya": {
               isArray: true,
-              url: urlBase + "/Biaya/:id/details",
+              url: urlBase + "/RPJM/:id/Biaya",
               method: "POST",
             },
 
-            // INTERNAL. Use Biaya.details.destroyAll() instead.
-            "::delete::Biaya::details": {
-              url: urlBase + "/Biaya/:id/details",
+            // INTERNAL. Use RPJM.Biaya.destroyAll() instead.
+            "::delete::RPJM::Biaya": {
+              url: urlBase + "/RPJM/:id/Biaya",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Biaya.details.count() instead.
-            "::count::Biaya::details": {
-              url: urlBase + "/Biaya/:id/details/count",
+            // INTERNAL. Use RPJM.Biaya.count() instead.
+            "::count::RPJM::Biaya": {
+              url: urlBase + "/RPJM/:id/Biaya/count",
               method: "GET",
             },
           }
@@ -13045,31 +13045,31 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
     /**
      * @ngdoc object
-     * @name lbServices.Biaya.details
-     * @header lbServices.Biaya.details
+     * @name lbServices.Biaya.SubBiaya
+     * @header lbServices.Biaya.SubBiaya
      * @object
      * @description
      *
-     * The object `Biaya.details` groups methods
-     * manipulating `Biaya` instances related to `Biaya`.
+     * The object `Biaya.SubBiaya` groups methods
+     * manipulating `SubBiaya` instances related to `Biaya`.
      *
-     * Call {@link lbServices.Biaya#details Biaya.details()}
+     * Call {@link lbServices.Biaya#SubBiaya Biaya.SubBiaya()}
      * to query all related instances.
      */
 
 
             /**
              * @ngdoc method
-             * @name lbServices.Biaya#details
+             * @name lbServices.Biaya#SubBiaya
              * @methodOf lbServices.Biaya
              *
              * @description
              *
-             * Queries details of Biaya.
+             * Queries SubBiaya of Biaya.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `filter` – `{object=}` -
              *
@@ -13085,27 +13085,27 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Biaya` object.)
+             * This usually means the response is a `SubBiaya` object.)
              * </em>
              */
-        R.details = function() {
-          var TargetResource = $injector.get("Biaya");
-          var action = TargetResource["::get::Biaya::details"];
+        R.SubBiaya = function() {
+          var TargetResource = $injector.get("SubBiaya");
+          var action = TargetResource["::get::Biaya::SubBiaya"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Biaya.details#count
-             * @methodOf lbServices.Biaya.details
+             * @name lbServices.Biaya.SubBiaya#count
+             * @methodOf lbServices.Biaya.SubBiaya
              *
              * @description
              *
-             * Counts details of Biaya.
+             * Counts SubBiaya of Biaya.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -13123,24 +13123,24 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              *  - `count` – `{number=}` -
              */
-        R.details.count = function() {
-          var TargetResource = $injector.get("Biaya");
-          var action = TargetResource["::count::Biaya::details"];
+        R.SubBiaya.count = function() {
+          var TargetResource = $injector.get("SubBiaya");
+          var action = TargetResource["::count::Biaya::SubBiaya"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Biaya.details#create
-             * @methodOf lbServices.Biaya.details
+             * @name lbServices.Biaya.SubBiaya#create
+             * @methodOf lbServices.Biaya.SubBiaya
              *
              * @description
              *
-             * Creates a new instance in details of this model.
+             * Creates a new instance in SubBiaya of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -13158,27 +13158,27 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Biaya` object.)
+             * This usually means the response is a `SubBiaya` object.)
              * </em>
              */
-        R.details.create = function() {
-          var TargetResource = $injector.get("Biaya");
-          var action = TargetResource["::create::Biaya::details"];
+        R.SubBiaya.create = function() {
+          var TargetResource = $injector.get("SubBiaya");
+          var action = TargetResource["::create::Biaya::SubBiaya"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Biaya.details#createMany
-             * @methodOf lbServices.Biaya.details
+             * @name lbServices.Biaya.SubBiaya#createMany
+             * @methodOf lbServices.Biaya.SubBiaya
              *
              * @description
              *
-             * Creates a new instance in details of this model.
+             * Creates a new instance in SubBiaya of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -13196,27 +13196,27 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Biaya` object.)
+             * This usually means the response is a `SubBiaya` object.)
              * </em>
              */
-        R.details.createMany = function() {
-          var TargetResource = $injector.get("Biaya");
-          var action = TargetResource["::createMany::Biaya::details"];
+        R.SubBiaya.createMany = function() {
+          var TargetResource = $injector.get("SubBiaya");
+          var action = TargetResource["::createMany::Biaya::SubBiaya"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Biaya.details#destroyAll
-             * @methodOf lbServices.Biaya.details
+             * @name lbServices.Biaya.SubBiaya#destroyAll
+             * @methodOf lbServices.Biaya.SubBiaya
              *
              * @description
              *
-             * Deletes all details of this model.
+             * Deletes all SubBiaya of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -13230,26 +13230,26 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * This method returns no data.
              */
-        R.details.destroyAll = function() {
-          var TargetResource = $injector.get("Biaya");
-          var action = TargetResource["::delete::Biaya::details"];
+        R.SubBiaya.destroyAll = function() {
+          var TargetResource = $injector.get("SubBiaya");
+          var action = TargetResource["::delete::Biaya::SubBiaya"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Biaya.details#destroyById
-             * @methodOf lbServices.Biaya.details
+             * @name lbServices.Biaya.SubBiaya#destroyById
+             * @methodOf lbServices.Biaya.SubBiaya
              *
              * @description
              *
-             * Delete a related item by id for details.
+             * Delete a related item by id for SubBiaya.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - BasicInfo id
              *
-             *  - `fk` – `{*}` - Foreign key for details
+             *  - `fk` – `{*}` - Foreign key for SubBiaya
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -13263,26 +13263,26 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * This method returns no data.
              */
-        R.details.destroyById = function() {
-          var TargetResource = $injector.get("Biaya");
-          var action = TargetResource["::destroyById::Biaya::details"];
+        R.SubBiaya.destroyById = function() {
+          var TargetResource = $injector.get("SubBiaya");
+          var action = TargetResource["::destroyById::Biaya::SubBiaya"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Biaya.details#findById
-             * @methodOf lbServices.Biaya.details
+             * @name lbServices.Biaya.SubBiaya#findById
+             * @methodOf lbServices.Biaya.SubBiaya
              *
              * @description
              *
-             * Find a related item by id for details.
+             * Find a related item by id for SubBiaya.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - BasicInfo id
              *
-             *  - `fk` – `{*}` - Foreign key for details
+             *  - `fk` – `{*}` - Foreign key for SubBiaya
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -13296,29 +13296,29 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Biaya` object.)
+             * This usually means the response is a `SubBiaya` object.)
              * </em>
              */
-        R.details.findById = function() {
-          var TargetResource = $injector.get("Biaya");
-          var action = TargetResource["::findById::Biaya::details"];
+        R.SubBiaya.findById = function() {
+          var TargetResource = $injector.get("SubBiaya");
+          var action = TargetResource["::findById::Biaya::SubBiaya"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Biaya.details#updateById
-             * @methodOf lbServices.Biaya.details
+             * @name lbServices.Biaya.SubBiaya#updateById
+             * @methodOf lbServices.Biaya.SubBiaya
              *
              * @description
              *
-             * Update a related item by id for details.
+             * Update a related item by id for SubBiaya.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - Pendapatan id
+             *  - `id` – `{*}` - BasicInfo id
              *
-             *  - `fk` – `{*}` - Foreign key for details
+             *  - `fk` – `{*}` - Foreign key for SubBiaya
              *
              * @param {Object} postData Request data.
              *
@@ -13336,12 +13336,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Biaya` object.)
+             * This usually means the response is a `SubBiaya` object.)
              * </em>
              */
-        R.details.updateById = function() {
-          var TargetResource = $injector.get("Biaya");
-          var action = TargetResource["::updateById::Biaya::details"];
+        R.SubBiaya.updateById = function() {
+          var TargetResource = $injector.get("SubBiaya");
+          var action = TargetResource["::updateById::Biaya::SubBiaya"];
           return action.apply(R, arguments);
         };
 
@@ -13839,7 +13839,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -14140,7 +14140,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `filter` – `{object=}` -
              *
@@ -14176,7 +14176,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -14211,7 +14211,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -14249,7 +14249,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -14287,7 +14287,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -14318,7 +14318,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RPJMDes
              *
@@ -14351,7 +14351,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RPJMDes
              *
@@ -14387,7 +14387,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RPJMDes
              *
@@ -14441,7 +14441,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `filter` – `{object=}` -
              *
@@ -14477,7 +14477,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -14512,7 +14512,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -14550,7 +14550,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -14588,7 +14588,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -14619,7 +14619,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RKP
              *
@@ -14652,7 +14652,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RKP
              *
@@ -14688,7 +14688,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RKP
              *
@@ -15238,7 +15238,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -15625,7 +15625,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `filter` – `{object=}` -
              *
@@ -15661,7 +15661,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -15696,7 +15696,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -15734,7 +15734,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -15772,7 +15772,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -15803,7 +15803,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RKP
              *
@@ -15836,7 +15836,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RKP
              *
@@ -15872,7 +15872,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RKP
              *
@@ -15926,7 +15926,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `filter` – `{object=}` -
              *
@@ -15962,7 +15962,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -15997,7 +15997,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -16035,7 +16035,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -16073,7 +16073,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -16104,7 +16104,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RPJMDes
              *
@@ -16137,7 +16137,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RPJMDes
              *
@@ -16173,7 +16173,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RPJMDes
              *
@@ -16209,7 +16209,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RPJMDes
              *
@@ -16249,7 +16249,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RPJMDes
              *
@@ -16282,7 +16282,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RPJMDes
              *
@@ -16864,31 +16864,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "::get::RAB::SumberBiaya": {
               url: urlBase + "/RAB/:id/SumberBiaya",
               method: "GET",
-            },
-
-            // INTERNAL. Use RAB.SumberBiaya.create() instead.
-            "::create::RAB::SumberBiaya": {
-              url: urlBase + "/RAB/:id/SumberBiaya",
-              method: "POST",
-            },
-
-            // INTERNAL. Use RAB.SumberBiaya.createMany() instead.
-            "::createMany::RAB::SumberBiaya": {
-              isArray: true,
-              url: urlBase + "/RAB/:id/SumberBiaya",
-              method: "POST",
-            },
-
-            // INTERNAL. Use RAB.SumberBiaya.update() instead.
-            "::update::RAB::SumberBiaya": {
-              url: urlBase + "/RAB/:id/SumberBiaya",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use RAB.SumberBiaya.destroy() instead.
-            "::destroy::RAB::SumberBiaya": {
-              url: urlBase + "/RAB/:id/SumberBiaya",
-              method: "DELETE",
             },
           }
         );
@@ -18253,7 +18228,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -18646,7 +18621,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `refresh` – `{boolean=}` -
              *
@@ -18682,7 +18657,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `refresh` – `{boolean=}` -
              *
@@ -18718,7 +18693,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `refresh` – `{boolean=}` -
              *
@@ -18754,7 +18729,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `refresh` – `{boolean=}` -
              *
@@ -18804,7 +18779,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `filter` – `{object=}` -
              *
@@ -18840,7 +18815,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -18875,7 +18850,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -18913,7 +18888,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -18951,7 +18926,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -18982,7 +18957,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for SumberBiaya
              *
@@ -19015,7 +18990,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for SumberBiaya
              *
@@ -19051,7 +19026,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for SumberBiaya
              *
@@ -19105,7 +19080,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `filter` – `{object=}` -
              *
@@ -19141,7 +19116,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -19176,7 +19151,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -19214,7 +19189,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -19252,7 +19227,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -19283,7 +19258,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for Belanja
              *
@@ -19316,7 +19291,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for Belanja
              *
@@ -19352,7 +19327,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for Belanja
              *
@@ -19493,6 +19468,60 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "PUT",
             },
 
+            // INTERNAL. Use RPJM.Pendapatan.findById() instead.
+            "prototype$__findById__Pendapatan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/Pendapatan/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.Pendapatan.destroyById() instead.
+            "prototype$__destroyById__Pendapatan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/Pendapatan/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJM.Pendapatan.updateById() instead.
+            "prototype$__updateById__Pendapatan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/Pendapatan/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use RPJM.Biaya.findById() instead.
+            "prototype$__findById__Biaya": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/Biaya/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.Biaya.destroyById() instead.
+            "prototype$__destroyById__Biaya": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/Biaya/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJM.Biaya.updateById() instead.
+            "prototype$__updateById__Biaya": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/RPJM/:id/Biaya/:fk",
+              method: "PUT",
+            },
+
             // INTERNAL. Use RPJM.SumberBiayaItem.findById() instead.
             "prototype$__findById__SumberBiayaItem": {
               params: {
@@ -19592,6 +19621,56 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             // INTERNAL. Use RPJM.PolaPelaksanaan.count() instead.
             "prototype$__count__PolaPelaksanaan": {
               url: urlBase + "/RPJM/:id/PolaPelaksanaan/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.Pendapatan() instead.
+            "prototype$__get__Pendapatan": {
+              isArray: true,
+              url: urlBase + "/RPJM/:id/Pendapatan",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.Pendapatan.create() instead.
+            "prototype$__create__Pendapatan": {
+              url: urlBase + "/RPJM/:id/Pendapatan",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RPJM.Pendapatan.destroyAll() instead.
+            "prototype$__delete__Pendapatan": {
+              url: urlBase + "/RPJM/:id/Pendapatan",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJM.Pendapatan.count() instead.
+            "prototype$__count__Pendapatan": {
+              url: urlBase + "/RPJM/:id/Pendapatan/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.Biaya() instead.
+            "prototype$__get__Biaya": {
+              isArray: true,
+              url: urlBase + "/RPJM/:id/Biaya",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RPJM.Biaya.create() instead.
+            "prototype$__create__Biaya": {
+              url: urlBase + "/RPJM/:id/Biaya",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RPJM.Biaya.destroyAll() instead.
+            "prototype$__delete__Biaya": {
+              url: urlBase + "/RPJM/:id/Biaya",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use RPJM.Biaya.count() instead.
+            "prototype$__count__Biaya": {
+              url: urlBase + "/RPJM/:id/Biaya/count",
               method: "GET",
             },
 
@@ -21084,6 +21163,608 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         R.PolaPelaksanaan.updateById = function() {
           var TargetResource = $injector.get("PolaPelaksanaan");
           var action = TargetResource["::updateById::RPJM::PolaPelaksanaan"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.RPJM.Pendapatan
+     * @header lbServices.RPJM.Pendapatan
+     * @object
+     * @description
+     *
+     * The object `RPJM.Pendapatan` groups methods
+     * manipulating `Pendapatan` instances related to `RPJM`.
+     *
+     * Call {@link lbServices.RPJM#Pendapatan RPJM.Pendapatan()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM#Pendapatan
+             * @methodOf lbServices.RPJM
+             *
+             * @description
+             *
+             * Queries Pendapatan of RPJM.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Pendapatan` object.)
+             * </em>
+             */
+        R.Pendapatan = function() {
+          var TargetResource = $injector.get("Pendapatan");
+          var action = TargetResource["::get::RPJM::Pendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Pendapatan#count
+             * @methodOf lbServices.RPJM.Pendapatan
+             *
+             * @description
+             *
+             * Counts Pendapatan of RPJM.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.Pendapatan.count = function() {
+          var TargetResource = $injector.get("Pendapatan");
+          var action = TargetResource["::count::RPJM::Pendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Pendapatan#create
+             * @methodOf lbServices.RPJM.Pendapatan
+             *
+             * @description
+             *
+             * Creates a new instance in Pendapatan of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Pendapatan` object.)
+             * </em>
+             */
+        R.Pendapatan.create = function() {
+          var TargetResource = $injector.get("Pendapatan");
+          var action = TargetResource["::create::RPJM::Pendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Pendapatan#createMany
+             * @methodOf lbServices.RPJM.Pendapatan
+             *
+             * @description
+             *
+             * Creates a new instance in Pendapatan of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Pendapatan` object.)
+             * </em>
+             */
+        R.Pendapatan.createMany = function() {
+          var TargetResource = $injector.get("Pendapatan");
+          var action = TargetResource["::createMany::RPJM::Pendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Pendapatan#destroyAll
+             * @methodOf lbServices.RPJM.Pendapatan
+             *
+             * @description
+             *
+             * Deletes all Pendapatan of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.Pendapatan.destroyAll = function() {
+          var TargetResource = $injector.get("Pendapatan");
+          var action = TargetResource["::delete::RPJM::Pendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Pendapatan#destroyById
+             * @methodOf lbServices.RPJM.Pendapatan
+             *
+             * @description
+             *
+             * Delete a related item by id for Pendapatan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for Pendapatan
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.Pendapatan.destroyById = function() {
+          var TargetResource = $injector.get("Pendapatan");
+          var action = TargetResource["::destroyById::RPJM::Pendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Pendapatan#findById
+             * @methodOf lbServices.RPJM.Pendapatan
+             *
+             * @description
+             *
+             * Find a related item by id for Pendapatan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for Pendapatan
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Pendapatan` object.)
+             * </em>
+             */
+        R.Pendapatan.findById = function() {
+          var TargetResource = $injector.get("Pendapatan");
+          var action = TargetResource["::findById::RPJM::Pendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Pendapatan#updateById
+             * @methodOf lbServices.RPJM.Pendapatan
+             *
+             * @description
+             *
+             * Update a related item by id for Pendapatan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for Pendapatan
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Pendapatan` object.)
+             * </em>
+             */
+        R.Pendapatan.updateById = function() {
+          var TargetResource = $injector.get("Pendapatan");
+          var action = TargetResource["::updateById::RPJM::Pendapatan"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.RPJM.Biaya
+     * @header lbServices.RPJM.Biaya
+     * @object
+     * @description
+     *
+     * The object `RPJM.Biaya` groups methods
+     * manipulating `Biaya` instances related to `RPJM`.
+     *
+     * Call {@link lbServices.RPJM#Biaya RPJM.Biaya()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM#Biaya
+             * @methodOf lbServices.RPJM
+             *
+             * @description
+             *
+             * Queries Biaya of RPJM.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Biaya` object.)
+             * </em>
+             */
+        R.Biaya = function() {
+          var TargetResource = $injector.get("Biaya");
+          var action = TargetResource["::get::RPJM::Biaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Biaya#count
+             * @methodOf lbServices.RPJM.Biaya
+             *
+             * @description
+             *
+             * Counts Biaya of RPJM.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.Biaya.count = function() {
+          var TargetResource = $injector.get("Biaya");
+          var action = TargetResource["::count::RPJM::Biaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Biaya#create
+             * @methodOf lbServices.RPJM.Biaya
+             *
+             * @description
+             *
+             * Creates a new instance in Biaya of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Biaya` object.)
+             * </em>
+             */
+        R.Biaya.create = function() {
+          var TargetResource = $injector.get("Biaya");
+          var action = TargetResource["::create::RPJM::Biaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Biaya#createMany
+             * @methodOf lbServices.RPJM.Biaya
+             *
+             * @description
+             *
+             * Creates a new instance in Biaya of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Biaya` object.)
+             * </em>
+             */
+        R.Biaya.createMany = function() {
+          var TargetResource = $injector.get("Biaya");
+          var action = TargetResource["::createMany::RPJM::Biaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Biaya#destroyAll
+             * @methodOf lbServices.RPJM.Biaya
+             *
+             * @description
+             *
+             * Deletes all Biaya of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.Biaya.destroyAll = function() {
+          var TargetResource = $injector.get("Biaya");
+          var action = TargetResource["::delete::RPJM::Biaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Biaya#destroyById
+             * @methodOf lbServices.RPJM.Biaya
+             *
+             * @description
+             *
+             * Delete a related item by id for Biaya.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for Biaya
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.Biaya.destroyById = function() {
+          var TargetResource = $injector.get("Biaya");
+          var action = TargetResource["::destroyById::RPJM::Biaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Biaya#findById
+             * @methodOf lbServices.RPJM.Biaya
+             *
+             * @description
+             *
+             * Find a related item by id for Biaya.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for Biaya
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Biaya` object.)
+             * </em>
+             */
+        R.Biaya.findById = function() {
+          var TargetResource = $injector.get("Biaya");
+          var action = TargetResource["::findById::RPJM::Biaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RPJM.Biaya#updateById
+             * @methodOf lbServices.RPJM.Biaya
+             *
+             * @description
+             *
+             * Update a related item by id for Biaya.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for Biaya
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Biaya` object.)
+             * </em>
+             */
+        R.Biaya.updateById = function() {
+          var TargetResource = $injector.get("Biaya");
+          var action = TargetResource["::updateById::RPJM::Biaya"];
           return action.apply(R, arguments);
         };
     /**
@@ -23169,7 +23850,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -23458,7 +24139,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `filter` – `{object=}` -
              *
@@ -23494,7 +24175,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `where` – `{object=}` - Criteria to match model instances
              *
@@ -23529,7 +24210,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -23567,7 +24248,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -23605,7 +24286,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -23636,7 +24317,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RAB
              *
@@ -23669,7 +24350,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RAB
              *
@@ -23705,7 +24386,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `fk` – `{*}` - Foreign key for RAB
              *
@@ -23769,24 +24450,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             "prototype$__get__SumberBiaya": {
               url: urlBase + "/RAB/:id/SumberBiaya",
               method: "GET",
-            },
-
-            // INTERNAL. Use RAB.SumberBiaya.create() instead.
-            "prototype$__create__SumberBiaya": {
-              url: urlBase + "/RAB/:id/SumberBiaya",
-              method: "POST",
-            },
-
-            // INTERNAL. Use RAB.SumberBiaya.update() instead.
-            "prototype$__update__SumberBiaya": {
-              url: urlBase + "/RAB/:id/SumberBiaya",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use RAB.SumberBiaya.destroy() instead.
-            "prototype$__destroy__SumberBiaya": {
-              url: urlBase + "/RAB/:id/SumberBiaya",
-              method: "DELETE",
             },
 
             /**
@@ -24148,7 +24811,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              * @param {Object} postData Request data.
              *
@@ -24411,20 +25074,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         */
         R.modelName = "RAB";
 
-    /**
-     * @ngdoc object
-     * @name lbServices.RAB.SumberBiaya
-     * @header lbServices.RAB.SumberBiaya
-     * @object
-     * @description
-     *
-     * The object `RAB.SumberBiaya` groups methods
-     * manipulating `SumberBiaya` instances related to `RAB`.
-     *
-     * Call {@link lbServices.RAB#SumberBiaya RAB.SumberBiaya()}
-     * to query all related instances.
-     */
-
 
             /**
              * @ngdoc method
@@ -24433,11 +25082,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @description
              *
-             * Fetches hasOne relation SumberBiaya.
+             * Fetches belongsTo relation SumberBiaya.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *  - `id` – `{*}` - BasicInfo id
              *
              *  - `refresh` – `{boolean=}` -
              *
@@ -24462,18 +25111,102 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           return action.apply(R, arguments);
         };
 
+
+        return R;
+      }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.SubPendapatan
+ * @header lbServices.SubPendapatan
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `SubPendapatan` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+  module.factory(
+    "SubPendapatan",
+    [
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
+        urlBase + "/SubPendapatan/:id",
+          { 'id': '@id' },
+          {
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.findById() instead.
+            "prototype$__findById__AnggaranPendapatan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.destroyById() instead.
+            "prototype$__destroyById__AnggaranPendapatan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.updateById() instead.
+            "prototype$__updateById__AnggaranPendapatan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan() instead.
+            "prototype$__get__AnggaranPendapatan": {
+              isArray: true,
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan",
+              method: "GET",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.create() instead.
+            "prototype$__create__AnggaranPendapatan": {
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan",
+              method: "POST",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.destroyAll() instead.
+            "prototype$__delete__AnggaranPendapatan": {
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.count() instead.
+            "prototype$__count__AnggaranPendapatan": {
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan/count",
+              method: "GET",
+            },
+
             /**
              * @ngdoc method
-             * @name lbServices.RAB.SumberBiaya#create
-             * @methodOf lbServices.RAB.SumberBiaya
+             * @name lbServices.SubPendapatan#create
+             * @methodOf lbServices.SubPendapatan
              *
              * @description
              *
-             * Creates a new instance in SumberBiaya of this model.
+             * Create a new instance of the model and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
              *
              * @param {Object} postData Request data.
              *
@@ -24491,27 +25224,27 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `SumberBiaya` object.)
+             * This usually means the response is a `SubPendapatan` object.)
              * </em>
              */
-        R.SumberBiaya.create = function() {
-          var TargetResource = $injector.get("SumberBiaya");
-          var action = TargetResource["::create::RAB::SumberBiaya"];
-          return action.apply(R, arguments);
-        };
+            "create": {
+              url: urlBase + "/SubPendapatan",
+              method: "POST",
+            },
 
             /**
              * @ngdoc method
-             * @name lbServices.RAB.SumberBiaya#createMany
-             * @methodOf lbServices.RAB.SumberBiaya
+             * @name lbServices.SubPendapatan#createMany
+             * @methodOf lbServices.SubPendapatan
              *
              * @description
              *
-             * Creates a new instance in SumberBiaya of this model.
+             * Create a new instance of the model and persist it into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
              *
              * @param {Object} postData Request data.
              *
@@ -24529,58 +25262,28 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `SumberBiaya` object.)
+             * This usually means the response is a `SubPendapatan` object.)
              * </em>
              */
-        R.SumberBiaya.createMany = function() {
-          var TargetResource = $injector.get("SumberBiaya");
-          var action = TargetResource["::createMany::RAB::SumberBiaya"];
-          return action.apply(R, arguments);
-        };
+            "createMany": {
+              isArray: true,
+              url: urlBase + "/SubPendapatan",
+              method: "POST",
+            },
 
             /**
              * @ngdoc method
-             * @name lbServices.RAB.SumberBiaya#destroy
-             * @methodOf lbServices.RAB.SumberBiaya
+             * @name lbServices.SubPendapatan#upsert
+             * @methodOf lbServices.SubPendapatan
              *
              * @description
              *
-             * Deletes SumberBiaya of this model.
+             * Update an existing model instance or insert a new one into the data source.
              *
              * @param {Object=} parameters Request parameters.
              *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.SumberBiaya.destroy = function() {
-          var TargetResource = $injector.get("SumberBiaya");
-          var action = TargetResource["::destroy::RAB::SumberBiaya"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.RAB.SumberBiaya#update
-             * @methodOf lbServices.RAB.SumberBiaya
-             *
-             * @description
-             *
-             * Update SumberBiaya of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
              *
              * @param {Object} postData Request data.
              *
@@ -24598,14 +25301,3137 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `SumberBiaya` object.)
+             * This usually means the response is a `SubPendapatan` object.)
              * </em>
              */
-        R.SumberBiaya.update = function() {
-          var TargetResource = $injector.get("SumberBiaya");
-          var action = TargetResource["::update::RAB::SumberBiaya"];
+            "upsert": {
+              url: urlBase + "/SubPendapatan",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#exists
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Check whether a model instance exists in the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `exists` – `{boolean=}` -
+             */
+            "exists": {
+              url: urlBase + "/SubPendapatan/:id/exists",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#findById
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Find a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `filter` – `{object=}` - Filter defining fields and include
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubPendapatan` object.)
+             * </em>
+             */
+            "findById": {
+              url: urlBase + "/SubPendapatan/:id",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#find
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Find all instances of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubPendapatan` object.)
+             * </em>
+             */
+            "find": {
+              isArray: true,
+              url: urlBase + "/SubPendapatan",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#findOne
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Find first instance of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubPendapatan` object.)
+             * </em>
+             */
+            "findOne": {
+              url: urlBase + "/SubPendapatan/findOne",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#updateAll
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+            "updateAll": {
+              url: urlBase + "/SubPendapatan/update",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#deleteById
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubPendapatan` object.)
+             * </em>
+             */
+            "deleteById": {
+              url: urlBase + "/SubPendapatan/:id",
+              method: "DELETE",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#count
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Count instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+            "count": {
+              url: urlBase + "/SubPendapatan/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#prototype$updateAttributes
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Update attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubPendapatan` object.)
+             * </em>
+             */
+            "prototype$updateAttributes": {
+              url: urlBase + "/SubPendapatan/:id",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#createChangeStream
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Create a change stream.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `changes` – `{ReadableStream=}` -
+             */
+            "createChangeStream": {
+              url: urlBase + "/SubPendapatan/change-stream",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Pendapatan.SubPendapatan.findById() instead.
+            "::findById::Pendapatan::SubPendapatan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Pendapatan/:id/SubPendapatan/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Pendapatan.SubPendapatan.destroyById() instead.
+            "::destroyById::Pendapatan::SubPendapatan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Pendapatan/:id/SubPendapatan/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Pendapatan.SubPendapatan.updateById() instead.
+            "::updateById::Pendapatan::SubPendapatan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Pendapatan/:id/SubPendapatan/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Pendapatan.SubPendapatan() instead.
+            "::get::Pendapatan::SubPendapatan": {
+              isArray: true,
+              url: urlBase + "/Pendapatan/:id/SubPendapatan",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Pendapatan.SubPendapatan.create() instead.
+            "::create::Pendapatan::SubPendapatan": {
+              url: urlBase + "/Pendapatan/:id/SubPendapatan",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Pendapatan.SubPendapatan.createMany() instead.
+            "::createMany::Pendapatan::SubPendapatan": {
+              isArray: true,
+              url: urlBase + "/Pendapatan/:id/SubPendapatan",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Pendapatan.SubPendapatan.destroyAll() instead.
+            "::delete::Pendapatan::SubPendapatan": {
+              url: urlBase + "/Pendapatan/:id/SubPendapatan",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Pendapatan.SubPendapatan.count() instead.
+            "::count::Pendapatan::SubPendapatan": {
+              url: urlBase + "/Pendapatan/:id/SubPendapatan/count",
+              method: "GET",
+            },
+          }
+        );
+
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#updateOrCreate
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubPendapatan` object.)
+             * </em>
+             */
+        R["updateOrCreate"] = R["upsert"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#update
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+        R["update"] = R["updateAll"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#destroyById
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubPendapatan` object.)
+             * </em>
+             */
+        R["destroyById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#removeById
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubPendapatan` object.)
+             * </em>
+             */
+        R["removeById"] = R["deleteById"];
+
+
+        /**
+        * @ngdoc property
+        * @name lbServices.SubPendapatan#modelName
+        * @propertyOf lbServices.SubPendapatan
+        * @description
+        * The name of the model represented by this $resource,
+        * i.e. `SubPendapatan`.
+        */
+        R.modelName = "SubPendapatan";
+
+    /**
+     * @ngdoc object
+     * @name lbServices.SubPendapatan.AnggaranPendapatan
+     * @header lbServices.SubPendapatan.AnggaranPendapatan
+     * @object
+     * @description
+     *
+     * The object `SubPendapatan.AnggaranPendapatan` groups methods
+     * manipulating `AnggaranPendapatan` instances related to `SubPendapatan`.
+     *
+     * Call {@link lbServices.SubPendapatan#AnggaranPendapatan SubPendapatan.AnggaranPendapatan()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan#AnggaranPendapatan
+             * @methodOf lbServices.SubPendapatan
+             *
+             * @description
+             *
+             * Queries AnggaranPendapatan of SubPendapatan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+        R.AnggaranPendapatan = function() {
+          var TargetResource = $injector.get("AnggaranPendapatan");
+          var action = TargetResource["::get::SubPendapatan::AnggaranPendapatan"];
           return action.apply(R, arguments);
         };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan.AnggaranPendapatan#count
+             * @methodOf lbServices.SubPendapatan.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Counts AnggaranPendapatan of SubPendapatan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.AnggaranPendapatan.count = function() {
+          var TargetResource = $injector.get("AnggaranPendapatan");
+          var action = TargetResource["::count::SubPendapatan::AnggaranPendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan.AnggaranPendapatan#create
+             * @methodOf lbServices.SubPendapatan.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Creates a new instance in AnggaranPendapatan of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+        R.AnggaranPendapatan.create = function() {
+          var TargetResource = $injector.get("AnggaranPendapatan");
+          var action = TargetResource["::create::SubPendapatan::AnggaranPendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan.AnggaranPendapatan#createMany
+             * @methodOf lbServices.SubPendapatan.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Creates a new instance in AnggaranPendapatan of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+        R.AnggaranPendapatan.createMany = function() {
+          var TargetResource = $injector.get("AnggaranPendapatan");
+          var action = TargetResource["::createMany::SubPendapatan::AnggaranPendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan.AnggaranPendapatan#destroyAll
+             * @methodOf lbServices.SubPendapatan.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Deletes all AnggaranPendapatan of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.AnggaranPendapatan.destroyAll = function() {
+          var TargetResource = $injector.get("AnggaranPendapatan");
+          var action = TargetResource["::delete::SubPendapatan::AnggaranPendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan.AnggaranPendapatan#destroyById
+             * @methodOf lbServices.SubPendapatan.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Delete a related item by id for AnggaranPendapatan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `fk` – `{*}` - Foreign key for AnggaranPendapatan
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.AnggaranPendapatan.destroyById = function() {
+          var TargetResource = $injector.get("AnggaranPendapatan");
+          var action = TargetResource["::destroyById::SubPendapatan::AnggaranPendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan.AnggaranPendapatan#findById
+             * @methodOf lbServices.SubPendapatan.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Find a related item by id for AnggaranPendapatan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `fk` – `{*}` - Foreign key for AnggaranPendapatan
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+        R.AnggaranPendapatan.findById = function() {
+          var TargetResource = $injector.get("AnggaranPendapatan");
+          var action = TargetResource["::findById::SubPendapatan::AnggaranPendapatan"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubPendapatan.AnggaranPendapatan#updateById
+             * @methodOf lbServices.SubPendapatan.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Update a related item by id for AnggaranPendapatan.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `fk` – `{*}` - Foreign key for AnggaranPendapatan
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+        R.AnggaranPendapatan.updateById = function() {
+          var TargetResource = $injector.get("AnggaranPendapatan");
+          var action = TargetResource["::updateById::SubPendapatan::AnggaranPendapatan"];
+          return action.apply(R, arguments);
+        };
+
+
+        return R;
+      }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.AnggaranPendapatan
+ * @header lbServices.AnggaranPendapatan
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `AnggaranPendapatan` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+  module.factory(
+    "AnggaranPendapatan",
+    [
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
+        urlBase + "/AnggaranPendapatan/:id",
+          { 'id': '@id' },
+          {
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#create
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+            "create": {
+              url: urlBase + "/AnggaranPendapatan",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#createMany
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+            "createMany": {
+              isArray: true,
+              url: urlBase + "/AnggaranPendapatan",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#upsert
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+            "upsert": {
+              url: urlBase + "/AnggaranPendapatan",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#exists
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Check whether a model instance exists in the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `exists` – `{boolean=}` -
+             */
+            "exists": {
+              url: urlBase + "/AnggaranPendapatan/:id/exists",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#findById
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Find a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `filter` – `{object=}` - Filter defining fields and include
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+            "findById": {
+              url: urlBase + "/AnggaranPendapatan/:id",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#find
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Find all instances of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+            "find": {
+              isArray: true,
+              url: urlBase + "/AnggaranPendapatan",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#findOne
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Find first instance of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+            "findOne": {
+              url: urlBase + "/AnggaranPendapatan/findOne",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#updateAll
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+            "updateAll": {
+              url: urlBase + "/AnggaranPendapatan/update",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#deleteById
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+            "deleteById": {
+              url: urlBase + "/AnggaranPendapatan/:id",
+              method: "DELETE",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#count
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Count instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+            "count": {
+              url: urlBase + "/AnggaranPendapatan/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#prototype$updateAttributes
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Update attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+            "prototype$updateAttributes": {
+              url: urlBase + "/AnggaranPendapatan/:id",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#createChangeStream
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Create a change stream.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `changes` – `{ReadableStream=}` -
+             */
+            "createChangeStream": {
+              url: urlBase + "/AnggaranPendapatan/change-stream",
+              method: "POST",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.findById() instead.
+            "::findById::SubPendapatan::AnggaranPendapatan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.destroyById() instead.
+            "::destroyById::SubPendapatan::AnggaranPendapatan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.updateById() instead.
+            "::updateById::SubPendapatan::AnggaranPendapatan": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan() instead.
+            "::get::SubPendapatan::AnggaranPendapatan": {
+              isArray: true,
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan",
+              method: "GET",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.create() instead.
+            "::create::SubPendapatan::AnggaranPendapatan": {
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan",
+              method: "POST",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.createMany() instead.
+            "::createMany::SubPendapatan::AnggaranPendapatan": {
+              isArray: true,
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan",
+              method: "POST",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.destroyAll() instead.
+            "::delete::SubPendapatan::AnggaranPendapatan": {
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use SubPendapatan.AnggaranPendapatan.count() instead.
+            "::count::SubPendapatan::AnggaranPendapatan": {
+              url: urlBase + "/SubPendapatan/:id/AnggaranPendapatan/count",
+              method: "GET",
+            },
+          }
+        );
+
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#updateOrCreate
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+        R["updateOrCreate"] = R["upsert"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#update
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+        R["update"] = R["updateAll"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#destroyById
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+        R["destroyById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranPendapatan#removeById
+             * @methodOf lbServices.AnggaranPendapatan
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranPendapatan` object.)
+             * </em>
+             */
+        R["removeById"] = R["deleteById"];
+
+
+        /**
+        * @ngdoc property
+        * @name lbServices.AnggaranPendapatan#modelName
+        * @propertyOf lbServices.AnggaranPendapatan
+        * @description
+        * The name of the model represented by this $resource,
+        * i.e. `AnggaranPendapatan`.
+        */
+        R.modelName = "AnggaranPendapatan";
+
+
+
+        return R;
+      }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.SubBiaya
+ * @header lbServices.SubBiaya
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `SubBiaya` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+  module.factory(
+    "SubBiaya",
+    [
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
+        urlBase + "/SubBiaya/:id",
+          { 'id': '@id' },
+          {
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.findById() instead.
+            "prototype$__findById__AnggaranBiaya": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.destroyById() instead.
+            "prototype$__destroyById__AnggaranBiaya": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.updateById() instead.
+            "prototype$__updateById__AnggaranBiaya": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya() instead.
+            "prototype$__get__AnggaranBiaya": {
+              isArray: true,
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya",
+              method: "GET",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.create() instead.
+            "prototype$__create__AnggaranBiaya": {
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya",
+              method: "POST",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.destroyAll() instead.
+            "prototype$__delete__AnggaranBiaya": {
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.count() instead.
+            "prototype$__count__AnggaranBiaya": {
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#create
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubBiaya` object.)
+             * </em>
+             */
+            "create": {
+              url: urlBase + "/SubBiaya",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#createMany
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubBiaya` object.)
+             * </em>
+             */
+            "createMany": {
+              isArray: true,
+              url: urlBase + "/SubBiaya",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#upsert
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubBiaya` object.)
+             * </em>
+             */
+            "upsert": {
+              url: urlBase + "/SubBiaya",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#exists
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Check whether a model instance exists in the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `exists` – `{boolean=}` -
+             */
+            "exists": {
+              url: urlBase + "/SubBiaya/:id/exists",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#findById
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Find a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `filter` – `{object=}` - Filter defining fields and include
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubBiaya` object.)
+             * </em>
+             */
+            "findById": {
+              url: urlBase + "/SubBiaya/:id",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#find
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Find all instances of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubBiaya` object.)
+             * </em>
+             */
+            "find": {
+              isArray: true,
+              url: urlBase + "/SubBiaya",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#findOne
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Find first instance of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubBiaya` object.)
+             * </em>
+             */
+            "findOne": {
+              url: urlBase + "/SubBiaya/findOne",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#updateAll
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+            "updateAll": {
+              url: urlBase + "/SubBiaya/update",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#deleteById
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubBiaya` object.)
+             * </em>
+             */
+            "deleteById": {
+              url: urlBase + "/SubBiaya/:id",
+              method: "DELETE",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#count
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Count instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+            "count": {
+              url: urlBase + "/SubBiaya/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#prototype$updateAttributes
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Update attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubBiaya` object.)
+             * </em>
+             */
+            "prototype$updateAttributes": {
+              url: urlBase + "/SubBiaya/:id",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#createChangeStream
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Create a change stream.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `changes` – `{ReadableStream=}` -
+             */
+            "createChangeStream": {
+              url: urlBase + "/SubBiaya/change-stream",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Biaya.SubBiaya.findById() instead.
+            "::findById::Biaya::SubBiaya": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Biaya/:id/SubBiaya/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Biaya.SubBiaya.destroyById() instead.
+            "::destroyById::Biaya::SubBiaya": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Biaya/:id/SubBiaya/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Biaya.SubBiaya.updateById() instead.
+            "::updateById::Biaya::SubBiaya": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Biaya/:id/SubBiaya/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Biaya.SubBiaya() instead.
+            "::get::Biaya::SubBiaya": {
+              isArray: true,
+              url: urlBase + "/Biaya/:id/SubBiaya",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Biaya.SubBiaya.create() instead.
+            "::create::Biaya::SubBiaya": {
+              url: urlBase + "/Biaya/:id/SubBiaya",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Biaya.SubBiaya.createMany() instead.
+            "::createMany::Biaya::SubBiaya": {
+              isArray: true,
+              url: urlBase + "/Biaya/:id/SubBiaya",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Biaya.SubBiaya.destroyAll() instead.
+            "::delete::Biaya::SubBiaya": {
+              url: urlBase + "/Biaya/:id/SubBiaya",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Biaya.SubBiaya.count() instead.
+            "::count::Biaya::SubBiaya": {
+              url: urlBase + "/Biaya/:id/SubBiaya/count",
+              method: "GET",
+            },
+          }
+        );
+
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#updateOrCreate
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubBiaya` object.)
+             * </em>
+             */
+        R["updateOrCreate"] = R["upsert"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#update
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+        R["update"] = R["updateAll"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#destroyById
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubBiaya` object.)
+             * </em>
+             */
+        R["destroyById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#removeById
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `SubBiaya` object.)
+             * </em>
+             */
+        R["removeById"] = R["deleteById"];
+
+
+        /**
+        * @ngdoc property
+        * @name lbServices.SubBiaya#modelName
+        * @propertyOf lbServices.SubBiaya
+        * @description
+        * The name of the model represented by this $resource,
+        * i.e. `SubBiaya`.
+        */
+        R.modelName = "SubBiaya";
+
+    /**
+     * @ngdoc object
+     * @name lbServices.SubBiaya.AnggaranBiaya
+     * @header lbServices.SubBiaya.AnggaranBiaya
+     * @object
+     * @description
+     *
+     * The object `SubBiaya.AnggaranBiaya` groups methods
+     * manipulating `AnggaranBiaya` instances related to `SubBiaya`.
+     *
+     * Call {@link lbServices.SubBiaya#AnggaranBiaya SubBiaya.AnggaranBiaya()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya#AnggaranBiaya
+             * @methodOf lbServices.SubBiaya
+             *
+             * @description
+             *
+             * Queries AnggaranBiaya of SubBiaya.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+        R.AnggaranBiaya = function() {
+          var TargetResource = $injector.get("AnggaranBiaya");
+          var action = TargetResource["::get::SubBiaya::AnggaranBiaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya.AnggaranBiaya#count
+             * @methodOf lbServices.SubBiaya.AnggaranBiaya
+             *
+             * @description
+             *
+             * Counts AnggaranBiaya of SubBiaya.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.AnggaranBiaya.count = function() {
+          var TargetResource = $injector.get("AnggaranBiaya");
+          var action = TargetResource["::count::SubBiaya::AnggaranBiaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya.AnggaranBiaya#create
+             * @methodOf lbServices.SubBiaya.AnggaranBiaya
+             *
+             * @description
+             *
+             * Creates a new instance in AnggaranBiaya of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+        R.AnggaranBiaya.create = function() {
+          var TargetResource = $injector.get("AnggaranBiaya");
+          var action = TargetResource["::create::SubBiaya::AnggaranBiaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya.AnggaranBiaya#createMany
+             * @methodOf lbServices.SubBiaya.AnggaranBiaya
+             *
+             * @description
+             *
+             * Creates a new instance in AnggaranBiaya of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+        R.AnggaranBiaya.createMany = function() {
+          var TargetResource = $injector.get("AnggaranBiaya");
+          var action = TargetResource["::createMany::SubBiaya::AnggaranBiaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya.AnggaranBiaya#destroyAll
+             * @methodOf lbServices.SubBiaya.AnggaranBiaya
+             *
+             * @description
+             *
+             * Deletes all AnggaranBiaya of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.AnggaranBiaya.destroyAll = function() {
+          var TargetResource = $injector.get("AnggaranBiaya");
+          var action = TargetResource["::delete::SubBiaya::AnggaranBiaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya.AnggaranBiaya#destroyById
+             * @methodOf lbServices.SubBiaya.AnggaranBiaya
+             *
+             * @description
+             *
+             * Delete a related item by id for AnggaranBiaya.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `fk` – `{*}` - Foreign key for AnggaranBiaya
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.AnggaranBiaya.destroyById = function() {
+          var TargetResource = $injector.get("AnggaranBiaya");
+          var action = TargetResource["::destroyById::SubBiaya::AnggaranBiaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya.AnggaranBiaya#findById
+             * @methodOf lbServices.SubBiaya.AnggaranBiaya
+             *
+             * @description
+             *
+             * Find a related item by id for AnggaranBiaya.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `fk` – `{*}` - Foreign key for AnggaranBiaya
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+        R.AnggaranBiaya.findById = function() {
+          var TargetResource = $injector.get("AnggaranBiaya");
+          var action = TargetResource["::findById::SubBiaya::AnggaranBiaya"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.SubBiaya.AnggaranBiaya#updateById
+             * @methodOf lbServices.SubBiaya.AnggaranBiaya
+             *
+             * @description
+             *
+             * Update a related item by id for AnggaranBiaya.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `fk` – `{*}` - Foreign key for AnggaranBiaya
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+        R.AnggaranBiaya.updateById = function() {
+          var TargetResource = $injector.get("AnggaranBiaya");
+          var action = TargetResource["::updateById::SubBiaya::AnggaranBiaya"];
+          return action.apply(R, arguments);
+        };
+
+
+        return R;
+      }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.AnggaranBiaya
+ * @header lbServices.AnggaranBiaya
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `AnggaranBiaya` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+  module.factory(
+    "AnggaranBiaya",
+    [
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
+        urlBase + "/AnggaranBiaya/:id",
+          { 'id': '@id' },
+          {
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#create
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+            "create": {
+              url: urlBase + "/AnggaranBiaya",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#createMany
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+            "createMany": {
+              isArray: true,
+              url: urlBase + "/AnggaranBiaya",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#upsert
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+            "upsert": {
+              url: urlBase + "/AnggaranBiaya",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#exists
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Check whether a model instance exists in the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `exists` – `{boolean=}` -
+             */
+            "exists": {
+              url: urlBase + "/AnggaranBiaya/:id/exists",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#findById
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Find a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `filter` – `{object=}` - Filter defining fields and include
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+            "findById": {
+              url: urlBase + "/AnggaranBiaya/:id",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#find
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Find all instances of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+            "find": {
+              isArray: true,
+              url: urlBase + "/AnggaranBiaya",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#findOne
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Find first instance of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+            "findOne": {
+              url: urlBase + "/AnggaranBiaya/findOne",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#updateAll
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+            "updateAll": {
+              url: urlBase + "/AnggaranBiaya/update",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#deleteById
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+            "deleteById": {
+              url: urlBase + "/AnggaranBiaya/:id",
+              method: "DELETE",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#count
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Count instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+            "count": {
+              url: urlBase + "/AnggaranBiaya/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#prototype$updateAttributes
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Update attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+            "prototype$updateAttributes": {
+              url: urlBase + "/AnggaranBiaya/:id",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#createChangeStream
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Create a change stream.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `changes` – `{ReadableStream=}` -
+             */
+            "createChangeStream": {
+              url: urlBase + "/AnggaranBiaya/change-stream",
+              method: "POST",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.findById() instead.
+            "::findById::SubBiaya::AnggaranBiaya": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.destroyById() instead.
+            "::destroyById::SubBiaya::AnggaranBiaya": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.updateById() instead.
+            "::updateById::SubBiaya::AnggaranBiaya": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya() instead.
+            "::get::SubBiaya::AnggaranBiaya": {
+              isArray: true,
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya",
+              method: "GET",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.create() instead.
+            "::create::SubBiaya::AnggaranBiaya": {
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya",
+              method: "POST",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.createMany() instead.
+            "::createMany::SubBiaya::AnggaranBiaya": {
+              isArray: true,
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya",
+              method: "POST",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.destroyAll() instead.
+            "::delete::SubBiaya::AnggaranBiaya": {
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use SubBiaya.AnggaranBiaya.count() instead.
+            "::count::SubBiaya::AnggaranBiaya": {
+              url: urlBase + "/SubBiaya/:id/AnggaranBiaya/count",
+              method: "GET",
+            },
+          }
+        );
+
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#updateOrCreate
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+        R["updateOrCreate"] = R["upsert"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#update
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+        R["update"] = R["updateAll"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#destroyById
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+        R["destroyById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.AnggaranBiaya#removeById
+             * @methodOf lbServices.AnggaranBiaya
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `AnggaranBiaya` object.)
+             * </em>
+             */
+        R["removeById"] = R["deleteById"];
+
+
+        /**
+        * @ngdoc property
+        * @name lbServices.AnggaranBiaya#modelName
+        * @propertyOf lbServices.AnggaranBiaya
+        * @description
+        * The name of the model represented by this $resource,
+        * i.e. `AnggaranBiaya`.
+        */
+        R.modelName = "AnggaranBiaya";
+
 
 
         return R;

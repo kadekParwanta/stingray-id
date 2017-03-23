@@ -1,21 +1,12 @@
 {
   "name": "Bidang",
   "plural": "Bidang",
-  "base": "PersistedModel",
+  "base": "BasicInfo",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "properties": {
-    "No": {
-      "type": "number",
-      "required": true
-    },
-    "Nama": {
-      "type": "string",
-      "required": true
-    }
-  },
+  "properties": {},
   "validations": [],
   "relations": {
     "RPJMDes": {

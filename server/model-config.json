@@ -136,5 +136,17 @@
   "AnggaranPendapatan": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "BasicInfo": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "SubBiaya": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "AnggaranBiaya": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

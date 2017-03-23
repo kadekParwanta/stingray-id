@@ -64,6 +64,11 @@
       "type": "hasMany",
       "model": "Pendapatan",
       "foreignKey": "RPJMId"
+    },
+    "Biaya": {
+      "type": "hasMany",
+      "model": "Biaya",
+      "foreignKey": "RPJMId"
     }
   },
   "acls": [],

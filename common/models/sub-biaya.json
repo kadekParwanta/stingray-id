@@ -1,25 +1,18 @@
 {
-  "name": "Belanja",
-  "plural": "Belanja",
+  "name": "SubBiaya",
+  "plural": "SubBiaya",
   "base": "BasicInfo",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "mixins": {
-    "CascadeDelete": {
-      "relations": [
-        "RAB"
-      ]
-    }
-  },
   "properties": {},
   "validations": [],
   "relations": {
-    "RAB": {
+    "AnggaranBiaya": {
       "type": "hasMany",
-      "model": "RAB",
-      "foreignKey": "BelanjaId"
+      "model": "AnggaranBiaya",
+      "foreignKey": "SubBiayaId"
     }
   },
   "acls": [],

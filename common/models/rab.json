@@ -1,18 +1,12 @@
 {
   "name": "RAB",
   "plural": "RAB",
-  "base": "PersistedModel",
+  "base": "BasicInfo",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "No": {
-      "type": "number"
-    },
-    "Nama": {
-      "type": "string"
-    },
     "Volume": {
       "type": "number"
     },

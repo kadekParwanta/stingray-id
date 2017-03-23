@@ -1,7 +1,7 @@
 {
   "name": "RKP",
   "plural": "RKP",
-  "base": "PersistedModel",
+  "base": "BasicInfo",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -15,12 +15,6 @@
     }
   },
   "properties": {
-    "No": {
-      "type": "number"
-    },
-    "Nama": {
-      "type": "string"
-    },
     "createdDate": {
       "type": "date"
     },

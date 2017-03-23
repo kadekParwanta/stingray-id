@@ -1,6 +1,6 @@
 {
-  "name": "AnggaranPendapatan",
-  "plural": "AnggaranPendapatan",
+  "name": "AnggaranBiaya",
+  "plural": "AnggaranBiaya",
   "base": "BasicInfo",
   "idInjection": true,
   "options": {
@@ -9,9 +9,6 @@
   "properties": {
     "Jumlah": {
       "type": "number"
-    },
-    "createdDate": {
-      "type": "date"
     }
   },
   "validations": [],
