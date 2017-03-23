@@ -1,0 +1,20 @@
+{
+  "name": "BelanjaTitle",
+  "plural": "BelanjaTitle",
+  "base": "BasicInfo",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "RAB": {
+      "type": "hasMany",
+      "model": "RAB",
+      "foreignKey": "BelanjaTitleId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

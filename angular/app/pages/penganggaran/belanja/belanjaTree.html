@@ -5,7 +5,7 @@
         <div class="col-sm-2">
           <div class="control-side text-center">
             <div>
-              <button class="btn btn-primary" ng-click="open('app/pages/penganggaran/belanja/belanjaModal.html', 'md')">Add</button>
+              <button class="btn btn-primary" ng-click="addNewRAB()">Add</button>
             </div>
             <div>
               <button class="btn btn-primary" ng-click="collapseBelanja()">Collapse All</button>
@@ -23,7 +23,7 @@
     </div>
   </div>
   <div class="col-sm-5">
-    <div ba-panel ba-panel-title="{{selectedRABNode.belanjaNo}}.{{selectedRABNode.No}} {{selectedRABNode.Nama}}" ba-panel-class="with-scroll panel-info" ng-show="selectedRABNode">
+    <div ba-panel ba-panel-title="{{selectedRABNode.No}} {{selectedRABNode.Nama}}" ba-panel-class="with-scroll panel-info" ng-show="selectedRABNode">
       <div include-with-scope="app/pages/penganggaran/belanja/belanjaItemForm.html"></div>
     </div>
     <div ba-panel ba-panel-title="{{selectedBelanja.No}} {{selectedBelanja.Nama}}" ba-panel-class="with-scroll panel-info" ng-show="selectedBelanja">

@@ -9,7 +9,7 @@
     .controller('BelanjaPageCtrl', BelanjaPageCtrl);
 
   /** @ngInject */
-  function BelanjaPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP, SumberBiaya, RAB, Bidang) {
+  function BelanjaPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP, SumberBiaya, RAB, Bidang, BelanjaTitle) {
     var vm = this;
     vm.treeData = [];
     vm.treesData = [];
@@ -39,6 +39,7 @@
     $scope.belanjaTree = {};
     $scope.belanjaTreeData = [];
     $scope.selectedRABNode;
+    $scope.selectedBelanjaTitleNode;
     $scope.selectedWaktuPelaksanaan = {};
 
     $scope.belanjaConfig = {
@@ -55,6 +56,12 @@
           icon: 'ion-android-cart'
         },
         rab: {
+          icon: 'ion-bag'
+        },
+        belanjatitle: {
+          icon: 'ion-ios-folder'
+        },
+        belanjatitlerab: {
           icon: 'ion-bag'
         }
       },
@@ -183,7 +190,14 @@
               },
               {
                 relation: "Belanja", scope: {
-                  include: { relation: "RAB" }
+                  include: [
+                    { relation: "RAB" },
+                    {
+                      relation: "BelanjaTitle", scope: {
+                        include:
+                        { relation: "RAB" }
+                      }
+                    }]
                 }
               },
               {
@@ -324,7 +338,7 @@
         "id": rkp.id,
         "parent": "#",
         "type": "rkp",
-        "text": rkp.No + rkp.Nama,
+        "text": rkp.No + " " + rkp.Nama,
         "state": {
           "opened": true
         }
@@ -336,7 +350,7 @@
           "id": entry.id,
           "parent": rkp.id,
           "type": "belanja",
-          "text": rkp.No + "." + entry.No + " " +  entry.Nama,
+          "text": rkp.No+"." + entry.No+" " + entry.Nama,
           "state": {
             "opened": true
           }
@@ -348,11 +362,38 @@
             "id": item.id,
             "parent": entry.id,
             "type": "rab",
-            "text": rkp.No + "." + entry.No + "." +item.No + " " + item.Nama,
-            "li_attr":{"class":"green"},
+            "text": "- " + item.Nama,
+            "li_attr": { "class": "green" },
             "state": {
               "opened": true
             }
+          })
+        })
+
+        var belanjaTitle = entry.BelanjaTitle;
+        belanjaTitle.forEach(function (belanjatitle) {
+          vm.belanjaTreeData.push({
+            "id": belanjatitle.id,
+            "parent": entry.id,
+            "type": "belanjatitle",
+            "text": "- " + belanjatitle.Nama,
+            "state": {
+              "opened": true
+            }
+          })
+
+          var rabFromTitle = belanjatitle.RAB;
+          rabFromTitle.forEach(function (item) {
+            vm.belanjaTreeData.push({
+              "id": item.id,
+              "parent": belanjatitle.id,
+              "type": "belanjatitlerab",
+              "text": "- " + item.Nama,
+              "li_attr": { "class": "green" },
+              "state": {
+                "opened": true
+              }
+            })
           })
         })
       })
@@ -507,9 +548,11 @@
       if (node.type === 'rkp') {
         $scope.selectedRABNode = false;
         $scope.selectedBelanja = false;
+        $scope.selectedBelanjaTitleNode = false;
       } else if (node.type === 'belanja') {
         $scope.selectedBelanja = $filter('filter')($scope.selectedRKP.Belanja, { id: selectedId })[0];
         $scope.selectedRABNode = false;
+        $scope.selectedBelanjaTitleNode = false;
         if ($scope.selectedBelanja.RAB) {
           $scope.selectedBelanja.TotalBiaya = 0;
           $scope.selectedBelanja.RAB.forEach(function(entry){
@@ -522,6 +565,23 @@
         $scope.selectedRABNode = $filter('filter')(belanja.RAB, { id: selectedId })[0];
         $scope.selectedRABNode.belanjaNo = belanja.No;
         $scope.selectedBelanja = false;
+        $scope.selectedBelanjaTitleNode = false;
+      } else if (node.type === 'belanjatitle') {
+        var belanja = $filter('filter')($scope.selectedRKP.Belanja, { id: parent })[0];
+        $scope.selectedBelanjaTitleNode = $filter('filter')(belanja.BelanjaTitle, { id: selectedId })[0];
+        $scope.selectedBelanja = false;
+        $scope.selectedRABNode = false;
+      } else if (node.type === 'belanjatitlerab') {
+        var parents = node.parents;
+        var belanjaTitleId = parents[0];
+        var belanjaId = parents[1];
+        var rkpId = parents[2];
+        var belanja = $filter('filter')($scope.selectedRKP.Belanja, { id: belanjaId })[0];
+        var belanjaTitle = $filter('filter')(belanja.BelanjaTitle, { id: belanjaTitleId })[0];
+        $scope.selectedRABNode = $filter('filter')(belanjaTitle.RAB, { id: selectedId })[0];
+        $scope.selectedRABNode.belanjaNo = belanja.No;
+        $scope.selectedBelanja = false;
+        $scope.selectedBelanjaTitleNode = false;
       }
       $scope.$apply();
     }
@@ -546,7 +606,7 @@
       return !$scope.ignoreChanges;
     };
 
-    $scope.open = function (page, size) {
+    $scope.open = function (page, size, message) {
       var modalInstance = $uibModal.open({
         animation: true,
         templateUrl: page,
@@ -559,18 +619,46 @@
           },
           sumberBiayaItemList: function() {
             return $scope.sumberBiayaItemList;
+          },
+          selectedBelanjaTitle: function() {
+            return $scope.selectedBelanjaTitleNode;
+          },
+          message: function(){
+            return message;
           }
         }
       });
 
       modalInstance.result.then(function (data) {
         var rab = data.rab;
-        RAB.create(rab, function(res){
-          $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
-          $scope.refresh(getActiveTab());
-        })
+        var isTitleOnly = data.isTitleOnly;
+        var selectedBelanjaTitle = data.selectedBelanjaTitle;
+        if (isTitleOnly) {
+          var belanjaTitle = {
+            Nama: rab.Nama,
+            BelanjaId: rab.BelanjaId
+          }
+          BelanjaTitle.create(belanjaTitle, function (res) {
+            $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+            $scope.refresh(getActiveTab());
+          })
+        } else {
+          RAB.create(rab, function (res) {
+            $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+            $scope.refresh(getActiveTab());
+          })
+        }
+        
       })
     };
+
+    $scope.addNewRAB = function() {
+      if($scope.selectedRABNode) {
+        $scope.open('app/pages/penganggaran/belanja/errorModal.html','md','Tidak dapat menambahkan anggaran belanja di sini. \nMohon pilih item belanja terlebih dahulu');
+      } else {
+        $scope.open('app/pages/penganggaran/belanja/belanjaModal.html', 'md');
+      }
+    }
 
     $scope.editRAB = function (rab) {
       RAB.prototype$updateAttributes({
@@ -594,23 +682,40 @@
         $scope.refresh(getActiveTab());
       })
     }
+
+
+    $scope.calculateTotal = function() {
+      var durasi = (typeof $scope.selectedRABNode.Durasi == 'undefined' || $scope.selectedRABNode.Durasi == undefined) ? 1 : $scope.selectedRABNode.Durasi;
+      var volume = (typeof $scope.selectedRABNode.Volume == 'undefined' || $scope.selectedRABNode.Volume == undefined) ? 1 : $scope.selectedRABNode.Volume;
+      return formatter.format(durasi*volume*$scope.selectedRABNode.HargaSatuan);
+    }
   }
 
   angular.module('BlurAdmin.pages.perencanaan')
     .controller('BelanjaModalInstanceCtrl', BelanjaModalInstanceCtrl);
 
-  function BelanjaModalInstanceCtrl($uibModalInstance, selectedBelanja, sumberBiayaItemList, $scope) {
+  function BelanjaModalInstanceCtrl($uibModalInstance, selectedBelanja, sumberBiayaItemList, $scope, selectedBelanjaTitle, message) {
     var vm = this;
     if (!selectedBelanja) {
       $uibModalInstance.dismiss('cancel');
     }
     vm.sumberBiayaItemList = sumberBiayaItemList;
     vm.newRAB = {};
-    vm.newRAB.BelanjaId = selectedBelanja.id;
+    vm.selectedBelanjaTitle = selectedBelanjaTitle;
+    if (selectedBelanjaTitle) {
+      vm.newRAB.BelanjaTitleId = selectedBelanjaTitle.id;
+    } else {
+      vm.newRAB.BelanjaId = selectedBelanja.id;
+    }
+    
+    vm.isTitleOnly = false;
+    vm.message = message;
 
     vm.ok = function () {
       $uibModalInstance.close({
-        rab: vm.newRAB
+        rab: vm.newRAB,
+        isTitleOnly: vm.isTitleOnly,
+        selectedBelanjaTitle: vm.selectedBelanjaTitle
       });
     }
 
@@ -623,6 +728,12 @@
       currency: 'IDR',
       minimumFractionDigits: 2,
     })
+
+    $scope.calculateTotal = function() {
+      var durasi = (typeof vm.newRAB.Durasi == 'undefined' || vm.newRAB.Durasi == undefined) ? 1 : vm.newRAB.Durasi;
+      var volume = (typeof vm.newRAB.Volume == 'undefined' || vm.newRAB.Volume == undefined) ? 1 : vm.newRAB.Volume;
+      return formatter.format(durasi*volume*vm.newRAB.HargaSatuan);
+    }
 
     $scope.formatCurrency = function(value) {
       return formatter.format(value);

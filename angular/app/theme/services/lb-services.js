@@ -22455,6 +22455,33 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "PUT",
             },
 
+            // INTERNAL. Use Belanja.BelanjaTitle.findById() instead.
+            "prototype$__findById__BelanjaTitle": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Belanja/:id/BelanjaTitle/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle.destroyById() instead.
+            "prototype$__destroyById__BelanjaTitle": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Belanja/:id/BelanjaTitle/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle.updateById() instead.
+            "prototype$__updateById__BelanjaTitle": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Belanja/:id/BelanjaTitle/:fk",
+              method: "PUT",
+            },
+
             // INTERNAL. Use Belanja.RAB() instead.
             "prototype$__get__RAB": {
               isArray: true,
@@ -22477,6 +22504,31 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             // INTERNAL. Use Belanja.RAB.count() instead.
             "prototype$__count__RAB": {
               url: urlBase + "/Belanja/:id/RAB/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle() instead.
+            "prototype$__get__BelanjaTitle": {
+              isArray: true,
+              url: urlBase + "/Belanja/:id/BelanjaTitle",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle.create() instead.
+            "prototype$__create__BelanjaTitle": {
+              url: urlBase + "/Belanja/:id/BelanjaTitle",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle.destroyAll() instead.
+            "prototype$__delete__BelanjaTitle": {
+              url: urlBase + "/Belanja/:id/BelanjaTitle",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle.count() instead.
+            "prototype$__count__BelanjaTitle": {
+              url: urlBase + "/Belanja/:id/BelanjaTitle/count",
               method: "GET",
             },
 
@@ -23403,6 +23455,307 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           var action = TargetResource["::updateById::Belanja::RAB"];
           return action.apply(R, arguments);
         };
+    /**
+     * @ngdoc object
+     * @name lbServices.Belanja.BelanjaTitle
+     * @header lbServices.Belanja.BelanjaTitle
+     * @object
+     * @description
+     *
+     * The object `Belanja.BelanjaTitle` groups methods
+     * manipulating `BelanjaTitle` instances related to `Belanja`.
+     *
+     * Call {@link lbServices.Belanja#BelanjaTitle Belanja.BelanjaTitle()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Belanja#BelanjaTitle
+             * @methodOf lbServices.Belanja
+             *
+             * @description
+             *
+             * Queries BelanjaTitle of Belanja.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+        R.BelanjaTitle = function() {
+          var TargetResource = $injector.get("BelanjaTitle");
+          var action = TargetResource["::get::Belanja::BelanjaTitle"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Belanja.BelanjaTitle#count
+             * @methodOf lbServices.Belanja.BelanjaTitle
+             *
+             * @description
+             *
+             * Counts BelanjaTitle of Belanja.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.BelanjaTitle.count = function() {
+          var TargetResource = $injector.get("BelanjaTitle");
+          var action = TargetResource["::count::Belanja::BelanjaTitle"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Belanja.BelanjaTitle#create
+             * @methodOf lbServices.Belanja.BelanjaTitle
+             *
+             * @description
+             *
+             * Creates a new instance in BelanjaTitle of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+        R.BelanjaTitle.create = function() {
+          var TargetResource = $injector.get("BelanjaTitle");
+          var action = TargetResource["::create::Belanja::BelanjaTitle"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Belanja.BelanjaTitle#createMany
+             * @methodOf lbServices.Belanja.BelanjaTitle
+             *
+             * @description
+             *
+             * Creates a new instance in BelanjaTitle of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+        R.BelanjaTitle.createMany = function() {
+          var TargetResource = $injector.get("BelanjaTitle");
+          var action = TargetResource["::createMany::Belanja::BelanjaTitle"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Belanja.BelanjaTitle#destroyAll
+             * @methodOf lbServices.Belanja.BelanjaTitle
+             *
+             * @description
+             *
+             * Deletes all BelanjaTitle of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.BelanjaTitle.destroyAll = function() {
+          var TargetResource = $injector.get("BelanjaTitle");
+          var action = TargetResource["::delete::Belanja::BelanjaTitle"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Belanja.BelanjaTitle#destroyById
+             * @methodOf lbServices.Belanja.BelanjaTitle
+             *
+             * @description
+             *
+             * Delete a related item by id for BelanjaTitle.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `fk` – `{*}` - Foreign key for BelanjaTitle
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.BelanjaTitle.destroyById = function() {
+          var TargetResource = $injector.get("BelanjaTitle");
+          var action = TargetResource["::destroyById::Belanja::BelanjaTitle"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Belanja.BelanjaTitle#findById
+             * @methodOf lbServices.Belanja.BelanjaTitle
+             *
+             * @description
+             *
+             * Find a related item by id for BelanjaTitle.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `fk` – `{*}` - Foreign key for BelanjaTitle
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+        R.BelanjaTitle.findById = function() {
+          var TargetResource = $injector.get("BelanjaTitle");
+          var action = TargetResource["::findById::Belanja::BelanjaTitle"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Belanja.BelanjaTitle#updateById
+             * @methodOf lbServices.Belanja.BelanjaTitle
+             *
+             * @description
+             *
+             * Update a related item by id for BelanjaTitle.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `fk` – `{*}` - Foreign key for BelanjaTitle
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+        R.BelanjaTitle.updateById = function() {
+          var TargetResource = $injector.get("BelanjaTitle");
+          var action = TargetResource["::updateById::Belanja::BelanjaTitle"];
+          return action.apply(R, arguments);
+        };
 
 
         return R;
@@ -23919,6 +24272,65 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             // INTERNAL. Use Belanja.RAB.count() instead.
             "::count::Belanja::RAB": {
               url: urlBase + "/Belanja/:id/RAB/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB.findById() instead.
+            "::findById::BelanjaTitle::RAB": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/BelanjaTitle/:id/RAB/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB.destroyById() instead.
+            "::destroyById::BelanjaTitle::RAB": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/BelanjaTitle/:id/RAB/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB.updateById() instead.
+            "::updateById::BelanjaTitle::RAB": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/BelanjaTitle/:id/RAB/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB() instead.
+            "::get::BelanjaTitle::RAB": {
+              isArray: true,
+              url: urlBase + "/BelanjaTitle/:id/RAB",
+              method: "GET",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB.create() instead.
+            "::create::BelanjaTitle::RAB": {
+              url: urlBase + "/BelanjaTitle/:id/RAB",
+              method: "POST",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB.createMany() instead.
+            "::createMany::BelanjaTitle::RAB": {
+              isArray: true,
+              url: urlBase + "/BelanjaTitle/:id/RAB",
+              method: "POST",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB.destroyAll() instead.
+            "::delete::BelanjaTitle::RAB": {
+              url: urlBase + "/BelanjaTitle/:id/RAB",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB.count() instead.
+            "::count::BelanjaTitle::RAB": {
+              url: urlBase + "/BelanjaTitle/:id/RAB/count",
               method: "GET",
             },
           }
@@ -27539,6 +27951,1013 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         */
         R.modelName = "AnggaranBiaya";
 
+
+
+        return R;
+      }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.BelanjaTitle
+ * @header lbServices.BelanjaTitle
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `BelanjaTitle` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+  module.factory(
+    "BelanjaTitle",
+    [
+      'LoopBackResource', 'LoopBackAuth', '$injector',
+      function(Resource, LoopBackAuth, $injector) {
+        var R = Resource(
+        urlBase + "/BelanjaTitle/:id",
+          { 'id': '@id' },
+          {
+
+            // INTERNAL. Use BelanjaTitle.RAB.findById() instead.
+            "prototype$__findById__RAB": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/BelanjaTitle/:id/RAB/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB.destroyById() instead.
+            "prototype$__destroyById__RAB": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/BelanjaTitle/:id/RAB/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB.updateById() instead.
+            "prototype$__updateById__RAB": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/BelanjaTitle/:id/RAB/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB() instead.
+            "prototype$__get__RAB": {
+              isArray: true,
+              url: urlBase + "/BelanjaTitle/:id/RAB",
+              method: "GET",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB.create() instead.
+            "prototype$__create__RAB": {
+              url: urlBase + "/BelanjaTitle/:id/RAB",
+              method: "POST",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB.destroyAll() instead.
+            "prototype$__delete__RAB": {
+              url: urlBase + "/BelanjaTitle/:id/RAB",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use BelanjaTitle.RAB.count() instead.
+            "prototype$__count__RAB": {
+              url: urlBase + "/BelanjaTitle/:id/RAB/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#create
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+            "create": {
+              url: urlBase + "/BelanjaTitle",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#createMany
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+            "createMany": {
+              isArray: true,
+              url: urlBase + "/BelanjaTitle",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#upsert
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+            "upsert": {
+              url: urlBase + "/BelanjaTitle",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#exists
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Check whether a model instance exists in the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `exists` – `{boolean=}` -
+             */
+            "exists": {
+              url: urlBase + "/BelanjaTitle/:id/exists",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#findById
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Find a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `filter` – `{object=}` - Filter defining fields and include
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+            "findById": {
+              url: urlBase + "/BelanjaTitle/:id",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#find
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Find all instances of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+            "find": {
+              isArray: true,
+              url: urlBase + "/BelanjaTitle",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#findOne
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Find first instance of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+            "findOne": {
+              url: urlBase + "/BelanjaTitle/findOne",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#updateAll
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+            "updateAll": {
+              url: urlBase + "/BelanjaTitle/update",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#deleteById
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+            "deleteById": {
+              url: urlBase + "/BelanjaTitle/:id",
+              method: "DELETE",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#count
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Count instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+            "count": {
+              url: urlBase + "/BelanjaTitle/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#prototype$updateAttributes
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Update attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+            "prototype$updateAttributes": {
+              url: urlBase + "/BelanjaTitle/:id",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#createChangeStream
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Create a change stream.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `changes` – `{ReadableStream=}` -
+             */
+            "createChangeStream": {
+              url: urlBase + "/BelanjaTitle/change-stream",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle.findById() instead.
+            "::findById::Belanja::BelanjaTitle": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Belanja/:id/BelanjaTitle/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle.destroyById() instead.
+            "::destroyById::Belanja::BelanjaTitle": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Belanja/:id/BelanjaTitle/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle.updateById() instead.
+            "::updateById::Belanja::BelanjaTitle": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Belanja/:id/BelanjaTitle/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle() instead.
+            "::get::Belanja::BelanjaTitle": {
+              isArray: true,
+              url: urlBase + "/Belanja/:id/BelanjaTitle",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle.create() instead.
+            "::create::Belanja::BelanjaTitle": {
+              url: urlBase + "/Belanja/:id/BelanjaTitle",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle.createMany() instead.
+            "::createMany::Belanja::BelanjaTitle": {
+              isArray: true,
+              url: urlBase + "/Belanja/:id/BelanjaTitle",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle.destroyAll() instead.
+            "::delete::Belanja::BelanjaTitle": {
+              url: urlBase + "/Belanja/:id/BelanjaTitle",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Belanja.BelanjaTitle.count() instead.
+            "::count::Belanja::BelanjaTitle": {
+              url: urlBase + "/Belanja/:id/BelanjaTitle/count",
+              method: "GET",
+            },
+          }
+        );
+
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#updateOrCreate
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+        R["updateOrCreate"] = R["upsert"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#update
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+        R["update"] = R["updateAll"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#destroyById
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+        R["destroyById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#removeById
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `BelanjaTitle` object.)
+             * </em>
+             */
+        R["removeById"] = R["deleteById"];
+
+
+        /**
+        * @ngdoc property
+        * @name lbServices.BelanjaTitle#modelName
+        * @propertyOf lbServices.BelanjaTitle
+        * @description
+        * The name of the model represented by this $resource,
+        * i.e. `BelanjaTitle`.
+        */
+        R.modelName = "BelanjaTitle";
+
+    /**
+     * @ngdoc object
+     * @name lbServices.BelanjaTitle.RAB
+     * @header lbServices.BelanjaTitle.RAB
+     * @object
+     * @description
+     *
+     * The object `BelanjaTitle.RAB` groups methods
+     * manipulating `RAB` instances related to `BelanjaTitle`.
+     *
+     * Call {@link lbServices.BelanjaTitle#RAB BelanjaTitle.RAB()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle#RAB
+             * @methodOf lbServices.BelanjaTitle
+             *
+             * @description
+             *
+             * Queries RAB of BelanjaTitle.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RAB` object.)
+             * </em>
+             */
+        R.RAB = function() {
+          var TargetResource = $injector.get("RAB");
+          var action = TargetResource["::get::BelanjaTitle::RAB"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle.RAB#count
+             * @methodOf lbServices.BelanjaTitle.RAB
+             *
+             * @description
+             *
+             * Counts RAB of BelanjaTitle.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.RAB.count = function() {
+          var TargetResource = $injector.get("RAB");
+          var action = TargetResource["::count::BelanjaTitle::RAB"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle.RAB#create
+             * @methodOf lbServices.BelanjaTitle.RAB
+             *
+             * @description
+             *
+             * Creates a new instance in RAB of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RAB` object.)
+             * </em>
+             */
+        R.RAB.create = function() {
+          var TargetResource = $injector.get("RAB");
+          var action = TargetResource["::create::BelanjaTitle::RAB"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle.RAB#createMany
+             * @methodOf lbServices.BelanjaTitle.RAB
+             *
+             * @description
+             *
+             * Creates a new instance in RAB of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RAB` object.)
+             * </em>
+             */
+        R.RAB.createMany = function() {
+          var TargetResource = $injector.get("RAB");
+          var action = TargetResource["::createMany::BelanjaTitle::RAB"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle.RAB#destroyAll
+             * @methodOf lbServices.BelanjaTitle.RAB
+             *
+             * @description
+             *
+             * Deletes all RAB of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RAB.destroyAll = function() {
+          var TargetResource = $injector.get("RAB");
+          var action = TargetResource["::delete::BelanjaTitle::RAB"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle.RAB#destroyById
+             * @methodOf lbServices.BelanjaTitle.RAB
+             *
+             * @description
+             *
+             * Delete a related item by id for RAB.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `fk` – `{*}` - Foreign key for RAB
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.RAB.destroyById = function() {
+          var TargetResource = $injector.get("RAB");
+          var action = TargetResource["::destroyById::BelanjaTitle::RAB"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle.RAB#findById
+             * @methodOf lbServices.BelanjaTitle.RAB
+             *
+             * @description
+             *
+             * Find a related item by id for RAB.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `fk` – `{*}` - Foreign key for RAB
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RAB` object.)
+             * </em>
+             */
+        R.RAB.findById = function() {
+          var TargetResource = $injector.get("RAB");
+          var action = TargetResource["::findById::BelanjaTitle::RAB"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.BelanjaTitle.RAB#updateById
+             * @methodOf lbServices.BelanjaTitle.RAB
+             *
+             * @description
+             *
+             * Update a related item by id for RAB.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - BasicInfo id
+             *
+             *  - `fk` – `{*}` - Foreign key for RAB
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `RAB` object.)
+             * </em>
+             */
+        R.RAB.updateById = function() {
+          var TargetResource = $injector.get("RAB");
+          var action = TargetResource["::updateById::BelanjaTitle::RAB"];
+          return action.apply(R, arguments);
+        };
 
 
         return R;

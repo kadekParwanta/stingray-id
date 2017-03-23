@@ -20,6 +20,11 @@
       "type": "hasMany",
       "model": "RAB",
       "foreignKey": "BelanjaId"
+    },
+    "BelanjaTitle": {
+      "type": "hasMany",
+      "model": "BelanjaTitle",
+      "foreignKey": "BelanjaId"
     }
   },
   "acls": [],

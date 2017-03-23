@@ -6,6 +6,16 @@
     <h4 class="modal-title" id="myModalLabel">Buat RAB baru</h4>
   </div>
   <div class="modal-body">
+    <div class="row" ng-hide="vm.selectedBelanjaTitle">
+      <div class="col-md-12">
+        <div class="form-group has-feedback">
+          <label class="checkbox-inline custom-checkbox nowrap">
+        <input type="checkbox" id="isTitleOnly" ng-model="vm.isTitleOnly">
+        <span>Hanya Judul?</span>
+      </label>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12">
         <div class="form-group has-feedback">
@@ -14,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" ng-hide="vm.isTitleOnly">
       <div class="col-md-6">
         <div class="form-group has-success">
           <label class="control-label" for="inputDurasi">Durasi</label>
@@ -28,7 +38,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" ng-hide="vm.isTitleOnly">
       <dv class="col-md-6">
         <div class="form-group has-success">
           <label class="control-label" for="inputVolume">Volume</label>
@@ -42,7 +52,7 @@
         </div>
       </dv>
     </div>
-    <div class="row">
+    <div class="row" ng-hide="vm.isTitleOnly">
       <div class="col-md-12">
         <div class="form-group has-error">
           <label class="control-label" for="inputHargaSatuan">Harga Satuan</label>
@@ -54,11 +64,11 @@
         </div>
       </div>
     </div>
-    <div class="form-group has-success">
+    <div class="form-group has-success" ng-hide="vm.isTitleOnly">
       <label class="control-label">Total</label>
-      <strong>{{formatCurrency(vm.newRAB.Volume*vm.newRAB.HargaSatuan)}}</strong>
+      <strong>{{calculateTotal()}}</strong>
     </div>
-    <div class="form-group has-warning">
+    <div class="form-group has-warning" ng-hide="vm.isTitleOnly">
       <label class="control-label">Sumber Biaya</label>
       <select class="form-control selectpicker with-search" data-live-search="true" selectpicker ng-model="vm.newRAB.SumberBiayaId"
         ng-options="item.id as item.Nama for item in vm.sumberBiayaItemList">

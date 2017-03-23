@@ -7,11 +7,17 @@ module.exports = function(Rab) {
         ctx.args.data.createdDate = new Date();
         var Counter = app.models.Counter;
         var BelanjaId = ctx.args.data.BelanjaId;
-
+        var BelanjaTitleId = ctx.args.data.BelanjaTitleId;
+        var parentId;
+        if (BelanjaId) {
+            parentId = BelanjaId +'rab';
+        } else {
+            parentId = BelanjaTitleId;
+        }
         // Create counter with projectId as the collection name if not exist
-        Counter.findOne({ where: { collection: BelanjaId } }, function (err, counter) {
+        Counter.findOne({ where: { collection: parentId } }, function (err, counter) {
             if (!counter) {
-                Counter.create({ collection: BelanjaId, value: 0 }, function (err, instance) {
+                Counter.create({ collection: parentId, value: 0 }, function (err, instance) {
                     next();
                 })
             } else {
@@ -26,9 +32,16 @@ module.exports = function(Rab) {
         var MongoConnector = MongoDB.connector;
         if (ctx.isNewInstance) {
             var BelanjaId = ctx.instance.__data.BelanjaId;
+            var BelanjaTitleId = ctx.instance.__data.BelanjaTitleId;
+            var parentId;
+            if (BelanjaId) {
+                parentId = BelanjaId.toHexString() + 'rab';
+            } else {
+                parentId = BelanjaTitleId.toHexString();
+            }
 
             MongoConnector.collection('Counter').findAndModify(
-                { collection: BelanjaId.toHexString() },
+                { collection: parentId },
                 [['_id', 'asc']],
                 { $inc: { value: 1 } },
                 { new: true },
