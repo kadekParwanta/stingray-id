@@ -1,0 +1,18 @@
+<div class="horizontal-scroll">
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td>Item</td>
+        <td>
+          <div ng-repeat="rab in selectedBelanjaTitleNode.RAB">
+            <p>- {{rab.Nama}} = {{formatCurrency(rab.Volume*rab.Durasi*rab.HargaSatuan)}}</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><strong>{{formatCurrency(selectedBelanjaTitleNode.TotalBiaya)}}</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

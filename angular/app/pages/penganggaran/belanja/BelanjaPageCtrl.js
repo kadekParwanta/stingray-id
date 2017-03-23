@@ -41,6 +41,7 @@
     $scope.selectedRABNode;
     $scope.selectedBelanjaTitleNode;
     $scope.selectedWaktuPelaksanaan = {};
+    $scope.isRKPSelected = false;
 
     $scope.belanjaConfig = {
       core: {
@@ -333,6 +334,7 @@
     };
 
     function populateBelanjaTree(rkp) {
+      rkp.TotalBelanja = 0;
       vm.belanjaTreeData.length = 0;
       vm.belanjaTreeData.push({
         "id": rkp.id,
@@ -350,7 +352,7 @@
           "id": entry.id,
           "parent": rkp.id,
           "type": "belanja",
-          "text": rkp.No+"." + entry.No+" " + entry.Nama,
+          "text": rkp.No + "." + entry.No + " " + entry.Nama,
           "state": {
             "opened": true
           }
@@ -368,6 +370,10 @@
               "opened": true
             }
           })
+          var durasi = item.Durasi == undefined ? 1 : item.Durasi;
+          var volume = item.Volume == undefined ? 1 : item.Volume;
+          var harga = durasi * volume * item.HargaSatuan;
+          rkp.TotalBelanja += harga;
         })
 
         var belanjaTitle = entry.BelanjaTitle;
@@ -394,6 +400,11 @@
                 "opened": true
               }
             })
+            var durasi = item.Durasi == undefined ? 1 : item.Durasi;
+            var volume = item.Volume == undefined ? 1 : item.Volume;
+            var harga = durasi * volume * item.HargaSatuan;
+            rkp.TotalBelanja += harga;
+
           })
         })
       })
@@ -549,15 +560,23 @@
         $scope.selectedRABNode = false;
         $scope.selectedBelanja = false;
         $scope.selectedBelanjaTitleNode = false;
+        $scope.isRKPSelected = true;
       } else if (node.type === 'belanja') {
         $scope.selectedBelanja = $filter('filter')($scope.selectedRKP.Belanja, { id: selectedId })[0];
         $scope.selectedRABNode = false;
         $scope.selectedBelanjaTitleNode = false;
+        $scope.isRKPSelected = false;
         if ($scope.selectedBelanja.RAB) {
           $scope.selectedBelanja.TotalBiaya = 0;
           $scope.selectedBelanja.RAB.forEach(function(entry){
             var harga = entry.Volume * entry.Durasi *entry.HargaSatuan;
             $scope.selectedBelanja.TotalBiaya += harga;
+          })
+          $scope.selectedBelanja.BelanjaTitle.forEach(function(belanjaTitle){
+            belanjaTitle.RAB.forEach(function(item){
+              var harga = item.Volume * item.Durasi *item.HargaSatuan;
+              $scope.selectedBelanja.TotalBiaya += harga;
+            })            
           })
         }
       } else if (node.type === 'rab') {
@@ -566,11 +585,18 @@
         $scope.selectedRABNode.belanjaNo = belanja.No;
         $scope.selectedBelanja = false;
         $scope.selectedBelanjaTitleNode = false;
+        $scope.isRKPSelected = false;
       } else if (node.type === 'belanjatitle') {
         var belanja = $filter('filter')($scope.selectedRKP.Belanja, { id: parent })[0];
         $scope.selectedBelanjaTitleNode = $filter('filter')(belanja.BelanjaTitle, { id: selectedId })[0];
+        $scope.selectedBelanjaTitleNode.TotalBiaya = 0;
+        $scope.selectedBelanjaTitleNode.RAB.forEach(function(entry){
+            var harga = entry.Volume * entry.Durasi *entry.HargaSatuan;
+            $scope.selectedBelanjaTitleNode.TotalBiaya += harga;
+          })
         $scope.selectedBelanja = false;
         $scope.selectedRABNode = false;
+        $scope.isRKPSelected = false;
       } else if (node.type === 'belanjatitlerab') {
         var parents = node.parents;
         var belanjaTitleId = parents[0];
@@ -582,6 +608,7 @@
         $scope.selectedRABNode.belanjaNo = belanja.No;
         $scope.selectedBelanja = false;
         $scope.selectedBelanjaTitleNode = false;
+        $scope.isRKPSelected = false;
       }
       $scope.$apply();
     }
@@ -653,7 +680,7 @@
     };
 
     $scope.addNewRAB = function() {
-      if($scope.selectedRABNode) {
+      if($scope.selectedRABNode || $scope.isRKPSelected) {
         $scope.open('app/pages/penganggaran/belanja/errorModal.html','md','Tidak dapat menambahkan anggaran belanja di sini. \nMohon pilih item belanja terlebih dahulu');
       } else {
         $scope.open('app/pages/penganggaran/belanja/belanjaModal.html', 'md');
