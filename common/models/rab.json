@@ -13,6 +13,12 @@
     "Satuan": {
       "type": "string"
     },
+    "Durasi": {
+      "type": "number"
+    },
+    "SatuanDurasi": {
+      "type": "string"
+    },
     "HargaSatuan": {
       "type": "number"
     }

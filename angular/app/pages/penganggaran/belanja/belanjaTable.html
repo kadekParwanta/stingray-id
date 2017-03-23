@@ -5,7 +5,7 @@
       <td>Item</td>
       <td>
           <div ng-repeat="rab in selectedBelanja.RAB">
-              <p>{{selectedBelanja.No}}.{{$index + 1}} {{rab.Nama}} : {{rab.Volume}} {{rab.Satuan}}  = {{formatCurrency(rab.Volume*rab.HargaSatuan)}}</p>
+              <p>{{$index + 1}}. {{rab.Nama}} = {{formatCurrency(rab.Volume*rab.Durasi*rab.HargaSatuan)}}</p>
           </div>
           </td>
     </tr>

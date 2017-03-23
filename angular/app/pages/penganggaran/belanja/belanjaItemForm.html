@@ -1,30 +1,63 @@
-<div class="form-group has-success">
-  <label class="control-label" for="inputSuccess1">Volume</label>
-  <input type="number" class="form-control" id="inputSuccess1" ng-model="selectedRABNode.Volume" ng-disabled="!selectedRABNode">
-</div>
-<div class="form-group has-warning">
-  <label class="control-label" for="inputWarning1">Satuan</label>
-  <input type="text" class="form-control" id="inputWarning1" ng-model="selectedRABNode.Satuan" ng-disabled="!selectedRABNode">
-</div>
-<div class="form-group has-success">
-  <label class="control-label" for="inputError1">Harga Satuan</label>
-  <div class="input-group">
-    <span class="input-group-addon addon-left">Rp.</span>
-    <input type="number" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" ng-model="selectedRABNode.HargaSatuan"
-      placeholder="Harga Satuan" ng-disabled="!selectedRABNode">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group has-success">
+      <label class="control-label" for="inputDurasi">Durasi</label>
+      <input type="number" class="form-control" id="inputDurasi" ng-model="selectedRABNode.Durasi" ng-disabled="!selectedRABNode">
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group has-warning">
+      <label class="control-label" for="inputSatuanDurasi">Satuan Durasi</label>
+      <input type="text" class="form-control" id="inputSatuanDurasi" ng-model="selectedRABNode.SatuanDurasi" ng-disabled="!selectedRABNode">
+    </div>
   </div>
 </div>
-<div class="form-group has-success">
-  <label class="control-label" for="inputError1">Total</label>
-  <strong>{{formatCurrency(selectedRABNode.Volume*selectedRABNode.HargaSatuan)}}</strong>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group has-success">
+      <label class="control-label" for="inputVolume">Volume</label>
+      <input type="number" class="form-control" id="inputVolume" ng-model="selectedRABNode.Volume" ng-disabled="!selectedRABNode">
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group has-warning">
+      <label class="control-label" for="inputSatuan">Satuan</label>
+      <input type="text" class="form-control" id="inputSatuan" ng-model="selectedRABNode.Satuan" ng-disabled="!selectedRABNode">
+    </div>
+  </div>
 </div>
-<div class="form-group has-warning">
-  <label class="control-label" for="inputWarning1">Sumber Biaya</label>
-  <select class="form-control selectpicker with-search" data-live-search="true" selectpicker ng-model="selectedRABNode.SumberBiayaId"
-          ng-options="item.id as item.Nama for item in sumberBiayaItemList" ng-disabled="!selectedRKP">
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group has-success">
+      <label class="control-label" for="inputHargaSatuan">Harga Satuan</label>
+      <div class="input-group">
+        <span class="input-group-addon addon-left">Rp.</span>
+        <input type="number" class="form-control" id="inputHargaSatuan" aria-describedby="inputGroupSuccess1Status" ng-model="selectedRABNode.HargaSatuan"
+          placeholder="Harga Satuan" ng-disabled="!selectedRABNode">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group has-success">
+      <label class="control-label">Total</label>
+      <strong>{{formatCurrency(selectedRABNode.Volume*selectedRABNode.Durasi*selectedRABNode.HargaSatuan)}}</strong>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group has-warning">
+      <label class="control-label">Sumber Biaya</label>
+      <select class="form-control selectpicker with-search" data-live-search="true" selectpicker ng-model="selectedRABNode.SumberBiayaId"
+        ng-options="item.id as item.Nama for item in sumberBiayaItemList" ng-disabled="!selectedRKP">
           <option value="">---Pilih---</option>
     </select>
+    </div>
+  </div>
 </div>
+
 <div class="button-wrapper">
   <button type="button" class="btn btn-danger btn-raised pull-left btn-with-icon" ng-click="deleteRAB(selectedRABNode)" ng-disabled="!selectedRABNode"><i class="ion-trash-a"></i>Hapus</button>
   <button type="button" class="btn btn-primary btn-raised pull-right btn-with-icon" ng-click="editRAB(selectedRABNode)" ng-disabled="!selectedRABNode"><i class="fa fa-floppy-o"></i>Simpan</button>

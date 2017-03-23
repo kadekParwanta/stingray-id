@@ -14,6 +14,7 @@
     vm.treeData = [];
     vm.treesData = [];
     vm.belanjaTreeData = [];
+    vm.belanjaForm;
 
     $scope.basicTree;
     $scope.basicTrees = [];
@@ -512,7 +513,7 @@
         if ($scope.selectedBelanja.RAB) {
           $scope.selectedBelanja.TotalBiaya = 0;
           $scope.selectedBelanja.RAB.forEach(function(entry){
-            var harga = entry.Volume * entry.HargaSatuan;
+            var harga = entry.Volume * entry.Durasi *entry.HargaSatuan;
             $scope.selectedBelanja.TotalBiaya += harga;
           })
         }
@@ -575,6 +576,8 @@
       RAB.prototype$updateAttributes({
         id: rab.id,
         Nama: rab.Nama,
+        Durasi: rab.Durasi,
+        SatuanDurasi: rab.SatuanDurasi,
         Volume: rab.Volume,
         Satuan: rab.Satuan,
         HargaSatuan: rab.HargaSatuan,

@@ -6,32 +6,60 @@
     <h4 class="modal-title" id="myModalLabel">Buat RAB baru</h4>
   </div>
   <div class="modal-body">
-    <div class="form-group has-feedback">
-      <label class="control-label" for="inputWarning1">Nama</label>
-      <input type="text" class="form-control" id="inputWarning1" ng-model="vm.newRAB.Nama">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group has-feedback">
+          <label class="control-label" for="inputNama">Nama</label>
+          <input type="text" class="form-control" id="inputNama" ng-model="vm.newRAB.Nama">
+        </div>
+      </div>
     </div>
-    <div class="form-group has-success">
-      <label class="control-label" for="inputSuccess1">Volume</label>
-      <input type="number" class="form-control" id="inputSuccess1" ng-model="vm.newRAB.Volume">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group has-success">
+          <label class="control-label" for="inputDurasi">Durasi</label>
+          <input type="number" class="form-control" id="inputDurasi" ng-model="vm.newRAB.Durasi">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group has-warning">
+          <label class="control-label" for="inputSatuanDurasi">Satuan Durasi</label>
+          <input type="text" class="form-control" id="inputSatuanDurasi" ng-model="vm.newRAB.SatuanDurasi">
+        </div>
+      </div>
     </div>
-    <div class="form-group has-warning">
-      <label class="control-label" for="inputWarning1">Satuan</label>
-      <input type="text" class="form-control" id="inputWarning1" ng-model="vm.newRAB.Satuan">
+    <div class="row">
+      <dv class="col-md-6">
+        <div class="form-group has-success">
+          <label class="control-label" for="inputVolume">Volume</label>
+          <input type="number" class="form-control" id="inputVolume" ng-model="vm.newRAB.Volume">
+        </div>
+      </dv>
+      <dv class="col-md-6">
+        <div class="form-group has-warning">
+          <label class="control-label" for="inputSatuan">Satuan</label>
+          <input type="text" class="form-control" id="inputSatuan" ng-model="vm.newRAB.Satuan">
+        </div>
+      </dv>
     </div>
-    <div class="form-group has-error">
-      <label class="control-label" for="inputError1">Harga Satuan</label>
-      <div class="input-group">
-        <span class="input-group-addon addon-left">Rp.</span>
-        <input type="number" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" ng-model="vm.newRAB.HargaSatuan"
-          placeholder="Harga Satuan">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group has-error">
+          <label class="control-label" for="inputHargaSatuan">Harga Satuan</label>
+          <div class="input-group">
+            <span class="input-group-addon addon-left">Rp.</span>
+            <input type="number" class="form-control" id="inputHargaSatuan" aria-describedby="inputGroupSuccess1Status" ng-model="vm.newRAB.HargaSatuan"
+              placeholder="Harga Satuan">
+          </div>
+        </div>
       </div>
     </div>
     <div class="form-group has-success">
-      <label class="control-label" for="inputError1">Total</label>
+      <label class="control-label">Total</label>
       <strong>{{formatCurrency(vm.newRAB.Volume*vm.newRAB.HargaSatuan)}}</strong>
     </div>
     <div class="form-group has-warning">
-      <label class="control-label" for="inputWarning1">Sumber Biaya</label>
+      <label class="control-label">Sumber Biaya</label>
       <select class="form-control selectpicker with-search" data-live-search="true" selectpicker ng-model="vm.newRAB.SumberBiayaId"
         ng-options="item.id as item.Nama for item in vm.sumberBiayaItemList">
           <option value="">---Pilih---</option>
