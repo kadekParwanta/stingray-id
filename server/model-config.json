@@ -33,18 +33,6 @@
     "dataSource": "mongodb",
     "public": false
   },
-  "School": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "Student": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "Yearbook": {
-    "dataSource": "mongodb",
-    "public": true
-  },
   "Container": {
     "dataSource": "storage",
     "public": true

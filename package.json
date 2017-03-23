@@ -1,5 +1,5 @@
 {
-  "name": "stingray-id",
+  "name": "manajemen-desa",
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
@@ -32,5 +32,5 @@
     "url": ""
   },
   "license": "UNLICENSED",
-  "description": "stingray-id"
+  "description": "manajemen-desa"
 }

@@ -18,6 +18,16 @@
       "type": "hasMany",
       "model": "RKP",
       "foreignKey": "WaktuPelaksanaanId"
+    },
+    "AnggaranPendapatan": {
+      "type": "hasMany",
+      "model": "AnggaranPendapatan",
+      "foreignKey": "WaktuPelaksanaanId"
+    },
+    "AnggaranBiaya": {
+      "type": "hasMany",
+      "model": "AnggaranBiaya",
+      "foreignKey": "WaktuPelaksanaanId"
     }
   },
   "acls": [],
