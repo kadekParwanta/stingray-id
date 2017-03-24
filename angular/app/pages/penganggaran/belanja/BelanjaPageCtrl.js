@@ -718,7 +718,7 @@
     }
   }
 
-  angular.module('BlurAdmin.pages.perencanaan')
+  angular.module('BlurAdmin.pages.penganggaran')
     .controller('BelanjaModalInstanceCtrl', BelanjaModalInstanceCtrl);
 
   function BelanjaModalInstanceCtrl($uibModalInstance, selectedBelanja, sumberBiayaItemList, $scope, selectedBelanjaTitle, message) {

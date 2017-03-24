@@ -138,7 +138,7 @@ module.exports = function (Rpjm) {
                                     { "No": 5, "Nama": "Bantuan Keuangan Kabupaten" }
                                 ], function (err, subpendapatanB) {
                                     Pendapatan.create(
-                                        { "No": 2, "Nama": "Pendapatan Lain-lain", "RPJMId": ctx.instance.id }, function (err, pendapatanC) {
+                                        { "No": 3, "Nama": "Pendapatan Lain-lain", "RPJMId": ctx.instance.id }, function (err, pendapatanC) {
                                             pendapatanC.SubPendapatan.create([
                                                 { "No": 1, "Nama": "Hibah dan sumbangan dari Pihak Ketiga yang Tidak Mengikat" },
                                                 { "No": 2, "Nama": "Lain-lain pendapatan desa yang sah" }
