@@ -32,4 +32,19 @@
       </uib-tabset>
     </div>
   </div>
+  <div class="col-sm-4" ng-show="selectedAnggaranPendapatan">
+    <div ba-panel ba-panel-title="{{selectedAnggaranPendapatan.Nama}}" ba-panel-class="with-scroll panel-warning">
+      <div include-with-scope="app/pages/penganggaran/pendapatan/anggaranPendapatanForm.html"></div>
+    </div>
+  </div>
+  <div class="col-sm-4" ng-show="selectedPendapatan">
+    <div ba-panel ba-panel-title="{{selectedPendapatan.Nama}}" ba-panel-class="with-scroll panel-warning">
+      <div include-with-scope="app/pages/penganggaran/pendapatan/pendapatanTable.html"></div>
+    </div>
+  </div>
+  <div class="col-sm-4" ng-show="selectedSubPendapatan">
+    <div ba-panel ba-panel-title="{{selectedSubPendapatan.Nama}}" ba-panel-class="with-scroll panel-warning">
+      <div include-with-scope="app/pages/penganggaran/pendapatan/subPendapatanTable.html"></div>
+    </div>
+  </div>
 </div>

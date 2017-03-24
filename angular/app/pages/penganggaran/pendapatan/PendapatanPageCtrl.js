@@ -23,6 +23,8 @@
     $scope.ignoreChanges = false;
     $scope.IsSubpendapatanSelected = false;
     $scope.selectedSubPendapatan;
+    $scope.selectedPendapatan;
+    $scope.selectedAnggaranPendapatan;
     $scope.selectedWaktuPelaksanaan;
 
     $scope.pendapatanConfig = {
@@ -169,27 +171,69 @@
 
     function onSelected(e, data) {
       var node = data.node;
+      var selectedId = node.id;
       if (node.type == "subpendapatan") {
         var parent = node.parent;
         var waktuPelaksanaanId = getActiveTab().id;
         var pendapatanId = parent.substring(waktuPelaksanaanId.length + 1);
-        var selectedId = node.id;
         selectedId = selectedId.substring(waktuPelaksanaanId.length + 1);
         $scope.IsSubpendapatanSelected = true;
         var pendapatan = $filter('filter')($scope.pendapatanList, { id: pendapatanId })[0];
         $scope.selectedSubPendapatan = $filter('filter')(pendapatan.SubPendapatan, { id: selectedId })[0];
-      } else {
+        $scope.selectedAnggaranPendapatan = undefined;
+        $scope.selectedPendapatan = undefined;
+        $scope.selectedSubPendapatan.TotalPendapatan = 0;
+        var anggaranPendapatanList = $scope.selectedSubPendapatan.AnggaranPendapatan;
+          anggaranPendapatanList.forEach(function(entry){
+            $scope.selectedSubPendapatan.TotalPendapatan += entry.Jumlah;
+          })
+      } else if (node.type == 'pendapatan') {
         $scope.IsSubpendapatanSelected = false;
         $scope.selectedSubPendapatan = undefined;
+        $scope.selectedAnggaranPendapatan = undefined;
+        var waktuPelaksanaanId = getActiveTab().id;
+        pendapatanId = selectedId.substring(waktuPelaksanaanId.length + 1);
+        $scope.selectedPendapatan = $filter('filter')($scope.pendapatanList, { id: pendapatanId })[0];
+        $scope.selectedPendapatan.TotalPendapatan = 0;
+        var subPendapatanList = $scope.selectedPendapatan.SubPendapatan;
+        subPendapatanList.forEach(function(item){
+          var anggaranPendapatanList = item.AnggaranPendapatan;
+          anggaranPendapatanList.forEach(function(entry){
+            $scope.selectedPendapatan.TotalPendapatan += entry.Jumlah;
+          })
+        })
+      } else if (node.type == 'anggaranpendapatan') {
+        $scope.IsSubpendapatanSelected = false;
+        $scope.selectedSubPendapatan = undefined;
+        $scope.selectedPendapatan = undefined;
+        var waktuPelaksanaanId = getActiveTab().id;
+        var parents = node.parents;
+        var subPendapatanId = parents[0].substring(waktuPelaksanaanId.length + 1);
+        var pendapatanId = parents[1].substring(waktuPelaksanaanId.length + 1);
+        var pendapatan = $filter('filter')($scope.pendapatanList, { id: pendapatanId })[0];
+        var subPendapatan = $filter('filter')(pendapatan.SubPendapatan, { id: subPendapatanId })[0];
+        $scope.selectedAnggaranPendapatan = $filter('filter')(subPendapatan.AnggaranPendapatan, { id: selectedId })[0];
       }
     }
 
     function getActiveTab() {
       return $scope.selectedWaktuPelaksanaan;
     };
+    
 
     $scope.tabSelected = function(tab) {
       $scope.selectedWaktuPelaksanaan = tab;
+    }
+
+
+    var formatter = new Intl.NumberFormat('id', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 2,
+    })
+
+    $scope.formatCurrency = function(value) {
+      return formatter.format(value);
     }
 
     $scope.applyModelChanges = function () {
