@@ -299,6 +299,15 @@
           $scope.ignoreChanges = false;
         });
       })
+
+      if ($scope.IsSubpendapatanSelected) {
+        var selectedWaktuPelaksanaan = getActiveTab();
+        var indexWaktu = selectedWaktuPelaksanaan.No - 1;
+        if ($scope.IsSubpendapatanSelected) {
+          var id = selectedWaktuPelaksanaan.id + "-" + $scope.selectedSubPendapatan.id;
+          $scope.basicTrees[indexWaktu].select_node(id);
+        }
+      }
     };
 
     $scope.open = function (page, size, message) {
