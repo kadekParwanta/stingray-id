@@ -9,7 +9,7 @@
     .controller('PendapatanPageCtrl', PendapatanPageCtrl);
 
   /** @ngInject */
-  function PendapatanPageCtrl(RPJM, $timeout, $scope, $uibModal, $filter, AnggaranPendapatan, Pendapatan) {
+  function PendapatanPageCtrl(RPJM, $timeout, $scope, $uibModal, $filter, AnggaranPendapatan, Pendapatan, $q) {
     var vm = this;
     vm.treeData = [];
     vm.treesData = [];
@@ -26,6 +26,7 @@
     $scope.selectedPendapatan;
     $scope.selectedAnggaranPendapatan;
     $scope.selectedWaktuPelaksanaan;
+    $scope.selectedDefault;
 
     $scope.pendapatanConfig = {
       core: {
@@ -42,6 +43,9 @@
         },
         anggaranpendapatan: {
           icon: 'ion-bag'
+        },
+        default: {
+          icon: 'ion-ios-folder'
         }
       },
       plugins: ['types', 'ui'],
@@ -58,20 +62,6 @@
               scope: {
                 order: "No ASC"
               }
-            },
-            {
-              relation: "Pendapatan",
-              scope: {
-                include:
-                {
-                  relation: "SubPendapatan",
-                  scope: {
-                    include: {
-                      relation: "AnggaranPendapatan"
-                    }
-                  }
-                }
-              }
             }
           ]
         }
@@ -86,69 +76,73 @@
         }
 
         $scope.waktuPelaksanaanList = result.WaktuPelaksanaan;
-        $scope.pendapatanList = result.Pendapatan;
-        vm.treesData.length = $scope.waktuPelaksanaanList.length;
-        populateAnggaranPendapatanByWaktu($scope.waktuPelaksanaanList, $scope.pendapatanList);
+        getPendapatanByWaktu($scope.waktuPelaksanaanList);
       })
     }
 
-    function fetchAnggaranPendapatanByWaktu(waktuPelaksanaan) {
-      Pendapatan.find({
-        filter: {
-          include: {
-            relation: 'SubPendapatan', scope: {
-              include: {
-                relation: 'AnggaranPendapatan', scope: {
-                  where: {
-                    WaktuPelaksanaanId: waktuPelaksanaan.id
+    function getPendapatanByWaktu(waktuPelaksanaanList) {
+      var promises = waktuPelaksanaanList.map(function (waktupelaksanaan) {
+        var deferred = $q.defer();
+
+        Pendapatan.find({
+          filter: {
+            include: {
+              relation: 'SubPendapatan', scope: {
+                include: {
+                  relation: 'AnggaranPendapatan', scope: {
+                    where: {
+                      WaktuPelaksanaanId: waktupelaksanaan.id
+                    }
                   }
                 }
               }
+            },
+            where: {
+              RPJMId: $scope.activeRPJM.id
             }
-          },
-          where: {
-            RPJMId: $scope.activeRPJM.id
           }
-        }
-      }, function(result){
-        populateAnggaranPendapatanByWaktu([waktuPelaksanaan], result);
-      })
-    }
-
-    function populateAnggaranPendapatanByWaktu(waktuPelaksanaanList, pendapatanList) {
-      angular.forEach(waktuPelaksanaanList, function (item) {
-        var indexWaktu = item.No - 1;
-        vm.treeData.length = 0;
-
-        angular.forEach(pendapatanList, function (pendapatan) {
-          var pendapatanId = item.id + "-" + pendapatan.id ;
-          vm.treeData.push({
-            "id": pendapatanId,
+        }, function (pendapatanList) {
+          var indexWaktuPel = waktupelaksanaan.No - 1;
+          $scope.pendapatanList[indexWaktuPel] = pendapatanList;
+          var treeData = [];
+          treeData.push({
+            "id": waktupelaksanaan.id,
             "parent": "#",
-            "type": "pendapatan",
-            "text": pendapatan.No + " " + pendapatan.Nama,
+            "type": "default",
+            "text": "PENDAPATAN ",
             "state": {
               "opened": true
             }
           })
 
-          var subpendapatanList = pendapatan.SubPendapatan;
-          subpendapatanList.forEach(function (subpendapatan, index) {
-            var subPendapatanId = item.id + "-" + subpendapatan.id ;
-            vm.treeData.push({
-              "id": subPendapatanId,
-              "parent": pendapatanId,
-              "type": "subpendapatan",
-              "text": pendapatan.No + "." + subpendapatan.No + " " + subpendapatan.Nama,
+          angular.forEach(pendapatanList, function (pendapatan) {
+            var pendapatanId = waktupelaksanaan.id + "-" + pendapatan.id;
+            treeData.push({
+              "id": pendapatanId,
+              "parent": waktupelaksanaan.id,
+              "type": "pendapatan",
+              "text": pendapatan.No + " " + pendapatan.Nama,
               "state": {
                 "opened": true
               }
             })
 
-            var anggaranPendapatanList = subpendapatan.AnggaranPendapatan;
-            anggaranPendapatanList.forEach(function (anggaranPendapatan) {
-              if (anggaranPendapatan.WaktuPelaksanaanId == item.id) {
-                vm.treeData.push({
+            var subpendapatanList = pendapatan.SubPendapatan;
+            subpendapatanList.forEach(function (subpendapatan, index) {
+              var subPendapatanId = waktupelaksanaan.id + "-" + subpendapatan.id;
+              treeData.push({
+                "id": subPendapatanId,
+                "parent": pendapatanId,
+                "type": "subpendapatan",
+                "text": pendapatan.No + "." + subpendapatan.No + " " + subpendapatan.Nama,
+                "state": {
+                  "opened": true
+                }
+              })
+
+              var anggaranPendapatanList = subpendapatan.AnggaranPendapatan;
+              anggaranPendapatanList.forEach(function (anggaranPendapatan) {
+                treeData.push({
                   "id": anggaranPendapatan.id,
                   "parent": subPendapatanId,
                   "type": "anggaranpendapatan",
@@ -158,14 +152,21 @@
                     "opened": true
                   }
                 })
-              }
+              })
             })
           })
+          deferred.resolve(treeData);
         })
 
-        $scope.treesData[indexWaktu] = angular.copy(vm.treeData);
-        $scope.pendapatanConfigs[indexWaktu] = $scope.pendapatanConfig;        
-        $scope.pendapatanConfigs[indexWaktu].version ++;
+        return deferred.promise;
+      })
+
+      $q.all(promises).then(function (treesData) {
+        waktuPelaksanaanList.forEach(function(item, index){
+          $scope.treesData[(item.No - 1)] = treesData[index];
+          $scope.pendapatanConfigs[(item.No - 1)] = $scope.pendapatanConfig;        
+          $scope.pendapatanConfigs[(item.No - 1)].version ++;
+        })
       })
     }
 
@@ -174,14 +175,17 @@
       var selectedId = node.id;
       if (node.type == "subpendapatan") {
         var parent = node.parent;
-        var waktuPelaksanaanId = getActiveTab().id;
+        var activeWaktuPelaksanaan = getActiveTab();
+        var waktuPelaksanaanId = activeWaktuPelaksanaan.id;
+        var indexWaktu = activeWaktuPelaksanaan.No - 1;
         var pendapatanId = parent.substring(waktuPelaksanaanId.length + 1);
         selectedId = selectedId.substring(waktuPelaksanaanId.length + 1);
         $scope.IsSubpendapatanSelected = true;
-        var pendapatan = $filter('filter')($scope.pendapatanList, { id: pendapatanId })[0];
+        var pendapatan = $filter('filter')($scope.pendapatanList[indexWaktu], { id: pendapatanId })[0];
         $scope.selectedSubPendapatan = $filter('filter')(pendapatan.SubPendapatan, { id: selectedId })[0];
         $scope.selectedAnggaranPendapatan = undefined;
         $scope.selectedPendapatan = undefined;
+        $scope.selectedDefault = undefined;
         $scope.selectedSubPendapatan.TotalPendapatan = 0;
         var anggaranPendapatanList = $scope.selectedSubPendapatan.AnggaranPendapatan;
           anggaranPendapatanList.forEach(function(entry){
@@ -191,9 +195,12 @@
         $scope.IsSubpendapatanSelected = false;
         $scope.selectedSubPendapatan = undefined;
         $scope.selectedAnggaranPendapatan = undefined;
-        var waktuPelaksanaanId = getActiveTab().id;
+        $scope.selectedDefault = undefined;
+        var activeWaktuPelaksanaan = getActiveTab();
+        var waktuPelaksanaanId = activeWaktuPelaksanaan.id;
+        var indexWaktu = activeWaktuPelaksanaan.No - 1;
         pendapatanId = selectedId.substring(waktuPelaksanaanId.length + 1);
-        $scope.selectedPendapatan = $filter('filter')($scope.pendapatanList, { id: pendapatanId })[0];
+        $scope.selectedPendapatan = $filter('filter')($scope.pendapatanList[indexWaktu], { id: pendapatanId })[0];
         $scope.selectedPendapatan.TotalPendapatan = 0;
         var subPendapatanList = $scope.selectedPendapatan.SubPendapatan;
         subPendapatanList.forEach(function(item){
@@ -206,13 +213,36 @@
         $scope.IsSubpendapatanSelected = false;
         $scope.selectedSubPendapatan = undefined;
         $scope.selectedPendapatan = undefined;
-        var waktuPelaksanaanId = getActiveTab().id;
+        $scope.selectedDefault = undefined;
+        var activeWaktuPelaksanaan = getActiveTab();
+        var waktuPelaksanaanId = activeWaktuPelaksanaan.id;
+        var indexWaktu = activeWaktuPelaksanaan.No - 1;
         var parents = node.parents;
         var subPendapatanId = parents[0].substring(waktuPelaksanaanId.length + 1);
         var pendapatanId = parents[1].substring(waktuPelaksanaanId.length + 1);
-        var pendapatan = $filter('filter')($scope.pendapatanList, { id: pendapatanId })[0];
+        var pendapatan = $filter('filter')($scope.pendapatanList[indexWaktu], { id: pendapatanId })[0];
         var subPendapatan = $filter('filter')(pendapatan.SubPendapatan, { id: subPendapatanId })[0];
         $scope.selectedAnggaranPendapatan = $filter('filter')(subPendapatan.AnggaranPendapatan, { id: selectedId })[0];
+      } else {
+        $scope.selectedSubPendapatan = undefined;
+        $scope.selectedPendapatan = undefined;
+        $scope.selectedAnggaranPendapatan = undefined;
+        $scope.selectedDefault = {
+          TotalPendapatan : 0
+        }
+        var activeWaktuPelaksanaan = getActiveTab();
+        var waktuPelaksanaanId = activeWaktuPelaksanaan.id;
+        var indexWaktu = activeWaktuPelaksanaan.No - 1;
+        $scope.pendapatanList[indexWaktu].forEach(function (pendapatan) {
+          var subPendapatanList = pendapatan.SubPendapatan;
+          subPendapatanList.forEach(function (item) {
+            var anggaranPendapatanList = item.AnggaranPendapatan;
+            anggaranPendapatanList.forEach(function (entry) {
+              $scope.selectedDefault.TotalPendapatan += entry.Jumlah;
+            })
+          })
+        })
+        
       }
     }
 
@@ -309,7 +339,7 @@
       
     }
     $scope.refresh = function(waktuPelaksanaan) {
-      fetchAnggaranPendapatanByWaktu(waktuPelaksanaan);
+      getPendapatanByWaktu([waktuPelaksanaan]);
     }
 
     getActiveRPJM();
