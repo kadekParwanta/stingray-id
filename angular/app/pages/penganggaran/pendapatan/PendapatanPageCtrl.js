@@ -254,6 +254,8 @@
 
     $scope.tabSelected = function(tab) {
       $scope.selectedWaktuPelaksanaan = tab;
+      $scope.refresh(tab);
+      
     }
 
 
@@ -305,7 +307,11 @@
         var selectedWaktuPelaksanaan = getActiveTab();
         var indexWaktu = selectedWaktuPelaksanaan.No - 1;
         var id = selectedWaktuPelaksanaan.id + "-" + $scope.selectedSubPendapatan.id;
-          $scope.basicTrees[indexWaktu].select_node(id);
+        $scope.basicTrees[indexWaktu].select_node(id);
+      } else {
+        var selectedWaktuPelaksanaan = getActiveTab();
+        var indexWaktu = selectedWaktuPelaksanaan.No - 1;
+        $scope.basicTrees[indexWaktu].select_node(selectedWaktuPelaksanaan.id);
       }
     };
 
