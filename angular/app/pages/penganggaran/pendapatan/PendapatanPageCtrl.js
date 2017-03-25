@@ -224,6 +224,7 @@
         var subPendapatan = $filter('filter')(pendapatan.SubPendapatan, { id: subPendapatanId })[0];
         $scope.selectedAnggaranPendapatan = $filter('filter')(subPendapatan.AnggaranPendapatan, { id: selectedId })[0];
       } else {
+        $scope.IsSubpendapatanSelected = false;
         $scope.selectedSubPendapatan = undefined;
         $scope.selectedPendapatan = undefined;
         $scope.selectedAnggaranPendapatan = undefined;
@@ -303,10 +304,8 @@
       if ($scope.IsSubpendapatanSelected) {
         var selectedWaktuPelaksanaan = getActiveTab();
         var indexWaktu = selectedWaktuPelaksanaan.No - 1;
-        if ($scope.IsSubpendapatanSelected) {
-          var id = selectedWaktuPelaksanaan.id + "-" + $scope.selectedSubPendapatan.id;
+        var id = selectedWaktuPelaksanaan.id + "-" + $scope.selectedSubPendapatan.id;
           $scope.basicTrees[indexWaktu].select_node(id);
-        }
       }
     };
 
@@ -349,6 +348,24 @@
     }
     $scope.refresh = function(waktuPelaksanaan) {
       getPendapatanByWaktu([waktuPelaksanaan]);
+    }
+
+    $scope.deleteAnggaranPendapatan = function(anggaranPendapatan) {
+      AnggaranPendapatan.deleteById({ id: anggaranPendapatan.id }, function () {
+        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+        $scope.refresh(getActiveTab());
+      })
+    }
+
+    $scope.editAnggaranPendapatan = function(anggaranPendapatan) {
+      AnggaranPendapatan.prototype$updateAttributes({
+        id: anggaranPendapatan.id,
+        Nama: anggaranPendapatan.Nama,
+        Jumlah: anggaranPendapatan.Jumlah
+      }, function (result) {
+        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+        $scope.refresh(getActiveTab());
+      })
     }
 
     getActiveRPJM();

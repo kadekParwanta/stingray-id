@@ -325,11 +325,18 @@
         var element = angular.element(elementName);
         element.on("select_node.jstree", onSelected);
         $scope.basicTrees[ind] = element.jstree(true);
-        $scope.selectedRKP = $scope.basicTrees[ind].get_selected()[0];
+        // $scope.selectedRKP = $scope.basicTrees[ind].get_selected()[0];
         $timeout(function () {
           $scope.ignoreChanges = false;
         });
       })
+
+      if ($scope.selectedRKP) {
+        var id = $scope.selectedRKP.id;
+        var selectedWaktuPelaksanaan = getActiveTab();
+        var indexWaktu = selectedWaktuPelaksanaan.No - 1;
+        $scope.basicTrees[indexWaktu].select_node(id);
+      }
 
     };
 
@@ -413,15 +420,23 @@
       $scope.belanjaConfig.version ++;
     }
 
-    $scope.belanjaTreereadyCB = function() {
+    $scope.belanjaTreereadyCB = function () {
       var elementName = '#belanjaTree';
-        var element = angular.element(elementName);
-        element.on("select_node.jstree", onBelanjaSelected);
-        $scope.belanjaTree = element.jstree(true);
-        $scope.selectedRABNode = $scope.belanjaTree.get_selected()[0];
-        $timeout(function () {
-          $scope.ignoreChanges = false;
-        });
+      var element = angular.element(elementName);
+      element.on("select_node.jstree", onBelanjaSelected);
+      $scope.belanjaTree = element.jstree(true);
+      // $scope.selectedRABNode = $scope.belanjaTree.get_selected()[0];
+      $timeout(function () {
+        $scope.ignoreChanges = false;
+      });
+
+      if ($scope.selectedBelanjaTitleNode) {
+        var id = $scope.selectedBelanjaTitleNode.id;
+        $scope.belanjaTree.select_node(id);
+      } else if ($scope.selectedBelanja) {
+        var id = $scope.selectedBelanja.id;
+        $scope.belanjaTree.select_node(id);
+      }
     }
 
     var formatter = new Intl.NumberFormat('id', {
@@ -711,10 +726,15 @@
     }
 
 
-    $scope.calculateTotal = function() {
-      var durasi = (typeof $scope.selectedRABNode.Durasi == 'undefined' || $scope.selectedRABNode.Durasi == undefined) ? 1 : $scope.selectedRABNode.Durasi;
-      var volume = (typeof $scope.selectedRABNode.Volume == 'undefined' || $scope.selectedRABNode.Volume == undefined) ? 1 : $scope.selectedRABNode.Volume;
-      return formatter.format(durasi*volume*$scope.selectedRABNode.HargaSatuan);
+    $scope.calculateTotal = function () {
+      if ($scope.selectedRABNode) {
+        var durasi = (typeof $scope.selectedRABNode.Durasi == 'undefined' || $scope.selectedRABNode.Durasi == undefined) ? 1 : $scope.selectedRABNode.Durasi;
+        var volume = (typeof $scope.selectedRABNode.Volume == 'undefined' || $scope.selectedRABNode.Volume == undefined) ? 1 : $scope.selectedRABNode.Volume;
+        return formatter.format(durasi * volume * $scope.selectedRABNode.HargaSatuan);
+      } else {
+        return formatter.format(0);
+      }
+
     }
   }
 
