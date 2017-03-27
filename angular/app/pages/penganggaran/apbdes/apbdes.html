@@ -49,6 +49,36 @@
                                             <td ng-class="nowrap">{{pendapatan.Jumlah}}</td>
                                             <td ng-class="nowrap">{{pendapatan.Keterangan}}</td>
                                         </tr>
+                                        <tr>
+                                            <td colspan="4" style="font-weight: bold">JUMLAH PENDAPATAN</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6" style="height: 20px !important"></td>
+                                        </tr>
+                                        <tr style="background-color: black; color:antiquewhite; font-weight: bold">
+                                            <td>2</td>
+                                            <td colspan="3">BELANJA</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6" style="height: 20px !important"></td>
+                                        </tr>
+                                        <tr ng-repeat="belanja in belanjaTableList[(selectedWaktuPelaksanaan.No-1)]" ng-style="{{belanja.style}}">
+                                            <td ng-class="nowrap">{{belanja.KodeRekening}}</td>
+                                            <td ng-class="nowrap">{{belanja.Uraian}}</td>
+                                            <td ng-class="nowrap">{{belanja.Satuan}}</td>
+                                            <td ng-class="nowrap">{{belanja.Harga}}</td>
+                                            <td ng-class="nowrap">{{belanja.Jumlah}}</td>
+                                            <td ng-class="nowrap">{{belanja.Keterangan}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" style="font-weight: bold">JUMLAH BELANJA</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
