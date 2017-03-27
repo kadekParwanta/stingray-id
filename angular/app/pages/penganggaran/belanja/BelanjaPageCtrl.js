@@ -93,21 +93,21 @@
     };
 
     function populateRPJMDes(bidangList) {
-      vm.treeData.length = 0;
-      angular.forEach(bidangList, function (bidang) {
-        vm.treeData.push({
-          "id": bidang.id,
-          "parent": "#",
-          "type": "folder",
-          "text": bidang.No + " " + bidang.Nama,
-          "state": {
-            "opened": true
-          }
+      angular.forEach($scope.waktuPelaksanaanList, function (item, index) {
+        vm.treeData.length = 0;
+        angular.forEach(bidangList, function (bidang) {
+          vm.treeData.push({
+            "id": bidang.id,
+            "parent": "#",
+            "type": "folder",
+            "text": bidang.No + " " + bidang.Nama,
+            "state": {
+              "opened": true
+            }
+          })
         })
-      })
-
-      angular.forEach($scope.waktuPelaksanaanList, function(item, index){
-        vm.treesData[index] = vm.treeData;
+        var indexWaktuPel = item.No - 1;
+        vm.treesData[indexWaktuPel] = vm.treeData;
       })
 
       getRPJMDesByWaktu($scope.waktuPelaksanaanList);
@@ -116,6 +116,7 @@
     function populateRPJMDesByWaktu(bidangList, waktuPelaksanaan) {
       var index = waktuPelaksanaan.No - 1;
       vm.treesData[index] = [];
+      vm.treesData[index].length = 0;
       angular.forEach(bidangList, function (bidang) {
         vm.treesData[index].push({
           "id": bidang.id,
@@ -211,7 +212,7 @@
         }, function (result) {
           var indexWaktuPel = waktupelaksanaan.No - 1;
           $scope.RKPList[indexWaktuPel] = result;
-          var treeData = angular.copy($scope.treesData[indexWaktuPel]);
+          var treeData = angular.copy(vm.treesData[indexWaktuPel]);
 
           angular.forEach(result, function (item, index, arr) {
             var bidang = item.Bidang;
@@ -281,7 +282,6 @@
         $scope.waktuPelaksanaanList = result.WaktuPelaksanaan;
         $scope.polaPelaksanaanList = result.PolaPelaksanaan;
         $scope.sumberBiayaItemList = result.SumberBiayaItem;
-        vm.treesData.length = $scope.waktuPelaksanaanList.length;
         populateRPJMDes($scope.bidangList);
       })
     }
@@ -292,6 +292,12 @@
 
     $scope.tabSelected = function(tab) {
       $scope.selectedWaktuPelaksanaan = tab;
+      $scope.selectedRABNode = undefined;
+      $scope.selectedBelanja = undefined;
+      $scope.selectedBelanjaTitleNode = undefined;
+      $scope.isRKPSelected = false;
+      $scope.selectedRKP = undefined;
+      $scope.refresh(tab);
     }
 
     getActiveRPJM();
@@ -430,11 +436,14 @@
         $scope.ignoreChanges = false;
       });
 
-      if ($scope.selectedBelanjaTitleNode) {
+      if ($scope.selectedBelanjaTitleNode && $scope.selectedRKP) {
         var id = $scope.selectedBelanjaTitleNode.id;
         $scope.belanjaTree.select_node(id);
-      } else if ($scope.selectedBelanja) {
+      } else if ($scope.selectedBelanja && $scope.selectedRKP) {
         var id = $scope.selectedBelanja.id;
+        $scope.belanjaTree.select_node(id);
+      } else if ($scope.selectedRKP){
+        var id = $scope.selectedRKP.id;
         $scope.belanjaTree.select_node(id);
       }
     }
@@ -455,7 +464,6 @@
       var parents = node.parents;
       var selectedId = node.id;
       var ind = getActiveTab().No -1;
-      $scope.selectedBelanja = false;
       if (node.type === 'pricetag') {
         var parentNo;
         if (parents.length === 3) {
@@ -475,22 +483,22 @@
             $scope.selectedRKP.TotalBiaya += entry.Jumlah;
           })
         }
-        $scope.selectedBidang = false;
-        $scope.selectedRPJMDes = false;
+        $scope.selectedBidang = undefined;
+        $scope.selectedRPJMDes = undefined;
         $scope.isBidang = false;
         populateBelanjaTree($scope.selectedRKP);
         $scope.$apply();
       } else if (node.type === 'folder'){
         $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: selectedId })[0];
-        $scope.selectedRPJMDes = false;
-        $scope.selectedRKP = false;
+        $scope.selectedRPJMDes = undefined;
+        $scope.selectedRKP = undefined;
         $scope.isBidang = true;
         getRKPByBidang($scope.selectedBidang);
         $scope.$apply();
       } else {
         $scope.selectedBidang = $filter('filter')($scope.bidangList, { id: parent })[0];
         $scope.selectedRPJMDes = $filter('filter')($scope.RPJMDesList[ind], { id: selectedId })[0];
-        $scope.selectedRKP = false;
+        $scope.selectedRKP = undefined;
         $scope.isBidang = false;
         getRKPByRPJMDes($scope.selectedRPJMDes);
         $scope.$apply();
@@ -572,14 +580,14 @@
       var parent = node.parent;
       var selectedId = node.id;
       if (node.type === 'rkp') {
-        $scope.selectedRABNode = false;
-        $scope.selectedBelanja = false;
-        $scope.selectedBelanjaTitleNode = false;
+        $scope.selectedRABNode = undefined;
+        $scope.selectedBelanja = undefined;
+        $scope.selectedBelanjaTitleNode = undefined;
         $scope.isRKPSelected = true;
       } else if (node.type === 'belanja') {
         $scope.selectedBelanja = $filter('filter')($scope.selectedRKP.Belanja, { id: selectedId })[0];
-        $scope.selectedRABNode = false;
-        $scope.selectedBelanjaTitleNode = false;
+        $scope.selectedRABNode = undefined;
+        $scope.selectedBelanjaTitleNode = undefined;
         $scope.isRKPSelected = false;
         if ($scope.selectedBelanja.RAB) {
           $scope.selectedBelanja.TotalBiaya = 0;
@@ -598,8 +606,8 @@
         var belanja = $filter('filter')($scope.selectedRKP.Belanja, { id: parent })[0];
         $scope.selectedRABNode = $filter('filter')(belanja.RAB, { id: selectedId })[0];
         $scope.selectedRABNode.belanjaNo = belanja.No;
-        $scope.selectedBelanja = false;
-        $scope.selectedBelanjaTitleNode = false;
+        $scope.selectedBelanja = undefined;
+        $scope.selectedBelanjaTitleNode = undefined;
         $scope.isRKPSelected = false;
       } else if (node.type === 'belanjatitle') {
         var belanja = $filter('filter')($scope.selectedRKP.Belanja, { id: parent })[0];
@@ -609,8 +617,8 @@
             var harga = entry.Volume * entry.Durasi *entry.HargaSatuan;
             $scope.selectedBelanjaTitleNode.TotalBiaya += harga;
           })
-        $scope.selectedBelanja = false;
-        $scope.selectedRABNode = false;
+        $scope.selectedBelanja = undefined;
+        $scope.selectedRABNode = undefined;
         $scope.isRKPSelected = false;
       } else if (node.type === 'belanjatitlerab') {
         var parents = node.parents;
@@ -621,8 +629,8 @@
         var belanjaTitle = $filter('filter')(belanja.BelanjaTitle, { id: belanjaTitleId })[0];
         $scope.selectedRABNode = $filter('filter')(belanjaTitle.RAB, { id: selectedId })[0];
         $scope.selectedRABNode.belanjaNo = belanja.No;
-        $scope.selectedBelanja = false;
-        $scope.selectedBelanjaTitleNode = false;
+        $scope.selectedBelanja = undefined;
+        $scope.selectedBelanjaTitleNode = undefined;
         $scope.isRKPSelected = false;
       }
       $scope.$apply();
