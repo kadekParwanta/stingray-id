@@ -57,8 +57,10 @@
           filter: {
             include: {
               relation: 'SubPendapatan', scope: {
+                order: "No ASC",
                 include: {
                   relation: 'AnggaranPendapatan', scope: {
+                    order: "No ASC",
                     where: {
                       WaktuPelaksanaanId: waktupelaksanaan.id
                     }
@@ -76,7 +78,7 @@
           $scope.pendapatanTableList[indexWaktuPel] = [];
           angular.forEach(pendapatanList, function (pendapatan) {
             $scope.pendapatanTableList[indexWaktuPel].push({
-              KodeRekening: 1 + "." + pendapatan.No,
+              KodeRekening: [1, pendapatan.No],
               Uraian: pendapatan.Nama,
               Satuan: '',
               Harga: '',
@@ -92,7 +94,7 @@
             var subpendapatanList = pendapatan.SubPendapatan;
             subpendapatanList.forEach(function (subpendapatan, index) {
               $scope.pendapatanTableList[indexWaktuPel].push({
-                KodeRekening: 1 + "." + pendapatan.No + "." + subpendapatan.No,
+                KodeRekening: [1, pendapatan.No, subpendapatan.No],
                 Uraian: subpendapatan.Nama,
                 Satuan: '',
                 Harga: '',
@@ -139,16 +141,28 @@
             include: [
               {
                 relation: "RPJMDes", scope: {
+                  order: "No ASC",
                   include: {
                     relation: "RKP", scope: {
+                      order: "No ASC",
                       include: {
                         relation: "Belanja", scope: {
+                          order: "No ASC",
                           include: [
-                            { relation: "RAB" },
+                            {
+                              relation: "RAB", scope: {
+                                order: "No ASC",
+                              }
+                            },
                             {
                               relation: "BelanjaTitle", scope: {
+                                order: "No ASC",
                                 include:
-                                { relation: "RAB" }
+                                {
+                                  relation: "RAB", scope: {
+                                    order: "No ASC",
+                                  }
+                                }
                               }
                             }]
                         }
@@ -162,14 +176,25 @@
               },
               {
                 relation: "RKP", scope: {
+                  order: "No ASC",
                   include: {
                     relation: "Belanja", scope: {
+                      order: "No ASC",
                       include: [
-                        { relation: "RAB" },
+                        {
+                          relation: "RAB", scope: {
+                            order: "No ASC",
+                          }
+                        },
                         {
                           relation: "BelanjaTitle", scope: {
+                            order: "No ASC",
                             include:
-                            { relation: "RAB" }
+                            {
+                              relation: "RAB", scope: {
+                                order: "No ASC",
+                              }
+                            }
                           }
                         }]
                     }
@@ -182,7 +207,8 @@
             ],
             where: {
               RPJMId: $scope.activeRPJM.id
-            }
+            },
+            order: "No ASC",
           }
         }, function (result) {
           var indexWaktuPel = waktupelaksanaan.No - 1;
@@ -190,8 +216,8 @@
           $scope.belanjaTableList[indexWaktuPel] = [];
           angular.forEach(result, function (bidang, index, arr) {
             $scope.belanjaTableList[indexWaktuPel].push({
-              KodeRekening: 2 + "." + bidang.No,
-              Uraian: bidang.Nama,
+              KodeRekening: [2, bidang.No],
+              Uraian: [bidang.Nama],
               Satuan: '',
               Harga: '',
               Jumlah: '',
@@ -206,8 +232,8 @@
             var rpjmdesList = bidang.RPJMDes;
             rpjmdesList.forEach(function (rpjmdes) {
               $scope.belanjaTableList[indexWaktuPel].push({
-                KodeRekening: 2 + "." + bidang.No + "." + rpjmdes.No,
-                Uraian: rpjmdes.Nama,
+                KodeRekening: [2, bidang.No, rpjmdes.No],
+                Uraian: [rpjmdes.Nama],
                 Satuan: '',
                 Harga: '',
                 Jumlah: '',
@@ -221,8 +247,8 @@
               var rkp = rpjmdes.RKP;
               rkp.forEach(function (rkpitem) {
                 $scope.belanjaTableList[indexWaktuPel].push({
-                  KodeRekening: 2 + "." + bidang.No + "." + rpjmdes.No + "." + rkpitem.No,
-                  Uraian: rkpitem.Nama,
+                  KodeRekening: [2, bidang.No, rpjmdes.No, rkpitem.No],
+                  Uraian: [rkpitem.Nama],
                   Satuan: '',
                   Harga: '',
                   Jumlah: '',
@@ -237,8 +263,8 @@
                 var belanjaList = rkpitem.Belanja;
                 belanjaList.forEach(function (belanja) {
                   $scope.belanjaTableList[indexWaktuPel].push({
-                    KodeRekening: 2 + "." + bidang.No + "." + rpjmdes.No + "." + rkpitem.No + "." + belanja.No,
-                    Uraian: belanja.Nama,
+                    KodeRekening: [2, bidang.No, rpjmdes.No, rkpitem.No, belanja.No],
+                    Uraian: ["- " + belanja.Nama],
                     Satuan: '',
                     Harga: '',
                     Jumlah: '',
@@ -249,10 +275,16 @@
                   var rabList = belanja.RAB;
                   rabList.forEach(function (rabItem) {
                     var jumlah = rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan;
+                    var satuan = [];
+                    if (rabItem.SatuanDurasi) {
+                      satuan = [rabItem.Durasi, rabItem.SatuanDurasi, 'x', rabItem.Volume, rabItem.Satuan]
+                    } else {
+                      satuan = ['', '', '', rabItem.Volume, rabItem.Satuan]
+                    }
                     $scope.belanjaTableList[indexWaktuPel].push({
                       KodeRekening: '',
-                      Uraian: "-" + rabItem.Nama,
-                      Satuan: rabItem.Durasi + " " + rabItem.SatuanDurasi + " x " + rabItem.Volume + " " + rabItem.Satuan,
+                      Uraian: [' ', "- " + rabItem.Nama],
+                      Satuan: satuan,
                       Harga: $scope.formatCurrency(rabItem.HargaSatuan),
                       Jumlah: $scope.formatCurrency(jumlah),
                       Keterangan: '',
@@ -266,7 +298,7 @@
                   belanjaTitleList.forEach(function (belanjaTitle) {
                     $scope.belanjaTableList[indexWaktuPel].push({
                       KodeRekening: '',
-                      Uraian: belanjaTitle.Nama,
+                      Uraian: ["- " + belanjaTitle.Nama],
                       Satuan: '',
                       Harga: '',
                       Jumlah: '',
@@ -276,15 +308,21 @@
                     var rabList = belanjaTitle.RAB;
                     rabList.forEach(function (rabItem) {
                       var jumlah = rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan;
+                      var satuan = [];
+                      if (rabItem.SatuanDurasi) {
+                        satuan = [rabItem.Durasi, rabItem.SatuanDurasi, 'x', rabItem.Volume, rabItem.Satuan]
+                      } else {
+                        satuan = ['', '', '', rabItem.Volume, rabItem.Satuan]
+                      }
                       $scope.belanjaTableList[indexWaktuPel].push({
-                      KodeRekening: '',
-                      Uraian: "-" + rabItem.Nama,
-                      Satuan: rabItem.Durasi + " " + rabItem.SatuanDurasi + " x " + rabItem.Volume + " " + rabItem.Satuan,
-                      Harga: $scope.formatCurrency(rabItem.HargaSatuan),
-                      Jumlah: $scope.formatCurrency(jumlah),
-                      Keterangan: '',
-                      style: ''
-                    })
+                        KodeRekening: '',
+                        Uraian: [' ', "- " + rabItem.Nama],
+                        Satuan: satuan,
+                        Harga: $scope.formatCurrency(rabItem.HargaSatuan),
+                        Jumlah: $scope.formatCurrency(jumlah),
+                        Keterangan: '',
+                        style: ''
+                      })
 
                       totalBelanja += jumlah;
                     })
@@ -297,8 +335,8 @@
             var rkp = bidang.RKP;
             rkp.forEach(function (rkpitem) {
               $scope.belanjaTableList[indexWaktuPel].push({
-                KodeRekening: 2 + "." + bidang.No + "." + rkpitem.No,
-                Uraian: rkpitem.Nama,
+                KodeRekening: [2, bidang.No, rkpitem.No],
+                Uraian: [rkpitem.Nama],
                 Satuan: '',
                 Harga: '',
                 Jumlah: '',
@@ -313,8 +351,8 @@
               var belanjaList = rkpitem.Belanja;
               belanjaList.forEach(function (belanja) {
                 $scope.belanjaTableList[indexWaktuPel].push({
-                  KodeRekening: 2 + "." + bidang.No + "." + rkpitem.No + "." + belanja.No,
-                  Uraian: belanja.Nama,
+                  KodeRekening: [2, bidang.No, rkpitem.No, belanja.No],
+                  Uraian: [belanja.Nama],
                   Satuan: '',
                   Harga: '',
                   Jumlah: '',
@@ -325,15 +363,21 @@
                 var rabList = belanja.RAB;
                 rabList.forEach(function (rabItem) {
                   var jumlah = rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan;
+                  var satuan = [];
+                  if (rabItem.SatuanDurasi) {
+                    satuan = [rabItem.Durasi, rabItem.SatuanDurasi, 'x', rabItem.Volume, rabItem.Satuan]
+                  } else {
+                    satuan = ['', '', '', rabItem.Volume, rabItem.Satuan]
+                  }
                   $scope.belanjaTableList[indexWaktuPel].push({
-                      KodeRekening: '',
-                      Uraian: "-" + rabItem.Nama,
-                      Satuan: rabItem.Durasi + " " + rabItem.SatuanDurasi + " x " + rabItem.Volume + " " + rabItem.Satuan,
-                      Harga: $scope.formatCurrency(rabItem.HargaSatuan),
-                      Jumlah: $scope.formatCurrency(jumlah),
-                      Keterangan: '',
-                      style: ''
-                    })
+                    KodeRekening: '',
+                    Uraian: [' ', "- " + rabItem.Nama],
+                    Satuan: satuan,
+                    Harga: $scope.formatCurrency(rabItem.HargaSatuan),
+                    Jumlah: $scope.formatCurrency(jumlah),
+                    Keterangan: '',
+                    style: ''
+                  })
 
                   totalBelanja += jumlah;
                 })
@@ -342,7 +386,7 @@
                 belanjaTitleList.forEach(function (belanjaTitle) {
                   $scope.belanjaTableList[indexWaktuPel].push({
                     KodeRekening: '',
-                    Uraian: belanjaTitle.Nama,
+                    Uraian: ["- " + belanjaTitle.Nama],
                     Satuan: '',
                     Harga: '',
                     Jumlah: '',
@@ -352,10 +396,16 @@
                   var rabList = belanjaTitle.RAB;
                   rabList.forEach(function (rabItem) {
                     var jumlah = rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan;
+                    var satuan = [];
+                    if (rabItem.SatuanDurasi) {
+                      satuan = [rabItem.Durasi, rabItem.SatuanDurasi, 'x', rabItem.Volume, rabItem.Satuan]
+                    } else {
+                      satuan = ['', '', '', rabItem.Volume, rabItem.Satuan]
+                    }
                     $scope.belanjaTableList[indexWaktuPel].push({
                       KodeRekening: '',
-                      Uraian: "-" + rabItem.Nama,
-                      Satuan: rabItem.Durasi + " " + rabItem.SatuanDurasi + " x " + rabItem.Volume + " " + rabItem.Satuan,
+                      Uraian: [' ', "- " + rabItem.Nama],
+                      Satuan: satuan,
                       Harga: $scope.formatCurrency(rabItem.HargaSatuan),
                       Jumlah: $scope.formatCurrency(jumlah),
                       Keterangan: '',
@@ -382,7 +432,7 @@
 
     var formatter = new Intl.NumberFormat();
 
-    $scope.formatCurrency = function(value) {
+    $scope.formatCurrency = function (value) {
       return formatter.format(value);
     }
 

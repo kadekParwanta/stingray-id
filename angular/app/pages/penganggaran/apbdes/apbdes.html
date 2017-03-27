@@ -20,9 +20,9 @@
                                 <table class="table table-bordered">
                                     <thead style="background-color: seagreen; color:antiquewhite">
                                         <tr>
-                                            <th>KODE REKENING</th>
-                                            <th>URAIAN</th>
-                                            <th>SATUAN</th>
+                                            <th colspan="4">KODE REKENING</th>
+                                            <th colspan="2">URAIAN</th>
+                                            <th colspan="5">SATUAN</th>
                                             <th>HARGA (RP)</th>
                                             <th>JUMLAH (RP)</th>
                                             <th>KETERANGAN</th>
@@ -30,57 +30,78 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td colspan="6" style="height: 20px !important"></td>
+                                            <td colspan="14" style="height: 20px !important"></td>
                                         </tr>
                                         <tr style="background-color: black; color:antiquewhite; font-weight: bold">
                                             <td>1</td>
-                                            <td colspan="3">PENDAPATAN</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td colspan="8">PENDAPATAN</td>
                                             <td></td>
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="6" style="height: 20px !important"></td>
+                                            <td colspan="14" style="height: 20px !important"></td>
                                         </tr>
                                         <tr ng-repeat="pendapatan in pendapatanTableList[(selectedWaktuPelaksanaan.No-1)]" ng-style="{{pendapatan.style}}">
-                                            <td ng-class="nowrap">{{pendapatan.KodeRekening}}</td>
-                                            <td ng-class="nowrap">{{pendapatan.Uraian}}</td>
-                                            <td ng-class="nowrap">{{pendapatan.Satuan}}</td>
+                                            <td ng-class="nowrap">{{pendapatan.KodeRekening[0] || ''}}</td>
+                                            <td ng-class="nowrap">{{pendapatan.KodeRekening[1] || ''}}</td>
+                                            <td ng-class="nowrap">{{pendapatan.KodeRekening[2] || ''}}</td>
+                                            <td ng-class="nowrap">{{pendapatan.KodeRekening[3] || ''}}</td>
+                                            <td ng-class="nowrap" colspan="2">{{pendapatan.Uraian}}</td>
+                                            <td ng-class="nowrap" colspan="5">{{pendapatan.Satuan}}</td>
                                             <td ng-class="nowrap">{{pendapatan.Harga}}</td>
                                             <td ng-class="nowrap">{{pendapatan.Jumlah}}</td>
                                             <td ng-class="nowrap">{{pendapatan.Keterangan}}</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="4" style="font-weight: bold">JUMLAH PENDAPATAN</td>
+                                            <td colspan="12" style="font-weight: bold">JUMLAH PENDAPATAN</td>
                                             <td>{{formatCurrency(totalPendapatan[(selectedWaktuPelaksanaan.No-1)])}}</td>
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="6" style="height: 20px !important"></td>
+                                            <td colspan="14" style="height: 20px !important"></td>
                                         </tr>
                                         <tr style="background-color: black; color:antiquewhite; font-weight: bold">
                                             <td>2</td>
-                                            <td colspan="3">BELANJA</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td colspan="8">BELANJA</td>
                                             <td></td>
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="6" style="height: 20px !important"></td>
+                                            <td colspan="14" style="height: 20px !important"></td>
                                         </tr>
                                         <tr ng-repeat="belanja in belanjaTableList[(selectedWaktuPelaksanaan.No-1)]" ng-style="{{belanja.style}}">
-                                            <td ng-class="nowrap">{{belanja.KodeRekening}}</td>
-                                            <td ng-class="nowrap">{{belanja.Uraian}}</td>
-                                            <td ng-class="nowrap">{{belanja.Satuan}}</td>
+                                            <td ng-class="nowrap">{{belanja.KodeRekening[0] || ''}}</td>
+                                            <td ng-class="nowrap">{{belanja.KodeRekening[1] || ''}}</td>
+                                            <td ng-class="nowrap">{{belanja.KodeRekening[2] || ''}}</td>
+                                            <td ng-class="nowrap">{{belanja.KodeRekening[3] || ''}}</td>
+
+                                            <td ng-class="nowrap" ng-if="belanja.Uraian.length == 1" colspan="2">{{belanja.Uraian[0]}}</td>
+                                            <td ng-if="belanja.Uraian.length > 1" style="width: 35px">{{belanja.Uraian[0]}}</td>
+                                            <td ng-class="nowrap" ng-if="belanja.Uraian.length > 1">{{belanja.Uraian[1]}}</td>
+
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length == 0" colspan="5"></td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1">{{belanja.Satuan[0]}}</td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1">{{belanja.Satuan[1]}}</td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1">{{belanja.Satuan[2]}}</td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1">{{belanja.Satuan[3]}}</td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1">{{belanja.Satuan[4]}}</td>
                                             <td ng-class="nowrap">{{belanja.Harga}}</td>
                                             <td ng-class="nowrap">{{belanja.Jumlah}}</td>
                                             <td ng-class="nowrap">{{belanja.Keterangan}}</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="4" style="font-weight: bold">JUMLAH BELANJA</td>
+                                            <td colspan="12" style="font-weight: bold">JUMLAH BELANJA</td>
                                             <td>{{formatCurrency(totalBelanja[(selectedWaktuPelaksanaan.No-1)])}}</td>
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="4" style="font-weight: bold">SURPLUS/(DEFISIT)</td>
+                                            <td colspan="12" style="font-weight: bold">SURPLUS/(DEFISIT)</td>
                                             <td>{{formatCurrency(totalPendapatan[(selectedWaktuPelaksanaan.No-1)] - totalBelanja[(selectedWaktuPelaksanaan.No-1)])}}</td>
                                             <td></td>
                                         </tr>
