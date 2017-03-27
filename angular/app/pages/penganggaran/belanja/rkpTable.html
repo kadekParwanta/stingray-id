@@ -11,7 +11,7 @@
             </tr>
             <tr ng-if="selectedRPJMDes && selectedBidang">
                 <td>Total</td>
-                <td><strong>{{formatCurrency(selectedRPJMDes.TotalBiaya/waktuPelaksanaanList.length)}}</strong></td>
+                <td><strong>{{formatCurrency(selectedRPJMDes.TotalBiaya)}}</strong></td>
             </tr>
 
             <tr ng-if="isBidang && selectedBidang">
@@ -27,7 +27,7 @@
             </tr>
             <tr ng-if="isBidang && selectedBidang">
                 <td>Total</td>
-                <td><strong>{{formatCurrency(selectedBidang.TotalBiaya/waktuPelaksanaanList.length)}}</strong></td>
+                <td><strong>{{formatCurrency(selectedBidang.TotalBiaya)}}</strong></td>
             </tr>
         </tbody>
     </table>

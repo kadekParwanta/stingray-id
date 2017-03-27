@@ -506,7 +506,6 @@
     }
 
     function getRKPByRPJMDes(rpjmdes) {
-      rpjmdes.TotalBiaya = 0;
       RPJMDes.RKP({
         id: rpjmdes.id, filter:
           {
@@ -519,6 +518,7 @@
           }
       }, function (data) {
         rpjmdes.RKP = [];
+        rpjmdes.TotalBiaya = 0;
         data.forEach(function(item, index){
           var sumberBiaya = item.SumberBiaya;
           item.Total = 0;
@@ -533,7 +533,6 @@
     }
 
     function getRKPByBidang(bidang) {
-      bidang.TotalBiaya = 0;
       Bidang.findById({
         id: bidang.id,
         filter: {
@@ -546,6 +545,7 @@
         var rpjmdes = data.RPJMDes;
         bidang.RKP = [];
         bidang.RPJMDes = [];
+        bidang.TotalBiaya = 0;
 
         rkp.forEach(function (item) {
           var sumberBiaya = item.SumberBiaya;
