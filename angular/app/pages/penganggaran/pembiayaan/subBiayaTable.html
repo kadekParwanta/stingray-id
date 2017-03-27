@@ -1,0 +1,18 @@
+<div class="horizontal-scroll">
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td>Item</td>
+        <td>
+          <div ng-repeat="anggaranBiaya in selectedSubBiaya.AnggaranBiaya">
+            <p>- {{anggaranBiaya.Nama}} = {{formatCurrency(anggaranBiaya.Jumlah)}}</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><strong>{{formatCurrency(selectedSubBiaya.TotalBiaya)}}</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

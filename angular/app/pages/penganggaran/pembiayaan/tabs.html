@@ -10,6 +10,9 @@
             <div class="col-sm-2">
               <div class="control-side text-center">
                 <div>
+                  <button class="btn btn-primary" ng-click="addNewAnggaranBiaya()">Add</button>
+                </div>
+                <div>
                   <button class="btn btn-primary" ng-click="collapse()">Collapse All</button>
                 </div>
                 <div>
@@ -27,6 +30,27 @@
           </div>
         </uib-tab>
       </uib-tabset>
+    </div>
+  </div>
+
+  <div class="col-sm-4" ng-show="selectedAnggaranBiaya">
+    <div ba-panel ba-panel-title="{{selectedAnggaranBiaya.Nama}}" ba-panel-class="with-scroll panel-warning">
+      <div include-with-scope="app/pages/penganggaran/pembiayaan/anggaranBiayaForm.html"></div>
+    </div>
+  </div>
+  <div class="col-sm-4" ng-show="selectedBiaya">
+    <div ba-panel ba-panel-title="{{selectedBiaya.Nama}}" ba-panel-class="with-scroll panel-warning">
+      <div include-with-scope="app/pages/penganggaran/pembiayaan/biayaTable.html"></div>
+    </div>
+  </div>
+  <div class="col-sm-4" ng-show="selectedSubBiaya">
+    <div ba-panel ba-panel-title="{{selectedSubBiaya.Nama}}" ba-panel-class="with-scroll panel-warning">
+      <div include-with-scope="app/pages/penganggaran/pembiayaan/subBiayaTable.html"></div>
+    </div>
+  </div>
+  <div class="col-sm-4" ng-show="selectedDefault">
+    <div ba-panel ba-panel-title="PEMBIAYAAN" ba-panel-class="with-scroll panel-warning">
+      <div include-with-scope="app/pages/penganggaran/pembiayaan/defaultTable.html"></div>
     </div>
   </div>
 </div>

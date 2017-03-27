@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group has-success">
+      <label class="control-label" for="inputDurasi">Uraian</label>
+      <input type="text" class="form-control" id="inputNama" ng-model="selectedAnggaranBiaya.Nama" ng-disabled="!selectedAnggaranBiaya">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group has-success">
+      <label class="control-label" for="inputJumlah">Jumlah</label>
+      <div class="input-group">
+        <span class="input-group-addon addon-left">Rp.</span>
+        <input type="number" class="form-control" id="inputJumlah" aria-describedby="inputGroupSuccess1Status" ng-model="selectedAnggaranBiaya.Jumlah"
+          placeholder="Harga Satuan" ng-disabled="!selectedAnggaranBiaya">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="button-wrapper">
+  <button type="button" class="btn btn-danger btn-raised pull-left btn-with-icon" ng-click="deleteAnggaranBiaya(selectedAnggaranBiaya)" ng-disabled="!selectedAnggaranBiaya"><i class="ion-trash-a"></i>Hapus</button>
+  <button type="button" class="btn btn-primary btn-raised pull-right btn-with-icon" ng-click="editAnggaranBiaya(selectedAnggaranBiaya)" ng-disabled="!selectedAnggaranBiaya"><i class="fa fa-floppy-o"></i>Simpan</button>
+</div>
