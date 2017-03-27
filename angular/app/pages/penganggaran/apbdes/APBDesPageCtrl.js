@@ -18,6 +18,8 @@
     $scope.selectedWaktuPelaksanaan;
     $scope.pendapatanTableList = [];
     $scope.belanjaTableList = [];
+    $scope.totalPendapatan = [];
+    $scope.totalBelanja = [];
 
     function getActiveRPJM() {
       RPJM.findOne({
@@ -70,6 +72,7 @@
           }
         }, function (pendapatanList) {
           var indexWaktuPel = waktupelaksanaan.No - 1;
+          var totalPendapatan = 0;
           $scope.pendapatanTableList[indexWaktuPel] = [];
           angular.forEach(pendapatanList, function (pendapatan) {
             $scope.pendapatanTableList[indexWaktuPel].push({
@@ -107,20 +110,22 @@
                   Uraian: "- " + anggaranPendapatan.Nama,
                   Satuan: '',
                   Harga: '',
-                  Jumlah: anggaranPendapatan.Jumlah,
+                  Jumlah: $scope.formatCurrency(anggaranPendapatan.Jumlah),
                   Keterangan: '',
                   style: ''
                 })
+                totalPendapatan += anggaranPendapatan.Jumlah;
               })
             })
           })
-          deferred.resolve(pendapatanList);
+          deferred.resolve(totalPendapatan);
         })
 
         return deferred.promise;
       })
 
       $q.all(promises).then(function (pendapatanList) {
+        $scope.totalPendapatan = pendapatanList;
         getRKPByWaktu(waktuPelaksanaanList);
       })
     }
@@ -148,10 +153,10 @@
                             }]
                         }
                       }
+                    },
+                    where: {
+                      WaktuPelaksanaanId: waktupelaksanaan.id
                     }
-                  },
-                  where: {
-                    WaktuPelaksanaanId: waktupelaksanaan.id
                   }
                 }
               },
@@ -168,10 +173,10 @@
                           }
                         }]
                     }
+                  },
+                  where: {
+                    WaktuPelaksanaanId: waktupelaksanaan.id
                   }
-                },
-                where: {
-                  WaktuPelaksanaanId: waktupelaksanaan.id
                 }
               }
             ],
@@ -181,6 +186,7 @@
           }
         }, function (result) {
           var indexWaktuPel = waktupelaksanaan.No - 1;
+          var totalBelanja = 0;
           $scope.belanjaTableList[indexWaktuPel] = [];
           angular.forEach(result, function (bidang, index, arr) {
             $scope.belanjaTableList[indexWaktuPel].push({
@@ -242,15 +248,18 @@
 
                   var rabList = belanja.RAB;
                   rabList.forEach(function (rabItem) {
+                    var jumlah = rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan;
                     $scope.belanjaTableList[indexWaktuPel].push({
                       KodeRekening: '',
                       Uraian: "-" + rabItem.Nama,
                       Satuan: rabItem.Durasi + " " + rabItem.SatuanDurasi + " x " + rabItem.Volume + " " + rabItem.Satuan,
-                      Harga: rabItem.HargaSatuan,
-                      Jumlah: rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan,
+                      Harga: $scope.formatCurrency(rabItem.HargaSatuan),
+                      Jumlah: $scope.formatCurrency(jumlah),
                       Keterangan: '',
                       style: ''
                     })
+
+                    totalBelanja += jumlah;
                   })
 
                   var belanjaTitleList = belanja.BelanjaTitle;
@@ -266,15 +275,18 @@
                     })
                     var rabList = belanjaTitle.RAB;
                     rabList.forEach(function (rabItem) {
+                      var jumlah = rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan;
                       $scope.belanjaTableList[indexWaktuPel].push({
-                        KodeRekening: '',
-                        Uraian: "-" + rabItem.Nama,
-                        Satuan: rabItem.Durasi + " " + rabItem.SatuanDurasi + " x " + rabItem.Volume + " " + rabItem.Satuan,
-                        Harga: rabItem.HargaSatuan,
-                        Jumlah: rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan,
-                        Keterangan: '',
-                        style: ''
-                      })
+                      KodeRekening: '',
+                      Uraian: "-" + rabItem.Nama,
+                      Satuan: rabItem.Durasi + " " + rabItem.SatuanDurasi + " x " + rabItem.Volume + " " + rabItem.Satuan,
+                      Harga: $scope.formatCurrency(rabItem.HargaSatuan),
+                      Jumlah: $scope.formatCurrency(jumlah),
+                      Keterangan: '',
+                      style: ''
+                    })
+
+                      totalBelanja += jumlah;
                     })
                   })
                 })
@@ -312,15 +324,18 @@
 
                 var rabList = belanja.RAB;
                 rabList.forEach(function (rabItem) {
+                  var jumlah = rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan;
                   $scope.belanjaTableList[indexWaktuPel].push({
-                    KodeRekening: '',
-                    Uraian: "-" + rabItem.Nama,
-                    Satuan: rabItem.Durasi + " " + rabItem.SatuanDurasi + " x " + rabItem.Volume + " " + rabItem.Satuan,
-                    Harga: rabItem.HargaSatuan,
-                    Jumlah: rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan,
-                    Keterangan: '',
-                    style: ''
-                  })
+                      KodeRekening: '',
+                      Uraian: "-" + rabItem.Nama,
+                      Satuan: rabItem.Durasi + " " + rabItem.SatuanDurasi + " x " + rabItem.Volume + " " + rabItem.Satuan,
+                      Harga: $scope.formatCurrency(rabItem.HargaSatuan),
+                      Jumlah: $scope.formatCurrency(jumlah),
+                      Keterangan: '',
+                      style: ''
+                    })
+
+                  totalBelanja += jumlah;
                 })
 
                 var belanjaTitleList = belanja.BelanjaTitle;
@@ -336,29 +351,39 @@
                   })
                   var rabList = belanjaTitle.RAB;
                   rabList.forEach(function (rabItem) {
+                    var jumlah = rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan;
                     $scope.belanjaTableList[indexWaktuPel].push({
                       KodeRekening: '',
                       Uraian: "-" + rabItem.Nama,
                       Satuan: rabItem.Durasi + " " + rabItem.SatuanDurasi + " x " + rabItem.Volume + " " + rabItem.Satuan,
-                      Harga: rabItem.HargaSatuan,
-                      Jumlah: rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan,
+                      Harga: $scope.formatCurrency(rabItem.HargaSatuan),
+                      Jumlah: $scope.formatCurrency(jumlah),
                       Keterangan: '',
                       style: ''
                     })
+
+                    totalBelanja += jumlah;
                   })
                 })
               })
             })
           })
-          deferred.resolve(result);
+          deferred.resolve(totalBelanja);
         })
 
         return deferred.promise;
       })
 
-      $q.all(promises).then(function (treesData) {
-        //TODO
+      $q.all(promises).then(function (belanjaList) {
+        $scope.totalBelanja = belanjaList;
       })
+    }
+
+
+    var formatter = new Intl.NumberFormat();
+
+    $scope.formatCurrency = function(value) {
+      return formatter.format(value);
     }
 
     getActiveRPJM();

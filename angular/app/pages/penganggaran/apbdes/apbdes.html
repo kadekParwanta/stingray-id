@@ -51,7 +51,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="4" style="font-weight: bold">JUMLAH PENDAPATAN</td>
-                                            <td></td>
+                                            <td>{{formatCurrency(totalPendapatan[(selectedWaktuPelaksanaan.No-1)])}}</td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -76,7 +76,12 @@
                                         </tr>
                                         <tr>
                                             <td colspan="4" style="font-weight: bold">JUMLAH BELANJA</td>
+                                            <td>{{formatCurrency(totalBelanja[(selectedWaktuPelaksanaan.No-1)])}}</td>
                                             <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" style="font-weight: bold">SURPLUS/(DEFISIT)</td>
+                                            <td>{{formatCurrency(totalPendapatan[(selectedWaktuPelaksanaan.No-1)] - totalBelanja[(selectedWaktuPelaksanaan.No-1)])}}</td>
                                             <td></td>
                                         </tr>
                                     </tbody>
