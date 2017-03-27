@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div ba-panel ba-panel-class="with-scroll horizontal-tabs tabs-panel">
+            <uib-tabset>
+                <uib-tab index="$index + 1" ng-repeat="waktuPelaksanaan in waktuPelaksanaanList" select="tabSelected(waktuPelaksanaan)">
+                    <uib-tab-heading>
+                        {{waktuPelaksanaan.Nama}}
+                    </uib-tab-heading>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>DRAFT</h4>
+                            <h4>ANGGARAN PENDAPATAN DAN BELANJA DESA</h4>
+                            <h4>PEMERINTAH DESA </h4>
+                            <h4>TAHUN ANGGARAN {{waktuPelaksanaan.Nama}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="horizontal-scroll">
+                                <table class="table table-bordered">
+                                    <thead style="background-color: seagreen; color:antiquewhite">
+                                        <tr>
+                                            <th>KODE REKENING</th>
+                                            <th>URAIAN</th>
+                                            <th>SATUAN</th>
+                                            <th>HARGA (RP)</th>
+                                            <th>JUMLAH (RP)</th>
+                                            <th>KETERANGAN</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="6" style="height: 20px !important"></td>
+                                        </tr>
+                                        <tr style="background-color: black; color:antiquewhite; font-weight: bold">
+                                            <td>1</td>
+                                            <td colspan="3">PENDAPATAN</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6" style="height: 20px !important"></td>
+                                        </tr>
+                                        <tr ng-repeat="pendapatan in pendapatanTableList[(selectedWaktuPelaksanaan.No-1)]" ng-style="{{pendapatan.style}}">
+                                            <td ng-class="nowrap">{{pendapatan.KodeRekening}}</td>
+                                            <td ng-class="nowrap">{{pendapatan.Uraian}}</td>
+                                            <td ng-class="nowrap">{{pendapatan.Satuan}}</td>
+                                            <td ng-class="nowrap">{{pendapatan.Harga}}</td>
+                                            <td ng-class="nowrap">{{pendapatan.Jumlah}}</td>
+                                            <td ng-class="nowrap">{{pendapatan.Keterangan}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>

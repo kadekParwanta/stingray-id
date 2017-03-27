@@ -51,6 +51,15 @@
           sidebarMeta: {
             order: 2,
           },
+        })
+        .state('penganggaran.apbdes', {
+          url: '/apbdes',
+          templateUrl: 'app/pages/penganggaran/apbdes/apbdes.html',
+          controller: 'APBDesPageCtrl',
+          title: 'APBDes',
+          sidebarMeta: {
+            order: 3,
+          },
         });
   }
 
