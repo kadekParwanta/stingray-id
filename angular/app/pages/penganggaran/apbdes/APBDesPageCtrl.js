@@ -366,22 +366,22 @@
                     })
 
                     var indexBelanjaTitle = $scope.belanjaTableList[indexWaktuPel].indexOf(belanjaTitleData);
-                    $scope.belanjaTableList[indexWaktuPel][indexBelanjaTitle].Jumlah = totalBelanjaTitle;
+                    $scope.belanjaTableList[indexWaktuPel][indexBelanjaTitle].Jumlah = $scope.formatCurrency(totalBelanjaTitle);
                     totalBelanjaJumlah += totalBelanjaTitle;
                   })
 
                   var indexBelanjaJumlah = $scope.belanjaTableList[indexWaktuPel].indexOf(belanjaData);
-                  $scope.belanjaTableList[indexWaktuPel][indexBelanjaJumlah].Jumlah = totalBelanjaJumlah;
+                  $scope.belanjaTableList[indexWaktuPel][indexBelanjaJumlah].Jumlah = $scope.formatCurrency(totalBelanjaJumlah);
                   totalRkp += totalBelanjaJumlah;
                 })
 
                 var indexRkp = $scope.belanjaTableList[indexWaktuPel].indexOf(rkpData);
-                $scope.belanjaTableList[indexWaktuPel][indexRkp].Jumlah = totalRkp;
+                $scope.belanjaTableList[indexWaktuPel][indexRkp].Jumlah = $scope.formatCurrency(totalRkp);
                 totalRpjmdes += totalRkp;
               })
 
               var indexRpjmdes = $scope.belanjaTableList[indexWaktuPel].indexOf(rpjmdesData);
-              $scope.belanjaTableList[indexWaktuPel][indexRpjmdes].Jumlah = totalRpjmdes;
+              $scope.belanjaTableList[indexWaktuPel][indexRpjmdes].Jumlah = $scope.formatCurrency(totalRpjmdes);
               totalBidang += totalRpjmdes;
             })
 
@@ -484,20 +484,20 @@
                   })
 
                   var indexBelanjaTitle = $scope.belanjaTableList[indexWaktuPel].indexOf(belanjaTitleData);
-                  $scope.belanjaTableList[indexWaktuPel][indexBelanjaTitle].Jumlah = totalBelanjaTitle;
+                  $scope.belanjaTableList[indexWaktuPel][indexBelanjaTitle].Jumlah = $scope.formatCurrency(totalBelanjaTitle);
                   totalBelanjaJumlah += totalBelanjaTitle;
                 })
 
                 var indexBelanjaJumlah = $scope.belanjaTableList[indexWaktuPel].indexOf(belanjaData);
-                $scope.belanjaTableList[indexWaktuPel][indexBelanjaJumlah].Jumlah = totalBelanjaJumlah;
+                $scope.belanjaTableList[indexWaktuPel][indexBelanjaJumlah].Jumlah = $scope.formatCurrency(totalBelanjaJumlah);
                 totalRkp += totalBelanjaJumlah;
               })
               var indexRkp = $scope.belanjaTableList[indexWaktuPel].indexOf(rkpData);
-              $scope.belanjaTableList[indexWaktuPel][indexRkp].Jumlah = totalRkp;
+              $scope.belanjaTableList[indexWaktuPel][indexRkp].Jumlah = $scope.formatCurrency(totalRkp);
               totalBidang += totalRkp;
             })
             var indexBidang = $scope.belanjaTableList[indexWaktuPel].indexOf(bidangData);
-            $scope.belanjaTableList[indexWaktuPel][indexBidang].Jumlah = totalBidang;
+            $scope.belanjaTableList[indexWaktuPel][indexBidang].Jumlah = $scope.formatCurrency(totalBidang);
           })
           deferred.resolve(totalBelanja);
         })

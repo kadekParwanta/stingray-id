@@ -57,7 +57,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="12" style="font-weight: bold">JUMLAH PENDAPATAN</td>
-                                            <td>{{formatCurrency(totalPendapatan[(selectedWaktuPelaksanaan.No-1)])}}</td>
+                                            <td><strong>{{formatCurrency(totalPendapatan[(selectedWaktuPelaksanaan.No-1)])}}</strong></td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -86,23 +86,26 @@
                                             <td ng-class="nowrap" ng-if="belanja.Uraian.length > 1">{{belanja.Uraian[1]}}</td>
 
                                             <td ng-class="nowrap" ng-if="belanja.Satuan.length == 0" colspan="5"></td>
-                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1">{{belanja.Satuan[0]}}</td>
-                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1">{{belanja.Satuan[1]}}</td>
-                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1">{{belanja.Satuan[2]}}</td>
-                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1">{{belanja.Satuan[3]}}</td>
-                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1">{{belanja.Satuan[4]}}</td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1 && belanja.Satuan[0] == ''" colspan="3"></td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1 && belanja.Satuan[0] == ''" >{{belanja.Satuan[3]}}</td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1 && belanja.Satuan[0] == ''" >{{belanja.Satuan[4]}}</td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1 && belanja.Satuan[0] != ''">{{belanja.Satuan[0]}}</td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1 && belanja.Satuan[0] != ''">{{belanja.Satuan[1]}}</td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1 && belanja.Satuan[0] != ''">{{belanja.Satuan[2]}}</td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1 && belanja.Satuan[0] != ''">{{belanja.Satuan[3]}}</td>
+                                            <td ng-class="nowrap" ng-if="belanja.Satuan.length > 1 && belanja.Satuan[0] != ''">{{belanja.Satuan[4]}}</td>
                                             <td ng-class="nowrap">{{belanja.Harga}}</td>
                                             <td ng-class="nowrap">{{belanja.Jumlah}}</td>
                                             <td ng-class="nowrap">{{belanja.Keterangan}}</td>
                                         </tr>
                                         <tr>
                                             <td colspan="12" style="font-weight: bold">JUMLAH BELANJA</td>
-                                            <td>{{formatCurrency(totalBelanja[(selectedWaktuPelaksanaan.No-1)])}}</td>
+                                            <td><strong>{{formatCurrency(totalBelanja[(selectedWaktuPelaksanaan.No-1)])}}</strong></td>
                                             <td></td>
                                         </tr>
                                         <tr>
                                             <td colspan="12" style="font-weight: bold">SURPLUS/(DEFISIT)</td>
-                                            <td>{{formatCurrency(totalPendapatan[(selectedWaktuPelaksanaan.No-1)] - totalBelanja[(selectedWaktuPelaksanaan.No-1)])}}</td>
+                                            <td><strong>{{formatCurrency(totalPendapatan[(selectedWaktuPelaksanaan.No-1)] - totalBelanja[(selectedWaktuPelaksanaan.No-1)])}}</strong></td>
                                             <td></td>
                                         </tr>
                                     </tbody>
