@@ -59,6 +59,8 @@
         }
 
         $scope.jenisKelamin = [{ text: 'Perempuan' }, { text: 'Laki-laki' }];
+        $scope.golonganDarah = [{ text: 'O' }, { text: 'A' },{ text: 'AB' }, { text: 'B' }];
+        $scope.Agama = [{ text: 'Islam' }, { text: 'Katolik' },{ text: 'Protestan' }, { text: 'Hindu' }, { text: 'Budha' }];
 
         $scope.showJenisKelamin = function (anggotaKeluarga) {
             var selected = [];
@@ -67,6 +69,24 @@
             }
             return selected.length ? selected[0].text : 'Not set';
         };
+
+        $scope.showGolonganDarah = function (anggotaKeluarga) {
+            var selected = [];
+            if (anggotaKeluarga.GolDarah) {
+                selected = $filter('filter')($scope.golonganDarah, { text: anggotaKeluarga.GolDarah });
+            }
+            return selected.length ? selected[0].text : 'Not set';
+        };
+
+         $scope.showAgama = function (anggotaKeluarga) {
+            var selected = [];
+            if (anggotaKeluarga.Agama) {
+                selected = $filter('filter')($scope.Agama, { text: anggotaKeluarga.Agama });
+            }
+            return selected.length ? selected[0].text : 'Not set';
+        };
+
+        
 
 
         $scope.removeAnggotaKeluarga = function (index) {
@@ -94,15 +114,17 @@
                         Nama: anggotaKeluarga.Nama,
                         JenisKelamin: anggotaKeluarga.JenisKelamin,
                         TempatLahir: anggotaKeluarga.TempatLahir,
+                        TanggalLahir: anggotaKeluarga.TanggalLahir,
+                        NIK: anggotaKeluarga.NIK,
+                        GolDarah: anggotaKeluarga.GolDarah,
+                        Agama: anggotaKeluarga.Agama,
+                        Kewarganegaraan: anggotaKeluarga.Kewarganegaraan,
                         id: anggotaKeluarga.id
                     }, function (res) {
                         deferred.resolve(res);
                     })
                 } else {
                     anggotaKeluarga.AnggotaKeluargaId = keluargaId;
-                    anggotaKeluarga.JenisKelamin = anggotaKeluarga.JenisKelamin.text;
-                    //TODO NIK is hardcoded
-                    anggotaKeluarga.NIK = 0;
                     Penduduk.create(anggotaKeluarga, function (res) {
                         deferred.resolve(res);
                     })

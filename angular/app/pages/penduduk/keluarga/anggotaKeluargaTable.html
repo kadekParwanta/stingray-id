@@ -4,14 +4,24 @@
 <table class="table table-bordered table-hover table-condensed">
   <tr>
     <td>#</td>
-    <td>Name</td>
+    <td>NIK</td>
+    <td>Nama</td>
     <td>Jenis Kelamin</td>
     <td>Tempat Lahir</td>
+    <td>Tanggal Lahir</td>
+    <td>Golongan Darah</td>
+    <td>Agama</td>
+    <td>Kewarganegaraan</td>
     <td></td>
   </tr>
   <tr ng-repeat="anggota in anggotaKeluarga" class="editable-row">
     <td>
         {{$index + 1}}
+    </td>
+    <td>
+        <span editable-number="anggota.NIK" e-name="NIK" e-form="rowform" e-required>
+          {{ anggota.NIK || 'empty' }}
+        </span>
     </td>
     <td>
         <span editable-text="anggota.Nama" e-name="Nama" e-form="rowform" e-required>
@@ -20,13 +30,35 @@
     </td>
     <td class="select-td">
         <span editable-select="anggota.JenisKelamin" e-name="JenisKelamin" e-form="rowform" e-selectpicker
-              e-ng-options="s.text for s in jenisKelamin">
+              e-ng-options="s.text as s.text for s in jenisKelamin">
           {{ showJenisKelamin(anggota) }}
         </span>
     </td>
     <td>
         <span editable-text="anggota.TempatLahir" e-name="TempatLahir" e-form="rowform" e-required>
           {{ anggota.TempatLahir || 'empty' }}
+        </span>
+    </td>
+    <td>
+        <span editable-combodate="anggota.TanggalLahir" e-name="TanggalLahir" e-form="rowform" e-required>
+          {{ (anggota.TanggalLahir | date : 'd MMMM yyyy')|| 'empty' }}
+        </span>
+    </td>
+    <td class="select-td">
+        <span editable-select="anggota.GolDarah" e-name="GolDarah" e-form="rowform" e-selectpicker
+              e-ng-options="s.text as s.text for s in golonganDarah">
+          {{ showGolonganDarah(anggota) }}
+        </span>
+    </td>
+    <td class="select-td">
+        <span editable-select="anggota.Agama" e-name="Agama" e-form="rowform" e-selectpicker
+              e-ng-options="s.text as s.text for s in Agama">
+          {{ showAgama(anggota) }}
+        </span>
+    </td>
+    <td>
+        <span editable-text="anggota.Kewarganegaraan" e-name="Kewarganegaraan" e-form="rowform" e-required>
+          {{ anggota.Kewarganegaraan || 'empty' }}
         </span>
     </td>
     <td>
