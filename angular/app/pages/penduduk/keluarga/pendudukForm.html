@@ -1,0 +1,11 @@
+<form name="vm.pendudukForm" novalidate>
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group has-success" ng-class="{'has-error': vm.personalInfoForm.Nama.$invalid && (vm.personalInfoForm.Nama.$dirty || vm.personalInfoForm.$submitted)}">
+                <label for="exampleUsername1">Nama</label>
+                <input type="number" class="form-control" id="exampleUsername1" name="Nama" ng-model="penduduk.Nama" required>
+                <span class="help-block error-block basic-block">Wajib diisi</span>
+            </div>
+        </div>
+    </div>
+</form>

@@ -20,6 +20,16 @@
             icon: 'ion-person-stalker',
             order: 4,
           },
+        }).state('penduduk-detail', {
+          url: '/penduduk/:id',
+          title: 'Keluarga',
+          templateUrl: 'app/pages/penduduk/keluarga/keluarga.html',
+          controller: 'KeluargaDetailPageCtrl',
+          resolve: {
+              keluargaId : function($stateParams) {
+                  return $stateParams.id;
+              }
+          }
         });
   }
 

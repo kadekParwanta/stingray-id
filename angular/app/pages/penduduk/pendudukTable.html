@@ -6,7 +6,9 @@
       </select>
     </label>
     </div>
-    <button type="button" class="btn btn-primary btn-with-icon" ng-click="addKeluarga()"><i class="ion-plus-circled"></i>Tambah Data Keluarga</button>
+    <div class="add-row-editable-table">
+        <button type="button" class="btn btn-primary btn-with-icon" ui-sref="penduduk-detail({id:0})"><i class="ion-plus-circled"></i>Tambah Data Keluarga</button>
+    </div>
     <table class="table" st-table="displayedKeluarga" st-safe-src="listKeluarga">
         <thead>
             <tr class="sortable ">
@@ -15,6 +17,7 @@
                 <th st-sort="Alamat">Alamat</th>
                 <th st-sort="TanggalBerlaku">Tanggal Berlaku</th>
                 <th st-sort="KepalaKeluarga.Nama">Kepala Keluarga</th>
+                <th>Actions</th>
             </tr>
             <tr>
                 <th></th>
@@ -26,6 +29,7 @@
                         type="search" /></th>
                 <th><input st-search="KepalaKeluarga.Nama" placeholder="Search Kepala Keluarga" class="input-sm form-control search-input"
                         type="search" /></th>
+                        <th></th>
             </tr>
         </thead>
         <tbody>
@@ -33,8 +37,11 @@
                 <td class="table-id">{{$index+1}}</td>
                 <td>{{item.NoKK}}</td>
                 <td>{{item.Alamat}}</td>
-                <td>{{item.TanggalBerlaku}}</td>
+                <td>{{item.TanggalBerlaku | date: 'd MMMM yyyy'}}</td>
                 <td>{{item.KepalaKeluarga.Nama}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-raised pull-left btn-with-icon" ui-sref="penduduk-detail({id:item.id})"><i class="ion-edit"></i></button>
+                </td>
             </tr>
         </tbody>
         <tfoot>
