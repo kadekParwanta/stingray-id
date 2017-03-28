@@ -1,0 +1,36 @@
+{
+  "name": "Keluarga",
+  "plural": "Keluarga",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "NoKK": {
+      "type": "number",
+      "required": true
+    },
+    "Alamat": {
+      "type": "string"
+    },
+    "TanggalBerlaku": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "KepalaKeluarga": {
+      "type": "hasOne",
+      "model": "Penduduk",
+      "foreignKey": "KepalaKeluargaId"
+    },
+    "AnggotaKeluarga": {
+      "type": "hasMany",
+      "model": "Penduduk",
+      "foreignKey": "AnggotaKeluargaId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

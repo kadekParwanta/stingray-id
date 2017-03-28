@@ -1,0 +1,48 @@
+<div class="horizontal-scroll">
+    <div class="form-group select-page-size-wrap pull-right">
+        <label>Rows on page
+      <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+              ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+    </div>
+    <button type="button" class="btn btn-primary btn-with-icon" ng-click="addKeluarga()"><i class="ion-plus-circled"></i>Tambah Data Keluarga</button>
+    <table class="table" st-table="displayedKeluarga" st-safe-src="listKeluarga">
+        <thead>
+            <tr class="sortable ">
+                <th class="table-id" st-sort="id" st-sort-default="true">#</th>
+                <th st-sort="NoKK">No KK</th>
+                <th st-sort="Alamat">Alamat</th>
+                <th st-sort="TanggalBerlaku">Tanggal Berlaku</th>
+                <th st-sort="KepalaKeluarga.Nama">Kepala Keluarga</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th><input st-search="NoKK" placeholder="Search No KK" class="input-sm form-control search-input" type="search"
+                    /></th>
+                <th><input st-search="Alamat" placeholder="Search Alamat" class="input-sm form-control search-input" type="search"
+                    /></th>
+                <th><input st-search="TanggalBerlaku" placeholder="Search Tanggal Berlaku" class="input-sm form-control search-input"
+                        type="search" /></th>
+                <th><input st-search="KepalaKeluarga.Nama" placeholder="Search Kepala Keluarga" class="input-sm form-control search-input"
+                        type="search" /></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in displayedKeluarga">
+                <td class="table-id">{{$index+1}}</td>
+                <td>{{item.NoKK}}</td>
+                <td>{{item.Alamat}}</td>
+                <td>{{item.TanggalBerlaku}}</td>
+                <td>{{item.KepalaKeluarga.Nama}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6" class="text-center">
+                    <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

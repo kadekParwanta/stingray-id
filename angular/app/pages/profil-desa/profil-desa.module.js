@@ -18,7 +18,7 @@
           controller: 'ProfilDesaPageCtrl',
           sidebarMeta: {
             icon: 'ion-information-circled',
-            order: 4,
+            order: 3,
           },
         });
   }

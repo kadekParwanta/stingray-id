@@ -18,7 +18,7 @@
           title: 'Pengaturan',
           sidebarMeta: {
             icon: 'ion-gear-b',
-            order: 3,
+            order: 5,
           },
         })
         .state('pengaturan-rpjm', {

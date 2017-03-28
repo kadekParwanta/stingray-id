@@ -1,0 +1,50 @@
+{
+  "name": "Penduduk",
+  "plural": "Penduduk",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "NIK": {
+      "type": "number",
+      "required": true
+    },
+    "Nama": {
+      "type": "string",
+      "required": true
+    },
+    "JenisKelamin": {
+      "type": "string"
+    },
+    "TempatLahir": {
+      "type": "string"
+    },
+    "TanggalLahir": {
+      "type": "date"
+    },
+    "GolDarah": {
+      "type": "string"
+    },
+    "Agama": {
+      "type": "string"
+    },
+    "Kewarganegaraan": {
+      "type": "string"
+    },
+    "Pendidikan": {
+      "type": "string"
+    },
+    "Pekerjaan": {
+      "type": "string"
+    },
+    "StatusKawin": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -12,7 +12,8 @@
     'BlurAdmin.pages.perencanaan',
     'BlurAdmin.pages.penganggaran',
     'BlurAdmin.pages.pengaturan',
-    'BlurAdmin.pages.profildesa'
+    'BlurAdmin.pages.profildesa',
+    'BlurAdmin.pages.penduduk'
   ])
     .config(routeConfig)
     .run(function ($http, $rootScope) {
