@@ -140,5 +140,9 @@
   "BelanjaTitle": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Media": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

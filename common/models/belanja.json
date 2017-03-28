@@ -9,7 +9,8 @@
   "mixins": {
     "CascadeDelete": {
       "relations": [
-        "RAB","BelanjaTitle"
+        "RAB",
+        "BelanjaTitle"
       ]
     }
   },

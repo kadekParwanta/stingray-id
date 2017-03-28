@@ -22,7 +22,7 @@
           title: 'Perencanaan',
           sidebarMeta: {
             icon: 'ion-android-checkbox-outline',
-            order: 500,
+            order: 1,
           },
         })
         .state('perencanaan.rpjmdes', {
@@ -40,7 +40,7 @@
           controller: 'RkpPageCtrl',
           title: 'RKP',
           sidebarMeta: {
-            order: 100,
+            order: 1,
           },
         });
   }

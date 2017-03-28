@@ -14,7 +14,16 @@
     'BlurAdmin.pages.pengaturan',
     'BlurAdmin.pages.profildesa'
   ])
-      .config(routeConfig);
+    .config(routeConfig)
+    .run(function ($http, $rootScope) {
+      $http.get('/config')
+        .then(function (res) {
+          $rootScope.dropboxToken = res.data.dropbox;
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    });
 
   /** @ngInject */
   function routeConfig($urlRouterProvider, baSidebarServiceProvider) {

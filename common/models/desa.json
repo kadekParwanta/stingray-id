@@ -38,6 +38,11 @@
       "type": "hasMany",
       "model": "Organisasi",
       "foreignKey": "orgMasDesaId"
+    },
+    "logo": {
+      "type": "hasOne",
+      "model": "Media",
+      "foreignKey": "DesaId"
     }
   },
   "acls": [],

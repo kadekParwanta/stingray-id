@@ -22,7 +22,7 @@
           title: 'Penganggaran',
           sidebarMeta: {
             icon: 'ion-ios-cart',
-            order: 500,
+            order: 2,
           },
         })
         .state('penganggaran.pendapatan', {
