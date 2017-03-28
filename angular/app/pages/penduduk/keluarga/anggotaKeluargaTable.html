@@ -12,6 +12,8 @@
     <td>Golongan Darah</td>
     <td>Agama</td>
     <td>Kewarganegaraan</td>
+    <td>Pendidikan Terakhir</td>
+    <td>Pekerjaan</td>
     <td></td>
   </tr>
   <tr ng-repeat="anggota in anggotaKeluarga" class="editable-row">
@@ -40,7 +42,8 @@
         </span>
     </td>
     <td>
-        <span editable-combodate="anggota.TanggalLahir" e-name="TanggalLahir" e-form="rowform" e-required>
+        <span editable-bsdate="anggota.TanggalLahir" e-is-open="opened.$data" 
+        e-ng-click="open($event,'$data')" e-datepicker-popup="dd-MMMM-yyyy" e-name="TanggalLahir" e-form="rowform" e-required>
           {{ (anggota.TanggalLahir | date : 'd MMMM yyyy')|| 'empty' }}
         </span>
     </td>
@@ -56,9 +59,20 @@
           {{ showAgama(anggota) }}
         </span>
     </td>
+    <td class="select-td">
+        <span editable-select="anggota.Kewarganegaraan" e-name="Kewarganegaraan" e-form="rowform" e-selectpicker
+              e-ng-options="s.name as s.name for s in countries">
+          {{ showCountry(anggota) }}
+        </span>
+    </td>
     <td>
-        <span editable-text="anggota.Kewarganegaraan" e-name="Kewarganegaraan" e-form="rowform" e-required>
-          {{ anggota.Kewarganegaraan || 'empty' }}
+        <span editable-text="anggota.Pendidikan" e-name="Pendidikan" e-form="rowform" e-required>
+          {{ anggota.Pendidikan || 'empty' }}
+        </span>
+    </td>
+    <td>
+        <span editable-text="anggota.Pekerjaan" e-name="Pekerjaan" e-form="rowform" e-required>
+          {{ anggota.Pekerjaan || 'empty' }}
         </span>
     </td>
     <td>

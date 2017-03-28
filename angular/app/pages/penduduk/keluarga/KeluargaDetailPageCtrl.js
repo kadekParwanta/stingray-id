@@ -9,11 +9,12 @@
         .controller('KeluargaDetailPageCtrl', KeluargaDetailPageCtrl);
 
     /** @ngInject */
-    function KeluargaDetailPageCtrl($scope, keluargaId, Keluarga, $state, editableOptions, editableThemes, $filter, Penduduk, $q) {
+    function KeluargaDetailPageCtrl($scope, keluargaId, Keluarga, $state, editableOptions, editableThemes, $filter, Penduduk, $q, $http) {
         var vm = this;
         $scope.keluarga;
         $scope.tanggalBerlaku;
         $scope.anggotaKeluarga = [];
+        $scope.countries = [];
         if (keluargaId != 0) {
             getKeluargaById(keluargaId);
         }
@@ -32,7 +33,19 @@
                     anggotaKeluarga.forEach(function (item) {
                         $scope.anggotaKeluarga.push(item);
                     })
+
+                    getCountries();
                 })
+        }
+
+        function getCountries() {
+            $http.get('https://restcountries.eu/rest/v2/all?fields=name')
+                .then(function (res) {
+                    $scope.countries = res.data;
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
         }
 
         $scope.editKeluarga = function (keluarga) {
@@ -43,15 +56,15 @@
                     Alamat: keluarga.Alamat,
                     TanggalBerlaku: $scope.tanggalBerlaku
                 }, function (res) {
-                    saveAnggotaKeluarga($scope.anggotaKeluarga, keluarga.id).then(function(res){
+                    saveAnggotaKeluarga($scope.anggotaKeluarga, keluarga.id).then(function (res) {
                         $state.go('penduduk');
                     })
-                    
+
                 })
             } else {
                 keluarga.TanggalBerlaku = $scope.tanggalBerlaku;
                 Keluarga.create(keluarga, function (res) {
-                    saveAnggotaKeluarga($scope.anggotaKeluarga, res.id).then(function(res){
+                    saveAnggotaKeluarga($scope.anggotaKeluarga, res.id).then(function (res) {
                         $state.go('penduduk');
                     })
                 })
@@ -59,8 +72,8 @@
         }
 
         $scope.jenisKelamin = [{ text: 'Perempuan' }, { text: 'Laki-laki' }];
-        $scope.golonganDarah = [{ text: 'O' }, { text: 'A' },{ text: 'AB' }, { text: 'B' }];
-        $scope.Agama = [{ text: 'Islam' }, { text: 'Katolik' },{ text: 'Protestan' }, { text: 'Hindu' }, { text: 'Budha' }];
+        $scope.golonganDarah = [{ text: 'O' }, { text: 'A' }, { text: 'AB' }, { text: 'B' }];
+        $scope.Agama = [{ text: 'Islam' }, { text: 'Katolik' }, { text: 'Protestan' }, { text: 'Hindu' }, { text: 'Budha' }];
 
         $scope.showJenisKelamin = function (anggotaKeluarga) {
             var selected = [];
@@ -78,7 +91,7 @@
             return selected.length ? selected[0].text : 'Not set';
         };
 
-         $scope.showAgama = function (anggotaKeluarga) {
+        $scope.showAgama = function (anggotaKeluarga) {
             var selected = [];
             if (anggotaKeluarga.Agama) {
                 selected = $filter('filter')($scope.Agama, { text: anggotaKeluarga.Agama });
@@ -86,7 +99,15 @@
             return selected.length ? selected[0].text : 'Not set';
         };
 
-        
+        $scope.showCountry = function (anggotaKeluarga) {
+            var selected = [];
+            if (anggotaKeluarga.Kewarganegaraan) {
+                selected = $filter('filter')($scope.countries, { name: anggotaKeluarga.Kewarganegaraan });
+            }
+            return selected.length ? selected[0].name : 'Not set';
+        };
+
+
 
 
         $scope.removeAnggotaKeluarga = function (index) {
@@ -119,6 +140,8 @@
                         GolDarah: anggotaKeluarga.GolDarah,
                         Agama: anggotaKeluarga.Agama,
                         Kewarganegaraan: anggotaKeluarga.Kewarganegaraan,
+                        Pendidikan: anggotaKeluarga.Pendidikan,
+                        Pekerjaan: anggotaKeluarga.Pekerjaan,
                         id: anggotaKeluarga.id
                     }, function (res) {
                         deferred.resolve(res);
@@ -137,6 +160,15 @@
         }
 
         //datepicker
+        $scope.opened = {};
+
+        $scope.open = function ($event, elementOpened) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope.opened[elementOpened] = !$scope.opened[elementOpened];
+        };
+
         $scope.today = function () {
             $scope.tanggalBerlaku = new Date();
         };
