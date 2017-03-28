@@ -384,6 +384,9 @@
                   var indexBelanjaJumlah = $scope.belanjaTableList[indexWaktuPel].indexOf(belanjaData);
                   $scope.belanjaTableList[indexWaktuPel][indexBelanjaJumlah].Jumlah = $scope.formatCurrency(totalBelanjaJumlah);
                   totalRkp += totalBelanjaJumlah;
+                  if (rabList.length == 0 && belanjaTitleList.length == 0 ) {
+                    $scope.belanjaTableList[indexWaktuPel].pop(indexBelanjaJumlah);
+                  }
                 })
 
                 var indexRkp = $scope.belanjaTableList[indexWaktuPel].indexOf(rkpData);
@@ -502,6 +505,9 @@
                 var indexBelanjaJumlah = $scope.belanjaTableList[indexWaktuPel].indexOf(belanjaData);
                 $scope.belanjaTableList[indexWaktuPel][indexBelanjaJumlah].Jumlah = $scope.formatCurrency(totalBelanjaJumlah);
                 totalRkp += totalBelanjaJumlah;
+                if (rabList.length == 0 && belanjaTitleList.length == 0 ) {
+                    $scope.belanjaTableList[indexWaktuPel].pop(indexBelanjaJumlah);
+                  }
               })
               var indexRkp = $scope.belanjaTableList[indexWaktuPel].indexOf(rkpData);
               $scope.belanjaTableList[indexWaktuPel][indexRkp].Jumlah = $scope.formatCurrency(totalRkp);
