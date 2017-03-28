@@ -25,6 +25,9 @@
     },
     "kodepos": {
       "type": "number"
+    },
+    "geo": {
+      "type": "geopoint"
     }
   },
   "validations": [],

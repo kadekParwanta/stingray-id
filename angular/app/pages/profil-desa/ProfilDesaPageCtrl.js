@@ -16,6 +16,14 @@
     function getDesaDetail() {
       Desa.find({ filter: { include: 'logo' } }, function (desaList) {
         $scope.desa = desaList[0];
+        var geo = $scope.desa.geo;
+        if (!geo) {
+          geo = {
+            lat: 0,
+            lng:0
+          }
+        }
+        initializeMap($scope.desa.geo);
         var logo = $scope.desa.logo;
         if (logo) {
           siDropbox.filesDownload(logo.path).then(function (pic) {
@@ -88,6 +96,21 @@
       })
     }
 
+    function initializeMap(geo) {
+      var mapCanvas = document.getElementById('google-maps');
+      var mapOptions = {
+        center: new google.maps.LatLng(geo.lat, geo.lng),
+        zoom: 8,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(mapCanvas, mapOptions);
+      var marker = new google.maps.Marker({
+          position: geo,
+          map: map,
+          title: $scope.desa.desa
+        });
+    }
+
     $scope.save = function (desa) {
       if (desa.id) {
         Desa.prototype$updateAttributes({
@@ -97,13 +120,19 @@
           kabupaten: desa.kabupaten,
           provinsi: desa.provinsi,
           kodepos: desa.kodepos,
+          geo: {
+            lat: desa.geo.lat,
+            lng: desa.geo.lng
+          },
           id: desa.id
         }, function (res) {
           $scope.showModal('app/pages/ui/modals/modalTemplates/successModal.html');
+          getDesaDetail();
         })
       } else {
         Desa.create(desa, function (res) {
           $scope.showModal('app/pages/ui/modals/modalTemplates/successModal.html');
+          getDesaDetail();
         })
       }
     }

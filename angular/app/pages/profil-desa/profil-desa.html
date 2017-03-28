@@ -18,12 +18,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
                 <div class="form-group row clearfix">
                     <label for="inputFirstName" class="col-sm-3 control-label">Nama Desa</label>
 
@@ -31,37 +25,13 @@
                         <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.desa">
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group row clearfix">
-                    <label for="inputFirstName" class="col-sm-3 control-label">Alamat</label>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
                 <div class="form-group row clearfix">
                     <label for="inputFirstName" class="col-sm-3 control-label">Jalan</label>
 
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.jalan">
+                        <textarea type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.jalan"></textarea>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group row clearfix">
-                    <label for="inputFirstName" class="col-sm-3 control-label">Desa</label>
-
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.desa">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
                 <div class="form-group row clearfix">
                     <label for="inputFirstName" class="col-sm-3 control-label">Kecamatan</label>
 
@@ -69,8 +39,6 @@
                         <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.kecamatan">
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
                 <div class="form-group row clearfix">
                     <label for="inputFirstName" class="col-sm-3 control-label">Kabupaten</label>
 
@@ -78,10 +46,6 @@
                         <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.kabupaten">
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
                 <div class="form-group row clearfix">
                     <label for="inputFirstName" class="col-sm-3 control-label">Provinsi</label>
 
@@ -89,8 +53,6 @@
                         <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.provinsi">
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
                 <div class="form-group row clearfix">
                     <label for="inputFirstName" class="col-sm-3 control-label">Kode Pos</label>
 
@@ -99,7 +61,33 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div ba-panel ba-panel-title="Google Map" class="viewport100">
+                    <div id="google-maps"></div>
+                </div>
+                <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row clearfix">
+                    <label for="inputFirstName" class="col-sm-3 control-label">Latitude</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.geo.lat">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row clearfix">
+                    <label for="inputFirstName" class="col-sm-3 control-label">Longitude</label>
+
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.geo.lng">
+                    </div>
+                </div>
+            </div>
         </div>
+            </div>
+        </div>
+        
 
         <h3 class="with-line">Organisasi Desa</h3>
 
