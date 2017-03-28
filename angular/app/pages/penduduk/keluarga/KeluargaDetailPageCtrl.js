@@ -9,38 +9,109 @@
         .controller('KeluargaDetailPageCtrl', KeluargaDetailPageCtrl);
 
     /** @ngInject */
-    function KeluargaDetailPageCtrl($scope, keluargaId, Keluarga, $state) {
+    function KeluargaDetailPageCtrl($scope, keluargaId, Keluarga, $state, editableOptions, editableThemes, $filter, Penduduk, $q) {
         var vm = this;
         $scope.keluarga;
         $scope.tanggalBerlaku;
+        $scope.anggotaKeluarga = [];
         if (keluargaId != 0) {
             getKeluargaById(keluargaId);
         }
 
         function getKeluargaById(id) {
             Keluarga.findById({ id: id, filter: { include: ['AnggotaKeluarga', 'KepalaKeluarga'] } }
-                ,function (keluarga) {
+                , function (keluarga) {
                     $scope.keluarga = keluarga;
                     $scope.tanggalBerlaku = new Date(keluarga.TanggalBerlaku);
+                    var kepalaKeluarga = keluarga.KepalaKeluarga;
+                    if (kepalaKeluarga) {
+                        $scope.anggotaKeluarga.push(kepalaKeluarga);
+                    }
+
+                    var anggotaKeluarga = keluarga.AnggotaKeluarga;
+                    anggotaKeluarga.forEach(function (item) {
+                        $scope.anggotaKeluarga.push(item);
+                    })
                 })
         }
 
-        $scope.editKeluarga = function(keluarga){
+        $scope.editKeluarga = function (keluarga) {
             if (keluarga.id) {
                 Keluarga.prototype$updateAttributes({
                     id: keluarga.id,
                     NoKK: keluarga.NoKK,
                     Alamat: keluarga.Alamat,
                     TanggalBerlaku: $scope.tanggalBerlaku
-                }, function(res){
-                    $state.go('penduduk');
+                }, function (res) {
+                    saveAnggotaKeluarga($scope.anggotaKeluarga, keluarga.id).then(function(res){
+                        $state.go('penduduk');
+                    })
+                    
                 })
             } else {
                 keluarga.TanggalBerlaku = $scope.tanggalBerlaku;
-                Keluarga.create(keluarga, function(res){
-                    $state.go('penduduk');
+                Keluarga.create(keluarga, function (res) {
+                    saveAnggotaKeluarga($scope.anggotaKeluarga, res.id).then(function(res){
+                        $state.go('penduduk');
+                    })
                 })
             }
+        }
+
+        $scope.jenisKelamin = [{ text: 'Perempuan' }, { text: 'Laki-laki' }];
+
+        $scope.showJenisKelamin = function (anggotaKeluarga) {
+            var selected = [];
+            if (anggotaKeluarga.JenisKelamin) {
+                selected = $filter('filter')($scope.jenisKelamin, { text: anggotaKeluarga.JenisKelamin });
+            }
+            return selected.length ? selected[0].text : 'Not set';
+        };
+
+
+        $scope.removeAnggotaKeluarga = function (index) {
+            $scope.anggotaKeluarga.splice(index, 1);
+        };
+
+        $scope.addAnggotaKeluarga = function () {
+            $scope.inserted = {
+                Nama: '',
+                TempatLahir: null,
+                JenisKelamin: null
+            };
+            $scope.anggotaKeluarga.push($scope.inserted);
+        };
+
+        editableOptions.theme = 'bs3';
+        editableThemes['bs3'].submitTpl = '<button type="submit" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-round"></i></button>';
+        editableThemes['bs3'].cancelTpl = '<button type="button" ng-click="$form.$cancel()" class="btn btn-default btn-with-icon"><i class="ion-close-round"></i></button>';
+
+        function saveAnggotaKeluarga(listAnggotaKeluarga, keluargaId) {
+            var promises = listAnggotaKeluarga.map(function (anggotaKeluarga) {
+                var deferred = $q.defer();
+                if (anggotaKeluarga.id) {
+                    Penduduk.prototype$updateAttributes({
+                        Nama: anggotaKeluarga.Nama,
+                        JenisKelamin: anggotaKeluarga.JenisKelamin,
+                        TempatLahir: anggotaKeluarga.TempatLahir,
+                        id: anggotaKeluarga.id
+                    }, function (res) {
+                        deferred.resolve(res);
+                    })
+                } else {
+                    anggotaKeluarga.AnggotaKeluargaId = keluargaId;
+                    anggotaKeluarga.JenisKelamin = anggotaKeluarga.JenisKelamin.text;
+                    //TODO NIK is hardcoded
+                    anggotaKeluarga.NIK = 0;
+                    Penduduk.create(anggotaKeluarga, function (res) {
+                        deferred.resolve(res);
+                    })
+                }
+                return deferred.promise;
+            })
+
+            return $q.all(promises);
+
         }
 
         //datepicker
