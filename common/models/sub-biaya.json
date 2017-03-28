@@ -10,7 +10,7 @@
   "validations": [],
   "relations": {
     "AnggaranBiaya": {
-      "type": "hasMany",
+      "type": "hasOne",
       "model": "AnggaranBiaya",
       "foreignKey": "SubBiayaId"
     }

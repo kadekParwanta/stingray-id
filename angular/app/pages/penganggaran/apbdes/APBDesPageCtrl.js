@@ -9,7 +9,7 @@
     .controller('APBDesPageCtrl', APBDesPageCtrl);
 
   /** @ngInject */
-  function APBDesPageCtrl($scope, RPJM, Pendapatan, $q, Bidang) {
+  function APBDesPageCtrl($scope, RPJM, Pendapatan, $q, Bidang, Biaya) {
     var vm = this;
 
     $scope.waktuPelaksanaanList = [];
@@ -18,6 +18,7 @@
     $scope.selectedWaktuPelaksanaan;
     $scope.pendapatanTableList = [];
     $scope.belanjaTableList = [];
+    $scope.pembiayaanTableList = [];
     $scope.totalPendapatan = [];
     $scope.totalBelanja = [];
 
@@ -507,6 +508,96 @@
 
       $q.all(promises).then(function (belanjaList) {
         $scope.totalBelanja = belanjaList;
+        getPembiayaanByWaktu(waktuPelaksanaanList);
+      })
+    }
+
+    function getPembiayaanByWaktu(waktuPelaksanaanList) {
+      var promises = waktuPelaksanaanList.map(function (waktupelaksanaan) {
+        var deferred = $q.defer();
+
+        Biaya.find({
+          filter: {
+            include: {
+              relation: 'SubBiaya', scope: {
+                order: "No ASC",
+                include: {
+                  relation: 'AnggaranBiaya', scope: {
+                    order: "No ASC",
+                    where: {
+                      WaktuPelaksanaanId: waktupelaksanaan.id
+                    }
+                  }
+                }
+              }
+            },
+            where: {
+              RPJMId: $scope.activeRPJM.id
+            }
+          }
+        }, function (pembiayaanList) {
+          var indexWaktuPel = waktupelaksanaan.No - 1;
+          var totalpembiayaan = 0;
+          $scope.pembiayaanTableList[indexWaktuPel] = [];
+
+          angular.forEach(pembiayaanList, function (pembiayaan) {
+            var pembiayaanData = {
+              KodeRekening: [3, pembiayaan.No],
+              Uraian: pembiayaan.Nama,
+              Satuan: '',
+              Harga: '',
+              Jumlah: '',
+              Keterangan: '',
+              style: {
+                'background-color': 'grey',
+                'color': 'antiquewhite',
+                'font-weight': 'bold'
+              },
+              id: pembiayaan.id
+            }
+            var totalPembiayaanJumlah = 0
+            $scope.pembiayaanTableList[indexWaktuPel].push(pembiayaanData);
+
+            var subPembiayaanList = pembiayaan.SubBiaya;
+            subPembiayaanList.forEach(function (subBiaya, index) {
+              var anggaranPembiayaan = subBiaya.AnggaranBiaya;
+              var jumlahSubBiaya = 0;
+              if (anggaranPembiayaan) {
+                jumlahSubBiaya = anggaranPembiayaan.Jumlah;
+              }
+              var subBiayaData = {
+                KodeRekening: [3, pembiayaan.No, subBiaya.No],
+                Uraian: subBiaya.Nama,
+                Satuan: '',
+                Harga: '',
+                Jumlah: jumlahSubBiaya,
+                Keterangan: '',
+                style: {
+                  'font-weight': 'bold'
+                },
+                id: subBiaya.id
+              }
+              $scope.pembiayaanTableList[indexWaktuPel].push(subBiayaData);
+              totalPembiayaanJumlah += jumlahSubBiaya;
+            })
+
+            var indexPembiayaan = $scope.pembiayaanTableList[indexWaktuPel].indexOf(pembiayaanData);
+            $scope.pembiayaanTableList[indexWaktuPel][indexPembiayaan].Jumlah = $scope.formatCurrency(totalPembiayaanJumlah);
+            if (pembiayaan.No == 1) {
+              totalpembiayaan -= totalPembiayaanJumlah;
+            } else {
+              totalpembiayaan += totalPembiayaanJumlah;
+            }
+            
+          })
+          deferred.resolve(totalpembiayaan);
+        })
+
+        return deferred.promise;
+      })
+
+      $q.all(promises).then(function (pembiayaanList) {
+        $scope.totalPembiayaan = pembiayaanList;
       })
     }
 

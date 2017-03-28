@@ -6,7 +6,7 @@
                     <uib-tab-heading>
                         {{waktuPelaksanaan.Nama}}
                     </uib-tab-heading>
-                    <div class="row">
+                    <div class="row" style="text-align: center">
                         <div class="col-sm-12">
                             <h4>DRAFT</h4>
                             <h4>ANGGARAN PENDAPATAN DAN BELANJA DESA</h4>
@@ -106,6 +106,37 @@
                                         <tr>
                                             <td colspan="12" style="font-weight: bold">SURPLUS/(DEFISIT)</td>
                                             <td><strong>{{formatCurrency(totalPendapatan[(selectedWaktuPelaksanaan.No-1)] - totalBelanja[(selectedWaktuPelaksanaan.No-1)])}}</strong></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="14" style="height: 20px !important"></td>
+                                        </tr>
+                                        <tr style="background-color: black; color:antiquewhite; font-weight: bold">
+                                            <td>3</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td colspan="8">PEMBIAYAAN</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="14" style="height: 20px !important"></td>
+                                        </tr>
+                                        <tr ng-repeat="pembiayaan in pembiayaanTableList[(selectedWaktuPelaksanaan.No-1)]" ng-style="{{pembiayaan.style}}">
+                                            <td ng-class="nowrap">{{pembiayaan.KodeRekening[0] || ''}}</td>
+                                            <td ng-class="nowrap">{{pembiayaan.KodeRekening[1] || ''}}</td>
+                                            <td ng-class="nowrap">{{pembiayaan.KodeRekening[2] || ''}}</td>
+                                            <td ng-class="nowrap">{{pembiayaan.KodeRekening[3] || ''}}</td>
+                                            <td ng-class="nowrap" colspan="2">{{pembiayaan.Uraian}}</td>
+                                            <td ng-class="nowrap" colspan="5">{{pembiayaan.Satuan}}</td>
+                                            <td ng-class="nowrap">{{pembiayaan.Harga}}</td>
+                                            <td ng-class="nowrap">{{pembiayaan.Jumlah}}</td>
+                                            <td ng-class="nowrap">{{pembiayaan.Keterangan}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" style="font-weight: bold">JUMLAH PEMBIAYAAN</td>
+                                            <td><strong>{{formatCurrency(totalPembiayaan[(selectedWaktuPelaksanaan.No-1)])}}</strong></td>
                                             <td></td>
                                         </tr>
                                     </tbody>

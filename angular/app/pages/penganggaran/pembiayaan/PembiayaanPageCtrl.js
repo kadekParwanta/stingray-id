@@ -138,21 +138,7 @@
                 "state": {
                   "opened": true
                 }
-              })
-
-              var anggaranBiayaList = subbiaya.AnggaranBiaya;
-              anggaranBiayaList.forEach(function (anggaranBiaya) {
-                treeData.push({
-                  "id": anggaranBiaya.id,
-                  "parent": subBiayaId,
-                  "type": "anggaranbiaya",
-                  "text": biaya.No + "." + subbiaya.No + "." + anggaranBiaya.No + " " + anggaranBiaya.Nama,
-                  "li_attr": { "class": "green" },
-                  "state": {
-                    "opened": true
-                  }
-                })
-              })
+              })              
             })
           })
           deferred.resolve(treeData);
@@ -187,10 +173,10 @@
         $scope.selectedBiaya = undefined;
         $scope.selectedDefault = undefined;
         $scope.selectedSubBiaya.TotalBiaya = 0;
-        var anggaranBiayaList = $scope.selectedSubBiaya.AnggaranBiaya;
-          anggaranBiayaList.forEach(function(entry){
-            $scope.selectedSubBiaya.TotalBiaya += entry.Jumlah;
-          })
+        var anggaranBiaya = $scope.selectedSubBiaya.AnggaranBiaya;
+        if (anggaranBiaya) {
+          $scope.selectedAnggaranBiaya = anggaranBiaya;
+        }
       } else if (node.type == 'biaya') {
         $scope.IsSubbiayaSelected = false;
         $scope.selectedSubBiaya = undefined;
@@ -204,10 +190,10 @@
         $scope.selectedBiaya.TotalBiaya = 0;
         var subBiayaList = $scope.selectedBiaya.SubBiaya;
         subBiayaList.forEach(function(item){
-          var anggaranBiayaList = item.AnggaranBiaya;
-          anggaranBiayaList.forEach(function(entry){
-            $scope.selectedBiaya.TotalBiaya += entry.Jumlah;
-          })
+          var anggaranBiaya = item.AnggaranBiaya;
+        if (anggaranBiaya) {
+          $scope.selectedBiaya.TotalBiaya += anggaranBiaya.Jumlah;
+        }
         })
       } else if (node.type == 'anggaranbiaya') {
         $scope.IsSubbiayaSelected = false;
@@ -237,10 +223,8 @@
         $scope.biayaList[indexWaktu].forEach(function (biaya) {
           var subBiayaList = biaya.SubBiaya;
           subBiayaList.forEach(function (item) {
-            var anggaranBiayaList = item.AnggaranBiaya;
-            anggaranBiayaList.forEach(function (entry) {
-              $scope.selectedDefault.TotalBiaya += entry.Jumlah;
-            })
+            var anggaranBiaya = item.AnggaranBiaya;
+            if (anggaranBiaya) $scope.selectedDefault.TotalBiaya += anggaranBiaya.Jumlah;
           })
         })
         
@@ -364,14 +348,26 @@
     }
 
     $scope.editAnggaranBiaya = function(anggaranBiaya) {
-      AnggaranBiaya.prototype$updateAttributes({
-        id: anggaranBiaya.id,
-        Nama: anggaranBiaya.Nama,
-        Jumlah: anggaranBiaya.Jumlah
-      }, function (result) {
-        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
-        $scope.refresh(getActiveTab());
-      })
+      if (!anggaranBiaya.id) {
+        AnggaranBiaya.create({
+          Jumlah: anggaranBiaya.Jumlah,
+          SubBiayaId: $scope.selectedSubBiaya.id,
+          WaktuPelaksanaanId: getActiveTab().id
+        }, function (result) {
+          $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+          $scope.refresh(getActiveTab());
+        })
+      } else {
+        AnggaranBiaya.prototype$updateAttributes({
+          id: anggaranBiaya.id,
+          Nama: anggaranBiaya.Nama,
+          Jumlah: anggaranBiaya.Jumlah
+        }, function (result) {
+          $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+          $scope.refresh(getActiveTab());
+        })
+      }
+      
     }
 
     getActiveRPJM();
