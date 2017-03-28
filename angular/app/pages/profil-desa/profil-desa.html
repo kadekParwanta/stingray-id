@@ -1,0 +1,113 @@
+<div ba-panel ba-panel-class="profile-page">
+    <div class="panel-content">
+        <h3 class="with-line">Informasi Umum</h3>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row clearfix">
+                    <label for="inputFirstName" class="col-sm-3 control-label">Logo</label>
+
+                    <div class="col-sm-9">
+                        <div class="userpic">
+                            <div class="userpic-wrapper">
+                                <img ng-src="{{ picture }}" ng-click="uploadPicture()">
+                            </div>
+                            <i class="ion-ios-close-outline" ng-click="removePicture()" ng-if="!noPicture"></i>
+                            <a href class="change-userpic" ng-click="uploadPicture()">Ganti gambar</a>
+                            <input type="file" ng-show="false" id="uploadFile" ng-file-select="onFileSelect($files)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row clearfix">
+                    <label for="inputFirstName" class="col-sm-3 control-label">Nama Desa</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.desa">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row clearfix">
+                    <label for="inputFirstName" class="col-sm-3 control-label">Alamat</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row clearfix">
+                    <label for="inputFirstName" class="col-sm-3 control-label">Jalan</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.jalan">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row clearfix">
+                    <label for="inputFirstName" class="col-sm-3 control-label">Desa</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.desa">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row clearfix">
+                    <label for="inputFirstName" class="col-sm-3 control-label">Kecamatan</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.kecamatan">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row clearfix">
+                    <label for="inputFirstName" class="col-sm-3 control-label">Kabupaten</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.kabupaten">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row clearfix">
+                    <label for="inputFirstName" class="col-sm-3 control-label">Provinsi</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.provinsi">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row clearfix">
+                    <label for="inputFirstName" class="col-sm-3 control-label">Kode Pos</label>
+
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" id="inputFirstName" placeholder="" value="" ng-model="desa.kodepos">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="with-line">Organisasi Desa</h3>
+
+        <div class="row">
+        </div>
+
+        <button type="button" class="btn btn-primary btn-with-icon save-profile" ng-click="save(desa)">
+      <i class="ion-android-checkmark-circle"></i>Simpan
+    </button>
+    </div>
+</div>

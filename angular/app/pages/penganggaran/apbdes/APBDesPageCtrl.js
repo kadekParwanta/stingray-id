@@ -9,7 +9,7 @@
     .controller('APBDesPageCtrl', APBDesPageCtrl);
 
   /** @ngInject */
-  function APBDesPageCtrl($scope, RPJM, Pendapatan, $q, Bidang, Biaya) {
+  function APBDesPageCtrl($scope, RPJM, Pendapatan, $q, Bidang, Biaya, Desa) {
     var vm = this;
 
     $scope.waktuPelaksanaanList = [];
@@ -21,6 +21,14 @@
     $scope.pembiayaanTableList = [];
     $scope.totalPendapatan = [];
     $scope.totalBelanja = [];
+    $scope.desa;
+
+    function getDesa() {
+      Desa.find(function(desaList){
+        $scope.desa = desaList[0];
+        getActiveRPJM();
+      })
+    }
 
     function getActiveRPJM() {
       RPJM.findOne({
@@ -243,7 +251,7 @@
           angular.forEach(result, function (bidang, index, arr) {
             var bidangData = {
               KodeRekening: [2, bidang.No],
-              Uraian: [bidang.Nama],
+              Uraian: ["Bidang " +bidang.Nama],
               Satuan: '',
               Harga: '',
               Jumlah: '',
@@ -627,7 +635,7 @@
       return formatter.format(value);
     }
 
-    getActiveRPJM();
+    getDesa();
 
     function getActiveTab() {
       return $scope.selectedWaktuPelaksanaan;

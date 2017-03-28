@@ -11,7 +11,8 @@
     'BlurAdmin.pages.dashboard',
     'BlurAdmin.pages.perencanaan',
     'BlurAdmin.pages.penganggaran',
-    'BlurAdmin.pages.pengaturan'
+    'BlurAdmin.pages.pengaturan',
+    'BlurAdmin.pages.profildesa'
   ])
       .config(routeConfig);
 
