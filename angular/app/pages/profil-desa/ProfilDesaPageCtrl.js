@@ -23,7 +23,7 @@
             lng:0
           }
         }
-        initializeMap($scope.desa.geo);
+        initializeMap(geo);
         var logo = $scope.desa.logo;
         if (logo) {
           siDropbox.filesDownload(logo.path).then(function (pic) {
@@ -110,6 +110,19 @@
           title: $scope.desa.desa
         });
     }
+
+    /*
+    function initOpenStreetMap(geo) {
+      L.Icon.Default.imagePath = 'assets/img/theme/vendor/leaflet/dist/images';
+      var map = L.map(document.getElementById('leaflet-map')).setView([geo.lat, geo.lng], 13);
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      L.marker([geo.lat, geo.lng]).addTo(map)
+          .bindPopup($scope.desa.desa)
+          .openPopup();
+    }*/
 
     $scope.save = function (desa) {
       if (desa.id) {
