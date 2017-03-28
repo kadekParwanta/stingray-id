@@ -95,6 +95,7 @@
             }
             var totalPendapatanJumlah = 0
             $scope.pendapatanTableList[indexWaktuPel].push(pendapatanData);
+            var isAllPoped = true;
 
             var subpendapatanList = pendapatan.SubPendapatan;
             subpendapatanList.forEach(function (subpendapatan, index) {
@@ -131,10 +132,19 @@
               totalPendapatanJumlah += totalSubpendapatan;
               var indexSubPendapatan = $scope.pendapatanTableList[indexWaktuPel].indexOf(subPendapatanData);
               $scope.pendapatanTableList[indexWaktuPel][indexSubPendapatan].Jumlah = $scope.formatCurrency(totalSubpendapatan);
-            })
 
+              if (anggaranPendapatanList.length == 0 ) {
+                $scope.pendapatanTableList[indexWaktuPel].pop(indexSubPendapatan);
+              } else {
+                isAllPoped = false;
+              }
+              
+            })
             var indexPendapatan = $scope.pendapatanTableList[indexWaktuPel].indexOf(pendapatanData);
             $scope.pendapatanTableList[indexWaktuPel][indexPendapatan].Jumlah = $scope.formatCurrency(totalPendapatanJumlah);
+            if (isAllPoped) {
+              $scope.pendapatanTableList[indexWaktuPel].pop(indexPendapatan);
+            }
           })
           deferred.resolve(totalPendapatan);
         })
@@ -499,6 +509,9 @@
             })
             var indexBidang = $scope.belanjaTableList[indexWaktuPel].indexOf(bidangData);
             $scope.belanjaTableList[indexWaktuPel][indexBidang].Jumlah = $scope.formatCurrency(totalBidang);
+            if (rkp.length == 0 && rpjmdesList.length == 0) {
+              $scope.belanjaTableList[indexWaktuPel].pop(indexBidang);
+            }
           })
           deferred.resolve(totalBelanja);
         })
