@@ -31,6 +31,17 @@
                   return $stateParams.id;
               }
           }
+        })
+        .state('surveydata', {
+          url: '/surveydata/:id',
+          title: 'Survey Data',
+          templateUrl: 'app/pages/survey/surveydata/surveydata.html',
+          controller: 'SurveyDataPageCtrl',
+          resolve: {
+              surveyId: function($stateParams) {
+                  return $stateParams.id;
+              }
+          }
         });
   }
 

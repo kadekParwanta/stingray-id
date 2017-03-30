@@ -13,8 +13,8 @@
         <thead>
             <tr class="sortable ">
                 <th class="table-id" st-sort="id" st-sort-default="true">#</th>
-                <th st-sort="NoKK">Nama</th>
-                <th>Actions</th>
+                <th st-sort="Nama">Nama</th>
+                <th></th>
             </tr>
             <tr>
                 <th></th>
@@ -28,7 +28,7 @@
                 <td>{{item.Nama}}</td>
                 <td>
                     <div class="pull-right">
-                        <!--<button type="button" class="btn btn-info btn-raised btn-with-icon" ui-sref="surveydata({id:item.id})"><i class="ion-eye"></i>Lihat data</button>-->
+                        <button type="button" class="btn btn-info btn-raised btn-with-icon" ui-sref="surveydata({id:item.id})"><i class="ion-eye"></i>Lihat data</button>
                         <button type="button" class="btn btn-primary btn-raised btn-with-icon" ui-sref="formbuilder({id:item.id})"><i class="ion-edit"></i>Edit</button>
                         <button type="button" class="btn btn-danger btn-raised btn-with-icon" ng-click="deleteForm(item.id)"><i class="ion-trash-a"></i>Hapus</button>
                     </div>

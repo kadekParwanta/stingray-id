@@ -1,0 +1,19 @@
+<div class="horizontal-scroll">
+
+    <div class="add-row-editable-table">
+        <button type="button" class="btn btn-warning btn-with-icon" ui-sref="surveyform({id:0})"><i class="ion-plus-circled"></i>Tambah Data</button>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th ng-repeat="item in headerTable">{{item}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in surveyFormData">
+                <td ng-repeat="header in headerTable">{{item[header]}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

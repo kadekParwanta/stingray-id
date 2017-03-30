@@ -12,6 +12,8 @@
   function SurveyPageCtrl($scope, Survey, $uibModal) {
     var vm =this;
     $scope.surveys;
+    $scope.smartTablePageSize = 10;
+    
     getSurveyForms();
 
     function getSurveyForms() {
