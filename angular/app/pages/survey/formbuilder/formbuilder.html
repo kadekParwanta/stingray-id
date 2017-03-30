@@ -1,10 +1,19 @@
+<form name="vm.surveyForm" novalidate>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="form-group has-success" ng-class="{'has-error': vm.surveyForm.Nama.$invalid && (vm.surveyForm.Nama.$dirty || vm.surveyForm.$submitted)}">
+                <label for="inputNamaSurvey">Nama</label>
+                <input type="text" class="form-control" id="inputNamaSurvey" name="Nama" ng-model="survey.Nama" required>
+                <span class="help-block error-block basic-block">Wajib diisi</span>
+            </div>
+        </div>
+    </div>
+</form>
 <div class="row">
     <div class="col-md-6">
         <div ba-panel ba-panel-title="Form Builder" ba-panel-class="with-scroll panel-default">
             <div fb-builder="default"></div>
-            <div class="panel-footer">
-                
-            </div>
+             <button type="button" class="btn btn-warning btn-with-icon" ng-click="saveForm(form)"><i class="ion-plus-circled"></i>Simpan</button>
         </div>
     </div>
 
@@ -14,4 +23,3 @@
         </div>
     </div>
 </div>
-<pre>{{form}}</pre>

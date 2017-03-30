@@ -22,10 +22,15 @@
           },
         })
         .state('formbuilder', {
-          url: '/formbuilder',
+          url: '/formbuilder/:id',
           title: 'Form Builder',
           templateUrl: 'app/pages/survey/formbuilder/formbuilder.html',
-          controller: 'FormBuilderPageCtrl'
+          controller: 'FormBuilderPageCtrl',
+          resolve: {
+              surveyId: function($stateParams) {
+                  return $stateParams.id;
+              }
+          }
         });
   }
 

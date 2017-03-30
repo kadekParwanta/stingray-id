@@ -1,0 +1,33 @@
+{
+  "name": "SurveyData",
+  "plural": "SurveyData",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "createdDate": {
+      "type": "date"
+    },
+    "Lokasi": {
+      "type": "geopoint"
+    },
+    "Alamat": {
+      "type": "string"
+    },
+    "Responden": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "SurveyFormData": {
+      "type": "hasMany",
+      "model": "SurveyFormData",
+      "foreignKey": "SurveyDataId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

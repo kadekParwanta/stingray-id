@@ -152,5 +152,21 @@
   "Keluarga": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Form": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Survey": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "SurveyData": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "SurveyFormData": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

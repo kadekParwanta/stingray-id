@@ -1,0 +1,44 @@
+{
+  "name": "Form",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "component": {
+      "type": "string"
+    },
+    "editable": {
+      "type": "boolean",
+      "default": true
+    },
+    "label": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "placeholder": {
+      "type": "string"
+    },
+    "options": {
+      "type": [
+        "any"
+      ]
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "validation": {
+      "type": "string"
+    },
+    "index": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
