@@ -11,13 +11,12 @@
   /** @ngInject */
   function FormBuilderPageCtrl($scope, $builder, $validator, surveyId, Survey, Form, $q, $uibModal, $state) {
     var vm = this;
-    $scope.survey = {};
-    $scope.form;
+    $scope.survey;
+    $builder.forms['default'] = []
+    $scope.form = $builder.forms['default'];
 
     if (surveyId != 0) {
       getSurveyById(surveyId);
-    } else {
-      $scope.form = $builder.forms['default'];
     }
 
     function getSurveyById(id) {
@@ -35,13 +34,12 @@
           component: entry.component,
           label: entry.label,
           description: entry.description,
+          options: entry.options,
           placeholder: entry.placeholder,
           required: entry.required,
           editable: entry.editable
         })
       })
-
-      $scope.form = $builder.forms['default'];
     }
 
     $scope.saveForm = function (form) {
@@ -74,6 +72,7 @@
           component: item.component,
           label: item.label,
           description: item.description,
+          options: item.options,
           required: item.required,
           editable: item.editable,
           SurveyId: surveyId

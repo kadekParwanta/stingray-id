@@ -5,6 +5,13 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "CascadeDelete": {
+      "relations": [
+        "SurveyData","Form"
+      ]
+    }
+  },
   "properties": {
     "Nama": {
       "type": "string"

@@ -6,6 +6,13 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "CascadeDelete": {
+      "relations": [
+        "SurveyFormData"
+      ]
+    }
+  },
   "properties": {
     "createdDate": {
       "type": "date"

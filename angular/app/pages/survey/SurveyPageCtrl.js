@@ -9,7 +9,7 @@
     .controller('SurveyPageCtrl', SurveyPageCtrl);
 
   /** @ngInject */
-  function SurveyPageCtrl($scope, Survey) {
+  function SurveyPageCtrl($scope, Survey, $uibModal) {
     var vm =this;
     $scope.surveys;
     getSurveyForms();
@@ -19,6 +19,22 @@
         $scope.surveys = surveys;
       })
     }
+
+    $scope.deleteForm = function(id) {
+      Survey.deleteById({ id: id }, function () {
+        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+        getSurveyForms();
+      })
+    }
+
+    $scope.open = function (page, size) {
+      $uibModal.open({
+        animation: true,
+        templateUrl: page,
+        size: size
+      });
+    };
+    
   }
 
 })();

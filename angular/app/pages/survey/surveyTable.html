@@ -18,9 +18,8 @@
             </tr>
             <tr>
                 <th></th>
-                <th><input st-search="Nama" placeholder="Search Formulir" class="input-sm form-control search-input" type="search"
+                <th colspan="2"><input st-search="Nama" placeholder="Search Formulir" class="input-sm form-control search-input" type="search"
                     /></th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -28,7 +27,12 @@
                 <td class="table-id">{{$index+1}}</td>
                 <td>{{item.Nama}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-raised pull-left btn-with-icon" ui-sref="formbuilder({id:item.id})"><i class="ion-edit"></i></button>
+                    <div class="pull-right">
+                        <!--<button type="button" class="btn btn-info btn-raised btn-with-icon" ui-sref="surveydata({id:item.id})"><i class="ion-eye"></i>Lihat data</button>-->
+                        <button type="button" class="btn btn-primary btn-raised btn-with-icon" ui-sref="formbuilder({id:item.id})"><i class="ion-edit"></i>Edit</button>
+                        <button type="button" class="btn btn-danger btn-raised btn-with-icon" ng-click="deleteForm(item.id)"><i class="ion-trash-a"></i>Hapus</button>
+                    </div>
+
                 </td>
             </tr>
         </tbody>
