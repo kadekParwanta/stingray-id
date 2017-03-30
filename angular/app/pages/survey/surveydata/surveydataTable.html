@@ -4,15 +4,15 @@
         <button type="button" class="btn btn-warning btn-with-icon" ui-sref="surveyform({id:surveyId})"><i class="ion-plus-circled"></i>Tambah Data</button>
     </div>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover">
         <thead>
-            <tr>
-                <th ng-repeat="item in headerTable">{{item}}</th>
+            <tr class="black-muted-bg">
+                <th ng-repeat="header in headerTable">{{header}}</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in surveydata">
-                <td ng-repeat="header in headerTable">{{item.SurveyFormData[$index].value}}</td>
+            <tr ng-repeat="item in surveyFormData">
+                <td ng-repeat="entry in item">{{entry.value}}</td>
             </tr>
         </tbody>
     </table>

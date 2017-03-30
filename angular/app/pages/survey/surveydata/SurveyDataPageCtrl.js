@@ -35,7 +35,35 @@
                     $scope.headerTable.push(element.label);
                 });
 
+                arrangeTheData($scope.surveydata, $scope.headerTable);
+
             })
+        }
+
+        function arrangeTheData(data, header) {
+            
+            data.forEach(function(item, index){
+                var surveyFormData = [];
+                header.forEach(function(head, indexHead){
+                    var formData = item.SurveyFormData;
+                    var form = getForm(formData, head);
+                    if (form) {
+                        surveyFormData.push(form);
+                    } else {
+                        surveyFormData.push({label:'', value:''});
+                    }
+                })
+                $scope.surveyFormData[index] = surveyFormData;
+            })
+        }
+
+        function getForm(formData, label) {
+            var result;
+            formData.forEach(function (form) {
+                if (form.label == label) result = form;
+            })
+
+            return result;
         }
 
         $scope.open = function (page, size) {
