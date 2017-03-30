@@ -16,4 +16,7 @@ angular.module('BlurAdmin', [
   // 'Dropbox',
   'BlurAdmin.theme',
   'BlurAdmin.pages',
+  'builder',
+  'builder.components',
+  'validator.rules'
 ]);

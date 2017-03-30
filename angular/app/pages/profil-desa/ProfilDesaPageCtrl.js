@@ -70,7 +70,6 @@
 
     function uploadFileToDropbox(file) {
       siDropbox.filesUpload(file).then(function (res) {
-        console.log("success");
         var logo = $scope.desa.logo;
         if (logo) {
           siDropbox.filesDelete(logo.path).then(function (success) {
@@ -79,6 +78,8 @@
               name: file.name,
               path: '/' + file.name,
               DesaId: $scope.desa.id
+            }, function(media){
+              //TODO
             })
           }).catch(function (err) {
             console.log(err);
@@ -88,6 +89,8 @@
             name: file.name,
             path: '/' + file.name,
             DesaId: $scope.desa.id
+          }, function(media){
+            //TODO
           })
         }
 
