@@ -16,6 +16,7 @@
         $scope.surveyFormData = [];
         $scope.smartTablePageSize = 10;
         $scope.headerTable = [];
+        $scope.surveyId = surveyId;
 
         getSurveyDataForms(surveyId);
 

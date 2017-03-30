@@ -42,6 +42,17 @@
                   return $stateParams.id;
               }
           }
+        })
+        .state('surveyform', {
+          url: '/surveyform/:id',
+          title: 'Survey',
+          templateUrl: 'app/pages/survey/surveyform/surveyform.html',
+          controller: 'SurveyFormPageCtrl',
+          resolve: {
+              surveyId: function($stateParams) {
+                  return $stateParams.id;
+              }
+          }
         });
   }
 
