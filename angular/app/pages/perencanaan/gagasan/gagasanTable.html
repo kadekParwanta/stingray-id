@@ -1,0 +1,36 @@
+<div class="horizontal-scroll">
+
+    <div class="add-row-editable-table">
+        <button type="button" class="btn btn-warning btn-with-icon" ng-click="open('app/pages/perencanaan/gagasan/newGagasanModal.html', 'md')"><i class="ion-plus-circled"></i>Tambah Data</button>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th rowspan="2">No</th>
+                <th rowspan="2" style="text-align: center">Gagasan Kegiatan</th>
+                <th rowspan="2" style="text-align: center">Lokasi Kegiatan</th>
+                <th rowspan="2" style="text-align: center">Prakiraan Volume</th>
+                <th rowspan="2" style="text-align: center">Satuan</th>
+                <th colspan="3" style="text-align: center">Penerima Manfaat</th>
+            </tr>
+            <tr>
+                <th style="text-align: center">LK</th>
+                <th style="text-align: center">PR</th>
+                <th style="text-align: center">A-RTM</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in gagasanList">
+                <td>{{$index+1}}</td>
+                <td>{{item.Nama}}</td>
+                <td>{{item.Lokasi}}</td>
+                <td>{{item.Volume}}</td>
+                <td>{{item.Satuan}}</td>
+                <td>{{item.PenerimaManfaat.LK}}</td>
+                <td>{{item.PenerimaManfaat.PR}}</td>
+                <td>{{item.PenerimaManfaat.ARTM}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

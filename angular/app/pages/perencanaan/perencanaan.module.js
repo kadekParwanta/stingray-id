@@ -25,13 +25,22 @@
             order: 1,
           },
         })
+        .state('perencanaan.gagasan', {
+          url: '/gagasan',
+          templateUrl: 'app/pages/perencanaan/gagasan/gagasan.html',
+          controller: 'GagasanPageCtrl',
+          title: 'Daftar Usulan',
+          sidebarMeta: {
+            order: 0,
+          },
+        })
         .state('perencanaan.rpjmdes', {
           url: '/rpjmdes',
           templateUrl: 'app/pages/perencanaan/rpjmdes/rpjmdes.html',
           controller: 'RpjmdesPageCtrl',
           title: 'RPJMDesa',
           sidebarMeta: {
-            order: 0,
+            order: 1,
           },
         })
         .state('perencanaan.rkp', {
@@ -40,7 +49,7 @@
           controller: 'RkpPageCtrl',
           title: 'RKP',
           sidebarMeta: {
-            order: 1,
+            order: 2,
           },
         });
   }

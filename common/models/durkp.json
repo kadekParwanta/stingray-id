@@ -1,20 +1,14 @@
 {
-  "name": "BasicInfo",
-  "base": "PersistedModel",
+  "name": "DURKP",
+  "plural": "DURKP",
+  "base": "RKP",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "No": {
+    "Pagu": {
       "type": "number"
-    },
-    "Nama": {
-      "type": "string"
-    },
-    "Sah": {
-      "type": "boolean",
-      "default": false
     }
   },
   "validations": [],

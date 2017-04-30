@@ -1,0 +1,37 @@
+{
+  "name": "Gagasan",
+  "plural": "Gagasan",
+  "base": "BasicInfo",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Lokasi": {
+      "type": "string"
+    },
+    "Volume": {
+      "type": "number"
+    },
+    "SatuanVolume": {
+      "type": "string"
+    },
+    "PenerimaManfaat": {
+      "type": {
+        "LK": "number",
+        "PR": "number",
+        "ARTM": "number"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "RPJMDes": {
+      "type": "belongsTo",
+      "model": "RPJMDes",
+      "foreignKey": "RPJMDesId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

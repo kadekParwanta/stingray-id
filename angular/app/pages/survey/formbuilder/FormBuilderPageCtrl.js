@@ -37,7 +37,8 @@
           options: entry.options,
           placeholder: entry.placeholder,
           required: entry.required,
-          editable: entry.editable
+          editable: entry.editable,
+          validation: entry.validation
         })
       })
     }
@@ -75,6 +76,7 @@
           options: item.options,
           required: item.required,
           editable: item.editable,
+          validation: item.validation,
           SurveyId: surveyId
         }, function (res) {
           deferred.resolve(res);

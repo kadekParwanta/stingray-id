@@ -168,5 +168,13 @@
   "SurveyFormData": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Gagasan": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "DURKP": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }
