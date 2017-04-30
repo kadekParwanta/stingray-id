@@ -1,0 +1,72 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="vm.cancel()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+        <h4 class="modal-title" id="myModalLabel">{{vm.gagasan.Nama}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group has-error">
+            <label class="control-label" for="inputLokasi">Lokasi Kegiatan</label>
+            <textarea type="text" class="form-control" id="inputLokasi" ng-model="vm.gagasan.Lokasi"></textarea>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group has-success has-feedback">
+                    <label class="control-label" for="inputVolume">Prakiraan Volume</label>
+                    <input type="number" class="form-control" id="inputVolume" aria-describedby="inputSuccess2Status" ng-model="vm.gagasan.Volume">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group has-warning has-feedback">
+                    <label class="control-label" for="inputSasaran">Satuan</label>
+                    <input type="text" class="form-control" id="inputSasaran" aria-describedby="inputWarning2Status" ng-model="vm.gagasan.Satuan">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Penerima Manfaat</label>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="has-success">
+                        <label class="control-label">Laki-laki</label>
+                        <input type="number" class="form-control" id="inputManfaatLaki" aria-describedby="inputWarning2Status" ng-model="vm.gagasan.PenerimaManfaat.LK">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="has-success">
+                        <label class="control-label">Perempuan</label>
+                        <input type="number" class="form-control" id="inputManfaatLaki" aria-describedby="inputWarning2Status" ng-model="vm.gagasan.PenerimaManfaat.PR">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="has-success">
+                        <label class="control-label">A-RTM</label>
+                        <input type="number" class="form-control" id="inputManfaatLaki" aria-describedby="inputWarning2Status" ng-model="vm.gagasan.PenerimaManfaat.ARTM">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="inputBidang">Tambahkan ke RPJMDes?</label>
+            <switch color="primary" ng-model="vm.tambahKeRPJMDes"></switch>
+        </div>
+        <div class="form-group" ng-show="vm.tambahKeRPJMDes">
+            <label class="control-label" for="inputBidang">Bidang</label>
+            <select class="form-control selectpicker with-search" data-live-search="true" title="Bidang" selectpicker ng-model="vm.BidangId"
+                ng-options="item.id as item.Nama for item in vm.bidangList">
+                </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="vm.ok()">Save</button>
+    </div>
+</div>

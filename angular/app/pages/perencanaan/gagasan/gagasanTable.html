@@ -21,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in gagasanList">
+            <tr ng-repeat="item in gagasanList" style="cursor: pointer" ng-click="goToDetail(item)">
                 <td>{{$index+1}}</td>
                 <td>{{item.Nama}}</td>
                 <td>{{item.Lokasi}}</td>
