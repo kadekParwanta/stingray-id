@@ -1,14 +1,14 @@
 <div class="form-group has-success">
-  <label class="control-label" for="inputSuccess1">Sub Bidang</label>
-  <input type="text" class="form-control" id="inputSuccess1" ng-model="selectedNode.SubBidang">
+  <label class="control-label" for="inputSuccess1">Program/Kegiatan</label>
+  <input type="text" class="form-control" id="inputSuccess1" ng-model="selectedNode.SubBidang" ng-disabled="selectedNode.Sah">
 </div>
 <div class="form-group has-warning">
   <label class="control-label" for="inputWarning1">Jenis</label>
-  <input type="text" class="form-control" id="inputWarning1" ng-model="selectedNode.Jenis">
+  <input type="text" class="form-control" id="inputWarning1" ng-model="selectedNode.Jenis" ng-disabled="selectedNode.Sah">
 </div>
 <div class="form-group has-error">
   <label class="control-label" for="inputError1">Lokasi</label>
-  <textarea type="text" class="form-control" id="inputError1" ng-model="selectedNode.Lokasi"></textarea>
+  <textarea type="text" class="form-control" id="inputError1" ng-model="selectedNode.Lokasi" ng-disabled="selectedNode.Sah"></textarea>
 </div>
 <div class="form-group">
   <label class="control-label" for="inputWaktu">Waktu Pelaksanaan</label>
@@ -20,7 +20,7 @@
               <input type="checkbox" id="checkboxSuccess" ng-model="selectedNode.WaktuPelaksanaan[waktuPelaksanaan.No-1]" ng-true-value="{{waktuPelaksanaan}}"
               ng-checked="(selectedNode.WaktuPelaksanaan[0].No ===waktuPelaksanaan.No) || (selectedNode.WaktuPelaksanaan[1].No ===waktuPelaksanaan.No)|| 
               (selectedNode.WaktuPelaksanaan[2].No ===waktuPelaksanaan.No)|| (selectedNode.WaktuPelaksanaan[3].No ===waktuPelaksanaan.No)|| 
-              (selectedNode.WaktuPelaksanaan[4].No ===waktuPelaksanaan.No)|| (selectedNode.WaktuPelaksanaan[5].No ===waktuPelaksanaan.No)">
+              (selectedNode.WaktuPelaksanaan[4].No ===waktuPelaksanaan.No)|| (selectedNode.WaktuPelaksanaan[5].No ===waktuPelaksanaan.No)" ng-disabled="selectedNode.Sah">
               <span>{{waktuPelaksanaan.Nama}}</span>
             </label>
       </div>
@@ -30,17 +30,17 @@
 
 <div class="form-group has-success has-feedback">
   <label class="control-label" for="inputSuccess2">PrakiraanVolume</label>
-  <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" ng-model="selectedNode.PrakiraanVolume">
+  <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" ng-model="selectedNode.PrakiraanVolume" ng-disabled="selectedNode.Sah">
   <i class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
   <span id="inputSuccess2Status" class="sr-only">(success)</span>
 </div>
 <div class="form-group has-warning has-feedback">
   <label class="control-label" for="inputWarning2">Sasaran</label>
-  <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status" ng-model="selectedNode.Sasaran">
+  <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status" ng-model="selectedNode.Sasaran" ng-disabled="selectedNode.Sah">
   <i class="ion-alert-circled form-control-feedback" aria-hidden="true"></i>
   <span id="inputWarning2Status" class="sr-only">(warning)</span>
 </div>
 <div class="button-wrapper">
-  <button type="button" class="btn btn-danger btn-raised pull-left btn-with-icon" ng-click="deleteRPJMDes(selectedNode)"><i class="ion-trash-a"></i>Hapus</button>
-  <button type="button" class="btn btn-primary btn-raised pull-right btn-with-icon" ng-click="editRPJMDes(selectedNode)"><i class="fa fa-floppy-o"></i>Simpan</button>
+  <button type="button" class="btn btn-danger btn-raised pull-left btn-with-icon" ng-click="deleteRPJMDes(selectedNode)" ng-hide="selectedNode.Sah"><i class="ion-trash-a"></i>Hapus</button>
+  <button type="button" class="btn btn-primary btn-raised pull-right btn-with-icon" ng-click="editRPJMDes(selectedNode)" ng-hide="selectedNode.Sah"><i class="fa fa-floppy-o"></i>Simpan</button>
   </div>

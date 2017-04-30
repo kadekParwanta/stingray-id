@@ -9,7 +9,7 @@
         .controller('RpjmdesPageCtrl', RpjmdesPageCtrl);
 
     /** @ngInject */
-    function RpjmdesPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan) {
+    function RpjmdesPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP) {
         var vm = this;
         $scope.RPJMDesList = [];
         $scope.bidangList = [];
@@ -179,6 +179,29 @@
             return $q.all(promises);
         }
 
+        function createRKP(rpjmdes, waktuPelaksanaanList) {
+            var promises = waktuPelaksanaanList.map(function (waktupelaksanaan) {
+                var deferred = $q.defer();
+                if (waktupelaksanaan) {
+                    RKP.create({
+                        WaktuPelaksanaanId: waktupelaksanaan.id,
+                        Nama: rpjmdes.SubBidang,
+                        Lokasi: rpjmdes.Lokasi,
+                        Volume: rpjmdes.PrakiraanVolume,
+                        Sasaran: rpjmdes.Sasaran,
+                        BidangId: rpjmdes.BidangId
+                    }, function(data) {
+                        deferred.resolve(data);
+                    })
+                } else {
+                    deferred.resolve("");
+                }
+                return deferred.promises;
+            });
+
+            return $q.all(promises);
+        }
+
         getActiveRPJM();
 
 
@@ -299,13 +322,16 @@
                 Jenis: rpjmdes.Jenis,
                 Lokasi: rpjmdes.Lokasi,
                 PrakiraanVolume: rpjmdes.PrakiraanVolume,
-                Sasaran: rpjmdes.Sasaran
+                Sasaran: rpjmdes.Sasaran,
+                Sah: true
             }, function (result) {
                 unlinkAllWaktuPelaksanaan(rpjmdes).then(function (res) {
                     var waktuPelaksanaan = Object.keys(rpjmdes.WaktuPelaksanaan).map(function (key) { return rpjmdes.WaktuPelaksanaan[key]; });
                     assignWaktuPelaksanaan(rpjmdes, waktuPelaksanaan).then(function () {
-                        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
-                        $scope.refresh();
+                        createRKP(rpjmdes, waktuPelaksanaan).then(function(){
+                            $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+                            $scope.refresh();
+                        })
                     })
                 })
             })

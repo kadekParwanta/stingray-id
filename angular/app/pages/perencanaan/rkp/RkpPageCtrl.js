@@ -75,7 +75,8 @@
         vm.treesData[index] = vm.treeData;
       })
 
-      getRPJMDesByWaktu($scope.waktuPelaksanaanList);
+      // getRPJMDesByWaktu($scope.waktuPelaksanaanList);
+      getRKPByWaktu($scope.waktuPelaksanaanList);
     }
 
     function populateRPJMDesByWaktu(bidangList, waktuPelaksanaan) {
@@ -93,7 +94,8 @@
         })
       })
 
-      getRPJMDesByWaktu([waktuPelaksanaan]);
+      // getRPJMDesByWaktu([waktuPelaksanaan]);
+      getRKPByWaktu([waktuPelaksanaanList]);
     }
 
     function getRPJMDesByWaktu(waktuPelaksanaanList) {
@@ -150,17 +152,18 @@
             include: [
               { relation: "Bidang" },
               { relation: "SumberBiaya" },
+              /*
               {
                 relation: "RPJMDes", scope: {
                   include: { relation: "Bidang" }
                 }
-              }
+              }*/
             ]
           }
         }, function (result) {
           var indexWaktuPel = waktupelaksanaan.No - 1;
           $scope.RKPList[indexWaktuPel] = result;
-          var treeData = angular.copy($scope.treesData[indexWaktuPel]);
+          var treeData = angular.copy(vm.treesData[indexWaktuPel]);
 
           angular.forEach(result, function (item, index, arr) {
             var bidang = item.Bidang;
@@ -193,6 +196,7 @@
       $q.all(promises).then(function (treesData) {
         waktuPelaksanaanList.forEach(function(item, index){
           $scope.treesData[(item.No - 1)] = treesData[index];
+          $scope.basicConfigs[(item.No - 1)] = $scope.basicConfig;
           $scope.basicConfigs[(item.No - 1)].version++;
         })
       })

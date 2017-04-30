@@ -22,7 +22,10 @@
           include: [{
             relation: "Gagasan",
             scope: {
-              order: "No ASC"
+              order: "No ASC",
+              include: {
+                relation: 'RPJMDes'
+              }
             }
           }, {
             relation: "Bidang",
@@ -110,8 +113,16 @@
   function GagasanModalInstanceCtrl($uibModalInstance, gagasan, bidangList) {
     var vm = this;
     vm.newGagasan = {};
-    if (gagasan) vm.gagasan = gagasan;
+    if (gagasan) {
+      vm.gagasan = gagasan;
+      var RPJMDes = gagasan.RPJMDes;
+      if (RPJMDes) {
+        vm.tambahKeRPJMDes = true;
+        vm.BidangId = RPJMDes.BidangId;
+      } 
+    } 
     vm.bidangList = bidangList;
+    
 
     vm.ok = function () {
       var result = {}

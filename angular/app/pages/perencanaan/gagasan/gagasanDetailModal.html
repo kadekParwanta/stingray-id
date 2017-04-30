@@ -8,19 +8,19 @@
     <div class="modal-body">
         <div class="form-group has-error">
             <label class="control-label" for="inputLokasi">Lokasi Kegiatan</label>
-            <textarea type="text" class="form-control" id="inputLokasi" ng-model="vm.gagasan.Lokasi"></textarea>
+            <textarea type="text" class="form-control" id="inputLokasi" ng-model="vm.gagasan.Lokasi" ng-disabled="vm.gagasan.RPJMDesId"></textarea>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group has-success has-feedback">
                     <label class="control-label" for="inputVolume">Prakiraan Volume</label>
-                    <input type="number" class="form-control" id="inputVolume" aria-describedby="inputSuccess2Status" ng-model="vm.gagasan.Volume">
+                    <input type="number" class="form-control" id="inputVolume" aria-describedby="inputSuccess2Status" ng-model="vm.gagasan.Volume" ng-disabled="vm.gagasan.RPJMDesId">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group has-warning has-feedback">
                     <label class="control-label" for="inputSasaran">Satuan</label>
-                    <input type="text" class="form-control" id="inputSasaran" aria-describedby="inputWarning2Status" ng-model="vm.gagasan.Satuan">
+                    <input type="text" class="form-control" id="inputSasaran" aria-describedby="inputWarning2Status" ng-model="vm.gagasan.Satuan" ng-disabled="vm.gagasan.RPJMDesId">
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <div class="has-success">
                         <label class="control-label">Laki-laki</label>
-                        <input type="number" class="form-control" id="inputManfaatLaki" aria-describedby="inputWarning2Status" ng-model="vm.gagasan.PenerimaManfaat.LK">
+                        <input type="number" class="form-control" id="inputManfaatLaki" aria-describedby="inputWarning2Status" ng-model="vm.gagasan.PenerimaManfaat.LK" ng-disabled="vm.gagasan.RPJMDesId">
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <div class="has-success">
                         <label class="control-label">Perempuan</label>
-                        <input type="number" class="form-control" id="inputManfaatLaki" aria-describedby="inputWarning2Status" ng-model="vm.gagasan.PenerimaManfaat.PR">
+                        <input type="number" class="form-control" id="inputManfaatLaki" aria-describedby="inputWarning2Status" ng-model="vm.gagasan.PenerimaManfaat.PR" ng-disabled="vm.gagasan.RPJMDesId">
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <div class="has-success">
                         <label class="control-label">A-RTM</label>
-                        <input type="number" class="form-control" id="inputManfaatLaki" aria-describedby="inputWarning2Status" ng-model="vm.gagasan.PenerimaManfaat.ARTM">
+                        <input type="number" class="form-control" id="inputManfaatLaki" aria-describedby="inputWarning2Status" ng-model="vm.gagasan.PenerimaManfaat.ARTM" ng-disabled="vm.gagasan.RPJMDesId">
                     </div>
                 </div>
             </div>
@@ -57,16 +57,17 @@
 
         <div class="form-group">
             <label class="control-label" for="inputBidang">Tambahkan ke RPJMDes?</label>
-            <switch color="primary" ng-model="vm.tambahKeRPJMDes"></switch>
+            <switch color="primary" ng-model="vm.tambahKeRPJMDes" ng-disabled="vm.gagasan.RPJMDesId"></switch>
         </div>
         <div class="form-group" ng-show="vm.tambahKeRPJMDes">
             <label class="control-label" for="inputBidang">Bidang</label>
             <select class="form-control selectpicker with-search" data-live-search="true" title="Bidang" selectpicker ng-model="vm.BidangId"
-                ng-options="item.id as item.Nama for item in vm.bidangList">
+                ng-options="item.id as item.Nama for item in vm.bidangList" ng-disabled="vm.gagasan.RPJMDesId">
                 </select>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-success" ng-click="vm.ok()">Save</button>
+        <button type="button" class="btn btn-success" ng-click="vm.ok()" ng-hide="vm.gagasan.RPJMDesId">Save</button>
+        <button type="button" class="btn btn-success" ng-click="vm.cancel()" ng-show="vm.gagasan.RPJMDesId">OK</button>
     </div>
 </div>
