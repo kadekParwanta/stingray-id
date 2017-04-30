@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.penganggaran')
+  angular.module('BlurAdmin.pages.perencanaan')
     .controller('PendapatanPageCtrl', PendapatanPageCtrl);
 
   /** @ngInject */
@@ -346,9 +346,9 @@
 
     $scope.addNewAnggaranPendapatan = function() {
       if ($scope.IsSubpendapatanSelected) {
-        $scope.open('app/pages/penganggaran/pendapatan/pendapatanModal.html','md');
+        $scope.open('app/pages/perencanaan/pendapatan/pendapatanModal.html','md');
       } else {
-        $scope.open('app/pages/penganggaran/pendapatan/errorModal.html','md','Tidak dapat menambahkan anggaran pendapatan di sini. \nMohon pilih item pendapatan terlebih dahulu');
+        $scope.open('app/pages/perencanaan/pendapatan/errorModal.html','md','Tidak dapat menambahkan anggaran pendapatan di sini. \nMohon pilih item pendapatan terlebih dahulu');
       }
       
     }
@@ -377,7 +377,7 @@
     getActiveRPJM();
   }
 
-  angular.module('BlurAdmin.pages.penganggaran')
+  angular.module('BlurAdmin.pages.perencanaan')
     .controller('PendapatanModalInstanceCtrl', PendapatanModalInstanceCtrl);
 
   function PendapatanModalInstanceCtrl($uibModalInstance, message, selectedSubPendapatan, selectedWaktuPelaksanaan) {

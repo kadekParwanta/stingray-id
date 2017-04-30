@@ -28,6 +28,7 @@
         $scope.selectedNode;
         $scope.selectedBidang;
         $scope.bidangTitle = "Mohon pilih item di samping";
+        $scope.realisasi = false;
 
         $scope.ignoreChanges = false;
         var newId = 0;
@@ -83,7 +84,7 @@
                             "parent": bidang.id,
                             "type": "default",
                             "text": bidang.No + "." + rpjmdes.No + " " + rpjmdes.SubBidang,
-                            "li_attr":{"class":"green"},
+                            "li_attr": { "class": "green" },
                             "state": {
                                 "opened": true
                             }
@@ -190,7 +191,7 @@
                         Volume: rpjmdes.PrakiraanVolume,
                         Sasaran: rpjmdes.Sasaran,
                         BidangId: rpjmdes.BidangId
-                    }, function(data) {
+                    }, function (data) {
                         deferred.resolve(data);
                     })
                 } else {
@@ -260,6 +261,11 @@
                 var bidang = $filter('filter')($scope.bidangList, { id: parent })[0];
                 $scope.bidangTitle = bidang.Nama;
                 $scope.selectedNode = $filter('filter')(bidang.RPJMDes, { id: selectedId })[0];
+                if (typeof $scope.selectedNode.Sah !== 'undefined') {
+                    $scope.realisasi = true;
+                } else {
+                    $scope.realisasi = false;
+                }
                 $scope.$apply();
             } else {
                 $scope.selectedNode = {};
@@ -291,7 +297,7 @@
                     selectedBidang: function () {
                         return $scope.selectedBidang;
                     },
-                    RPJMDesList : function() {
+                    RPJMDesList: function () {
                         return $scope.RPJMDesList;
                     }
                 }
@@ -323,22 +329,33 @@
                 Lokasi: rpjmdes.Lokasi,
                 PrakiraanVolume: rpjmdes.PrakiraanVolume,
                 Sasaran: rpjmdes.Sasaran,
-                Sah: true
+                Sah: $scope.realisasi
             }, function (result) {
                 unlinkAllWaktuPelaksanaan(rpjmdes).then(function (res) {
-                    var waktuPelaksanaan = Object.keys(rpjmdes.WaktuPelaksanaan).map(function (key) { return rpjmdes.WaktuPelaksanaan[key]; });
-                    assignWaktuPelaksanaan(rpjmdes, waktuPelaksanaan).then(function () {
-                        createRKP(rpjmdes, waktuPelaksanaan).then(function(){
-                            $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
-                            $scope.refresh();
+                    if (rpjmdes.WaktuPelaksanaan) {
+                        var waktuPelaksanaan = Object.keys(rpjmdes.WaktuPelaksanaan).map(function (key) { return rpjmdes.WaktuPelaksanaan[key]; });
+                        assignWaktuPelaksanaan(rpjmdes, waktuPelaksanaan).then(function () {
+                            if ($scope.realisasi) {
+                                createRKP(rpjmdes, waktuPelaksanaan).then(function () {
+                                    $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+                                    $scope.refresh();
+                                })
+                            } else {
+                                $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+                                $scope.refresh();
+                            }
                         })
-                    })
+                    } else {
+                        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+                        $scope.refresh();
+                    }
+
                 })
             })
         }
 
-        $scope.export = function() {
-            $scope.open('app/pages/perencanaan/rpjmdes/rpjmdesTable.html','lg', 'app-modal-window');
+        $scope.export = function () {
+            $scope.open('app/pages/perencanaan/rpjmdes/rpjmdesTable.html', 'lg', 'app-modal-window');
         }
 
         function unlinkAllWaktuPelaksanaan(rpjmdes) {

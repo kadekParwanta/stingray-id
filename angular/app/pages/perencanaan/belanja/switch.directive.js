@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.penganggaran')
+  angular.module('BlurAdmin.pages.perencanaan')
       .directive('switch', switchDirective);
 
   /** @ngInject */

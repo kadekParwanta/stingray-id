@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.penganggaran')
+  angular.module('BlurAdmin.pages.perencanaan')
     .controller('BelanjaPageCtrl', BelanjaPageCtrl);
 
   /** @ngInject */
@@ -704,9 +704,9 @@
 
     $scope.addNewRAB = function() {
       if($scope.selectedRABNode || $scope.isRKPSelected) {
-        $scope.open('app/pages/penganggaran/belanja/errorModal.html','md','Tidak dapat menambahkan anggaran belanja di sini. \nMohon pilih item belanja terlebih dahulu');
+        $scope.open('app/pages/perencanaan/belanja/errorModal.html','md','Tidak dapat menambahkan anggaran belanja di sini. \nMohon pilih item belanja terlebih dahulu');
       } else {
-        $scope.open('app/pages/penganggaran/belanja/belanjaModal.html', 'md');
+        $scope.open('app/pages/perencanaan/belanja/belanjaModal.html', 'md');
       }
     }
 
@@ -746,7 +746,7 @@
     }
   }
 
-  angular.module('BlurAdmin.pages.penganggaran')
+  angular.module('BlurAdmin.pages.perencanaan')
     .controller('BelanjaModalInstanceCtrl', BelanjaModalInstanceCtrl);
 
   function BelanjaModalInstanceCtrl($uibModalInstance, selectedBelanja, sumberBiayaItemList, $scope, selectedBelanjaTitle, message) {
