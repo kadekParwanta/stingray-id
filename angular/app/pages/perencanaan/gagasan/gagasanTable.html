@@ -21,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in gagasanList" style="cursor: pointer" ng-click="goToDetail(item)">
+            <tr ng-repeat="item in gagasanList" style="cursor: pointer" ng-click="goToDetail(item)" ng-class="{green: item.Sah}">
                 <td>{{$index+1}}</td>
                 <td>{{item.Nama}}</td>
                 <td>{{item.Lokasi}}</td>

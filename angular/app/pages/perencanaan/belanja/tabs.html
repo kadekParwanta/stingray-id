@@ -10,6 +10,9 @@
             <div class="col-sm-2">
               <div class="control-side text-center">
                 <div>
+                  <button class="btn btn-success" ng-click="addNewRAB()">Add</button>
+                </div>
+                <div>
                   <button class="btn btn-primary" ng-click="collapse()">Collapse All</button>
                 </div>
                 <div>
@@ -22,9 +25,6 @@
                   <i class="jstree-icon jstree-themeicon ion-ios-folder jstree-themeicon-custom" role="presentation"></i>                  Bidang
                 </div>
                 <div>
-                  <i class="jstree-icon jstree-themeicon ion-document-text jstree-themeicon-custom" role="presentation"></i>                  Sub Bidang
-                </div>
-                <div>
                   <i class="jstree-icon jstree-themeicon ion-pricetag jstree-themeicon-custom" role="presentation"></i> Kegiatan
                 </div>
               </div>
@@ -32,20 +32,41 @@
             <div class="col-sm-10">
               <div id="{{'basicTree'+$index}}" js-tree="basicConfigs[$index]" ng-model="treesData[$index]" should-apply="applyModelChanges()"
                 tree="basicTrees[$index]" tree-events="ready:readyCB"></div>
-            </div>
           </div>
-        </uib-tab>
-      </uib-tabset>
+    </div>
+    </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+<div class="col-sm-5">
+  <div class="row">
+    <div class="col-sm-12" ng-show="selectedRKP">
+      <div ba-panel ba-panel-title="RKP {{selectedRKP.Nama}}" ba-panel-class="with-scroll panel-warning">
+        <div include-with-scope="app/pages/perencanaan/belanja/table.html"></div>
+      </div>
+    </div>
+    <div class="col-sm-12" ng-show="selectedBidang">
+      <div ba-panel ba-panel-title="{{selectedBidang.Nama}}" ba-panel-class="with-scroll panel-warning">
+        <div include-with-scope="app/pages/perencanaan/belanja/rkpTable.html"></div>
+      </div>
     </div>
   </div>
-  <div class="col-sm-5" ng-show="selectedRKP">
-    <div ba-panel ba-panel-title="{{selectedRKP.parentNo}}.{{selectedRKP.No}} {{selectedRKP.Nama}}" ba-panel-class="with-scroll panel-warning">
-      <div include-with-scope="app/pages/perencanaan/belanja/table.html"></div>
+  <div class="row" style="margin-top: 10px">
+    <div class="col-sm-12">
+      <div ba-panel ba-panel-title="RAB {{selectedRABNode.Nama}}" ba-panel-class="with-scroll panel-info" ng-show="selectedRABNode">
+        <div include-with-scope="app/pages/perencanaan/belanja/belanjaItemForm.html"></div>
+      </div>
+      <div ba-panel ba-panel-title="{{selectedBelanja.No}} {{selectedBelanja.Nama}}" ba-panel-class="with-scroll panel-info" ng-show="selectedBelanja">
+        <div include-with-scope="app/pages/perencanaan/belanja/belanjaTable.html"></div>
+      </div>
+      <div ba-panel ba-panel-title="{{selectedBelanjaTitleNode.No}} {{selectedBelanjaTitleNode.Nama}}" ba-panel-class="with-scroll panel-info"
+        ng-show="selectedBelanjaTitleNode">
+        <div include-with-scope="app/pages/perencanaan/belanja/belanjaTitleTable.html"></div>
+    </div>
+    <div ba-panel ba-panel-title="{{selectedRKP.No}} {{selectedRKP.Nama}}" ba-panel-class="with-scroll panel-info" ng-show="isRKPSelected">
+      <div include-with-scope="app/pages/perencanaan/belanja/belanjaRKPTable.html"></div>
     </div>
   </div>
-  <div class="col-sm-5" ng-show="selectedRPJMDes || selectedBidang">
-    <div ba-panel ba-panel-title="-" ba-panel-class="with-scroll panel-warning">
-      <div include-with-scope="app/pages/perencanaan/belanja/rkpTable.html"></div>
-    </div>
-  </div>
+</div>
+</div>
 </div>
