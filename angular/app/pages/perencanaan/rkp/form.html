@@ -1,83 +1,116 @@
-<div class="form-group has-success">
-  <label class="control-label" for="inputSuccess1">Nama</label>
-  <input type="text" class="form-control" id="inputSuccess1" ng-model="selectedNode.Nama" ng-disabled="!selectedNode">
-</div>
-<div class="form-group has-error">
-  <label class="control-label" for="inputLokasi">Lokasi</label>
-  <textarea type="text" class="form-control" id="inputLokasi" ng-model="selectedNode.Lokasi" ng-disabled="!selectedNode"></textarea>
-</div>
-<div class="form-group has-success has-feedback">
-  <label class="control-label" for="inputVolume">Volume</label>
-  <input type="text" class="form-control" id="inputVolume" aria-describedby="inputSuccess2Status" ng-model="selectedNode.Volume" ng-disabled="!selectedNode">
-  <i class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
-  <span id="inputSuccess2Status" class="sr-only">(success)</span>
-</div>
-<div class="form-group has-warning has-feedback">
-  <label class="control-label" for="inputSasaran">Sasaran</label>
-  <input type="text" class="form-control" id="inputSasaran" aria-describedby="inputWarning2Status" ng-model="selectedNode.Sasaran" ng-disabled="!selectedNode">
-  <i class="ion-alert-circled form-control-feedback" aria-hidden="true"></i>
-  <span id="inputWarning2Status" class="sr-only">(warning)</span>
-</div>
-<div class="form-group has-warning">
-  <label class="control-label" for="inputJenis">Pelaksana Kegiatan</label>
-  <input type="text" class="form-control" id="inputJenis" ng-model="selectedNode.Pelaksana" ng-disabled="!selectedNode">
-</div>
-<div class="form-group">
-  <label class="control-label" for="inputBidang">Pola Pelaksanaan</label>
-  <select class="form-control selectpicker with-search" data-live-search="true" title="Pola Pelaksanaan" selectpicker ng-model="selectedNode.PolaPelaksanaanId"
-    ng-options="item.id as item.Nama for item in polaPelaksanaanList" ng-disabled="!selectedNode">
+<form name="rkpForm" novalidate>
+  <div class="form-group" ng-class="{'has-error': rkpForm.nama.$error.required && !rkpForm.nama.$pristine, 
+  'has-success': rkpForm.nama.$valid, 'has-feedback': rkpForm.nama.$valid}">
+    <label class="control-label">Nama*</label>
+    <input type="text" class="form-control" name="nama" ng-model="selectedNode.Nama" ng-disabled="!selectedNode" required>
+    <p ng-show="rkpForm.nama.$invalid && !rkpForm.nama.$pristine" class="help-block">Mohon isi nama Program/Kegiatan</p>
+    <i ng-show="rkpForm.nama.$valid" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+    <span ng-show="rkpForm.nama.$valid" class="sr-only">(success)</span>
+  </div>
+  <div class="form-group" ng-class="{'has-error': rkpForm.lokasi.$error.required && !rkpForm.lokasi.$pristine, 
+  'has-success': rkpForm.lokasi.$valid, 'has-feedback': rkpForm.lokasi.$valid}">
+    <label class="control-label">Lokasi*</label>
+    <textarea type="text" class="form-control" name="lokasi" ng-model="selectedNode.Lokasi" ng-disabled="!selectedNode" required></textarea>
+    <p ng-show="rkpForm.lokasi.$invalid && !rkpForm.lokasi.$pristine" class="help-block">Mohon isi lokasi kegiatan</p>
+    <i ng-show="rkpForm.lokasi.$valid" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+    <span ng-show="rkpForm.lokasi.$valid" class="sr-only">(success)</span>
+  </div>
+  <div class="form-group" ng-class="{'has-error': rkpForm.volume.$error.required && !rkpForm.volume.$pristine, 
+  'has-success': rkpForm.volume.$valid, 'has-feedback': rkpForm.volume.$valid}">
+    <label class="control-label" for="inputVolume">Volume*</label>
+    <input type="text" class="form-control" name="volume" ng-model="selectedNode.Volume"
+      ng-disabled="!selectedNode" required>
+    <p ng-show="rkpForm.volume.$invalid && !rkpForm.volume.$pristine" class="help-block">Mohon isi volume kegiatan</p>
+    <i ng-show="rkpForm.volume.$valid" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+    <span ng-show="rkpForm.volume.$valid" class="sr-only">(success)</span>
+  </div>
+  <div class="form-group" ng-class="{'has-error': rkpForm.sasaran.$error.required && !rkpForm.sasaran.$pristine, 
+  'has-success': rkpForm.sasaran.$valid, 'has-feedback': rkpForm.sasaran.$valid}">
+    <label class="control-label">Sasaran*</label>
+    <input type="text" class="form-control" name="sasaran" ng-model="selectedNode.Sasaran"
+      ng-disabled="!selectedNode" required>
+    <p ng-show="rkpForm.sasaran.$invalid && !rkpForm.sasaran.$pristine" class="help-block">Mohon isi sasaran kegiatan</p>
+    <i ng-show="rkpForm.sasaran.$valid" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+    <span ng-show="rkpForm.sasaran.$valid" class="sr-only">(success)</span>
+  </div>
+  <div class="form-group" ng-class="{'has-error': rkpForm.pelaksana.$error.required && !rkpForm.pelaksana.$pristine, 
+  'has-success': rkpForm.pelaksana.$valid, 'has-feedback': rkpForm.pelaksana.$valid}">
+    <label class="control-label">Pelaksana Kegiatan*</label>
+    <input type="text" class="form-control" name="pelaksana" ng-model="selectedNode.Pelaksana" ng-disabled="!selectedNode" required>
+    <p ng-show="rkpForm.pelaksana.$invalid && !rkpForm.pelaksana.$pristine" class="help-block">Mohon isi pelaksana kegiatan</p>
+    <i ng-show="rkpForm.pelaksana.$valid" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+    <span ng-show="rkpForm.pelaksana.$valid" class="sr-only">(success)</span>
+  </div>
+  <div class="form-group" ng-class="{'has-error': rkpForm.pola.$error.required && !rkpForm.pola.$pristine, 
+  'has-success': rkpForm.pola.$valid}">
+    <label class="control-label">Pola Pelaksanaan*</label>
+    <select name="pola" class="form-control selectpicker with-search" data-live-search="true" selectpicker ng-model="selectedNode.PolaPelaksanaanId"
+      ng-options="item.id as item.Nama for item in polaPelaksanaanList" ng-disabled="!selectedNode" required>
+      <option value="">---Pilih---</option>
     </select>
-</div>
-<div class="form-group has-success">
-  <label class="control-label" for="inputSuccess1">Prakiraan Lama Pelaksanaan</label>
-  <input type="text" class="form-control" id="inputSuccess1" ng-model="selectedNode.PraLamaPelaksanaan" ng-disabled="!selectedNode">
-</div>
+    <p ng-show="rkpForm.pola.$invalid && !rkpForm.pola.$pristine" class="help-block">Mohon pilih pola pelaksanaan kegiatan</p>
+  </div>
+  <div class="form-group" ng-class="{'has-error': rkpForm.lama.$error.required && !rkpForm.lama.$pristine, 
+  'has-success': rkpForm.lama.$valid, 'has-feedback': rkpForm.lama.$valid}">
+    <label class="control-label">Prakiraan Lama Pelaksanaan*</label>
+    <input type="text" class="form-control" name="lama" ng-model="selectedNode.PraLamaPelaksanaan" ng-disabled="!selectedNode" required>
+    <p ng-show="rkpForm.lama.$invalid && !rkpForm.lama.$pristine" class="help-block">Mohon isi lama pelaksanaan kegiatan</p>
+    <i ng-show="rkpForm.lama.$valid" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+    <span ng-show="rkpForm.lama.$valid" class="sr-only">(success)</span>
+  </div>
 
-<div class="form-group has-success">
-  <label class="control-label" for="inputSuccess1">Mulai Pelaksanaan</label>
-  <p class="input-group">
-    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedNode.TanggalMulai" is-open="popup1.opened"
-      datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-disabled="!selectedNode"/>
-    <span class="input-group-btn">
+  <div class="form-group" ng-class="{'has-error': rkpForm.mulai.$error.required && !rkpForm.mulai.$pristine, 
+  'has-success': rkpForm.mulai.$valid}">
+    <label class="control-label" for="inputSuccess1">Mulai Pelaksanaan</label>
+    <p class="input-group">
+      <input type="text" name="mulai" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedNode.TanggalMulai" is-open="popup1.opened"
+        datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-disabled="!selectedNode"
+      required>
+      <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1()"><i class="fa fa-calendar"></i></button>
           </span>
-  </p>
-</div>
-<div class="form-group has-success">
-  <label class="control-label" for="inputSuccess1">Akhir Pelaksanaan</label>
-  <p class="input-group">
-    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedNode.TanggalSelesai" is-open="popup2.opened"
-      datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-disabled="!selectedNode"/>
-    <span class="input-group-btn">
+    </p>
+    <p ng-show="rkpForm.mulai.$invalid && !rkpForm.mulai.$pristine" class="help-block">Mohon isi waktu mulai pelaksanaan kegiatan</p>
+  </div>
+  <div class="form-group" ng-class="{'has-error': rkpForm.selesai.$error.required && !rkpForm.selesai.$pristine, 
+  'has-success': rkpForm.selesai.$valid}">
+    <label class="control-label" for="inputSuccess1">Akhir Pelaksanaan</label>
+    <p class="input-group">
+      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedNode.TanggalSelesai" is-open="popup2.opened"
+        datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-disabled="!selectedNode" name="selesai" required>
+      <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open2()"><i class="fa fa-calendar"></i></button>
           </span>
-  </p>
-</div>
-<div class="form-group has-success" style="background-color: #494444; padding: 10px">
-  <label class="control-label" for="inputBidang" style="color: white">Prakiraan Dana dan Sumber Pembiayaan</label>
-  <fieldset data-ng-repeat="sumberBiaya in selectedSumberBiaya" style="margin-top: 10px">
-    <div class="row">
-      <div class="col-sm-5">
-        <select class="form-control selectpicker with-search" data-live-search="true" title="Bidang" selectpicker ng-model="sumberBiaya.SumberBiayaItemId"
-          ng-options="item.id as item.Nama for item in sumberBiayaItemList" ng-disabled="!selectedNode">
+    </p>
+    <p ng-show="rkpForm.selesai.$invalid && !rkpForm.selesai.$pristine" class="help-block">Mohon isi waktu akhir pelaksanaan kegiatan</p>
+  </div>
+  <div class="form-group has-success" style="background-color: #494444; padding: 10px">
+    <label class="control-label" for="inputBidang" style="color: white">Prakiraan Dana dan Sumber Pembiayaan</label>
+    <fieldset data-ng-repeat="sumberBiaya in selectedSumberBiaya" style="margin-top: 10px">
+      <div class="row">
+        <div class="col-sm-5">
+          <select class="form-control selectpicker with-search" data-live-search="true" title="Bidang" selectpicker ng-model="sumberBiaya.SumberBiayaItemId"
+            ng-options="item.id as item.Nama for item in sumberBiayaItemList" ng-disabled="!selectedNode">
           <option value="">---Pilih---</option>
     </select>
-      </div>
-      <div class="col-sm-5">
-        <div class="input-group">
-          <span class="input-group-addon addon-left">Rp.</span>
-          <input type="number" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" ng-model="sumberBiaya.Jumlah" placeholder="Jumlah" ng-disabled="!selectedNode">
         </div>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <span class="input-group-addon addon-left">Rp.</span>
+            <input type="number" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" ng-model="sumberBiaya.Jumlah"
+              placeholder="Jumlah" ng-disabled="!selectedNode">
+          </div>
+        </div>
+        <div class="col-sm-2"><button class="btn btn-danger" ng-show="$last" ng-click="removeSumberBiaya(sumberBiaya)" ng-disabled="!selectedNode">-</button></div>
       </div>
-      <div class="col-sm-2"><button class="btn btn-danger" ng-show="$last" ng-click="removeSumberBiaya(sumberBiaya)" ng-disabled="!selectedNode">-</button></div>
+    </fieldset>
+    <div class="row" style="margin-top: 10px">
+      <div class="col-sm-2"><button class="btn btn-primary pull-left" ng-click="addNewSumberBiaya()" ng-disabled="!selectedNode">+</button></div>
     </div>
-  </fieldset>
-  <div class="row" style="margin-top: 10px">
-    <div class="col-sm-2"><button class="btn btn-primary pull-left" ng-click="addNewSumberBiaya()" ng-disabled="!selectedNode">+</button></div>
   </div>
-</div>
 
-<div class="button-wrapper">
-  <button type="button" class="btn btn-danger btn-raised pull-left btn-with-icon" ng-click="deleteRKP(selectedNode)" ng-disabled="!selectedNode"><i class="ion-trash-a"></i>Hapus</button>
-  <button type="button" class="btn btn-primary btn-raised pull-right btn-with-icon" ng-click="editRKP(selectedNode)" ng-disabled="!selectedNode"><i class="fa fa-floppy-o"></i>Simpan</button>
-</div>
+  <div class="button-wrapper">
+    <button type="button" class="btn btn-danger btn-raised pull-left btn-with-icon" ng-click="deleteRKP(selectedNode)" ng-disabled="!selectedNode || rpjmdesForm.$invalid"><i class="ion-trash-a"></i>Hapus</button>
+    <button type="button" class="btn btn-primary btn-raised pull-right btn-with-icon" ng-click="editRKP(selectedNode)" ng-disabled="!selectedNode || rpjmdesForm.$invalid"><i class="fa fa-floppy-o"></i>Simpan</button>
+  </div>
+</form>

@@ -95,7 +95,7 @@
       })
 
       // getRPJMDesByWaktu([waktuPelaksanaan]);
-      getRKPByWaktu([waktuPelaksanaanList]);
+      getRKPByWaktu([waktuPelaksanaan]);
     }
 
     function getRPJMDesByWaktu(waktuPelaksanaanList) {
@@ -302,6 +302,8 @@
             $scope.defaultSumberBiaya
           ];
         }
+        $scope.selectedNode.TanggalMulai = new Date($scope.selectedNode.TanggalMulai);
+        $scope.selectedNode.TanggalSelesai = new Date($scope.selectedNode.TanggalSelesai);
         
         $scope.$apply();
       } else if (node.type === 'folder'){
