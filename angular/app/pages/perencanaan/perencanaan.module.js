@@ -52,15 +52,6 @@
             order: 2,
           },
         })
-        .state('perencanaan.pendapatan', {
-          url: '/pendapatan',
-          templateUrl: 'app/pages/perencanaan/pendapatan/pendapatan.html',
-          controller: 'PendapatanPageCtrl',
-          title: 'Pendapatan',
-          sidebarMeta: {
-            order: 3,
-          },
-        })
         .state('perencanaan.belanja', {
           url: '/belanja',
           templateUrl: 'app/pages/perencanaan/belanja/belanja.html',

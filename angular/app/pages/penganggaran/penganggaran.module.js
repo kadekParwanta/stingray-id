@@ -25,13 +25,22 @@
             order: 2,
           },
         })
+        .state('penganggaran.pendapatan', {
+          url: '/pendapatan',
+          templateUrl: 'app/pages/penganggaran/pendapatan/pendapatan.html',
+          controller: 'PendapatanPageCtrl',
+          title: 'Pendapatan',
+          sidebarMeta: {
+            order: 0,
+          },
+        })
         .state('penganggaran.pembiayaan', {
           url: '/biaya',
           templateUrl: 'app/pages/penganggaran/pembiayaan/pembiayaan.html',
           controller: 'PembiayaanPageCtrl',
           title: 'Pembiayaan',
           sidebarMeta: {
-            order: 0,
+            order: 1,
           },
         })
         .state('penganggaran.apbdes', {
@@ -40,7 +49,7 @@
           controller: 'APBDesPageCtrl',
           title: 'APBDes',
           sidebarMeta: {
-            order: 1,
+            order: 2,
           },
         });
   }
