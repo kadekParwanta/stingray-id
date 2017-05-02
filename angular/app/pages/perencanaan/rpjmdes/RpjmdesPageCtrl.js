@@ -422,6 +422,10 @@
         vm.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         }
+        
+        vm.convertAlphabetical = function(n) {
+            return String.fromCharCode(97 + n);
+        }
     }
 
 })();

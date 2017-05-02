@@ -30,47 +30,47 @@
             <td colspan="12">: {{vm.desa.provinsi}}</td>
         </tr>
         <tr>
-            <th rowspan="2">No</th>
-            <th colspan="4">Bidang/ Jenis Kegiatan</th>
-            <th rowspan="2">Lokasi<br>(RT, RW, Dusun)</th>
-            <th rowspan="2">Prakiraan<br>Volume</th>
-            <th rowspan="2">Sasaran/<br>Manfaat</th>
-            <th colspan="6">Waktu Pelaksanaan</th>
+            <th rowspan="2" style="vertical-align: middle !important">No</th>
+            <th colspan="4" style="text-align: center">Bidang/ Jenis Kegiatan</th>
+            <th rowspan="2" style="vertical-align: middle !important">Lokasi<br>(RT, RW, Dusun)</th>
+            <th rowspan="2" style="vertical-align: middle !important">Prakiraan<br>Volume</th>
+            <th rowspan="2" style="vertical-align: middle !important">Sasaran/<br>Manfaat</th>
+            <th colspan="6" style="text-align: center">Waktu Pelaksanaan</th>
         </tr>
         <tr>
             <th>Bidang</th>
             <th></th>
-            <th>Sub Bidang</th>
-            <th>Jenis Kegiatan</th>
-            <th>Tahun <br>1</th>
-            <th>Tahun <br>2</th>
-            <th>Tahun <br>3</th>
-            <th>Tahun <br>4</th>
-            <th>Tahun <br>5</th>
-            <th>Tahun <br>6</th>
+            <th style="text-align: center">Sub Bidang</th>
+            <th style="text-align: center">Jenis Kegiatan</th>
+            <th style="text-align: center">Tahun <br>1</th>
+            <th style="text-align: center">Tahun <br>2</th>
+            <th style="text-align: center">Tahun <br>3</th>
+            <th style="text-align: center">Tahun <br>4</th>
+            <th style="text-align: center">Tahun <br>5</th>
+            <th style="text-align: center">Tahun <br>6</th>
         </tr>
         <tr>
             <th>a</th>
-            <th>b</th>
-            <th>c</th>
-            <th>d</th>
-            <th>e</th>
-            <th>f</th>
-            <th>g</th>
-            <th>h</th>
-            <th>i</th>
-            <th>j</th>
-            <th>k</th>
-            <th>l</th>
-            <th>m</th>
-            <th>n</th>
+            <th style="text-align: center">b</th>
+            <th style="text-align: center">c</th>
+            <th style="text-align: center">d</th>
+            <th style="text-align: center">e</th>
+            <th style="text-align: center">f</th>
+            <th style="text-align: center">g</th>
+            <th style="text-align: center">h</th>
+            <th style="text-align: center">i</th>
+            <th style="text-align: center">j</th>
+            <th style="text-align: center">k</th>
+            <th style="text-align: center">l</th>
+            <th style="text-align: center">m</th>
+            <th style="text-align: center">n</th>
         </tr>
     </thead>
     <tbody ng-repeat="bidang in vm.bidangList track by $index">
         <tr ng-repeat="rpjmdes in bidang.RPJMDes">
             <td>{{bidang.No}}</td>
             <td>{{bidang.Nama}}</td>
-            <td></td>
+            <td>{{vm.convertAlphabetical($index)}}</td>
             <td>{{rpjmdes.SubBidang}}</td>
             <td>{{rpjmdes.Jenis}}</td>
             <td>{{rpjmdes.Lokasi}}</td>
@@ -84,10 +84,152 @@
             <td>{{rpjmdes.WaktuPelaksanaan[0].No == 6? '&#10004;':''}}</td>
         </tr>
         <tr>
-            <td colspan="8">Jumlah Per Bidang {{bidang.No}}</td>
+            <td colspan="8" style="text-align: right">Jumlah Per Bidang {{bidang.No}}</td>
             <td colspan="6"></td>
         </tr>
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="8" style="text-align: right">JUMLAH TOTAL</td>
+            <td colspan="6"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: right" colspan="4">..................., Tanggal ......., ......., ...........</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: center">Mengetahui,</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: center" colspan="3">Disusun oleh:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: center">Kepala Desa</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td  style="text-align: center"colspan="3">Tim Penyusun RPJM Desa</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: center">(.......................)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td  style="text-align: center"colspan="3">(.......................)</td>
+            <td></td>
+        </tr>
+    </tfoot>
 </table>
   </div>
 </div>
