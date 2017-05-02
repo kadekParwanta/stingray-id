@@ -3,51 +3,89 @@
     <button type="button" class="close" ng-click="vm.cancel()" aria-label="Close">
       <em class="ion-ios-close-empty sn-link-close"></em>
     </button>
-    <h4 class="modal-title" id="myModalLabel">Buat RPJM baru</h4>
   </div>
   <div class="modal-body">
 <table class="table table-bordered table-hover">
     <thead> 
         <tr>
-            <th rowspan="2" colspan="2">Kode Rekening</th>
-            <th rowspan="2" style="width:30%;">Bidang/Program/Kegiatan</th>
+            <th colspan="14">RANCANGAN RPJM DESA</th>
+        </tr>
+        <tr>
+            <th colspan="14">TAHUN {{vm.waktuPelaksanaanList[0].Nama}}</th>
+        </tr>
+        <tr>
+            <td colspan="2">DESA</td>
+            <td colspan="12">: {{vm.desa.desa}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">KECAMATAN</td>
+            <td colspan="12">: {{vm.desa.kecamatan}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">KABUPATEN</td>
+            <td colspan="12">: {{vm.desa.kabupaten}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">PROVINSI</td>
+            <td colspan="12">: {{vm.desa.provinsi}}</td>
+        </tr>
+        <tr>
+            <th rowspan="2">No</th>
+            <th colspan="4">Bidang/ Jenis Kegiatan</th>
             <th rowspan="2">Lokasi<br>(RT, RW, Dusun)</th>
             <th rowspan="2">Prakiraan<br>Volume</th>
             <th rowspan="2">Sasaran/<br>Manfaat</th>
-            <th colspan="6">Waktu<br>Pelaksanaan</th>
+            <th colspan="6">Waktu Pelaksanaan</th>
         </tr>
         <tr>
-            <td>2015</td>
-            <td>2016</td>
-            <td>2017</td>
-            <td>2018</td>
-            <td>2019</td>
-            <td>2020</td>
-            </tr>
+            <th>Bidang</th>
+            <th></th>
+            <th>Sub Bidang</th>
+            <th>Jenis Kegiatan</th>
+            <th>Tahun <br>1</th>
+            <th>Tahun <br>2</th>
+            <th>Tahun <br>3</th>
+            <th>Tahun <br>4</th>
+            <th>Tahun <br>5</th>
+            <th>Tahun <br>6</th>
+        </tr>
+        <tr>
+            <th>a</th>
+            <th>b</th>
+            <th>c</th>
+            <th>d</th>
+            <th>e</th>
+            <th>f</th>
+            <th>g</th>
+            <th>h</th>
+            <th>i</th>
+            <th>j</th>
+            <th>k</th>
+            <th>l</th>
+            <th>m</th>
+            <th>n</th>
+        </tr>
     </thead>
-    <tbody>
-        <tr ng-repeat="RPJMDes in vm.RPJMDesList track by $index">
-            <td>1</td>
+    <tbody ng-repeat="bidang in vm.bidangList track by $index">
+        <tr ng-repeat="rpjmdes in bidang.RPJMDes">
+            <td>{{bidang.No}}</td>
+            <td>{{bidang.Nama}}</td>
             <td></td>
-            <td>Penyelenggaraan Pemerintahan Desa</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td colspan="6"></td>
+            <td>{{rpjmdes.SubBidang}}</td>
+            <td>{{rpjmdes.Jenis}}</td>
+            <td>{{rpjmdes.Lokasi}}</td>
+            <td>{{rpjmdes.PrakiraanVolume}}</td>
+            <td>{{rpjmdes.Sasaran}}</td>
+            <td>{{rpjmdes.WaktuPelaksanaan[0].No == 1? '&#10004;':''}}</td>
+            <td>{{rpjmdes.WaktuPelaksanaan[0].No == 2? '&#10004;':''}}</td>
+            <td>{{rpjmdes.WaktuPelaksanaan[0].No == 3? '&#10004;':''}}</td>
+            <td>{{rpjmdes.WaktuPelaksanaan[0].No == 4? '&#10004;':''}}</td>
+            <td>{{rpjmdes.WaktuPelaksanaan[0].No == 5? '&#10004;':''}}</td>
+            <td>{{rpjmdes.WaktuPelaksanaan[0].No == 6? '&#10004;':''}}</td>
         </tr>
         <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>Siltap Kades dan Perangkat</td>
-            <td>q</td>
-            <td>940000000</td>
-            <td>perengkat Desa</td>
-            <td></td>
-            <td class="text-center"><i class="fa fa-check"></i></td>
-            <td class="text-center"><i class="fa fa-check"></i></td>
-            <td class="text-center"><i class="fa fa-check"></i></td>
-            <td></td>
-            <td></td>
+            <td colspan="8">Jumlah Per Bidang {{bidang.No}}</td>
+            <td colspan="6"></td>
         </tr>
     </tbody>
 </table>

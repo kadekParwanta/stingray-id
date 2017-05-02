@@ -9,7 +9,7 @@
         .controller('RpjmdesPageCtrl', RpjmdesPageCtrl);
 
     /** @ngInject */
-    function RpjmdesPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP) {
+    function RpjmdesPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP, Desa) {
         var vm = this;
         $scope.RPJMDesList = [];
         $scope.bidangList = [];
@@ -28,6 +28,7 @@
         $scope.selectedNode;
         $scope.selectedBidang;
         $scope.bidangTitle = "Mohon pilih item di samping";
+        $scope.desa;
 
         $scope.ignoreChanges = false;
         var newId = 0;
@@ -206,8 +207,18 @@
             return $q.all(promises);
         }
 
-        getActiveRPJM();
+        function getDesaDetail() {
+            Desa.find(function (desaList) {
+                $scope.desa = desaList[0];
+            })
+        }
 
+        function init() {
+            getDesaDetail();
+            getActiveRPJM();
+        }
+
+        init();
 
         $scope.addNewNode = function () {
             $scope.ignoreChanges = true;
@@ -296,8 +307,8 @@
                     selectedBidang: function () {
                         return $scope.selectedBidang;
                     },
-                    RPJMDesList: function () {
-                        return $scope.RPJMDesList;
+                    desa: function () {
+                        return $scope.desa;
                     },
                     message: function () {
                         return message;
@@ -391,12 +402,12 @@
     angular.module('BlurAdmin.pages.perencanaan')
         .controller('RpjmdesModalInstanceCtrl', RpjmdesModalInstanceCtrl);
 
-    function RpjmdesModalInstanceCtrl($uibModalInstance, bidangList, waktuPelaksanaanList, selectedBidang, RPJMDesList, message) {
+    function RpjmdesModalInstanceCtrl($uibModalInstance, bidangList, waktuPelaksanaanList, selectedBidang, desa, message) {
         var vm = this;
         vm.bidangList = bidangList;
         vm.waktuPelaksanaanList = waktuPelaksanaanList;
         vm.selectedWaktuPelaksanaan = [];
-        vm.RPJMDesList = RPJMDesList;
+        vm.desa = desa;
         vm.newRPJMDes = {};
         vm.message = message;
         if (selectedBidang) vm.newRPJMDes.BidangId = selectedBidang.id;
