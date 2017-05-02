@@ -1,20 +1,32 @@
-<div class="form-group has-success">
-  <label class="control-label" for="inputSuccess1">Program/Kegiatan</label>
-  <input type="text" class="form-control" id="inputSuccess1" ng-model="selectedNode.SubBidang" ng-disabled="selectedNode.Sah">
-</div>
-<div class="form-group has-warning">
-  <label class="control-label" for="inputWarning1">Jenis</label>
-  <input type="text" class="form-control" id="inputWarning1" ng-model="selectedNode.Jenis" ng-disabled="selectedNode.Sah">
-</div>
-<div class="form-group has-error">
-  <label class="control-label" for="inputError1">Lokasi</label>
-  <textarea type="text" class="form-control" id="inputError1" ng-model="selectedNode.Lokasi" ng-disabled="selectedNode.Sah"></textarea>
-</div>
-<div class="form-group">
-  <label class="control-label" for="inputWaktu">Waktu Pelaksanaan</label>
-  <div ng-repeat="waktuPelaksanaan in waktuPelaksanaanList">
+<form name="rpjmdesForm" novalidate>
+  <div class="form-group has-error" >
+    <label class="control-label" ng-show="!selectedNode.TambahRKP">-Item ini BELUM ditambahkan ke RKP</label>
+    <label class="control-label" ng-show="selectedNode.TambahRKP">-Item ini SUDAH ditambahkan ke RKP</label>
+  </div>
+  <div class="form-group" ng-class="{'has-error': rpjmdesForm.progkeg.$error.required && !rpjmdesForm.progkeg.$pristine, 
+  'has-success': rpjmdesForm.progkeg.$valid, 'has-feedback': rpjmdesForm.progkeg.$valid}">
+    <label class="control-label">Program/Kegiatan*</label>
+    <input type="text" class="form-control" name="progkeg" ng-model="selectedNode.SubBidang" ng-disabled="selectedNode.Sah" required>
+    <p ng-show="rpjmdesForm.progkeg.$invalid && !rpjmdesForm.progkeg.$pristine" class="help-block">Mohon isi nama Program/Kegiatan</p>
+    <i ng-show="rpjmdesForm.progkeg.$valid" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+    <span ng-show="rpjmdesForm.progkeg.$valid" id="inputSuccess2Status" class="sr-only">(success)</span>
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="inputWarning1">Jenis</label>
+    <input type="text" class="form-control" id="inputWarning1" ng-model="selectedNode.Jenis" ng-disabled="selectedNode.Sah">
+  </div>
+  <div class="form-group" ng-class="{'has-error': rpjmdesForm.lokasi.$error.required && !rpjmdesForm.lokasi.$pristine, 
+  'has-success': rpjmdesForm.lokasi.$valid, 'has-feedback': rpjmdesForm.lokasi.$valid}">
+    <label class="control-label">Lokasi*</label>
+    <textarea type="text" class="form-control" name="lokasi" ng-model="selectedNode.Lokasi" ng-disabled="selectedNode.Sah" required></textarea>
+    <p ng-show="rpjmdesForm.lokasi.$invalid && !rpjmdesForm.lokasi.$pristine" class="help-block">Mohon isi lokasi kegiatan</p>
+    <i ng-show="rpjmdesForm.lokasi.$valid" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+    <span ng-show="rpjmdesForm.lokasi.$valid" id="inputSuccess2Status" class="sr-only">(success)</span>
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="inputWaktu">Waktu Pelaksanaan</label>
+    <div ng-repeat="waktuPelaksanaan in waktuPelaksanaanList">
 
-    <div class="has-success">
       <div class="checkbox">
         <label class="custom-checkbox">
               <input type="checkbox" id="checkboxSuccess" ng-model="selectedNode.WaktuPelaksanaan[waktuPelaksanaan.No-1]" ng-true-value="{{waktuPelaksanaan}}"
@@ -26,30 +38,26 @@
       </div>
     </div>
   </div>
-</div>
 
-<div class="form-group has-success has-feedback">
-  <label class="control-label" for="inputSuccess2">PrakiraanVolume</label>
-  <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" ng-model="selectedNode.PrakiraanVolume"
-    ng-disabled="selectedNode.Sah">
-    <i class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
-    <span id="inputSuccess2Status" class="sr-only">(success)</span>
-</div>
-<div class="form-group has-warning has-feedback">
-  <label class="control-label" for="inputWarning2">Sasaran</label>
-  <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status" ng-model="selectedNode.Sasaran"
-    ng-disabled="selectedNode.Sah">
-    <i class="ion-alert-circled form-control-feedback" aria-hidden="true"></i>
-    <span id="inputWarning2Status" class="sr-only">(warning)</span>
-</div>
-<div class="form-group">
-  <label class="checkbox-inline custom-checkbox nowrap">
-        <input type="checkbox" ng-model="realisasi" ng-disabled="selectedNode.Sah">
-        <span>Realisasi?</span>
+  <div class="form-group">
+    <label class="control-label" for="inputSuccess2">PrakiraanVolume</label>
+    <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" ng-model="selectedNode.PrakiraanVolume"
+      ng-disabled="selectedNode.Sah">
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="inputWarning2">Sasaran</label>
+    <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status" ng-model="selectedNode.Sasaran"
+      ng-disabled="selectedNode.Sah">
+  </div>
+  <div class="form-group">
+    <label class="checkbox-inline custom-checkbox nowrap">
+        <input type="checkbox" ng-model="selectedNode.TambahRKP" ng-disabled="selectedNode.Sah">
+        <span>Tambahkan ke RKP?</span>
   </label>
-</div>
-<div class="button-wrapper">
-  <button type="button" class="btn btn-danger btn-raised pull-left btn-with-icon" ng-click="deleteRPJMDes(selectedNode)" ng-hide="selectedNode.Sah"><i class="ion-trash-a"></i>Hapus</button>
-  <button type="button" class="btn btn-primary btn-raised pull-right btn-with-icon" ng-click="editRPJMDes(selectedNode)" ng-hide="selectedNode.Sah"><i class="fa fa-floppy-o"></i>Simpan</button>
-  <button type="button" class="btn btn-primary btn-raised pull-right btn-with-icon" ng-click="editRPJMDes(selectedNode)" ng-show="selectedNode.Sah">OK</button>
-</div>
+  </div>
+  <div class="button-wrapper">
+    <button type="button" class="btn btn-danger btn-raised pull-left btn-with-icon" ng-click="deleteRPJMDes(selectedNode)" ng-hide="selectedNode.Sah" ng-disabled="rpjmdesForm.$invalid"><i class="ion-trash-a"></i>Hapus</button>
+    <button type="button" class="btn btn-primary btn-raised pull-right btn-with-icon" ng-click="editRPJMDes(selectedNode)" ng-hide="selectedNode.Sah" ng-disabled="rpjmdesForm.$invalid"><i class="fa fa-floppy-o"></i>Simpan</button>
+    <button type="button" class="btn btn-primary btn-raised pull-right btn-with-icon" ng-click="editRPJMDes(selectedNode)" ng-show="selectedNode.Sah">OK</button>
+  </div>
+</form>

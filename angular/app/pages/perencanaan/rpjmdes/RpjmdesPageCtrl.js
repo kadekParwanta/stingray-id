@@ -28,7 +28,6 @@
         $scope.selectedNode;
         $scope.selectedBidang;
         $scope.bidangTitle = "Mohon pilih item di samping";
-        $scope.realisasi = false;
 
         $scope.ignoreChanges = false;
         var newId = 0;
@@ -79,12 +78,16 @@
                 var rpjmdesList = bidang.RPJMDes;
                 if (rpjmdesList.length > 0) {
                     angular.forEach(rpjmdesList, function (rpjmdes, index) {
+                        var a_attr = {"class":"green"};
+                        if (!rpjmdes.Sah) {
+                            a_attr = {"class":"red"};
+                        }
                         $scope.treeData.push({
                             "id": rpjmdes.id,
                             "parent": bidang.id,
                             "type": "default",
                             "text": bidang.No + "." + rpjmdes.No + " " + rpjmdes.SubBidang,
-                            "li_attr": { "class": "green" },
+                            "a_attr": a_attr,
                             "state": {
                                 "opened": true
                             }
@@ -261,11 +264,7 @@
                 var bidang = $filter('filter')($scope.bidangList, { id: parent })[0];
                 $scope.bidangTitle = bidang.Nama;
                 $scope.selectedNode = $filter('filter')(bidang.RPJMDes, { id: selectedId })[0];
-                if (typeof $scope.selectedNode.Sah !== 'undefined') {
-                    $scope.realisasi = true;
-                } else {
-                    $scope.realisasi = false;
-                }
+                $scope.selectedNode.TambahRKP = $scope.selectedNode.Sah;
                 $scope.$apply();
             } else {
                 $scope.selectedNode = {};
@@ -279,7 +278,7 @@
             return !$scope.ignoreChanges;
         };
 
-        $scope.open = function (page, size, topClass) {
+        $scope.open = function (page, size, topClass, message) {
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: page,
@@ -299,6 +298,9 @@
                     },
                     RPJMDesList: function () {
                         return $scope.RPJMDesList;
+                    },
+                    message: function () {
+                        return message;
                     }
                 }
             });
@@ -322,6 +324,10 @@
         }
 
         $scope.editRPJMDes = function (rpjmdes) {
+            if (rpjmdes.TambahRKP && !rpjmdes.WaktuPelaksanaan) {
+                $scope.open('app/pages/perencanaan/belanja/errorModal.html','md',null, 'Mohon pilih waktu pelaksanaan');
+                return;
+            }
             RPJMDes.prototype$updateAttributes({
                 id: rpjmdes.id,
                 SubBidang: rpjmdes.SubBidang,
@@ -329,13 +335,13 @@
                 Lokasi: rpjmdes.Lokasi,
                 PrakiraanVolume: rpjmdes.PrakiraanVolume,
                 Sasaran: rpjmdes.Sasaran,
-                Sah: $scope.realisasi
+                Sah: rpjmdes.TambahRKP
             }, function (result) {
                 unlinkAllWaktuPelaksanaan(rpjmdes).then(function (res) {
                     if (rpjmdes.WaktuPelaksanaan) {
                         var waktuPelaksanaan = Object.keys(rpjmdes.WaktuPelaksanaan).map(function (key) { return rpjmdes.WaktuPelaksanaan[key]; });
                         assignWaktuPelaksanaan(rpjmdes, waktuPelaksanaan).then(function () {
-                            if ($scope.realisasi) {
+                            if (rpjmdes.TambahRKP) {
                                 createRKP(rpjmdes, waktuPelaksanaan).then(function () {
                                     $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
                                     $scope.refresh();
@@ -385,13 +391,14 @@
     angular.module('BlurAdmin.pages.perencanaan')
         .controller('RpjmdesModalInstanceCtrl', RpjmdesModalInstanceCtrl);
 
-    function RpjmdesModalInstanceCtrl($uibModalInstance, bidangList, waktuPelaksanaanList, selectedBidang, RPJMDesList) {
+    function RpjmdesModalInstanceCtrl($uibModalInstance, bidangList, waktuPelaksanaanList, selectedBidang, RPJMDesList, message) {
         var vm = this;
         vm.bidangList = bidangList;
         vm.waktuPelaksanaanList = waktuPelaksanaanList;
         vm.selectedWaktuPelaksanaan = [];
         vm.RPJMDesList = RPJMDesList;
         vm.newRPJMDes = {};
+        vm.message = message;
         if (selectedBidang) vm.newRPJMDes.BidangId = selectedBidang.id;
 
         vm.ok = function () {

@@ -4107,6 +4107,9 @@ th {
 .green {
   color: green !important; }
 
+.red {
+  color: red !important; }
+
 #amchart {
   width: 100%;
   height: 350px;
