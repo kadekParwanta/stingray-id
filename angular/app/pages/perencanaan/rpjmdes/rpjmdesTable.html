@@ -3,7 +3,7 @@
     <button type="button" class="close" ng-click="vm.cancel()" aria-label="Close">
       <em class="ion-ios-close-empty sn-link-close"></em>
     </button>
-    <!--<button type="button" class="btn btn-primary" ng-click="vm.tableToExcel('rpjmdesTable', 'RPJMDes')">Export to Excel</button>-->
+    <button type="button" class="btn btn-primary" ng-click="vm.tableToExcel('rpjmdesTable', 'RPJMDes')">Export to Excel</button>
   </div>
   <div class="modal-body">
 <table class="table table-bordered table-hover" id="rpjmdesTable">
@@ -84,9 +84,9 @@
         </tr>
     </thead>
     <tbody ng-repeat="bidang in vm.bidangList track by $index">
-        <tr ng-show="bidang.RPJMDes.length > 0" ng-repeat="rpjmdes in bidang.RPJMDes">
-            <td ng-show="$index == 0" rowspan="{{bidang.RPJMDes.length}}" style="vertical-align: middle !important">{{bidang.No}}</td>
-            <td ng-show="$index == 0" rowspan="{{bidang.RPJMDes.length}}" style="vertical-align: middle !important">{{bidang.Nama}}</td>
+        <tr ng-repeat="rpjmdes in bidang.RPJMDes">
+            <td ng-if="$index == 0" rowspan="{{bidang.RPJMDes.length}}" style="vertical-align: middle !important">{{bidang.No}}</td>
+            <td ng-if="$index == 0" rowspan="{{bidang.RPJMDes.length}}" style="vertical-align: middle !important">{{bidang.Nama}}</td>
             <td>{{vm.convertAlphabetical($index)}}</td>
             <td>{{rpjmdes.SubBidang}}</td>
             <td>{{rpjmdes.Jenis}}</td>
@@ -100,7 +100,7 @@
             <td>{{rpjmdes.WaktuPelaksanaan[0].No == 5? '&#10004;':''}}</td>
             <td>{{rpjmdes.WaktuPelaksanaan[0].No == 6? '&#10004;':''}}</td>
         </tr>
-        <tr ng-show="bidang.RPJMDes.length == 0">
+        <tr ng-if="bidang.RPJMDes.length == 0">
             <td>{{bidang.No}}</td>
             <td>{{bidang.Nama}}</td>
             <td></td>
