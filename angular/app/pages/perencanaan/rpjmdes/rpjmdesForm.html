@@ -49,6 +49,41 @@
     <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status" ng-model="selectedNode.Sasaran"
       ng-disabled="selectedNode.Sah">
   </div>
+
+  <div class="form-group" ng-class="{'has-error': rpjmdesForm.pola.$error.required && !rpjmdesForm.pola.$pristine, 
+  'has-success': rpjmdesForm.pola.$valid}">
+    <label class="control-label">Pola Pelaksanaan*</label>
+    <select name="pola" class="form-control selectpicker with-search" data-live-search="true" selectpicker ng-model="selectedNode.PolaPelaksanaanId"
+      ng-options="item.id as item.Nama for item in polaPelaksanaanList" ng-disabled="selectedNode.Sah" required>
+      <option value="">---Pilih---</option>
+    </select>
+    <p ng-show="rpjmdesForm.pola.$invalid && !rpjmdesForm.pola.$pristine" class="help-block">Mohon pilih pola pelaksanaan kegiatan</p>
+  </div>
+
+  <div class="form-group has-success" style="background-color: #494444; padding: 10px">
+    <label class="control-label" for="inputBidang" style="color: white">Prakiraan Dana dan Sumber Pembiayaan</label>
+    <fieldset data-ng-repeat="sumberBiaya in selectedSumberBiaya" style="margin-top: 10px">
+      <div class="row">
+        <div class="col-sm-5">
+          <select class="form-control selectpicker with-search" data-live-search="true" title="Bidang" selectpicker ng-model="sumberBiaya.SumberBiayaItemId"
+            ng-options="item.id as item.Nama for item in sumberBiayaItemList" ng-disabled="selectedNode.Sah">
+          <option value="">---Pilih---</option>
+    </select>
+        </div>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <span class="input-group-addon addon-left">Rp.</span>
+            <input type="number" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" ng-model="sumberBiaya.Jumlah"
+              placeholder="Jumlah" ng-disabled="selectedNode.Sah">
+          </div>
+        </div>
+        <div class="col-sm-2"><button class="btn btn-danger" ng-show="$last" ng-click="removeSumberBiaya(sumberBiaya)" ng-disabled="selectedNode.Sah">-</button></div>
+      </div>
+    </fieldset>
+    <div class="row" style="margin-top: 10px">
+      <div class="col-sm-2"><button class="btn btn-primary pull-left" ng-click="addNewSumberBiaya()" ng-disabled="selectedNode.Sah">+</button></div>
+    </div>
+  </div>
   <div class="form-group">
     <label class="checkbox-inline custom-checkbox nowrap">
         <input type="checkbox" ng-model="selectedNode.TambahRKP" ng-disabled="selectedNode.Sah">

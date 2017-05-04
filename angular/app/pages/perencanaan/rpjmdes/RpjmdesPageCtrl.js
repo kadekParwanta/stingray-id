@@ -9,11 +9,13 @@
         .controller('RpjmdesPageCtrl', RpjmdesPageCtrl);
 
     /** @ngInject */
-    function RpjmdesPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP, Desa) {
+    function RpjmdesPageCtrl($scope, RPJM, $timeout, $filter, $uibModal, $q, RPJMDes, WaktuPelaksanaan, RKP, Desa, SumberBiaya) {
         var vm = this;
         $scope.RPJMDesList = [];
         $scope.bidangList = [];
         $scope.waktuPelaksanaanList = [];
+        $scope.polaPelaksanaanList = [];
+        $scope.sumberBiayaItemList = [];
         $scope.Bidang1 = [];
         $scope.Bidang2 = [];
         $scope.Bidang3 = [];
@@ -33,6 +35,16 @@
         $scope.ignoreChanges = false;
         var newId = 0;
         $scope.newNode = {};
+
+        $scope.selectedSumberBiaya = [
+            {}
+        ];
+
+        $scope.defaultSumberBiaya = {
+            Jumlah: null,
+            SumberBiayaItemId: null,
+            RPJMDesId: null
+        }
 
         $scope.basicConfig = {
             core: {
@@ -145,7 +157,9 @@
                         scope: {
                             order: "No ASC"
                         }
-                    }]
+                    },
+                    { relation: "PolaPelaksanaan" },
+                    { relation: "SumberBiayaItem" }]
                 }
             }, function (result) {
                 $scope.activeRPJM = {
@@ -158,6 +172,8 @@
 
                 $scope.bidangList = result.Bidang;
                 $scope.waktuPelaksanaanList = result.WaktuPelaksanaan;
+                $scope.polaPelaksanaanList = result.PolaPelaksanaan;
+                $scope.sumberBiayaItemList = result.SumberBiayaItem;
                 populateRPJMDes($scope.bidangList);
             })
         }
@@ -194,9 +210,12 @@
                         Lokasi: rpjmdes.Lokasi,
                         Volume: rpjmdes.PrakiraanVolume,
                         Sasaran: rpjmdes.Sasaran,
-                        BidangId: rpjmdes.BidangId
+                        BidangId: rpjmdes.BidangId,
+                        PolaPelaksanaanId: rpjmdes.PolaPelaksanaanId
                     }, function (data) {
-                        deferred.resolve(data);
+                        createSumberBiayaForRKP(data, function() {
+                            deferred.resolve(data);
+                        })
                     })
                 } else {
                     deferred.resolve("");
@@ -276,6 +295,14 @@
                 $scope.bidangTitle = bidang.Nama;
                 $scope.selectedNode = $filter('filter')(bidang.RPJMDes, { id: selectedId })[0];
                 $scope.selectedNode.TambahRKP = $scope.selectedNode.Sah;
+                if ($scope.selectedNode.SumberBiaya && $scope.selectedNode.SumberBiaya.length > 0) {
+                    $scope.selectedSumberBiaya = $scope.selectedNode.SumberBiaya;
+                } else {
+                    $scope.defaultSumberBiaya.RPJMDesId = $scope.selectedNode.id;
+                    $scope.selectedSumberBiaya = [
+                        $scope.defaultSumberBiaya
+                    ];
+                }
                 $scope.$apply();
             } else {
                 $scope.selectedNode = {};
@@ -283,6 +310,76 @@
                 $scope.bidangTitle = "Mohon pilih item di samping";
                 $scope.$apply();
             }
+        }
+
+        $scope.addNewSumberBiaya = function () {
+            var defaultSumberBiaya = angular.copy($scope.defaultSumberBiaya);
+            if ($scope.selectedNode.id) {
+                defaultSumberBiaya = {
+                    Jumlah: null,
+                    SumberBiayaItemId: null,
+                    RPJMDesId: $scope.selectedNode.id
+                }
+            }
+            $scope.selectedSumberBiaya.push(defaultSumberBiaya);
+        }
+
+        $scope.removeSumberBiaya = function (sumberBiaya) {
+            var ind = $scope.selectedSumberBiaya.indexOf(sumberBiaya);
+            $scope.selectedSumberBiaya.splice(ind, 1);
+        }
+
+        function reCreateSumberBiayaForRPJMDes(rpjmdes, cb) {
+            var promises = $scope.selectedSumberBiaya.map(function (sumberBiaya) {
+                var deferred = $q.defer();
+                if (sumberBiaya.id) {
+                    //update
+                    RPJMDes.SumberBiaya.updateById({ id: rpjmdes.id, fk: sumberBiaya.id }, sumberBiaya, function (res) {
+                        deferred.resolve(res);
+                    })
+                } else {
+                    //create
+                    SumberBiaya.create(sumberBiaya, function (res) {
+                        deferred.resolve(res);
+                    });
+                }
+
+                return deferred.promise;;
+            })
+
+            $q.all(promises).then(function (data) {
+                cb();
+            })
+
+        }
+
+        function createSumberBiayaForRKP(rkp, cb) {
+            var promises = $scope.selectedSumberBiaya.map(function (sumberBiaya) {
+                var deferred = $q.defer();
+                var item = {
+                    Jumlah: sumberBiaya.Jumlah,
+                    SumberBiayaItemId: sumberBiaya.SumberBiayaItemId,
+                    RKPId: rkp.id
+                }
+                if (sumberBiaya.id) {
+                    //update
+                    RKP.SumberBiaya.updateById({ id: rkp.id, fk: item.id }, item, function (res) {
+                        deferred.resolve(res);
+                    })
+                } else {
+                    //create
+                    SumberBiaya.create(item, function (res) {
+                        deferred.resolve(res);
+                    });
+                }
+
+                return deferred.promise;;
+            })
+
+            $q.all(promises).then(function (data) {
+                cb();
+            })
+
         }
 
         $scope.applyModelChanges = function () {
@@ -336,7 +433,7 @@
 
         $scope.editRPJMDes = function (rpjmdes) {
             if (rpjmdes.TambahRKP && !rpjmdes.WaktuPelaksanaan) {
-                $scope.open('app/pages/perencanaan/belanja/errorModal.html','md',null, 'Mohon pilih waktu pelaksanaan');
+                $scope.open('app/pages/perencanaan/belanja/errorModal.html', 'md', null, 'Mohon pilih waktu pelaksanaan');
                 return;
             }
             RPJMDes.prototype$updateAttributes({
@@ -346,27 +443,30 @@
                 Lokasi: rpjmdes.Lokasi,
                 PrakiraanVolume: rpjmdes.PrakiraanVolume,
                 Sasaran: rpjmdes.Sasaran,
-                Sah: rpjmdes.TambahRKP
+                Sah: rpjmdes.TambahRKP,
+                PolaPelaksanaanId: rpjmdes.PolaPelaksanaanId
             }, function (result) {
-                unlinkAllWaktuPelaksanaan(rpjmdes).then(function (res) {
-                    if (rpjmdes.WaktuPelaksanaan) {
-                        var waktuPelaksanaan = Object.keys(rpjmdes.WaktuPelaksanaan).map(function (key) { return rpjmdes.WaktuPelaksanaan[key]; });
-                        assignWaktuPelaksanaan(rpjmdes, waktuPelaksanaan).then(function () {
-                            if (rpjmdes.TambahRKP) {
-                                createRKP(rpjmdes, waktuPelaksanaan).then(function () {
+                reCreateSumberBiayaForRPJMDes(result, function (res) {
+                    unlinkAllWaktuPelaksanaan(rpjmdes).then(function (res) {
+                        if (rpjmdes.WaktuPelaksanaan) {
+                            var waktuPelaksanaan = Object.keys(rpjmdes.WaktuPelaksanaan).map(function (key) { return rpjmdes.WaktuPelaksanaan[key]; });
+                            assignWaktuPelaksanaan(rpjmdes, waktuPelaksanaan).then(function () {
+                                if (rpjmdes.TambahRKP) {
+                                    createRKP(rpjmdes, waktuPelaksanaan).then(function () {
+                                        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+                                        $scope.refresh();
+                                    })
+                                } else {
                                     $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
                                     $scope.refresh();
-                                })
-                            } else {
-                                $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
-                                $scope.refresh();
-                            }
-                        })
-                    } else {
-                        $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
-                        $scope.refresh();
-                    }
+                                }
+                            })
+                        } else {
+                            $scope.open('app/pages/ui/modals/modalTemplates/successModal.html');
+                            $scope.refresh();
+                        }
 
+                    })
                 })
             })
         }
