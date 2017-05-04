@@ -334,7 +334,7 @@
                 var deferred = $q.defer();
                 if (sumberBiaya.id) {
                     //update
-                    RPJMDes.SumberBiaya.updateById({ id: rpjmdes.id, fk: sumberBiaya.id }, sumberBiaya, function (res) {
+                    RPJMDes.SumberBiaya.update({ id: rpjmdes.id}, sumberBiaya, function (res) {
                         deferred.resolve(res);
                     })
                 } else {
