@@ -109,11 +109,11 @@
                 <td>{{rpjmdes.WaktuPelaksanaan[0].No == 4? '&#10004;':''}}</td>
                 <td>{{rpjmdes.WaktuPelaksanaan[0].No == 5? '&#10004;':''}}</td>
                 <td>{{rpjmdes.WaktuPelaksanaan[0].No == 6? '&#10004;':''}}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{formatCurrency(rpjmdes.SumberBiaya.Jumlah)}}</td>
+                <td>{{rpjmdes.SumberBiaya.Sumber.Nama}}</td>
+                <td>{{rpjmdes.PolaPelaksanaanId == polaPelaksanaanList[0].id? '&#10004;':''}}</td>
+                <td>{{rpjmdes.PolaPelaksanaanId == polaPelaksanaanList[1].id? '&#10004;':''}}</td>
+                <td>{{rpjmdes.PolaPelaksanaanId == polaPelaksanaanList[2].id? '&#10004;':''}}</td>
             </tr>
             <tr ng-if="bidang.RPJMDes.length == 0">
                 <td>{{bidang.No}}</td>

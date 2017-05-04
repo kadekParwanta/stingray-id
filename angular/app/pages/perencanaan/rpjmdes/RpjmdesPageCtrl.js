@@ -147,7 +147,7 @@
                             include: {
                                 relation: "RPJMDes",
                                 scope: {
-                                    include: ['WaktuPelaksanaan', 'SumberBiaya', 'PolaPelaksanaan']
+                                    include: ['WaktuPelaksanaan', {'SumberBiaya':'Sumber'}, 'PolaPelaksanaan']
                                 }
                             }
                         }
@@ -295,8 +295,8 @@
                 $scope.bidangTitle = bidang.Nama;
                 $scope.selectedNode = $filter('filter')(bidang.RPJMDes, { id: selectedId })[0];
                 $scope.selectedNode.TambahRKP = $scope.selectedNode.Sah;
-                if ($scope.selectedNode.SumberBiaya && $scope.selectedNode.SumberBiaya.length > 0) {
-                    $scope.selectedSumberBiaya = $scope.selectedNode.SumberBiaya;
+                if ($scope.selectedNode.SumberBiaya) {
+                    $scope.selectedSumberBiaya = [$scope.selectedNode.SumberBiaya];
                 } else {
                     $scope.defaultSumberBiaya.RPJMDesId = $scope.selectedNode.id;
                     $scope.selectedSumberBiaya = [
@@ -469,6 +469,12 @@
                     })
                 })
             })
+        }
+
+        var formatter = new Intl.NumberFormat();
+
+        $scope.formatCurrency = function (value) {
+            return formatter.format(value);
         }
 
         $scope.export = function () {
