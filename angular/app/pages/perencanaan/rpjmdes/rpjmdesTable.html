@@ -138,13 +138,16 @@
             </tr>
             <tr>
                 <td colspan="10" style="text-align: right">Jumlah Per Bidang {{bidang.No}}</td>
-                <td colspan="9"></td>
+                <td colspan="9" ng-if="bidang.No == 1">{{formatCurrency(Bidang1Total)}}</td>
+                <td colspan="9" ng-if="bidang.No == 2">{{formatCurrency(Bidang2Total)}}</td>
+                <td colspan="9" ng-if="bidang.No == 3">{{formatCurrency(Bidang3Total)}}</td>
+                <td colspan="9" ng-if="bidang.No == 4">{{formatCurrency(Bidang4Total)}}</td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
                 <td colspan="10" style="text-align: right">JUMLAH TOTAL</td>
-                <td colspan="9"></td>
+                <td colspan="9">{{formatCurrency(Bidang1Total+Bidang2Total+Bidang3Total+Bidang4Total)}}</td>
             </tr>
             <tr>
                 <td style="border: 0"></td>
