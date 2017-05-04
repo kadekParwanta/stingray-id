@@ -86,7 +86,7 @@
             RPJMDes.create({
               SubBidang: updatedGagasan.Nama,
               Lokasi: updatedGagasan.Lokasi,
-              PrakiraanVolume: updatedGagasan.Volume,
+              PrakiraanVolume: ""+updatedGagasan.Volume +" "+ updatedGagasan.Satuan,
               BidangId: bidangId
             }, function (res) {
               updatedGagasan.RPJMDesId = res.id;

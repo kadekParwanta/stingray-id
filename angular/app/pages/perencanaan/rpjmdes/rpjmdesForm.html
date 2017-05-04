@@ -1,7 +1,7 @@
 <form name="rpjmdesForm" novalidate>
   <div class="form-group has-error" >
-    <label class="control-label" ng-show="!selectedNode.TambahRKP">-Item ini BELUM ditambahkan ke RKP</label>
-    <label class="control-label" ng-show="selectedNode.TambahRKP">-Item ini SUDAH ditambahkan ke RKP</label>
+    <label class="control-label" ng-show="!selectedNode.TambahRKP">-Item ini <span class="red"><strong>BELUM</strong></span> ditambahkan ke RKP</label>
+    <label class="control-label" ng-show="selectedNode.TambahRKP">-Item ini <span class="green"><strong>SUDAH</strong></span> ditambahkan ke RKP</label>
   </div>
   <div class="form-group" ng-class="{'has-error': rpjmdesForm.progkeg.$error.required && !rpjmdesForm.progkeg.$pristine, 
   'has-success': rpjmdesForm.progkeg.$valid, 'has-feedback': rpjmdesForm.progkeg.$valid}">
@@ -40,7 +40,7 @@
   </div>
 
   <div class="form-group">
-    <label class="control-label" for="inputSuccess2">PrakiraanVolume</label>
+    <label class="control-label" for="inputSuccess2">Prakiraan Volume</label>
     <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" ng-model="selectedNode.PrakiraanVolume"
       ng-disabled="selectedNode.Sah">
   </div>
@@ -53,7 +53,7 @@
   <div class="form-group" ng-class="{'has-error': rpjmdesForm.pola.$error.required && !rpjmdesForm.pola.$pristine, 
   'has-success': rpjmdesForm.pola.$valid}">
     <label class="control-label">Pola Pelaksanaan*</label>
-    <select name="pola" class="form-control selectpicker with-search" data-live-search="true" selectpicker ng-model="selectedNode.PolaPelaksanaanId"
+    <select name="pola" class="form-control" ng-model="selectedNode.PolaPelaksanaanId"
       ng-options="item.id as item.Nama for item in polaPelaksanaanList" ng-disabled="selectedNode.Sah" required>
       <option value="">---Pilih---</option>
     </select>
