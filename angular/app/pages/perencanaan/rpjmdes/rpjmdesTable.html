@@ -3,9 +3,10 @@
     <button type="button" class="close" ng-click="vm.cancel()" aria-label="Close">
       <em class="ion-ios-close-empty sn-link-close"></em>
     </button>
+    <!--<button type="button" class="btn btn-primary" ng-click="vm.tableToExcel('rpjmdesTable', 'RPJMDes')">Export to Excel</button>-->
   </div>
   <div class="modal-body">
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover" id="rpjmdesTable">
     <thead> 
         <tr>
             <th colspan="14" style="border: 0">RANCANGAN RPJM DESA</th>
@@ -83,9 +84,9 @@
         </tr>
     </thead>
     <tbody ng-repeat="bidang in vm.bidangList track by $index">
-        <tr ng-repeat="rpjmdes in bidang.RPJMDes">
-            <td>{{bidang.No}}</td>
-            <td>{{bidang.Nama}}</td>
+        <tr ng-show="bidang.RPJMDes.length > 0" ng-repeat="rpjmdes in bidang.RPJMDes">
+            <td ng-show="$index == 0" rowspan="{{bidang.RPJMDes.length}}" style="vertical-align: middle !important">{{bidang.No}}</td>
+            <td ng-show="$index == 0" rowspan="{{bidang.RPJMDes.length}}" style="vertical-align: middle !important">{{bidang.Nama}}</td>
             <td>{{vm.convertAlphabetical($index)}}</td>
             <td>{{rpjmdes.SubBidang}}</td>
             <td>{{rpjmdes.Jenis}}</td>
@@ -98,6 +99,22 @@
             <td>{{rpjmdes.WaktuPelaksanaan[0].No == 4? '&#10004;':''}}</td>
             <td>{{rpjmdes.WaktuPelaksanaan[0].No == 5? '&#10004;':''}}</td>
             <td>{{rpjmdes.WaktuPelaksanaan[0].No == 6? '&#10004;':''}}</td>
+        </tr>
+        <tr ng-show="bidang.RPJMDes.length == 0">
+            <td>{{bidang.No}}</td>
+            <td>{{bidang.Nama}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <td colspan="8" style="text-align: right">Jumlah Per Bidang {{bidang.No}}</td>
