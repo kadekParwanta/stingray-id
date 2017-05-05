@@ -1,0 +1,280 @@
+<div class="horizontal-scroll" style="zoom: 0.6">
+    <table class="table table-bordered" id="rkpTable">
+        <thead>
+            <tr>
+                <th colspan="14" style="border: 0">RANCANGAN RENCANA KERJA PEMERINTAH DESA (RKP-DESA)</th>
+            </tr>
+            <tr>
+                <th colspan="14" style="border: 0">TAHUN: {{selectedWaktuPelaksanaan.Nama}}</th>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 0">DESA</td>
+                <td colspan="12" style="border: 0">: {{desa.desa}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 0">KECAMATAN</td>
+                <td colspan="12" style="border: 0">: {{desa.kecamatan}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 0">KABUPATEN</td>
+                <td colspan="12" style="border: 0">: {{desa.kabupaten}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 0">PROVINSI</td>
+                <td colspan="12" style="border: 0">: {{desa.provinsi}}</td>
+            </tr>
+            <tr>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+            </tr>
+            <tr>
+                <th rowspan="2" style="vertical-align: middle !important">No</th>
+                <th colspan="3" style="text-align: center">Bidang / Jenis Kegiatan</th>
+                <th rowspan="2" style="vertical-align: middle !important; text-align: center">Lokasi</th>
+                <th rowspan="2" style="vertical-align: middle !important; text-align: center">Volume</th>
+                <th rowspan="2" style="vertical-align: middle !important; text-align: center">Sasaran /<br>Manfaat</th>
+                <th rowspan="2" style="text-align: center">Waktu Pelaksanaan</th>
+                <th colspan="2" style="text-align: center">Biaya dan Sumber Pembiayaan</th>
+                <th colspan="3" style="text-align: center">Pola Pelaksanaan</th>
+                <th rowspan="2" style="text-align: center">Rencana Pelaksana Kegiatan</th>
+            </tr>
+            <tr>
+                <th>Bidang</th>
+                <th></th>
+                <th style="text-align: center">Jenis Kegiatan</th>
+                <th style="text-align: center">Jlh (Rp)</th>
+                <th style="text-align: center">Sumber</th>
+                <th style="text-align: center">Swakelola</th>
+                <th style="text-align: center">Kerjasama Antar <br> Desa</th>
+                <th style="text-align: center">Kerjasama Pihak <br> Ketiga</th>
+            </tr>
+            <tr>
+                <th><i>a</i></th>
+                <th style="text-align: center"><i>b</i></th>
+                <th style="text-align: center"><i>c</i></th>
+                <th style="text-align: center"><i>d</i></th>
+                <th style="text-align: center"><i>e</i></th>
+                <th style="text-align: center"><i>f</i></th>
+                <th style="text-align: center"><i>g</i></th>
+                <th style="text-align: center"><i>h</i></th>
+                <th style="text-align: center"><i>i</i></th>
+                <th style="text-align: center"><i>j</i></th>
+                <th style="text-align: center"><i>k</i></th>
+                <th style="text-align: center"><i>l</i></th>
+                <th style="text-align: center"><i>m</i></th>
+                <th style="text-align: center"><i>n</i></th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="bidang in bidangList">
+            <tr ng-repeat="rkp in RKPList[selectedWaktuPelaksanaan.No - 1]">
+                <td ng-if="rkp.Bidang.id == bidang.id" style="vertical-align: middle !important">{{bidang.No}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id"  style="vertical-align: middle !important">{{bidang.Nama}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{convertAlphabetical($index)}}.</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.Jenis}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.Lokasi}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.Volume}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.Sasaran}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.WaktuPelaksanaan.Nama}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{formatCurrency(rkp.SumberBiaya[0].Jumlah)}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.SumberBiaya[0].Sumber.Nama}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.PolaPelaksanaanId == polaPelaksanaanList[0].id? '&#10004;':''}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.PolaPelaksanaanId == polaPelaksanaanList[1].id? '&#10004;':''}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.PolaPelaksanaanId == polaPelaksanaanList[2].id? '&#10004;':''}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.Pelaksana}}</td>
+            </tr>
+            <tr ng-if="RKPList[selectedWaktuPelaksanaan.No - 1].length == 0">
+                <td>{{bidang.No}}</td>
+                <td>{{bidang.Nama}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="text-align: right">Jumlah Per Bidang {{bidang.No}}</td>
+                <td colspan="6" ng-if="bidang.No == 1">{{formatCurrency(Bidang1Total)}}</td>
+                <td colspan="6" ng-if="bidang.No == 2">{{formatCurrency(Bidang2Total)}}</td>
+                <td colspan="6" ng-if="bidang.No == 3">{{formatCurrency(Bidang3Total)}}</td>
+                <td colspan="6" ng-if="bidang.No == 4">{{formatCurrency(Bidang4Total)}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8" style="text-align: right">JUMLAH TOTAL</td>
+                <td colspan="6">{{formatCurrency(Bidang1Total+Bidang2Total+Bidang3Total+Bidang4Total)}}</td>
+            </tr>
+            <tr>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+            </tr>
+            <tr>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="text-align: right; border: 0" colspan="4">..................., Tanggal ......., ......., ...........</td>
+            </tr>
+
+            <tr>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="text-align: center; border: 0">Mengetahui,</td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="text-align: center; border: 0" colspan="3">Disusun oleh:</td>
+                <td style="border: 0"></td>
+            </tr>
+            <tr>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="text-align: center; border: 0">Kepala Desa</td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="text-align: center; border: 0" colspan="3">Tim Penyusun RPJM Desa</td>
+                <td style="border: 0"></td>
+            </tr>
+            <tr>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+            </tr>
+            <tr>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+            </tr>
+            <tr>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+            </tr>
+            <tr>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+            </tr>
+            <tr>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+            </tr>
+            <tr>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="text-align: center; border: 0">(.......................)</td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="border: 0"></td>
+                <td style="text-align: center; border: 0" colspan="3">(.......................)</td>
+                <td style="border: 0"></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

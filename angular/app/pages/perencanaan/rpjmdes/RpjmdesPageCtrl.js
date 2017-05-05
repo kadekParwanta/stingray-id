@@ -361,17 +361,9 @@
                     SumberBiayaItemId: sumberBiaya.SumberBiayaItemId,
                     RKPId: rkp.id
                 }
-                if (sumberBiaya.id) {
-                    //update
-                    RKP.SumberBiaya.updateById({ id: rkp.id, fk: item.id }, item, function (res) {
-                        deferred.resolve(res);
-                    })
-                } else {
-                    //create
-                    SumberBiaya.create(item, function (res) {
+                SumberBiaya.create(item, function (res) {
                         deferred.resolve(res);
                     });
-                }
 
                 return deferred.promise;;
             })
