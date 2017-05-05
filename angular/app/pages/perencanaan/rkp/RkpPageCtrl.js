@@ -27,6 +27,7 @@
     $scope.polaPelaksanaanList = [];
     $scope.sumberBiayaItemList = [];
     $scope.bidangList = [];
+    $scope.dataForTable = [];
     $scope.desa;
     $scope.RKPList = [];
     $scope.RPJMDesList = [];
@@ -167,6 +168,7 @@
           var treeData = angular.copy(vm.treesData[indexWaktuPel]);
 
           angular.forEach(result, function (item, index, arr) {
+            populateDataForTable(waktupelaksanaan, item);
             var bidang = item.Bidang;
             var RPJMDes = item.RPJMDes;
             var parent = {};
@@ -203,6 +205,15 @@
       })
     }
 
+    function populateDataForTable(waktu, rkp) {
+      $scope.dataForTable.forEach(function(bidang) {
+        if (!bidang[waktu.Nama]) {
+          bidang[waktu.Nama] = [];
+        }
+        if (rkp.Bidang.id == bidang.id) bidang[waktu.Nama].push(rkp);
+      })
+    }
+
     function getActiveRPJM() {
       RPJM.findOne({
         filter: {
@@ -232,6 +243,7 @@
         }
 
         $scope.bidangList = result.Bidang;
+        $scope.dataForTable = result.Bidang;
         $scope.waktuPelaksanaanList = result.WaktuPelaksanaan;
         $scope.polaPelaksanaanList = result.PolaPelaksanaan;
         $scope.sumberBiayaItemList = result.SumberBiayaItem;

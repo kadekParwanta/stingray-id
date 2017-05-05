@@ -246,7 +246,7 @@
               "text": parent.No + "." + rkp.No + " " + rkp.Nama,
               "a_attr": { "class": "green" },
               "state": {
-                "opened": false
+                "opened": true
               }
             })
 

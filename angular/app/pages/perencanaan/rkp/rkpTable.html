@@ -77,12 +77,12 @@
                 <th style="text-align: center"><i>n</i></th>
             </tr>
         </thead>
-        <tbody ng-repeat="bidang in bidangList">
-            <tr ng-repeat="rkp in RKPList[selectedWaktuPelaksanaan.No - 1]">
-                <td ng-if="rkp.Bidang.id == bidang.id" style="vertical-align: middle !important">{{bidang.No}}</td>
-                <td ng-if="rkp.Bidang.id == bidang.id"  style="vertical-align: middle !important">{{bidang.Nama}}</td>
+        <tbody ng-repeat="bidang in dataForTable">
+            <tr ng-repeat="rkp in bidang[selectedWaktuPelaksanaan.Nama]" ng-init="rowspan = bidang[selectedWaktuPelaksanaan.Nama].length">
+                <td ng-if="rkp.Bidang.id == bidang.id && $index == 0" rowspan="{{rowspan}}" style="vertical-align: middle !important">{{bidang.No}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id && $index == 0" rowspan="{{rowspan}}" style="vertical-align: middle !important">{{bidang.Nama}}</td>
                 <td ng-if="rkp.Bidang.id == bidang.id" >{{convertAlphabetical($index)}}.</td>
-                <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.Jenis}}</td>
+                <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.Nama}}</td>
                 <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.Lokasi}}</td>
                 <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.Volume}}</td>
                 <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.Sasaran}}</td>
@@ -94,7 +94,7 @@
                 <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.PolaPelaksanaanId == polaPelaksanaanList[2].id? '&#10004;':''}}</td>
                 <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.Pelaksana}}</td>
             </tr>
-            <tr ng-if="RKPList[selectedWaktuPelaksanaan.No - 1].length == 0">
+            <tr ng-if="bidang[selectedWaktuPelaksanaan.Nama].length == 0">
                 <td>{{bidang.No}}</td>
                 <td>{{bidang.Nama}}</td>
                 <td></td>
