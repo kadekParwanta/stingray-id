@@ -78,7 +78,7 @@
             </tr>
         </thead>
         <tbody ng-repeat="bidang in dataForTable">
-            <tr ng-repeat="rkp in bidang[selectedWaktuPelaksanaan.Nama]" ng-init="rowspan = bidang[selectedWaktuPelaksanaan.Nama].length">
+            <tr ng-repeat="rkp in bidang[selectedWaktuPelaksanaan.Nama].RKP" ng-init="rowspan = bidang[selectedWaktuPelaksanaan.Nama].RKP.length">
                 <td ng-if="rkp.Bidang.id == bidang.id && $index == 0" rowspan="{{rowspan}}" style="vertical-align: middle !important">{{bidang.No}}</td>
                 <td ng-if="rkp.Bidang.id == bidang.id && $index == 0" rowspan="{{rowspan}}" style="vertical-align: middle !important">{{bidang.Nama}}</td>
                 <td ng-if="rkp.Bidang.id == bidang.id" >{{convertAlphabetical($index)}}.</td>
@@ -94,7 +94,7 @@
                 <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.PolaPelaksanaanId == polaPelaksanaanList[2].id? '&#10004;':''}}</td>
                 <td ng-if="rkp.Bidang.id == bidang.id" >{{rkp.Pelaksana}}</td>
             </tr>
-            <tr ng-if="bidang[selectedWaktuPelaksanaan.Nama].length == 0">
+            <tr ng-if="bidang[selectedWaktuPelaksanaan.Nama].RKP.length == 0">
                 <td>{{bidang.No}}</td>
                 <td>{{bidang.Nama}}</td>
                 <td></td>
@@ -112,16 +112,16 @@
             </tr>
             <tr>
                 <td colspan="8" style="text-align: right">Jumlah Per Bidang {{bidang.No}}</td>
-                <td colspan="6" ng-if="bidang.No == 1">{{formatCurrency(Bidang1Total)}}</td>
-                <td colspan="6" ng-if="bidang.No == 2">{{formatCurrency(Bidang2Total)}}</td>
-                <td colspan="6" ng-if="bidang.No == 3">{{formatCurrency(Bidang3Total)}}</td>
-                <td colspan="6" ng-if="bidang.No == 4">{{formatCurrency(Bidang4Total)}}</td>
+                <td colspan="6">{{formatCurrency(bidang[selectedWaktuPelaksanaan.Nama].totalRKP)}}</td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
                 <td colspan="8" style="text-align: right">JUMLAH TOTAL</td>
-                <td colspan="6">{{formatCurrency(Bidang1Total+Bidang2Total+Bidang3Total+Bidang4Total)}}</td>
+                <td colspan="6" ng-init="total = ">{{formatCurrency(dataForTable[0][selectedWaktuPelaksanaan.Nama].totalRKP + 
+                dataForTable[1][selectedWaktuPelaksanaan.Nama].totalRKP + 
+                dataForTable[2][selectedWaktuPelaksanaan.Nama].totalRKP + 
+                dataForTable[3][selectedWaktuPelaksanaan.Nama].totalRKP)}}</td>
             </tr>
             <tr>
                 <td style="border: 0"></td>

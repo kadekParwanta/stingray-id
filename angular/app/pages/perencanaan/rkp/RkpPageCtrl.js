@@ -208,9 +208,19 @@
     function populateDataForTable(waktu, rkp) {
       $scope.dataForTable.forEach(function(bidang) {
         if (!bidang[waktu.Nama]) {
-          bidang[waktu.Nama] = [];
+          bidang[waktu.Nama] = {
+            RKP: [],
+            totalRKP: 0
+          };
         }
-        if (rkp.Bidang.id == bidang.id) bidang[waktu.Nama].push(rkp);
+        if (rkp.Bidang.id == bidang.id){
+          var sumberBiaya = rkp.SumberBiaya;
+          if (sumberBiaya.length > 0) {
+            bidang[waktu.Nama].totalRKP += sumberBiaya[0].Jumlah;
+          }
+          
+          bidang[waktu.Nama].RKP.push(rkp);
+        } 
       })
     }
 
