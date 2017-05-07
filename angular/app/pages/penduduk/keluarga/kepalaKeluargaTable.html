@@ -1,0 +1,94 @@
+<div class="add-row-editable-table">
+  <button class="btn btn-primary" ng-hide="kepalaKeluarga.length  > 0" ng-click="addKepalaKeluarga()">Tambah</button>
+</div>
+<table class="table table-bordered table-hover table-condensed">
+  <tr>
+    <td>#</td>
+    <td>NIK</td>
+    <td>Nama</td>
+    <td>Jenis Kelamin</td>
+    <td>Tempat Lahir</td>
+    <td>Tanggal Lahir</td>
+    <td>Golongan Darah</td>
+    <td>Agama</td>
+    <td>Kewarganegaraan</td>
+    <td>Pendidikan Terakhir</td>
+    <td>Pekerjaan</td>
+    <td></td>
+  </tr>
+  <tr ng-repeat="kepala in kepalaKeluarga" class="editable-row">
+    <td>
+        {{$index + 1}}
+    </td>
+    <td>
+        <span editable-number="kepala.NIK" e-name="NIK" e-form="rowform" e-required>
+          {{ kepala.NIK || 'empty' }}
+        </span>
+    </td>
+    <td>
+        <span editable-text="kepala.Nama" e-name="Nama" e-form="rowform" e-required>
+          {{ kepala.Nama || 'empty' }}
+        </span>
+    </td>
+    <td class="select-td">
+        <span editable-select="kepala.JenisKelamin" e-name="JenisKelamin" e-form="rowform" e-selectpicker
+              e-ng-options="s.text as s.text for s in jenisKelamin">
+          {{ showJenisKelamin(kepala) }}
+        </span>
+    </td>
+    <td>
+        <span editable-text="kepala.TempatLahir" e-name="TempatLahir" e-form="rowform" e-required>
+          {{ kepala.TempatLahir || 'empty' }}
+        </span>
+    </td>
+    <td>
+        <span editable-bsdate="kepala.TanggalLahir" e-is-open="opened.$data" 
+        e-ng-click="open($event,'$data')" e-datepicker-popup="dd-MMMM-yyyy" e-name="TanggalLahir" e-form="rowform" e-required>
+          {{ (kepala.TanggalLahir | date : 'd MMMM yyyy')|| 'empty' }}
+        </span>
+    </td>
+    <td class="select-td">
+        <span editable-select="kepala.GolDarah" e-name="GolDarah" e-form="rowform" e-selectpicker
+              e-ng-options="s.text as s.text for s in golonganDarah">
+          {{ showGolonganDarah(kepala) }}
+        </span>
+    </td>
+    <td class="select-td">
+        <span editable-select="kepala.Agama" e-name="Agama" e-form="rowform" e-selectpicker
+              e-ng-options="s.text as s.text for s in Agama">
+          {{ showAgama(kepala) }}
+        </span>
+    </td>
+    <td class="select-td">
+        <span editable-select="kepala.Kewarganegaraan" e-name="Kewarganegaraan" e-form="rowform" e-selectpicker
+              e-ng-options="s.name as s.name for s in countries">
+          {{ showCountry(kepala) }}
+        </span>
+    </td>
+    <td>
+        <span editable-text="kepala.Pendidikan" e-name="Pendidikan" e-form="rowform" e-required>
+          {{ kepala.Pendidikan || 'empty' }}
+        </span>
+    </td>
+    <td>
+        <span editable-text="kepala.Pekerjaan" e-name="Pekerjaan" e-form="rowform" e-required>
+          {{ kepala.Pekerjaan || 'empty' }}
+        </span>
+    </td>
+    <td>
+      <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline"
+            shown="inserted == kepala">
+        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
+          Save
+        </button>
+        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
+          Cancel
+        </button>
+      </form>
+      <div class="buttons" ng-show="!rowform.$visible">
+        <button class="btn btn-primary editable-table-button btn-xs" ng-click="rowform.$show()">Edit</button>
+        <button class="btn btn-danger editable-table-button btn-xs" ng-click="removeKepalaKeluarga($index)">Delete</button>
+      </div>
+    </td>
+  </tr>
+</table>

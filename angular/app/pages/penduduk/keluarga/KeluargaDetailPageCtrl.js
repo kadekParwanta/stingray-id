@@ -14,9 +14,12 @@
         $scope.keluarga;
         $scope.tanggalBerlaku;
         $scope.anggotaKeluarga = [];
+        $scope.kepalaKeluarga = [];
         $scope.countries = [];
         if (keluargaId != 0) {
             getKeluargaById(keluargaId);
+        } else {
+            getCountries();
         }
 
         function getKeluargaById(id) {
@@ -26,7 +29,7 @@
                     $scope.tanggalBerlaku = new Date(keluarga.TanggalBerlaku);
                     var kepalaKeluarga = keluarga.KepalaKeluarga;
                     if (kepalaKeluarga) {
-                        $scope.anggotaKeluarga.push(kepalaKeluarga);
+                        $scope.kepalaKeluarga.push(kepalaKeluarga);
                     }
 
                     var anggotaKeluarga = keluarga.AnggotaKeluarga;
@@ -57,7 +60,9 @@
                     TanggalBerlaku: $scope.tanggalBerlaku
                 }, function (res) {
                     saveAnggotaKeluarga($scope.anggotaKeluarga, keluarga.id).then(function (res) {
-                        $state.go('penduduk');
+                        saveKepalaKeluarga($scope.kepalaKeluarga, keluarga.id).then(function(res){
+                            $state.go('penduduk');
+                        })
                     })
 
                 })
@@ -65,7 +70,9 @@
                 keluarga.TanggalBerlaku = $scope.tanggalBerlaku;
                 Keluarga.create(keluarga, function (res) {
                     saveAnggotaKeluarga($scope.anggotaKeluarga, res.id).then(function (res) {
-                        $state.go('penduduk');
+                        saveKepalaKeluarga($scope.kepalaKeluarga, keluarga.id).then(function(res){
+                            $state.go('penduduk');
+                        })
                     })
                 })
             }
@@ -122,6 +129,19 @@
             };
             $scope.anggotaKeluarga.push($scope.inserted);
         };
+        
+        $scope.removeKepalaKeluarga = function (index) {
+            $scope.kepalaKeluarga.splice(index, 1);
+        };
+
+        $scope.addKepalaKeluarga = function () {
+            $scope.inserted = {
+                Nama: '',
+                TempatLahir: null,
+                JenisKelamin: null
+            };
+            $scope.kepalaKeluarga.push($scope.inserted);
+        };
 
         editableOptions.theme = 'bs3';
         editableThemes['bs3'].submitTpl = '<button type="submit" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-round"></i></button>';
@@ -149,6 +169,38 @@
                 } else {
                     anggotaKeluarga.AnggotaKeluargaId = keluargaId;
                     Penduduk.create(anggotaKeluarga, function (res) {
+                        deferred.resolve(res);
+                    })
+                }
+                return deferred.promise;
+            })
+
+            return $q.all(promises);
+
+        }
+
+        function saveKepalaKeluarga(listKepalaKeluarga, keluargaId) {
+            var promises = listKepalaKeluarga.map(function (kepalaKeluarga) {
+                var deferred = $q.defer();
+                if (kepalaKeluarga.id) {
+                    Penduduk.prototype$updateAttributes({
+                        Nama: kepalaKeluarga.Nama,
+                        JenisKelamin: kepalaKeluarga.JenisKelamin,
+                        TempatLahir: kepalaKeluarga.TempatLahir,
+                        TanggalLahir: kepalaKeluarga.TanggalLahir,
+                        NIK: kepalaKeluarga.NIK,
+                        GolDarah: kepalaKeluarga.GolDarah,
+                        Agama: kepalaKeluarga.Agama,
+                        Kewarganegaraan: kepalaKeluarga.Kewarganegaraan,
+                        Pendidikan: kepalaKeluarga.Pendidikan,
+                        Pekerjaan: kepalaKeluarga.Pekerjaan,
+                        id: kepalaKeluarga.id
+                    }, function (res) {
+                        deferred.resolve(res);
+                    })
+                } else {
+                    kepalaKeluarga.KepalaKeluargaId = keluargaId;
+                    Penduduk.create(kepalaKeluarga, function (res) {
                         deferred.resolve(res);
                     })
                 }

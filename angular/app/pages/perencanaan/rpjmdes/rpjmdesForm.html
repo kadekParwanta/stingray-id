@@ -1,4 +1,4 @@
-<form name="rpjmdesForm" novalidate>
+<form name="rpjmdesForm" novalidate ng-show="selectedNode">
   <div class="form-group has-error" >
     <label class="control-label" ng-show="!selectedNode.TambahRKP">-Item ini <span class="red"><strong>BELUM</strong></span> ditambahkan ke RKP</label>
     <label class="control-label" ng-show="selectedNode.TambahRKP">-Item ini <span class="green"><strong>SUDAH</strong></span> ditambahkan ke RKP</label>
