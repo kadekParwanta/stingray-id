@@ -257,7 +257,7 @@
                 "id": entry.id,
                 "parent": rkp.id,
                 "type": "belanja",
-                "text": rkp.No + "." + entry.No + " " + entry.Nama,
+                "text": parent.No + "." + rkp.No + "." + entry.No + " " + entry.Nama,
                 "state": {
                   "opened": false
                 }
