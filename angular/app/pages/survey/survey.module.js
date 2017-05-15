@@ -18,7 +18,7 @@
           controller: 'SurveyPageCtrl',
           sidebarMeta: {
             icon: 'ion-grid',
-            order: 5,
+            order: 6,
           },
         })
         .state('formbuilder', {

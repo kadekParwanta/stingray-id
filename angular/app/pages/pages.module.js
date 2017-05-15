@@ -14,7 +14,8 @@
     'BlurAdmin.pages.pengaturan',
     'BlurAdmin.pages.profildesa',
     'BlurAdmin.pages.penduduk',
-    'BlurAdmin.pages.survey'
+    'BlurAdmin.pages.survey',
+    'BlurAdmin.pages.realisasi'
   ])
     .config(routeConfig)
     .run(function ($http, $rootScope, $builder) {

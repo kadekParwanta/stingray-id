@@ -18,5 +18,9 @@ angular.module('BlurAdmin', [
   'BlurAdmin.pages',
   'builder',
   'builder.components',
-  'validator.rules'
+  'validator.rules',
+  'gantt',
+  'gantt.table',
+  'gantt.movable',
+  'gantt.tooltips'
 ]);
