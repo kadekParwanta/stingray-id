@@ -22,5 +22,9 @@ angular.module('BlurAdmin', [
   'gantt',
   'gantt.table',
   'gantt.movable',
-  'gantt.tooltips'
+  'gantt.tooltips',
+  'gantt.progress',
+  'gantt.groups',
+  'gantt.bounds',
+  'gantt.tree'
 ]);
