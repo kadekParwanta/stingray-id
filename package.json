@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node .",
     "pretest": "eslint .",
-    "posttest": "nsp check"
+    "posttest": "nsp check",
+    "build:sdk": "lb-ng server/server.js angular/app/theme/services/lb-services.js"
   },
   "dependencies": {
     "bluebird": "^3.5.0",

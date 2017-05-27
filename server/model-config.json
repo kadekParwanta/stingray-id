@@ -176,5 +176,9 @@
   "DURKP": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Realisasi": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

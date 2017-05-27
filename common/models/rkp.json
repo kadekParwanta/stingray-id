@@ -71,6 +71,11 @@
       "type": "hasMany",
       "model": "Belanja",
       "foreignKey": "RKPId"
+    },
+    "Realisasi": {
+      "type": "hasOne",
+      "model": "Realisasi",
+      "foreignKey": "RKPId"
     }
   },
   "acls": [],

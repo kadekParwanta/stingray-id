@@ -9,9 +9,103 @@
         .controller('TimelinePageCtrl', TimelinePageCtrl);
 
     /** @ngInject */
-    function TimelinePageCtrl($scope, $uibModal, $log, $timeout, moment) {
+    function TimelinePageCtrl($scope, $uibModal, $log, $timeout, moment, RPJM, WaktuPelaksanaan, $q) {
 
         $scope.data = [];
+        $scope.activeRPJM;
+        $scope.bidangList;
+        $scope.waktuPelaksanaanList;
+        $scope.selectedWaktuPelaksanaan = {};
+        $scope.RKPList = [];
+        $scope.ganttData = [];
+
+        function getActiveRPJM() {
+            RPJM.findOne({
+                filter: {
+                    where: { IsActive: true },
+                    include: [{
+                        relation: "Bidang",
+                        scope: {
+                            order: "No ASC"
+                        }
+                    },
+                    {
+                        relation: "WaktuPelaksanaan",
+                        scope: {
+                            order: "No ASC"
+                        }
+                    }
+                    ]
+                }
+            }, function (result) {
+                $scope.activeRPJM = {
+                    TahunMulai: result.TahunMulai,
+                    TahunSelesai: result.TahunSelesai,
+                    Regulasi: result.Regulasi,
+                    Perihal: result.Perihal,
+                    Keterangan: result.Keterangan
+                }
+
+                $scope.bidangList = result.Bidang;
+                $scope.waktuPelaksanaanList = result.WaktuPelaksanaan;
+                getRKPByWaktu($scope.waktuPelaksanaanList);
+            })
+        }
+
+        function getRKPByWaktu(waktuPelaksanaanList) {
+            $scope.ganttData.length = 0;
+            var promises = waktuPelaksanaanList.map(function (waktupelaksanaan) {
+                var deferred = $q.defer();
+
+                WaktuPelaksanaan.RKP({
+                    id: waktupelaksanaan.id,
+                    filter: {
+                        include: [
+                            { relation: "Bidang" },
+                            { relation: "Realisasi" }
+                        ]
+                    }
+                }, function (result) {
+                    var indexWaktuPel = waktupelaksanaan.No - 1;
+                    $scope.RKPList[indexWaktuPel] = result;
+                    var ganttData = [];
+                    angular.forEach(result, function (item, index, arr) {
+                        ganttData.push({
+                            name: item.Nama, tasks: [
+                                {
+                                    id: item.id, name: item.Nama, priority: 10, color: '#F1C232', from: item.TanggalMulai, to: item.TanggalSelesai,
+                                    progress: item.Progress
+                                }
+                            ]
+                        })
+                    })
+
+                    deferred.resolve(ganttData);
+                })
+
+                return deferred.promise;
+            })
+
+            $q.all(promises).then(function (result) {
+                $scope.waktuPelaksanaanList.forEach(function (item, index) {
+                    $scope.ganttData[item.No - 1] = result[index];
+                })
+            })
+        }
+
+        function getActiveTab() {
+            return $scope.selectedWaktuPelaksanaan;
+        };
+
+        function init() {
+            getActiveRPJM();
+        }
+
+        $scope.tabSelected = function (tab) {
+            $scope.selectedWaktuPelaksanaan = tab;
+        }
+
+        init();
 
         var dataToRemove;
 
@@ -100,7 +194,7 @@
             columns: ['model.name'],
             treeTableColumns: [],
             columnsHeaders: { 'model.name': 'Name' },
-            columnsClasses: { 'model.name': 'gantt-column-name'},
+            columnsClasses: { 'model.name': 'gantt-column-name' },
             columnsFormatters: {
                 'from': function (from) {
                     return from !== undefined ? from.format('lll') : undefined;
@@ -313,7 +407,7 @@
                         $scope.live.row = task.row.model;
                     });
 
-                    
+
                 });
             }
         };

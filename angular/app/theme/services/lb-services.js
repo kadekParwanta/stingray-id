@@ -20165,6 +20165,30 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "PUT",
             },
 
+            // INTERNAL. Use RKP.Realisasi() instead.
+            "prototype$__get__Realisasi": {
+              url: urlBase + "/RKP/:id/Realisasi",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RKP.Realisasi.create() instead.
+            "prototype$__create__Realisasi": {
+              url: urlBase + "/RKP/:id/Realisasi",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RKP.Realisasi.update() instead.
+            "prototype$__update__Realisasi": {
+              url: urlBase + "/RKP/:id/Realisasi",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use RKP.Realisasi.destroy() instead.
+            "prototype$__destroy__Realisasi": {
+              url: urlBase + "/RKP/:id/Realisasi",
+              method: "DELETE",
+            },
+
             // INTERNAL. Use RKP.SumberBiaya() instead.
             "prototype$__get__SumberBiaya": {
               isArray: true,
@@ -21918,6 +21942,201 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         R.Belanja.updateById = function() {
           var TargetResource = $injector.get("Belanja");
           var action = TargetResource["::updateById::RKP::Belanja"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.RKP.Realisasi
+     * @header lbServices.RKP.Realisasi
+     * @object
+     * @description
+     *
+     * The object `RKP.Realisasi` groups methods
+     * manipulating `Realisasi` instances related to `RKP`.
+     *
+     * Call {@link lbServices.RKP#Realisasi RKP.Realisasi()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP#Realisasi
+             * @methodOf lbServices.RKP
+             *
+             * @description
+             *
+             * Fetches hasOne relation Realisasi.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R.Realisasi = function() {
+          var TargetResource = $injector.get("Realisasi");
+          var action = TargetResource["::get::RKP::Realisasi"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.Realisasi#create
+             * @methodOf lbServices.RKP.Realisasi
+             *
+             * @description
+             *
+             * Creates a new instance in Realisasi of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R.Realisasi.create = function() {
+          var TargetResource = $injector.get("Realisasi");
+          var action = TargetResource["::create::RKP::Realisasi"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.Realisasi#createMany
+             * @methodOf lbServices.RKP.Realisasi
+             *
+             * @description
+             *
+             * Creates a new instance in Realisasi of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R.Realisasi.createMany = function() {
+          var TargetResource = $injector.get("Realisasi");
+          var action = TargetResource["::createMany::RKP::Realisasi"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.Realisasi#destroy
+             * @methodOf lbServices.RKP.Realisasi
+             *
+             * @description
+             *
+             * Deletes Realisasi of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.Realisasi.destroy = function() {
+          var TargetResource = $injector.get("Realisasi");
+          var action = TargetResource["::destroy::RKP::Realisasi"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.RKP.Realisasi#update
+             * @methodOf lbServices.RKP.Realisasi
+             *
+             * @description
+             *
+             * Update Realisasi of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - RKP id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R.Realisasi.update = function() {
+          var TargetResource = $injector.get("Realisasi");
+          var action = TargetResource["::update::RKP::Realisasi"];
           return action.apply(R, arguments);
         };
 
@@ -43584,6 +43803,30 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "PUT",
             },
 
+            // INTERNAL. Use DURKP.Realisasi() instead.
+            "prototype$__get__Realisasi": {
+              url: urlBase + "/DURKP/:id/Realisasi",
+              method: "GET",
+            },
+
+            // INTERNAL. Use DURKP.Realisasi.create() instead.
+            "prototype$__create__Realisasi": {
+              url: urlBase + "/DURKP/:id/Realisasi",
+              method: "POST",
+            },
+
+            // INTERNAL. Use DURKP.Realisasi.update() instead.
+            "prototype$__update__Realisasi": {
+              url: urlBase + "/DURKP/:id/Realisasi",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use DURKP.Realisasi.destroy() instead.
+            "prototype$__destroy__Realisasi": {
+              url: urlBase + "/DURKP/:id/Realisasi",
+              method: "DELETE",
+            },
+
             // INTERNAL. Use DURKP.SumberBiaya() instead.
             "prototype$__get__SumberBiaya": {
               isArray: true,
@@ -45162,6 +45405,1073 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           var action = TargetResource["::updateById::DURKP::Belanja"];
           return action.apply(R, arguments);
         };
+    /**
+     * @ngdoc object
+     * @name lbServices.DURKP.Realisasi
+     * @header lbServices.DURKP.Realisasi
+     * @object
+     * @description
+     *
+     * The object `DURKP.Realisasi` groups methods
+     * manipulating `Realisasi` instances related to `DURKP`.
+     *
+     * Call {@link lbServices.DURKP#Realisasi DURKP.Realisasi()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DURKP#Realisasi
+             * @methodOf lbServices.DURKP
+             *
+             * @description
+             *
+             * Fetches hasOne relation Realisasi.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - DURKP id
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R.Realisasi = function() {
+          var TargetResource = $injector.get("Realisasi");
+          var action = TargetResource["::get::DURKP::Realisasi"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DURKP.Realisasi#create
+             * @methodOf lbServices.DURKP.Realisasi
+             *
+             * @description
+             *
+             * Creates a new instance in Realisasi of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - DURKP id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R.Realisasi.create = function() {
+          var TargetResource = $injector.get("Realisasi");
+          var action = TargetResource["::create::DURKP::Realisasi"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DURKP.Realisasi#createMany
+             * @methodOf lbServices.DURKP.Realisasi
+             *
+             * @description
+             *
+             * Creates a new instance in Realisasi of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - DURKP id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R.Realisasi.createMany = function() {
+          var TargetResource = $injector.get("Realisasi");
+          var action = TargetResource["::createMany::DURKP::Realisasi"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DURKP.Realisasi#destroy
+             * @methodOf lbServices.DURKP.Realisasi
+             *
+             * @description
+             *
+             * Deletes Realisasi of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - DURKP id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.Realisasi.destroy = function() {
+          var TargetResource = $injector.get("Realisasi");
+          var action = TargetResource["::destroy::DURKP::Realisasi"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DURKP.Realisasi#update
+             * @methodOf lbServices.DURKP.Realisasi
+             *
+             * @description
+             *
+             * Update Realisasi of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - DURKP id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R.Realisasi.update = function() {
+          var TargetResource = $injector.get("Realisasi");
+          var action = TargetResource["::update::DURKP::Realisasi"];
+          return action.apply(R, arguments);
+        };
+
+
+        return R;
+      }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.Realisasi
+ * @header lbServices.Realisasi
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `Realisasi` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+  module.factory(
+    "Realisasi",
+    [
+      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
+      function(LoopBackResource, LoopBackAuth, $injector, $q) {
+        var R = LoopBackResource(
+        urlBase + "/Realisasi/:id",
+          { 'id': '@id' },
+          {
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#create
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+            "create": {
+              url: urlBase + "/Realisasi",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#createMany
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+            "createMany": {
+              isArray: true,
+              url: urlBase + "/Realisasi",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#upsert
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Patch an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+            "upsert": {
+              url: urlBase + "/Realisasi",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#replaceOrCreate
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Replace an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+            "replaceOrCreate": {
+              url: urlBase + "/Realisasi/replaceOrCreate",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#upsertWithWhere
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source based on the where criteria.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+            "upsertWithWhere": {
+              url: urlBase + "/Realisasi/upsertWithWhere",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#exists
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Check whether a model instance exists in the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `exists` – `{boolean=}` -
+             */
+            "exists": {
+              url: urlBase + "/Realisasi/:id/exists",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#findById
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Find a model instance by {{id}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `filter` – `{object=}` - Filter defining fields and include
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+            "findById": {
+              url: urlBase + "/Realisasi/:id",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#replaceById
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Replace attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+            "replaceById": {
+              url: urlBase + "/Realisasi/:id/replace",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#find
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Find all instances of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+            "find": {
+              isArray: true,
+              url: urlBase + "/Realisasi",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#findOne
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Find first instance of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+            "findOne": {
+              url: urlBase + "/Realisasi/findOne",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#updateAll
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Update instances of the model matched by {{where}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Information related to the outcome of the operation
+             */
+            "updateAll": {
+              url: urlBase + "/Realisasi/update",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#deleteById
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Delete a model instance by {{id}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+            "deleteById": {
+              url: urlBase + "/Realisasi/:id",
+              method: "DELETE",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#count
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Count instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+            "count": {
+              url: urlBase + "/Realisasi/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#prototype$updateAttributes
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Patch attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Realisasi id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+            "prototype$updateAttributes": {
+              url: urlBase + "/Realisasi/:id",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#createChangeStream
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Create a change stream.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `changes` – `{ReadableStream=}` -
+             */
+            "createChangeStream": {
+              url: urlBase + "/Realisasi/change-stream",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RKP.Realisasi() instead.
+            "::get::RKP::Realisasi": {
+              url: urlBase + "/RKP/:id/Realisasi",
+              method: "GET",
+            },
+
+            // INTERNAL. Use RKP.Realisasi.create() instead.
+            "::create::RKP::Realisasi": {
+              url: urlBase + "/RKP/:id/Realisasi",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RKP.Realisasi.createMany() instead.
+            "::createMany::RKP::Realisasi": {
+              isArray: true,
+              url: urlBase + "/RKP/:id/Realisasi",
+              method: "POST",
+            },
+
+            // INTERNAL. Use RKP.Realisasi.update() instead.
+            "::update::RKP::Realisasi": {
+              url: urlBase + "/RKP/:id/Realisasi",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use RKP.Realisasi.destroy() instead.
+            "::destroy::RKP::Realisasi": {
+              url: urlBase + "/RKP/:id/Realisasi",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use DURKP.Realisasi() instead.
+            "::get::DURKP::Realisasi": {
+              url: urlBase + "/DURKP/:id/Realisasi",
+              method: "GET",
+            },
+
+            // INTERNAL. Use DURKP.Realisasi.create() instead.
+            "::create::DURKP::Realisasi": {
+              url: urlBase + "/DURKP/:id/Realisasi",
+              method: "POST",
+            },
+
+            // INTERNAL. Use DURKP.Realisasi.createMany() instead.
+            "::createMany::DURKP::Realisasi": {
+              isArray: true,
+              url: urlBase + "/DURKP/:id/Realisasi",
+              method: "POST",
+            },
+
+            // INTERNAL. Use DURKP.Realisasi.update() instead.
+            "::update::DURKP::Realisasi": {
+              url: urlBase + "/DURKP/:id/Realisasi",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use DURKP.Realisasi.destroy() instead.
+            "::destroy::DURKP::Realisasi": {
+              url: urlBase + "/DURKP/:id/Realisasi",
+              method: "DELETE",
+            },
+          }
+        );
+
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#patchOrCreate
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Patch an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R["patchOrCreate"] = R["upsert"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#updateOrCreate
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Patch an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R["updateOrCreate"] = R["upsert"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#patchOrCreateWithWhere
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source based on the where criteria.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#update
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Update instances of the model matched by {{where}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Information related to the outcome of the operation
+             */
+        R["update"] = R["updateAll"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#destroyById
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Delete a model instance by {{id}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R["destroyById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#removeById
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Delete a model instance by {{id}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R["removeById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Realisasi#prototype$patchAttributes
+             * @methodOf lbServices.Realisasi
+             *
+             * @description
+             *
+             * Patch attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Realisasi id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Realisasi` object.)
+             * </em>
+             */
+        R["prototype$patchAttributes"] = R["prototype$updateAttributes"];
+
+
+        /**
+        * @ngdoc property
+        * @name lbServices.Realisasi#modelName
+        * @propertyOf lbServices.Realisasi
+        * @description
+        * The name of the model represented by this $resource,
+        * i.e. `Realisasi`.
+        */
+        R.modelName = "Realisasi";
+
 
 
         return R;

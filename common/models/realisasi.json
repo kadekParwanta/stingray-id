@@ -1,0 +1,26 @@
+{
+  "name": "Realisasi",
+  "plural": "Realisasi",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Progress": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "TanggalMulai": {
+      "type": "date"
+    },
+    "TanggalSelesai": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
