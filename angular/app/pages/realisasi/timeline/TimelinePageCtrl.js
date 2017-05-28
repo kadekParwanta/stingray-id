@@ -18,6 +18,7 @@
         $scope.selectedWaktuPelaksanaan = {};
         $scope.RKPList = [];
         $scope.ganttData = [];
+        $scope.defaultGanttData = [];
 
         function getActiveRPJM() {
             RPJM.findOne({
@@ -48,8 +49,18 @@
 
                 $scope.bidangList = result.Bidang;
                 $scope.waktuPelaksanaanList = result.WaktuPelaksanaan;
-                getRKPByWaktu($scope.waktuPelaksanaanList);
+                populateBidang($scope.bidangList);
             })
+        }
+
+        function populateBidang(bidangList) {
+            bidangList.forEach(function(bidang){
+                $scope.defaultGanttData.push({
+                    name: bidang.Nama,
+                    children: []
+                })
+            })
+            getRKPByWaktu($scope.waktuPelaksanaanList);
         }
 
         function getRKPByWaktu(waktuPelaksanaanList) {
@@ -68,7 +79,7 @@
                 }, function (result) {
                     var indexWaktuPel = waktupelaksanaan.No - 1;
                     $scope.RKPList[indexWaktuPel] = result;
-                    var ganttData = [];
+                    var ganttData = angular.copy($scope.defaultGanttData);
                     angular.forEach(result, function (item, index, arr) {
                         ganttData.push({
                             name: item.Nama, tasks: [
@@ -78,6 +89,7 @@
                                 }
                             ]
                         })
+                        populateDataForGantt(ganttData, item);
                     })
 
                     deferred.resolve(ganttData);
@@ -90,6 +102,14 @@
                 $scope.waktuPelaksanaanList.forEach(function (item, index) {
                     $scope.ganttData[item.No - 1] = result[index];
                 })
+            })
+        }
+
+        function populateDataForGantt(ganttData, rkp) {
+            ganttData.forEach(function (bidang) {
+                if (rkp.Bidang.Nama == bidang.name) {
+                    bidang.children.push(rkp.Nama);
+                }
             })
         }
 
@@ -343,6 +363,7 @@
                     api.tasks.on.filter($scope, logTasksFilterEvent);
 
                     api.data.on.change($scope, function (newData) {
+                        /*
                         if (dataToRemove === undefined) {
                             dataToRemove = [
                                 { 'id': newData[2].id }, // Remove Kickoff row
@@ -358,7 +379,7 @@
                                     ]
                                 } // Remove order basket from Sprint 2
                             ];
-                        }
+                        }*/
                     });
 
                     // When gantt is ready, load data.
