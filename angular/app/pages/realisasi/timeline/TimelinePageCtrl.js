@@ -75,7 +75,13 @@
                     filter: {
                         include: [
                             { relation: "Bidang" },
-                            { relation: "Realisasi" }
+                            {
+                                relation: "Realisasi", scope: {
+                                    include: {
+                                        relation: "Pembayaran"
+                                    }
+                                }
+                            }
                         ]
                     }
                 }, function (result) {
@@ -87,15 +93,29 @@
                         var tanggalMulai = item.TanggalMulai;
                         var tanggalSelesai = item.TanggalSelesai;
                         var realisasi = item.Realisasi;
+                        var id = item.id;
+                        var RKPId = id;
+
+                        var tasks = [
+                            {
+                                id: item.id,
+                                name: item.Nama,
+                                priority: 1,
+                                color: '#F1C232',
+                                from: tanggalMulai,
+                                to: tanggalSelesai,
+                                progress: progress,
+                                classes: ['gantt-pointer'],
+                                RKPId: RKPId
+                            }]
                         if (realisasi) {
                             tanggalMulai = realisasi.TanggalMulai;
                             tanggalSelesai = realisasi.TanggalSelesai
                             progress = realisasi.Progress;
-                        }
+                            id = realisasi.id;
+                            RKPId = item.id;
 
-                        ganttData.push({
-                            name: item.Nama,
-                            tasks: [
+                            tasks = [
                                 {
                                     id: item.id,
                                     name: item.Nama,
@@ -104,9 +124,29 @@
                                     from: tanggalMulai,
                                     to: tanggalSelesai,
                                     progress: progress,
-                                    classes: ['gantt-pointer']
-                                }
-                            ]
+                                    classes: ['gantt-pointer'],
+                                    RKPId: RKPId
+                                }]
+
+                            var pembayaranList = realisasi.Pembayaran;
+                            if (pembayaranList.length > 0) {
+                                pembayaranList.forEach(function (pembayaran, index) {
+                                    tasks.push({
+                                        id: pembayaran.id,
+                                        name: pembayaran.Info,
+                                        priority: 2,
+                                        color: '#228B22',
+                                        from: pembayaran.Tanggal,
+                                        to: pembayaran.Tanggal,
+                                        classes: ['gantt-pointer']
+                                    })
+                                })
+                            }
+                        }
+
+                        ganttData.push({
+                            name: item.Nama,
+                            tasks: tasks
                         })
                         populateDataForGantt(ganttData, item);
                     })
@@ -222,8 +262,52 @@
             });
 
             modalInstance.result.then(function (data) {
+                var realisasi = data.realisasi;
+                var pembayaranList = data.pembayaranList;
+                var id = data.realisasi.id;
+                var RKPId = data.realisasi.RKPId;
+                if (id == RKPId) {
+                    Realisasi.create({
+                        RKPId: RKPId,
+                        TanggalMulai: realisasi.TanggalMulai,
+                        TanggalSelesai: realisasi.TanggalSelesai
+                    }, function (res) {
+                        sendPembayaranList(pembayaranList, res).then(function () {
+
+                        })
+                    })
+                } else {
+                    Realisasi.prototype$updateAttributes({
+                        id: id,
+                        TanggalMulai: realisasi.TahunMulai,
+                        TanggalSelesai: realisasi.TanggalSelesai
+                    }, function (res) {
+                        sendPembayaranList(pembayaranList, res).then(function () {
+
+                        })
+                    })
+                }
             })
         };
+
+        function sendPembayaranList(pembayaranList, realisasi) {
+            var promises = pembayaranList.map(function (pembayaran) {
+                var deferred = $q.defer();
+
+                Pembayaran.create({
+                    RealisasiId: realisasi.id,
+                    Nominal: pembayaran.Nominal,
+                    Tanggal: pembayaran.Tanggal,
+                    Info: pembayaran.Info
+                }, function (result) {
+                    deferred.resolve(result);
+                })
+
+                return deferred.promise;
+            })
+
+            return $q.all(promises)
+        }
 
         // angular-gantt options
         $scope.options = {
@@ -463,7 +547,7 @@
         $scope.handleTaskIconClick = function (taskModel) {
             // alert('Icon from ' + taskModel.name + ' task has been clicked.');
             $scope.selectedTask = taskModel;
-            $scope.open('app/pages/realisasi/timeline/modal.html');
+            if (taskModel.priority == 1) $scope.open('app/pages/realisasi/timeline/modal.html');
         };
 
         $scope.handleRowIconClick = function (rowModel) {
@@ -702,7 +786,7 @@
                 }
             }
         };
-        
+
     }
 
     angular.module('BlurAdmin.pages.realisasi')
@@ -716,8 +800,8 @@
 
         vm.ok = function () {
             $uibModalInstance.close({
-                id: selectedTask.id,
-                progress: selectedTask.progress
+                realisasi: vm.selectedTask,
+                pembayaranList: vm.pembayaranList
             });
         }
 
