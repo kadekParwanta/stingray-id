@@ -180,5 +180,9 @@
   "Realisasi": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Pembayaran": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

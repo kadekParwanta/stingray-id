@@ -1,0 +1,26 @@
+{
+  "name": "Pembayaran",
+  "plural": "Pembayaran",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Nominal": {
+      "type": "number",
+      "required": true
+    },
+    "Tanggal": {
+      "type": "date",
+      "required": true
+    },
+    "Info": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

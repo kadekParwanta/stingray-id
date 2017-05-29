@@ -6,8 +6,8 @@
   headers="options.width && options.shortHeaders || options.longHeaders" max-height="options.maxHeight && 300 || 0" time-frames="options.timeFrames"
   date-frames="options.dateFrames" time-frames-working-mode="options.timeFramesWorkingMode" time-frames-non-working-mode="options.timeFramesNonWorkingMode"
   time-frames-magnet="options.timeFramesMagnet" api="options.api" column-magnet="options.columnMagnet">
-  <gantt-tooltips>
-  </gantt-tooltips>
+  <!--<gantt-tooltips>
+  </gantt-tooltips>-->
   <gantt-table enabled="options.sideMode === 'Table' || options.sideMode === 'TreeTable'" columns="options.sideMode === 'TreeTable' ? options.treeTableColumns : options.columns"
     headers="options.columnsHeaders" classes="options.columnsClasses" formatters="options.columnsFormatters" contents="options.columnsContents"
     header-contents="options.columnsHeaderContents">
@@ -24,4 +24,5 @@
   </gantt-movable>
   <gantt-bounds>
   </gantt-bounds>
+  <gantt-overlap enabled="true" global="false"></gantt-overlap>
 </div>

@@ -9,7 +9,7 @@
         .controller('TimelinePageCtrl', TimelinePageCtrl);
 
     /** @ngInject */
-    function TimelinePageCtrl($scope, $uibModal, $log, $timeout, moment, RPJM, WaktuPelaksanaan, $q) {
+    function TimelinePageCtrl($scope, $uibModal, $log, $timeout, moment, RPJM, WaktuPelaksanaan, $q, Realisasi, Pembayaran) {
 
         $scope.data = [];
         $scope.activeRPJM;
@@ -19,6 +19,8 @@
         $scope.RKPList = [];
         $scope.ganttData = [];
         $scope.defaultGanttData = [];
+        $scope.selectedTask;
+        $scope.live = {};
 
         function getActiveRPJM() {
             RPJM.findOne({
@@ -54,7 +56,7 @@
         }
 
         function populateBidang(bidangList) {
-            bidangList.forEach(function(bidang){
+            bidangList.forEach(function (bidang) {
                 $scope.defaultGanttData.push({
                     name: bidang.Nama,
                     children: []
@@ -81,11 +83,28 @@
                     $scope.RKPList[indexWaktuPel] = result;
                     var ganttData = angular.copy($scope.defaultGanttData);
                     angular.forEach(result, function (item, index, arr) {
+                        var progress = 0;
+                        var tanggalMulai = item.TanggalMulai;
+                        var tanggalSelesai = item.TanggalSelesai;
+                        var realisasi = item.Realisasi;
+                        if (realisasi) {
+                            tanggalMulai = realisasi.TanggalMulai;
+                            tanggalSelesai = realisasi.TanggalSelesai
+                            progress = realisasi.Progress;
+                        }
+
                         ganttData.push({
-                            name: item.Nama, tasks: [
+                            name: item.Nama,
+                            tasks: [
                                 {
-                                    id: item.id, name: item.Nama, priority: 10, color: '#F1C232', from: item.TanggalMulai, to: item.TanggalSelesai,
-                                    progress: item.Progress
+                                    id: item.id,
+                                    name: item.Nama,
+                                    priority: 1,
+                                    color: '#F1C232',
+                                    from: tanggalMulai,
+                                    to: tanggalSelesai,
+                                    progress: progress,
+                                    classes: ['gantt-pointer']
                                 }
                             ]
                         })
@@ -194,7 +213,12 @@
                 templateUrl: page,
                 size: size,
                 controller: TimelineModalInstanceCtrl,
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    selectedTask: function () {
+                        return $scope.selectedTask;
+                    }
+                }
             });
 
             modalInstance.result.then(function (data) {
@@ -209,7 +233,7 @@
             sideMode: 'TreeTable',
             daily: false,
             maxHeight: false,
-            width: false,
+            width: true,
             zoom: 1,
             columns: ['model.name'],
             treeTableColumns: [],
@@ -239,7 +263,7 @@
             currentDateValue: new Date(2013, 9, 23, 11, 20, 0),
             draw: false,
             readOnly: false,
-            groupDisplayMode: 'group',
+            groupDisplayMode: 'disabled',
             filterTask: '',
             filterRow: '',
             timeFrames: {
@@ -391,7 +415,8 @@
                         if (directiveName === 'ganttTask') {
                             element.bind('click', function (event) {
                                 event.stopPropagation();
-                                logTaskEvent('task-click', directiveScope.task);
+                                // logTaskEvent('task-click', directiveScope.task);
+                                $scope.handleTaskIconClick(directiveScope.task.model);
                             });
                             element.bind('mousedown touchstart', function (event) {
                                 event.stopPropagation();
@@ -430,11 +455,15 @@
 
 
                 });
-            }
+            },
+            shortHeaders: ['month', 'day'],
+            longHeaders: ['month', 'week', 'day']
         };
 
         $scope.handleTaskIconClick = function (taskModel) {
-            alert('Icon from ' + taskModel.name + ' task has been clicked.');
+            // alert('Icon from ' + taskModel.name + ' task has been clicked.');
+            $scope.selectedTask = taskModel;
+            $scope.open('app/pages/realisasi/timeline/modal.html');
         };
 
         $scope.handleRowIconClick = function (rowModel) {
@@ -673,21 +702,141 @@
                 }
             }
         };
+        
     }
 
     angular.module('BlurAdmin.pages.realisasi')
         .controller('TimelineModalInstanceCtrl', TimelineModalInstanceCtrl);
 
-    function TimelineModalInstanceCtrl($uibModalInstance) {
+    function TimelineModalInstanceCtrl($uibModalInstance, selectedTask) {
         var vm = this;
-
+        vm.selectedTask = angular.copy(selectedTask);
+        vm.selectedTask.TanggalMulai = selectedTask.from.toDate();
+        vm.selectedTask.TanggalSelesai = selectedTask.to.toDate();
 
         vm.ok = function () {
-            $uibModalInstance.close(result);
+            $uibModalInstance.close({
+                id: selectedTask.id,
+                progress: selectedTask.progress
+            });
         }
 
         vm.cancel = function () {
             $uibModalInstance.dismiss('cancel');
+        }
+
+        vm.pembayaranList = [
+            {}
+        ];
+
+        vm.defaultPembayaran = {
+            Nominal: null,
+            Tanggal: null,
+            RealisasiId: null,
+            RKPId: null
+        }
+
+        vm.addNewPembayaran = function () {
+            var defaultPembayaran = angular.copy(vm.defaultPembayaran);
+            if (vm.selectedTask.id) {
+                defaultPembayaran = {
+                    Nominal: null,
+                    Tanggal: null,
+                    RealisasiId: null,
+                    RKPId: null
+                }
+            }
+            vm.pembayaranList.push(defaultPembayaran);
+        }
+
+        vm.removePembayaran = function (pembayaran) {
+            var ind = vm.pembayaranList.indexOf(pembayaran);
+            vm.pembayaranList.splice(ind, 1);
+        }
+
+        //datepicker
+        vm.today = function () {
+            vm.selectedTask.TanggalMulai = new Date();
+            vm.selectedTask.TanggalSelesai = new Date();
+        };
+
+        vm.clear = function () {
+            vm.selectedTask.from = null;
+            vm.selectedTask.to = null;
+        };
+
+        vm.inlineOptions = {
+            customClass: getDayClass,
+            minDate: new Date(),
+            showWeeks: true
+        };
+
+        vm.dateOptions = {
+            dateDisabled: disabled,
+            formatYear: 'yy',
+            // maxDate: new Date(2020, 5, 22),
+            // minDate: new Date(),
+            startingDay: 1
+        };
+
+        // Disable weekend selection
+        function disabled(data) {
+            var date = data.date,
+                mode = data.mode;
+            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+        }
+
+        vm.toggleMin = function () {
+            vm.inlineOptions.minDate = vm.inlineOptions.minDate ? null : new Date();
+            vm.dateOptions.minDate = vm.inlineOptions.minDate;
+        };
+
+        vm.toggleMin();
+
+        vm.open1 = function () {
+            vm.popup1.opened = true;
+        };
+
+        vm.open2 = function () {
+            vm.popup2.opened = true;
+        };
+
+        vm.open3 = function () {
+            vm.popup3.opened = true;
+        };
+
+        vm.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        vm.format = vm.formats[0];
+        vm.altInputFormats = ['M!/d!/yyyy'];
+
+        vm.popup1 = {
+            opened: false
+        };
+
+        vm.popup2 = {
+            opened: false
+        };
+
+        vm.popup3 = {
+            opened: false
+        };
+
+        function getDayClass(data) {
+            var date = data.date,
+                mode = data.mode;
+            if (mode === 'day') {
+                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+                for (var i = 0; i < vm.events.length; i++) {
+                    var currentDay = new Date(vm.events[i].date).setHours(0, 0, 0, 0);
+
+                    if (dayToCheck === currentDay) {
+                        return vm.events[i].status;
+                    }
+                }
+            }
+
+            return '';
         }
     }
 

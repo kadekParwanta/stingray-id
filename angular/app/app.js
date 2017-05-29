@@ -26,5 +26,6 @@ angular.module('BlurAdmin', [
   'gantt.progress',
   'gantt.groups',
   'gantt.bounds',
-  'gantt.tree'
+  'gantt.tree',
+  'gantt.overlap'
 ]);

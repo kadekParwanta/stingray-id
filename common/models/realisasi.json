@@ -20,7 +20,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "Pembayaran": {
+      "type": "hasMany",
+      "model": "Pembayaran",
+      "foreignKey": "RealisasiId"
+    }
+  },
   "acls": [],
   "methods": {}
 }

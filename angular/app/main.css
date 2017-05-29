@@ -4110,6 +4110,14 @@ th {
 .red {
   color: red !important; }
 
+.irs-single {
+  color: white !important;
+}
+
+.gantt-pointer {
+  cursor: pointer;
+}
+
 #amchart {
   width: 100%;
   height: 350px;
