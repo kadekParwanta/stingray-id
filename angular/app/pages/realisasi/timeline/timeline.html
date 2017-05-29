@@ -1,14 +1,17 @@
 <div class="widgets">
   <div class="row">
     <div class="col-md-12">
-      <uib-tabset>
-        <uib-tab ng-repeat="waktuPelaksanaan in waktuPelaksanaanList" select="tabSelected(waktuPelaksanaan)">
-          <uib-tab-heading>
-            {{waktuPelaksanaan.Nama}}
-          </uib-tab-heading>
-          <div ng-include="'app/pages/realisasi/timeline/gantt.html'"></div>
-        </uib-tab>
-      </uib-tabset>
+      <div ba-panel ba-panel-class="with-scroll horizontal-tabs tabs-panel large-panel">
+        <uib-tabset>
+          <uib-tab ng-repeat="waktuPelaksanaan in waktuPelaksanaanList" select="tabSelected(waktuPelaksanaan)">
+            <uib-tab-heading>
+              {{waktuPelaksanaan.Nama}}
+            </uib-tab-heading>
+            <div ng-include="'app/pages/realisasi/timeline/gantt.html'"></div>
+          </uib-tab>
+        </uib-tabset>
+      </div>
+
     </div>
   </div>
 </div>

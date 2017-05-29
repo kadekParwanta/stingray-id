@@ -81,6 +81,28 @@
                                         relation: "Pembayaran"
                                     }
                                 }
+                            },
+                            {
+                                relation: "Belanja", scope: {
+                                    order: "No ASC",
+                                    include: [
+                                        {
+                                            relation: "RAB", scope: {
+                                                order: "No ASC",
+                                            }
+                                        },
+                                        {
+                                            relation: "BelanjaTitle", scope: {
+                                                order: "No ASC",
+                                                include:
+                                                {
+                                                    relation: "RAB", scope: {
+                                                        order: "No ASC",
+                                                    }
+                                                }
+                                            }
+                                        }]
+                                }
                             }
                         ]
                     }
@@ -89,6 +111,8 @@
                     $scope.RKPList[indexWaktuPel] = result;
                     var ganttData = angular.copy($scope.defaultGanttData);
                     angular.forEach(result, function (item, index, arr) {
+                        var totalBiaya = 0;
+                        var tasks = [];
                         var progress = 0;
                         var tanggalMulai = item.TanggalMulai;
                         var tanggalSelesai = item.TanggalSelesai;
@@ -96,7 +120,7 @@
                         var id = item.id;
                         var RKPId = id;
 
-                        var tasks = [
+                        var initialTask =
                             {
                                 id: item.id,
                                 name: item.Nama,
@@ -106,30 +130,21 @@
                                 to: tanggalSelesai,
                                 progress: progress,
                                 classes: ['gantt-pointer'],
-                                RKPId: RKPId
-                            }]
+                                RKPId: RKPId,
+                                totalBiaya: totalBiaya
+                            };
                         if (realisasi) {
-                            tanggalMulai = realisasi.TanggalMulai;
-                            tanggalSelesai = realisasi.TanggalSelesai
-                            progress = realisasi.Progress;
-                            id = realisasi.id;
-                            RKPId = item.id;
-
-                            tasks = [
-                                {
-                                    id: item.id,
-                                    name: item.Nama,
-                                    priority: 1,
-                                    color: '#F1C232',
-                                    from: tanggalMulai,
-                                    to: tanggalSelesai,
-                                    progress: progress,
-                                    classes: ['gantt-pointer'],
-                                    RKPId: RKPId
-                                }]
+                            initialTask.tanggalMulai = realisasi.TanggalMulai;
+                            initialTask.tanggalSelesai = realisasi.TanggalSelesai
+                            initialTask.progress = realisasi.Progress;
+                            initialTask.id = realisasi.id;
+                            initialTask.RKPId = item.id;
+                            initialTask.totalBiaya = realisasi.TotalBiaya;
 
                             var pembayaranList = realisasi.Pembayaran;
                             if (pembayaranList.length > 0) {
+                                var totalPembayaran = calculateTotalPembayaran(pembayaranList);
+                                initialTask.progress = (totalPembayaran / realisasi.TotalBiaya) * 100;
                                 pembayaranList.forEach(function (pembayaran, index) {
                                     tasks.push({
                                         id: pembayaran.id,
@@ -142,7 +157,11 @@
                                     })
                                 })
                             }
+                        } else {
+                            initialTask.totalBiaya = calculateTotalRKP(item);
                         }
+
+                        tasks.push(initialTask);
 
                         ganttData.push({
                             name: item.Nama,
@@ -162,6 +181,46 @@
                     $scope.ganttData[item.No - 1] = result[index];
                 })
             })
+        }
+
+        function calculateTotalRKP(rkpitem) {
+            var totalRkp = 0;
+            var belanjaList = rkpitem.Belanja;
+            belanjaList.forEach(function (belanja) {
+                var totalBelanjaJumlah = 0;
+
+                var rabList = belanja.RAB;
+                rabList.forEach(function (rabItem) {
+                    var jumlah = rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan;
+                    totalBelanjaJumlah += jumlah;
+                })
+
+                var belanjaTitleList = belanja.BelanjaTitle;
+                belanjaTitleList.forEach(function (belanjaTitle) {
+                    var totalBelanjaTitle = 0;
+
+                    var rabList = belanjaTitle.RAB;
+                    rabList.forEach(function (rabItem) {
+                        var jumlah = rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan;
+                        totalBelanjaTitle += jumlah;
+                    })
+
+                    totalBelanjaJumlah += totalBelanjaTitle;
+                })
+
+                totalRkp += totalBelanjaJumlah;
+            })
+
+            return totalRkp;
+        }
+
+        function calculateTotalPembayaran(pembayaranList) {
+            var totalPembayaran = 0;
+            pembayaranList.forEach(function(item){
+                totalPembayaran += item.Nominal;
+            })
+
+            return totalPembayaran;
         }
 
         function populateDataForGantt(ganttData, rkp) {
@@ -270,7 +329,9 @@
                     Realisasi.create({
                         RKPId: RKPId,
                         TanggalMulai: realisasi.TanggalMulai,
-                        TanggalSelesai: realisasi.TanggalSelesai
+                        TanggalSelesai: realisasi.TanggalSelesai,
+                        TotalBiaya: realisasi.totalBiaya,
+                        Progress: realisasi.progress
                     }, function (res) {
                         sendPembayaranList(pembayaranList, res).then(function () {
 
@@ -280,7 +341,8 @@
                     Realisasi.prototype$updateAttributes({
                         id: id,
                         TanggalMulai: realisasi.TahunMulai,
-                        TanggalSelesai: realisasi.TanggalSelesai
+                        TanggalSelesai: realisasi.TanggalSelesai,
+                        Progress: realisasi.progress
                     }, function (res) {
                         sendPembayaranList(pembayaranList, res).then(function () {
 

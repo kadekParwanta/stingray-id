@@ -17,6 +17,9 @@
     },
     "TanggalSelesai": {
       "type": "date"
+    },
+    "TotalBiaya": {
+      "type": "number"
     }
   },
   "validations": [],
