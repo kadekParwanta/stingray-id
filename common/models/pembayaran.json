@@ -17,6 +17,10 @@
     },
     "Info": {
       "type": "string"
+    },
+    "Debit": {
+      "type": "boolean",
+      "required": true
     }
   },
   "validations": [],

@@ -9,7 +9,7 @@
         .controller('TimelinePageCtrl', TimelinePageCtrl);
 
     /** @ngInject */
-    function TimelinePageCtrl($scope, $uibModal, $log, $timeout, moment, RPJM, WaktuPelaksanaan, $q, Realisasi, Pembayaran) {
+    function TimelinePageCtrl($scope, $uibModal, $log, $timeout, moment, RPJM, WaktuPelaksanaan, $q, Realisasi, Pembayaran, RKP) {
 
         $scope.data = [];
         $scope.activeRPJM;
@@ -131,11 +131,13 @@
                                 progress: progress,
                                 classes: ['gantt-pointer'],
                                 RKPId: RKPId,
-                                totalBiaya: totalBiaya
+                                totalBiaya: totalBiaya,
+                                totalUangMasuk: 0,
+                                totalUangKeluar: 0
                             };
                         if (realisasi) {
-                            initialTask.tanggalMulai = realisasi.TanggalMulai;
-                            initialTask.tanggalSelesai = realisasi.TanggalSelesai
+                            initialTask.from = realisasi.TanggalMulai;
+                            initialTask.to = realisasi.TanggalSelesai
                             initialTask.progress = realisasi.Progress;
                             initialTask.id = realisasi.id;
                             initialTask.RKPId = item.id;
@@ -144,7 +146,9 @@
                             var pembayaranList = realisasi.Pembayaran;
                             if (pembayaranList.length > 0) {
                                 var totalPembayaran = calculateTotalPembayaran(pembayaranList);
-                                initialTask.progress = (totalPembayaran / realisasi.TotalBiaya) * 100;
+                                initialTask.totalUangMasuk = totalPembayaran[0];
+                                initialTask.totalUangKeluar = totalPembayaran[1];
+                                initialTask.progress = (totalPembayaran[1] / realisasi.TotalBiaya) * 100;
                                 pembayaranList.forEach(function (pembayaran, index) {
                                     tasks.push({
                                         id: pembayaran.id,
@@ -157,6 +161,7 @@
                                     })
                                 })
                             }
+
                         } else {
                             initialTask.totalBiaya = calculateTotalRKP(item);
                         }
@@ -215,12 +220,17 @@
         }
 
         function calculateTotalPembayaran(pembayaranList) {
-            var totalPembayaran = 0;
-            pembayaranList.forEach(function(item){
-                totalPembayaran += item.Nominal;
+            var totalUangMasuk = 0;
+            var totalUangKeluar = 0;
+            pembayaranList.forEach(function (item) {
+                if (item.Debit) {
+                    totalUangKeluar += item.Nominal;
+                } else {
+                    totalUangMasuk += item.Nominal;
+                }
             })
 
-            return totalPembayaran;
+            return [totalUangMasuk, totalUangKeluar];
         }
 
         function populateDataForGantt(ganttData, rkp) {
@@ -306,7 +316,7 @@
             };
         };
 
-        $scope.open = function (page, size) {
+        $scope.open = function (page, size, RKPId) {
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: page,
@@ -316,6 +326,11 @@
                 resolve: {
                     selectedTask: function () {
                         return $scope.selectedTask;
+                    },
+                    selectedRKP: function () {
+                        return RKP.findById({ id: RKPId }, function (rkp) {
+                            return rkp;
+                        })
                     }
                 }
             });
@@ -334,7 +349,7 @@
                         Progress: realisasi.progress
                     }, function (res) {
                         sendPembayaranList(pembayaranList, res).then(function () {
-
+                            init();
                         })
                     })
                 } else {
@@ -345,7 +360,7 @@
                         Progress: realisasi.progress
                     }, function (res) {
                         sendPembayaranList(pembayaranList, res).then(function () {
-
+                            init();
                         })
                     })
                 }
@@ -355,12 +370,17 @@
         function sendPembayaranList(pembayaranList, realisasi) {
             var promises = pembayaranList.map(function (pembayaran) {
                 var deferred = $q.defer();
+                var debit = true;
+                if (pembayaran.Debit === "false") {
+                    debit = false;
+                }
 
                 Pembayaran.create({
                     RealisasiId: realisasi.id,
                     Nominal: pembayaran.Nominal,
                     Tanggal: pembayaran.Tanggal,
-                    Info: pembayaran.Info
+                    Info: pembayaran.Info,
+                    Debit: debit
                 }, function (result) {
                     deferred.resolve(result);
                 })
@@ -609,7 +629,7 @@
         $scope.handleTaskIconClick = function (taskModel) {
             // alert('Icon from ' + taskModel.name + ' task has been clicked.');
             $scope.selectedTask = taskModel;
-            if (taskModel.priority == 1) $scope.open('app/pages/realisasi/timeline/modal.html');
+            if (taskModel.priority == 1) $scope.open('app/pages/realisasi/timeline/modal.html', '', taskModel.RKPId);
         };
 
         $scope.handleRowIconClick = function (rowModel) {
@@ -854,8 +874,9 @@
     angular.module('BlurAdmin.pages.realisasi')
         .controller('TimelineModalInstanceCtrl', TimelineModalInstanceCtrl);
 
-    function TimelineModalInstanceCtrl($uibModalInstance, selectedTask) {
+    function TimelineModalInstanceCtrl($uibModalInstance, selectedTask, selectedRKP) {
         var vm = this;
+        vm.selectedRKP = selectedRKP;
         vm.selectedTask = angular.copy(selectedTask);
         vm.selectedTask.TanggalMulai = selectedTask.from.toDate();
         vm.selectedTask.TanggalSelesai = selectedTask.to.toDate();
@@ -872,14 +893,14 @@
         }
 
         vm.pembayaranList = [
-            {}
         ];
 
         vm.defaultPembayaran = {
             Nominal: null,
             Tanggal: null,
             RealisasiId: null,
-            RKPId: null
+            RKPId: null,
+            Debit: "true"
         }
 
         vm.addNewPembayaran = function () {
@@ -889,7 +910,8 @@
                     Nominal: null,
                     Tanggal: null,
                     RealisasiId: null,
-                    RKPId: null
+                    RKPId: null,
+                    Debit: "true"
                 }
             }
             vm.pembayaranList.push(defaultPembayaran);
@@ -983,6 +1005,12 @@
             }
 
             return '';
+        }
+
+        var formatter = new Intl.NumberFormat();
+
+        vm.formatCurrency = function (value) {
+            return formatter.format(value);
         }
     }
 

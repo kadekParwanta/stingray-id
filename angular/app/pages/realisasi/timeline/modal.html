@@ -6,31 +6,87 @@
         <h4 class="modal-title" id="myModalLabel">{{vm.selectedTask.name}}</h4>
     </div>
     <div class="modal-body">
-        <div class="form-group has-success">
-            <label class="control-label" for="inputSuccess1">Tanggal Mulai</label>
-            <p class="input-group">
-                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="vm.selectedTask.TanggalMulai" is-open="vm.popup1.opened"
-                    datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
-                />
-                <span class="input-group-btn">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group has-success">
+                    <label class="control-label" for="inputSuccess1">Lama pelaksanaan</label>
+                    <input type="text" class="form-control" ng-model="vm.selectedRKP.PraLamaPelaksanaan" disabled="true" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group has-success">
+                    <label class="control-label" for="inputSuccess1">Sasaran</label>
+                    <input type="text" class="form-control" ng-model="vm.selectedRKP.Sasaran" disabled="true" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group has-success">
+                    <label class="control-label" for="inputSuccess1">Tanggal Mulai</label>
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="vm.selectedTask.TanggalMulai" is-open="vm.popup1.opened"
+                            datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                        />
+                        <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="vm.open1()"><i class="fa fa-calendar"></i></button>
           </span>
-            </p>
-        </div>
-        <div class="form-group has-success">
-            <label class="control-label" for="inputSuccess1">Tanggal Selesai</label>
-            <p class="input-group">
-                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="vm.selectedTask.TanggalSelesai" is-open="vm.popup2.opened"
-                    datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
-                />
-                <span class="input-group-btn">
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group has-success">
+                    <label class="control-label" for="inputSuccess1">Tanggal Selesai</label>
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="vm.selectedTask.TanggalSelesai" is-open="vm.popup2.opened"
+                            datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                        />
+                        <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="vm.open2()"><i class="fa fa-calendar"></i></button>
           </span>
-            </p>
+                    </p>
+                </div>
+            </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group has-warning">
+                    <label class="control-label" for="inputSuccess1">Total Biaya</label>
+                    <div class="input-group">
+                        <span class="input-group-addon addon-left">Rp.</span>
+                        <input type="text" class="form-control" ng-value="vm.formatCurrency(vm.selectedTask.totalBiaya)" disabled="true" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group has-success">
+                    <label class="control-label" for="inputSuccess1">Uang Masuk</label>
+                    <div class="input-group">
+                        <span class="input-group-addon addon-left">Rp.</span>
+                        <input type="text" class="form-control" ng-value="vm.formatCurrency(vm.selectedTask.totalUangMasuk)" disabled="true" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group has-info">
+                    <label class="control-label" for="inputSuccess1">Uang Keluar</label>
+                    <div class="input-group">
+                        <span class="input-group-addon addon-left">Rp.</span>
+                        <input type="text" class="form-control" ng-value="vm.formatCurrency(vm.selectedTask.totalUangKeluar)" disabled="true" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="form-group has-success">
             <label class="control-label" for="inputSuccess1">Progress</label>
-            <ion-slider type="single" grid="false" min="0" max="100" from="vm.selectedTask.progress" disable="false">
+            <ion-slider type="single" grid="false" min="0" max="100" from="vm.selectedTask.progress" disable="true">
             </ion-slider>
         </div>
 
@@ -40,10 +96,21 @@
             <fieldset data-ng-repeat="pembayaran in vm.pembayaranList" style="margin-top: 10px; color: white !important">
                 <div class="row">
                     <div class="col-sm-5">
+                        <select class="form-control selectpicker with-search" selectpicker ng-model="pembayaran.Debit" style="color: white !important"
+                            required>
+                            <option value="true">Debit</option>
+                            <option value="false">Kredit</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-5"></div>
+                    <div class="col-sm-2"><button class="btn btn-danger" ng-show="$last" ng-click="vm.removePembayaran(pembayaran)">-</button></div>
+                </div>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-sm-5">
                         <p class="input-group">
                             <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="pembayaran.Tanggal" is-open="vm.popup3.opened"
-                                datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" placeholder="Tanggal transaksi"
-                            />
+                                datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                placeholder="Tanggal transaksi" style="color: white !important" />
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="vm.open3()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -53,14 +120,13 @@
                         <div class="input-group">
                             <span class="input-group-addon addon-left">Rp.</span>
                             <input type="number" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" ng-model="pembayaran.Nominal"
-                                placeholder="Jumlah">
+                                placeholder="Jumlah" style="color: white !important">
                         </div>
                     </div>
-                    <div class="col-sm-2"><button class="btn btn-danger" ng-show="$last" ng-click="vm.removePembayaran(pembayaran)">-</button></div>
                 </div>
-                <div class="row"> 
-                    <div class="col-sm-10"> 
-                        <textarea ng-model="pembayaran.Info" type="text" class="form-control" placeholder="Informasi"></textarea>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <textarea ng-model="pembayaran.Info" type="text" class="form-control" placeholder="Informasi" style="color: white !important"></textarea>
                     </div>
                 </div>
 
