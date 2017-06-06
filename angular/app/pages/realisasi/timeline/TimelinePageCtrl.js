@@ -246,6 +246,7 @@
         };
 
         function init() {
+            $scope.ganttData.length = 0;
             getActiveRPJM();
         }
 
@@ -355,7 +356,7 @@
                 } else {
                     Realisasi.prototype$updateAttributes({
                         id: id,
-                        TanggalMulai: realisasi.TahunMulai,
+                        TanggalMulai: realisasi.TanggalMulai,
                         TanggalSelesai: realisasi.TanggalSelesai,
                         Progress: realisasi.progress
                     }, function (res) {
