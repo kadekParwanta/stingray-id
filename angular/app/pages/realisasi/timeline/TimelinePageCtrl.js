@@ -399,12 +399,12 @@
             sideMode: 'TreeTable',
             daily: false,
             maxHeight: false,
-            width: true,
+            width: false,
             zoom: 1,
             columns: ['model.name'],
             treeTableColumns: [],
-            columnsHeaders: { 'model.name': 'Name' },
-            columnsClasses: { 'model.name': 'gantt-column-name' },
+            columnsHeaders: { },
+            columnsClasses: {},
             columnsFormatters: {
                 'from': function (from) {
                     return from !== undefined ? from.format('lll') : undefined;
@@ -417,7 +417,7 @@
             columnsHeaderContents: {
                 'model.name': '<i class="fa fa-align-justify"></i> {{getHeader()}}',
             },
-            autoExpand: 'none',
+            autoExpand: 'right',
             taskOutOfRange: 'truncate',
             fromDate: moment(null),
             toDate: undefined,
@@ -426,9 +426,9 @@
             allowSideResizing: true,
             labelsEnabled: true,
             currentDate: 'line',
-            currentDateValue: new Date(2013, 9, 23, 11, 20, 0),
+            currentDateValue: new Date(),
             draw: false,
-            readOnly: false,
+            readOnly: true,
             groupDisplayMode: 'disabled',
             filterTask: '',
             filterRow: '',
@@ -466,9 +466,9 @@
                     },
                     targets: ['weekend']
                 },
-                '11-november': {
+                '17-agustus': {
                     evaluator: function (date) {
-                        return date.month() === 10 && date.date() === 11;
+                        return date.month() === 8 && date.date() === 17;
                     },
                     targets: ['holiday']
                 }
@@ -623,7 +623,12 @@
                 });
             },
             shortHeaders: ['month', 'day'],
-            longHeaders: ['month', 'week', 'day']
+            longHeaders: ['month', 'week'],
+            headersFormat: {
+                month: 'MMMM',
+                week: 'w',
+                day: 'D'
+            }
         };
 
         $scope.handleTaskIconClick = function (taskModel) {
