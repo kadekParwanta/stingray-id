@@ -9,6 +9,7 @@
     'ui.router',
 
     'BlurAdmin.pages.dashboard',
+    // 'BlurAdmin.pages.components',
     'BlurAdmin.pages.perencanaan',
     'BlurAdmin.pages.penganggaran',
     'BlurAdmin.pages.pengaturan',

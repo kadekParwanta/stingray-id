@@ -6,10 +6,10 @@
     'use strict';
 
     angular.module('BlurAdmin.pages.realisasi')
-        .controller('TimelinePageCtrl', TimelinePageCtrl);
+        .controller('RingkasanPageCtrl', RingkasanPageCtrl);
 
     /** @ngInject */
-    function TimelinePageCtrl($scope, $uibModal, $log, $timeout, moment, RPJM, WaktuPelaksanaan, $q, Realisasi, Pembayaran, RKP) {
+    function RingkasanPageCtrl($scope, $uibModal, $log, $timeout, moment, RPJM, WaktuPelaksanaan, $q, Realisasi, Pembayaran, RKP) {
 
         $scope.data = [];
         $scope.activeRPJM;

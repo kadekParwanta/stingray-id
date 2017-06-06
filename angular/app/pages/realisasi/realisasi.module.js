@@ -21,6 +21,16 @@
             order: 5,
           },
         })
+        .state('realisasi.ringkasan', {
+          url: '/ringkasan',
+          title: 'Ringkasan',
+          templateUrl: 'app/pages/realisasi/ringkasan/ringkasan.html',
+          controller: 'RingkasanPageCtrl',
+          sidebarMeta: {
+            icon: 'ion-person-stalker',
+            order: 0,
+          },
+        })
         .state('realisasi.timeline', {
           url: '/timeline',
           title: 'Timeline',
@@ -28,8 +38,19 @@
           controller: 'TimelinePageCtrl',
           sidebarMeta: {
             icon: 'ion-person-stalker',
-            order: 0,
+            order: 1,
           },
+        })
+        .state('realisasiitem', {
+          url: '/realisasiitem/:id',
+          title: 'Detail',
+          templateUrl: 'app/pages/realisasi/item/item.html',
+          controller: 'ItemTimelineCtrl',
+          resolve: {
+              timeLineId: function($stateParams) {
+                  return $stateParams.id;
+              }
+          }
         });
   }
 
