@@ -130,11 +130,17 @@
             var subbiayaList = biaya.SubBiaya;
             subbiayaList.forEach(function (subbiaya, index) {
               var subBiayaId = waktupelaksanaan.id + "-" + subbiaya.id;
+              var a_attr = {};
+              if (subbiaya.AnggaranBiaya) {
+                a_attr = {"class":"green"};
+              }
+
               treeData.push({
                 "id": subBiayaId,
                 "parent": biayaId,
                 "type": "subbiaya",
                 "text": biaya.No + "." + subbiaya.No + " " + subbiaya.Nama,
+                "a_attr":a_attr,
                 "state": {
                   "opened": true
                 }

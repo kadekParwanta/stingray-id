@@ -27,5 +27,6 @@ angular.module('BlurAdmin', [
   'gantt.groups',
   'gantt.bounds',
   'gantt.tree',
-  'gantt.overlap'
+  'gantt.overlap',
+  'datatables'
 ]);
