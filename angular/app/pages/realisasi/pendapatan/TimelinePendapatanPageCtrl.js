@@ -107,59 +107,6 @@
             })
         }
 
-        function calculateTotalRKP(rkpitem) {
-            var totalRkp = 0;
-            var belanjaList = rkpitem.Belanja;
-            belanjaList.forEach(function (belanja) {
-                var totalBelanjaJumlah = 0;
-
-                var rabList = belanja.RAB;
-                rabList.forEach(function (rabItem) {
-                    var jumlah = rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan;
-                    totalBelanjaJumlah += jumlah;
-                })
-
-                var belanjaTitleList = belanja.BelanjaTitle;
-                belanjaTitleList.forEach(function (belanjaTitle) {
-                    var totalBelanjaTitle = 0;
-
-                    var rabList = belanjaTitle.RAB;
-                    rabList.forEach(function (rabItem) {
-                        var jumlah = rabItem.Durasi * rabItem.Volume * rabItem.HargaSatuan;
-                        totalBelanjaTitle += jumlah;
-                    })
-
-                    totalBelanjaJumlah += totalBelanjaTitle;
-                })
-
-                totalRkp += totalBelanjaJumlah;
-            })
-
-            return totalRkp;
-        }
-
-        function calculateTotalPembayaran(pembayaranList) {
-            var totalUangMasuk = 0;
-            var totalUangKeluar = 0;
-            pembayaranList.forEach(function (item) {
-                if (item.Debit) {
-                    totalUangKeluar += item.Nominal;
-                } else {
-                    totalUangMasuk += item.Nominal;
-                }
-            })
-
-            return [totalUangMasuk, totalUangKeluar];
-        }
-
-        function populateDataForGantt(ganttData, rkp) {
-            ganttData.forEach(function (bidang) {
-                if (rkp.Bidang.Nama == bidang.name) {
-                    bidang.children.push(rkp.Nama);
-                }
-            })
-        }
-
         function getActiveTab() {
             return $scope.selectedWaktuPelaksanaan;
         };
