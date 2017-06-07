@@ -78,6 +78,11 @@
       return formatter.format(value);
     }
 
+    $scope.isTable = true;
+    $scope.openTable = function(enable) {
+      $scope.isTable = enable;
+    }
+
     function populatePembayaran(pembayaran) {
       var length = pembayaran.length;
       pembayaran.forEach(function(item, i){

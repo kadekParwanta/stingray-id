@@ -1,9 +1,13 @@
 <!-- todo: remove whole block -->
-<div ba-panel ba-panel-title="{{rkp.Nama}}" >
+<div ba-panel ba-panel-title="{{rkp.Nama}}">
   <section>
     <h4>Saldo: Rp. {{formatCurrency(SaldoAkhir)}}</h4>
+    <div class="btn-group" data-toggle="buttons">
+      <button type="button" class="btn btn-primary" ng-class="{active: !isTable}" ng-click="isTable = false">Timeline</button>
+      <button type="button" class="btn btn-primary" ng-class="{active: isTable}" ng-click="isTable = true">Tabel</button>
+    </div>
   </section>
-  <section id="cd-timeline" class="cd-container cssanimations" ng-controller="ItemTimelineCtrl">
+  <section id="cd-timeline" class="cd-container cssanimations" ng-hide="isTable">
     <div class="cd-timeline-block" ng-repeat="item in pembayaran">
       <div class="cd-timeline-img">
         <div class="kameleon-icon with-round-bg" ng-class="{warning: item.Debit, primary: !item.Debit}"><img ng-src="{{::( 'Euro-Coin' | kameleonImg )}}"></div>
@@ -15,12 +19,36 @@
         <p>{{item.Info}}</p>
         <br>
         <p>Saldo awal: Rp. {{formatCurrency(item.SaldoAwal)}}</p>
-        
+
         <span class="cd-date">
           {{item.Tanggal | date}}
           <p>Saldo: Rp. {{formatCurrency(item.SaldoAkhir)}}</p>
           </span>
       </div>
     </div>
+  </section>
+  <section ng-show="isTable">
+    <table datatable="ng" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Tanggal</th>
+                <th>Keterangan</th>
+                <th>Ref</th>
+                <th>Debit</th>
+                <th>Kredit</th>
+                <th>Saldo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in pembayaran">
+                <td>{{item.Tanggal | date}}</td>
+                <td>{{item.Info}}</td>
+                <td></td>
+                <td>{{item.Debit ? 'Rp. '+formatCurrency(item.Nominal) : ''}}</td>
+                <td>{{item.Debit ? '' : 'Rp. '+formatCurrency(item.Nominal)}}</td>
+                <td>Rp. {{formatCurrency(item.SaldoAkhir)}}</td>
+            </tr>
+        </tbody>
+    </table>
   </section>
 </div>
