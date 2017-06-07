@@ -380,6 +380,7 @@
                     Nominal: pembayaran.Nominal,
                     Tanggal: pembayaran.Tanggal,
                     Info: pembayaran.Info,
+                    Ref: pembayaran.Ref,
                     Debit: debit
                 }, function (result) {
                     deferred.resolve(result);

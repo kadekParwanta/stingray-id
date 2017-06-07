@@ -18,8 +18,8 @@
         <p>Berita: </p>
         <p>{{item.Info}}</p>
         <br>
-        <p>Saldo awal: Rp. {{formatCurrency(item.SaldoAwal)}}</p>
-
+        <p>Saldo awal : Rp. {{formatCurrency(item.SaldoAwal)}}</p>
+        <p>Referensi : {{item.Ref}}</p>
         <span class="cd-date">
           {{item.Tanggal | date}}
           <p>Saldo: Rp. {{formatCurrency(item.SaldoAkhir)}}</p>
@@ -43,7 +43,7 @@
             <tr ng-repeat="item in pembayaran">
                 <td>{{item.Tanggal | date}}</td>
                 <td>{{item.Info}}</td>
-                <td></td>
+                <td>{{item.Ref}}</td>
                 <td>{{item.Debit ? 'Rp. '+formatCurrency(item.Nominal) : ''}}</td>
                 <td>{{item.Debit ? '' : 'Rp. '+formatCurrency(item.Nominal)}}</td>
                 <td>Rp. {{formatCurrency(item.SaldoAkhir)}}</td>

@@ -18,6 +18,9 @@
     "Info": {
       "type": "string"
     },
+    "Ref": {
+      "type": "string"
+    },
     "Debit": {
       "type": "boolean",
       "required": true
