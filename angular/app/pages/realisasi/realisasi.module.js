@@ -47,7 +47,7 @@
           templateUrl: 'app/pages/realisasi/item/item.html',
           controller: 'ItemTimelineCtrl',
           resolve: {
-              timeLineId: function($stateParams) {
+              rkpId: function($stateParams) {
                   return $stateParams.id;
               }
           }

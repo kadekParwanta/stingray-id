@@ -899,7 +899,7 @@
 
         vm.goToDetail = function(id) {
             $uibModalInstance.dismiss('cancel');
-            $state.go('realisasiitem', {id:id});
+            $state.go('realisasiitem', {id:vm.selectedRKP.id});
         }
 
         vm.pembayaranList = [
