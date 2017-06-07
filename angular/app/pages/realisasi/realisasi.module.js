@@ -31,11 +31,11 @@
             order: 0,
           },
         })
-        .state('realisasi.timeline', {
-          url: '/timeline',
-          title: 'Timeline',
-          templateUrl: 'app/pages/realisasi/timeline/timeline.html',
-          controller: 'TimelinePageCtrl',
+        .state('realisasi.timelineBelanja', {
+          url: '/timelineBelanja',
+          title: 'Belanja',
+          templateUrl: 'app/pages/realisasi/belanja/timelineBelanja.html',
+          controller: 'TimelineBelanjaPageCtrl',
           sidebarMeta: {
             icon: 'ion-person-stalker',
             order: 1,

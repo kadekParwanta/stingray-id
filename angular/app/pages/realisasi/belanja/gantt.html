@@ -1,4 +1,4 @@
-<div gantt data="ganttData[$index]" timespans="timespans" show-side="options.labelsEnabled" daily="options.daily" filter-task="{'name': options.filterTask}"
+<div gantt data="ganttData[$index]" show-side="options.labelsEnabled" daily="options.daily" filter-task="{'name': options.filterTask}"
   filter-row="{'name': options.filterRow}" sort-mode="options.sortMode" view-scale="options.scale" column-width="getColumnWidth(options.width, options.scale, options.zoom)"
   auto-expand="options.autoExpand" task-out-of-range="options.taskOutOfRange" from-date="options.fromDate" to-date="options.toDate"
   allow-side-resizing="options.allowSideResizing" task-content="options.taskContentEnabled ? options.taskContent : undefined"
@@ -20,9 +20,4 @@
   <gantt-groups enabled="options.groupDisplayMode === 'group' || options.groupDisplayMode === 'overview' || options.groupDisplayMode === 'promote'"
         display="options.groupDisplayMode">
   </gantt-groups>
-  <gantt-movable enabled="!options.readOnly" allow-row-switching="options.movable.allowRowSwitching">
-  </gantt-movable>
-  <gantt-bounds>
-  </gantt-bounds>
-  <gantt-overlap enabled="true" global="false"></gantt-overlap>
 </div>

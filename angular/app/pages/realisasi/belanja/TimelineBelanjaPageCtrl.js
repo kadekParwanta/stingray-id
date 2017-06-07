@@ -6,10 +6,10 @@
     'use strict';
 
     angular.module('BlurAdmin.pages.realisasi')
-        .controller('TimelinePageCtrl', TimelinePageCtrl);
+        .controller('TimelineBelanjaPageCtrl', TimelineBelanjaPageCtrl);
 
     /** @ngInject */
-    function TimelinePageCtrl($scope, $uibModal, $log, $timeout, moment, RPJM, WaktuPelaksanaan, $q, Realisasi, Pembayaran, RKP) {
+    function TimelineBelanjaPageCtrl($scope, $uibModal, $log, $timeout, moment, RPJM, WaktuPelaksanaan, $q, Realisasi, Pembayaran, RKP) {
 
         $scope.data = [];
         $scope.activeRPJM;
@@ -21,6 +21,7 @@
         $scope.defaultGanttData = [];
         $scope.selectedTask;
         $scope.live = {};
+        $scope.spansTime = [];
 
         function getActiveRPJM() {
             RPJM.findOne({
@@ -183,6 +184,13 @@
             $q.all(promises).then(function (result) {
                 $scope.waktuPelaksanaanList.forEach(function (item, index) {
                     $scope.ganttData[item.No - 1] = result[index];
+                    var year = parseInt(item.Nama);
+                    $scope.spansTime.push(
+                        {
+                            from: new Date(year, 0, 1),
+                            to: new Date(year, 11, 31)
+                        }
+                    )
                 })
             })
         }
@@ -321,7 +329,7 @@
                 animation: true,
                 templateUrl: page,
                 size: size,
-                controller: TimelineModalInstanceCtrl,
+                controller: TimelineBelanjaModalInstanceCtrl,
                 controllerAs: 'vm',
                 resolve: {
                     selectedTask: function () {
@@ -404,7 +412,7 @@
             zoom: 1,
             columns: ['model.name'],
             treeTableColumns: [],
-            columnsHeaders: { },
+            columnsHeaders: {},
             columnsClasses: {},
             columnsFormatters: {
                 'from': function (from) {
@@ -466,12 +474,6 @@
                         return date.isoWeekday() === 6 || date.isoWeekday() === 7;
                     },
                     targets: ['weekend']
-                },
-                '17-agustus': {
-                    evaluator: function (date) {
-                        return date.month() === 8 && date.date() === 17;
-                    },
-                    targets: ['holiday']
                 }
             },
             timeFramesWorkingMode: 'hidden',
@@ -635,7 +637,7 @@
         $scope.handleTaskIconClick = function (taskModel) {
             // alert('Icon from ' + taskModel.name + ' task has been clicked.');
             $scope.selectedTask = taskModel;
-            if (taskModel.priority == 1) $scope.open('app/pages/realisasi/timeline/modal.html', '', taskModel.RKPId);
+            if (taskModel.priority == 1) $scope.open('app/pages/realisasi/belanja/modal.html', '', taskModel.RKPId);
         };
 
         $scope.handleRowIconClick = function (rowModel) {
@@ -878,9 +880,9 @@
     }
 
     angular.module('BlurAdmin.pages.realisasi')
-        .controller('TimelineModalInstanceCtrl', TimelineModalInstanceCtrl);
+        .controller('TimelineBelanjaModalInstanceCtrl', TimelineBelanjaModalInstanceCtrl);
 
-    function TimelineModalInstanceCtrl($uibModalInstance, selectedTask, selectedRKP, $state) {
+    function TimelineBelanjaModalInstanceCtrl($uibModalInstance, selectedTask, selectedRKP, $state) {
         var vm = this;
         vm.selectedRKP = selectedRKP;
         vm.selectedTask = angular.copy(selectedTask);
@@ -898,9 +900,9 @@
             $uibModalInstance.dismiss('cancel');
         }
 
-        vm.goToDetail = function(id) {
+        vm.goToDetail = function (id) {
             $uibModalInstance.dismiss('cancel');
-            $state.go('realisasiitem', {id:vm.selectedRKP.id});
+            $state.go('realisasiitem', { id: vm.selectedRKP.id });
         }
 
         vm.pembayaranList = [
