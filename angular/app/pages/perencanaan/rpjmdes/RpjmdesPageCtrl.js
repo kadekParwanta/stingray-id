@@ -60,9 +60,47 @@
                     'icon': 'ion-document-text'
                 }
             },
-            'plugins': ['types', 'ui'],
+            contextmenu: {
+                items: customMenu
+            },
+            'plugins': ['types', 'ui', 'contextmenu'],
             'version': 1
         };
+
+        function customMenu(node) {
+            // The default set of all items
+            var items = {
+                addItem: { // The "rename" menu item
+                    label: "Tambah Program",
+                    action: function () {
+                        console.log(JSON.stringify(node));
+                        if (node.parent == "#") {
+                            $scope.treeData.push({
+                                "id": 11111,
+                                "parent": node.id,
+                                "type": "default",
+                                "text": "Program",
+                                "state": {
+                                    "opened": true
+                                }
+                            })
+                            $scope.basicConfig.version++;
+                        }
+                    }
+                },
+                deleteItem: { // The "delete" menu item
+                    label: "Delete",
+                    action: function () { }
+                }
+            };
+
+            if ($(node).hasClass("folder")) {
+                // Delete the "delete" menu item
+                delete items.deleteItem;
+            }
+
+            return items;
+        }
 
         function populateRPJMDes(bidangList) {
             vm.treeData.length = 0;
@@ -91,9 +129,9 @@
                 var rpjmdesList = bidang.RPJMDes;
                 if (rpjmdesList.length > 0) {
                     angular.forEach(rpjmdesList, function (rpjmdes, index) {
-                        var a_attr = {"class":"green"};
+                        var a_attr = { "class": "green" };
                         if (!rpjmdes.Sah) {
-                            a_attr = {"class":"red"};
+                            a_attr = { "class": "red" };
                         }
                         $scope.treeData.push({
                             "id": rpjmdes.id,
@@ -147,7 +185,7 @@
                             include: {
                                 relation: "RPJMDes",
                                 scope: {
-                                    include: ['WaktuPelaksanaan', {'SumberBiaya':'Sumber'}, 'PolaPelaksanaan']
+                                    include: ['WaktuPelaksanaan', { 'SumberBiaya': 'Sumber' }, 'PolaPelaksanaan']
                                 }
                             }
                         }
@@ -213,7 +251,7 @@
                         BidangId: rpjmdes.BidangId,
                         PolaPelaksanaanId: rpjmdes.PolaPelaksanaanId
                     }, function (data) {
-                        createSumberBiayaForRKP(data, function() {
+                        createSumberBiayaForRKP(data, function () {
                             deferred.resolve(data);
                         })
                     })
@@ -334,7 +372,7 @@
                 var deferred = $q.defer();
                 if (sumberBiaya.id) {
                     //update
-                    RPJMDes.SumberBiaya.update({ id: rpjmdes.id}, sumberBiaya, function (res) {
+                    RPJMDes.SumberBiaya.update({ id: rpjmdes.id }, sumberBiaya, function (res) {
                         deferred.resolve(res);
                     })
                 } else {
@@ -362,8 +400,8 @@
                     RKPId: rkp.id
                 }
                 SumberBiaya.create(item, function (res) {
-                        deferred.resolve(res);
-                    });
+                    deferred.resolve(res);
+                });
 
                 return deferred.promise;;
             })
@@ -470,7 +508,7 @@
         }
 
         $scope.export = function () {
-            tableToExcel("rpjmdesTable","RPJMDes");
+            tableToExcel("rpjmdesTable", "RPJMDes");
         }
 
 
@@ -480,11 +518,11 @@
                 , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
                 , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
             if (!table.nodeType) table = document.getElementById(table)
-                var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
-                return window.location.href = uri + base64(format(template, ctx))
+            var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+            return window.location.href = uri + base64(format(template, ctx))
         }
-        
-        $scope.convertAlphabetical = function(n) {
+
+        $scope.convertAlphabetical = function (n) {
             return String.fromCharCode(97 + n);
         }
 
