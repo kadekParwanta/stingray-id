@@ -20,7 +20,7 @@
         if (!geo) {
           geo = {
             lat: 0,
-            lng:0
+            lng: 0
           }
         }
         initializeMap(geo);
@@ -65,7 +65,7 @@
         .then(function (result) {
           $scope.picture = result;
         });
-        uploadFileToDropbox(file);
+      uploadFileToDropbox(file);
     };
 
     function uploadFileToDropbox(file) {
@@ -78,7 +78,7 @@
               name: file.name,
               path: '/' + file.name,
               DesaId: $scope.desa.id
-            }, function(media){
+            }, function (media) {
               //TODO
             })
           }).catch(function (err) {
@@ -89,7 +89,7 @@
             name: file.name,
             path: '/' + file.name,
             DesaId: $scope.desa.id
-          }, function(media){
+          }, function (media) {
             //TODO
           })
         }
@@ -108,10 +108,10 @@
       };
       var map = new google.maps.Map(mapCanvas, mapOptions);
       var marker = new google.maps.Marker({
-          position: geo,
-          map: map,
-          title: $scope.desa.desa
-        });
+        position: geo,
+        map: map,
+        title: $scope.desa.desa
+      });
     }
 
     /*
@@ -152,6 +152,54 @@
         })
       }
     }
+
+    var orgChartData = {
+      'name': 'I Putu Astika',
+      'title': 'general manager',
+      'children': [
+        {
+          'name': 'Wayan Suarta', 'title': 'department manager',
+          'children': [
+            { 'name': 'Made Sutara', 'title': 'senior engineer' },
+            {
+              'name': 'Ni Komang Wastini', 'title': 'senior engineer',
+              'children': [
+                { 'name': 'Kadek Olivia', 'title': 'engineer' },
+                { 'name': 'Putu Adi', 'title': 'engineer' },
+                { 'name': 'Wayan Kami', 'title': 'engineer' }
+              ]
+            }
+          ]
+        },
+        {
+          'name': 'Ketut Suparni', 'title': 'department manager',
+          'children': [
+            { 'name': 'Wayan Antari', 'title': 'senior engineer' },
+            {
+              'name': 'Gede Putra', 'title': 'senior engineer',
+              'children': [
+                { 'name': 'Gede Yusa', 'title': 'UE engineer' },
+                { 'name': 'Komang Triani', 'title': 'engineer' },
+                { 'name': 'Made Astini', 'title': 'engineer' }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    
+    $scope.initOrgChart = function () {
+      $(function () {
+        $scope.$orgChart = $('#chart-container').orgchart({
+          'data': orgChartData,
+          'nodeContent': 'title',
+          'toggleSiblingsResp': false
+        });
+      });
+    }
+
+    $scope.initOrgChart();
   }
 
 })();
