@@ -37,6 +37,10 @@
     "dataSource": "storage",
     "public": true
   },
+  "user": {
+    "dataSource": "mongodb",
+    "public": true
+  },
   "Desa": {
     "dataSource": "mongodb",
     "public": true

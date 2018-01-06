@@ -6,7 +6,8 @@
     "start": "node .",
     "pretest": "eslint .",
     "posttest": "nsp check",
-    "build:sdk": "lb-ng server/server.js angular/app/theme/services/lb-services.js"
+    "build:sdk": "lb-ng server/server.js angular/app/theme/services/lb-services.js",
+    "build:sdk2": "./node_modules/.bin/lb-sdk server/server ./angular/app/shared/sdk"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
@@ -26,7 +27,8 @@
   "devDependencies": {
     "bower": "^1.5.2",
     "eslint": "^2.5.3",
-    "nsp": "^2.1.0"
+    "nsp": "^2.1.0",
+    "@mean-expert/loopback-sdk-builder": "2.1.0-rc.10.2"
   },
   "repository": {
     "type": "",
