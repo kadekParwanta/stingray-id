@@ -29,4 +29,30 @@ angular.module('BlurAdmin', [
   'gantt.tree',
   'gantt.overlap',
   'datatables'
-]);
+])
+.config(function ($httpProvider) {
+  $httpProvider.interceptors.push(function ($q) {
+      return {
+          'request': function (config) {
+              return config;
+          },
+
+          'requestError': function (rejection) {
+              return $q.reject(rejection);
+          },
+
+          'response': function (response) {
+              return response;
+          },
+          
+          'responseError': function (rejection) {
+              var error = rejection.data.error;
+              if (error && error.status === 401) {
+                  window.localStorage.clear();
+                  window.location = "/#/login";
+              }
+              return $q.reject(rejection);
+          }
+      };
+  });
+});
