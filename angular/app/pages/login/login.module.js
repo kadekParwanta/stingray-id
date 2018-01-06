@@ -11,7 +11,7 @@
                 url: '/login',
                 title: 'login',
                 templateUrl: 'app/pages/login/login.html',
-                controller: 'loginCtrl',
+                controller: 'loginCtrl'
             });
     }
 

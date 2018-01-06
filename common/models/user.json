@@ -36,7 +36,7 @@
       {
         "accessType": "WRITE",
         "principalType": "ROLE",
-        "principalId": "$authenticated",
+        "principalId": "$owner",
         "permission": "ALLOW"
       },
       {
@@ -73,6 +73,13 @@
         "principalId": "$unauthenticated",
         "permission": "ALLOW",
         "property": "findOne"
+      },
+      {
+        "accessType": "EXECUTE",
+        "principalType": "ROLE",
+        "principalId": "$unauthenticated",
+        "permission": "ALLOW",
+        "property": "login"
       }
     ],
     "methods": {}
