@@ -24,34 +24,19 @@
         "model": "Role",
         "foreignKey": "principalId",
         "through": "RoleMapping"
+      },
+      "roleMapping": {
+        "type": "hasMany",
+        "model": "RoleMapping",
+        "foreignKey": "principalId"
       }
     },
     "acls": [
-      {
-        "accessType": "*",
-        "principalType": "ROLE",
-        "principalId": "admin",
-        "permission": "ALLOW"
-      },
       {
         "accessType": "WRITE",
         "principalType": "ROLE",
         "principalId": "$owner",
         "permission": "ALLOW"
-      },
-      {
-        "accessType": "EXECUTE",
-        "principalType": "ROLE",
-        "principalId": "admin",
-        "permission": "ALLOW",
-        "property": "addRole"
-      },
-      {
-        "accessType": "EXECUTE",
-        "principalType": "ROLE",
-        "principalId": "admin",
-        "permission": "ALLOW",
-        "property": "removeRole"
       },
       {
         "accessType": "READ",
