@@ -29,7 +29,26 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "$authenticated",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "kaur",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "kaur",
+      "permission": "ALLOW",
+      "property":["create", "update"]
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "penduduk",
       "permission": "ALLOW"
     }
   ],

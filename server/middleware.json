@@ -15,7 +15,7 @@
     "helmet#frameguard": {
       "params": [
         "deny"
-      ]
+       ]
     },
     "helmet#hsts": {
       "params": {
@@ -49,6 +49,6 @@
     "loopback#urlNotFound": {}
   },
   "final:after": {
-    "loopback#errorHandler": {}
+    "strong-error-handler": {}
   }
 }

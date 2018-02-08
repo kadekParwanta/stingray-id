@@ -4,7 +4,7 @@
     "connector": "memory"
   },
   "mongodb": {
-    "url": "mongodb://localhost:27017/heroku_nrhw3b6g",
+    "url": "${MONGODB_URI}",
     "name": "mongodb",
     "connector": "mongodb"
   },

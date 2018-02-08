@@ -39,6 +39,78 @@ module.exports = function (app) {
         }
     });
 
+    // Create kaur user
+    User.find({ where: { 'email': 'kaur@sidesa.com' } }, function (err, users) {
+        if (users.length <= 0) {
+            User.create(
+                {
+                    username: 'kaur',
+                    firstName: 'Kaur',
+                    lastName: 'Sidesa',
+                    email: 'kaur@sidesa.com',
+                    password: 'password',
+                }, function (err, user) {
+                    if (err) throw err;
+                    console.log('Created User:', user);
+
+                    // Create role admin
+                    createRole('kaur', user, function (err, res) {
+                        if (err) throw err;
+                    });
+                });
+        } else {
+            users[0].updateAttributes({
+                username: 'kaur',
+                firstName: 'Kaur',
+                lastName: 'Sidesa',
+                email: 'kaur@sidesa.com',
+                password: 'password',
+            }, function (err, user) {
+                if (err) throw err;
+                console.log('Update User:', user);
+                createRole('kaur', user, function (err, res) {
+                    if (err) throw err;
+                });
+            });
+        }
+    });
+
+    // Create kaur user
+    User.find({ where: { 'email': 'penduduk@sidesa.com' } }, function (err, users) {
+        if (users.length <= 0) {
+            User.create(
+                {
+                    username: 'penduduk',
+                    firstName: 'Penduduk',
+                    lastName: 'Sidesa',
+                    email: 'penduduk@sidesa.com',
+                    password: 'password',
+                }, function (err, user) {
+                    if (err) throw err;
+                    console.log('Created User:', user);
+
+                    // Create role admin
+                    createRole('penduduk', user, function (err, res) {
+                        if (err) throw err;
+                    });
+                });
+        } else {
+            users[0].updateAttributes({
+                username: 'penduduk',
+                firstName: 'Penduduk',
+                lastName: 'Sidesa',
+                email: 'penduduk@sidesa.com',
+                password: 'password',
+            }, function (err, user) {
+                if (err) throw err;
+                console.log('Update User:', user);
+                createRole('penduduk', user, function (err, res) {
+                    if (err) throw err;
+                });
+            });
+        }
+    });
+
     function createRole(name, user, cb) {
         Role.find({ where: { 'name': name } }, function (err, roles) {
             if (roles.length <= 0) {
