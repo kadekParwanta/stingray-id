@@ -47,7 +47,7 @@ angular.module('BlurAdmin', [
           
           'responseError': function (rejection) {
               var error = rejection.data.error;
-              if (error && error.status === 401) {
+              if (error && error.statusCode === 401) {
                   window.localStorage.clear();
                   window.location = "/#/login";
               }
