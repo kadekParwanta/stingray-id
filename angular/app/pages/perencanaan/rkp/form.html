@@ -18,8 +18,7 @@
   <div class="form-group" ng-class="{'has-error': rkpForm.volume.$error.required && !rkpForm.volume.$pristine, 
   'has-success': rkpForm.volume.$valid, 'has-feedback': rkpForm.volume.$valid}">
     <label class="control-label" for="inputVolume">Volume*</label>
-    <input type="text" class="form-control" name="volume" ng-model="selectedNode.Volume"
-      ng-disabled="!selectedNode" required>
+    <input type="text" class="form-control" name="volume" ng-model="selectedNode.Volume" ng-disabled="!selectedNode" required>
     <p ng-show="rkpForm.volume.$invalid && !rkpForm.volume.$pristine" class="help-block">Mohon isi volume kegiatan</p>
     <i ng-show="rkpForm.volume.$valid" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
     <span ng-show="rkpForm.volume.$valid" class="sr-only">(success)</span>
@@ -27,8 +26,7 @@
   <div class="form-group" ng-class="{'has-error': rkpForm.sasaran.$error.required && !rkpForm.sasaran.$pristine, 
   'has-success': rkpForm.sasaran.$valid, 'has-feedback': rkpForm.sasaran.$valid}">
     <label class="control-label">Sasaran*</label>
-    <input type="text" class="form-control" name="sasaran" ng-model="selectedNode.Sasaran"
-      ng-disabled="!selectedNode" required>
+    <input type="text" class="form-control" name="sasaran" ng-model="selectedNode.Sasaran" ng-disabled="!selectedNode" required>
     <p ng-show="rkpForm.sasaran.$invalid && !rkpForm.sasaran.$pristine" class="help-block">Mohon isi sasaran kegiatan</p>
     <i ng-show="rkpForm.sasaran.$valid" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
     <span ng-show="rkpForm.sasaran.$valid" class="sr-only">(success)</span>
@@ -44,8 +42,8 @@
   <div class="form-group" ng-class="{'has-error': rkpForm.pola.$error.required && !rkpForm.pola.$pristine, 
   'has-success': rkpForm.pola.$valid}">
     <label class="control-label">Pola Pelaksanaan*</label>
-    <select name="pola" class="form-control selectpicker with-search" data-live-search="true" selectpicker ng-model="selectedNode.PolaPelaksanaanId"
-      ng-options="item.id as item.Nama for item in polaPelaksanaanList" ng-disabled="!selectedNode" required>
+    <select name="pola" class="form-control" ng-model="selectedNode.PolaPelaksanaanId" ng-options="item.id as item.Nama for item in polaPelaksanaanList"
+      ng-disabled="!selectedNode" required>
       <option value="">---Pilih---</option>
     </select>
     <p ng-show="rkpForm.pola.$invalid && !rkpForm.pola.$pristine" class="help-block">Mohon pilih pola pelaksanaan kegiatan</p>
@@ -53,7 +51,8 @@
   <div class="form-group" ng-class="{'has-error': rkpForm.lama.$error.required && !rkpForm.lama.$pristine, 
   'has-success': rkpForm.lama.$valid, 'has-feedback': rkpForm.lama.$valid}">
     <label class="control-label">Prakiraan Lama Pelaksanaan*</label>
-    <input type="text" class="form-control" name="lama" ng-model="selectedNode.PraLamaPelaksanaan" ng-disabled="!selectedNode" required>
+    <input type="text" class="form-control" name="lama" ng-model="selectedNode.PraLamaPelaksanaan" ng-disabled="!selectedNode"
+      required>
     <p ng-show="rkpForm.lama.$invalid && !rkpForm.lama.$pristine" class="help-block">Mohon isi lama pelaksanaan kegiatan</p>
     <i ng-show="rkpForm.lama.$valid" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
     <span ng-show="rkpForm.lama.$valid" class="sr-only">(success)</span>
@@ -63,12 +62,14 @@
   'has-success': rkpForm.mulai.$valid}">
     <label class="control-label" for="inputSuccess1">Mulai Pelaksanaan</label>
     <p class="input-group">
-      <input type="text" name="mulai" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedNode.TanggalMulai" is-open="popup1.opened"
-        datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-disabled="!selectedNode"
-      required>
+      <input type="text" name="mulai" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedNode.TanggalMulai"
+        is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+        ng-disabled="!selectedNode" required>
       <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="open1()"><i class="fa fa-calendar"></i></button>
-          </span>
+        <button type="button" class="btn btn-default" ng-click="open1()">
+          <i class="fa fa-calendar"></i>
+        </button>
+      </span>
     </p>
     <p ng-show="rkpForm.mulai.$invalid && !rkpForm.mulai.$pristine" class="help-block">Mohon isi waktu mulai pelaksanaan kegiatan</p>
   </div>
@@ -79,8 +80,10 @@
       <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedNode.TanggalSelesai" is-open="popup2.opened"
         datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-disabled="!selectedNode" name="selesai" required>
       <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="open2()"><i class="fa fa-calendar"></i></button>
-          </span>
+        <button type="button" class="btn btn-default" ng-click="open2()">
+          <i class="fa fa-calendar"></i>
+        </button>
+      </span>
     </p>
     <p ng-show="rkpForm.selesai.$invalid && !rkpForm.selesai.$pristine" class="help-block">Mohon isi waktu akhir pelaksanaan kegiatan</p>
   </div>
@@ -89,10 +92,10 @@
     <fieldset data-ng-repeat="sumberBiaya in selectedSumberBiaya" style="margin-top: 10px">
       <div class="row">
         <div class="col-sm-5">
-          <select class="form-control selectpicker with-search" data-live-search="true" title="Bidang" selectpicker ng-model="sumberBiaya.SumberBiayaItemId"
-            ng-options="item.id as item.Nama for item in sumberBiayaItemList" ng-disabled="!selectedNode">
-          <option value="">---Pilih---</option>
-    </select>
+          <select class="form-control" title="Bidang" ng-model="sumberBiaya.SumberBiayaItemId" ng-options="item.id as item.Nama for item in sumberBiayaItemList"
+            ng-disabled="!selectedNode">
+            <option value="">---Pilih---</option>
+          </select>
         </div>
         <div class="col-sm-5">
           <div class="input-group">
@@ -101,16 +104,22 @@
               placeholder="Jumlah" ng-disabled="!selectedNode">
           </div>
         </div>
-        <div class="col-sm-2"><button class="btn btn-danger" ng-show="$last" ng-click="removeSumberBiaya(sumberBiaya)" ng-disabled="!selectedNode">-</button></div>
+        <div class="col-sm-2">
+          <button class="btn btn-danger" ng-show="$last" ng-click="removeSumberBiaya(sumberBiaya)" ng-disabled="!selectedNode">-</button>
+        </div>
       </div>
     </fieldset>
     <div class="row" style="margin-top: 10px">
-      <div class="col-sm-2"><button class="btn btn-primary pull-left" ng-click="addNewSumberBiaya()" ng-disabled="!selectedNode">+</button></div>
+      <div class="col-sm-2">
+        <button class="btn btn-primary pull-left" ng-click="addNewSumberBiaya()" ng-disabled="!selectedNode">+</button>
+      </div>
     </div>
   </div>
 
   <div class="button-wrapper">
-    <button type="button" class="btn btn-danger btn-raised pull-left btn-with-icon" ng-click="deleteRKP(selectedNode)" ng-disabled="!selectedNode || rpjmdesForm.$invalid"><i class="ion-trash-a"></i>Hapus</button>
-    <button type="button" class="btn btn-primary btn-raised pull-right btn-with-icon" ng-click="editRKP(selectedNode)" ng-disabled="!selectedNode || rpjmdesForm.$invalid"><i class="fa fa-floppy-o"></i>Simpan</button>
+    <button type="button" class="btn btn-danger btn-raised pull-left btn-with-icon" ng-click="deleteRKP(selectedNode)" ng-disabled="!selectedNode || rpjmdesForm.$invalid">
+      <i class="ion-trash-a"></i>Hapus</button>
+    <button type="button" class="btn btn-primary btn-raised pull-right btn-with-icon" ng-click="editRKP(selectedNode)" ng-disabled="!selectedNode || rpjmdesForm.$invalid">
+      <i class="fa fa-floppy-o"></i>Simpan</button>
   </div>
 </form>

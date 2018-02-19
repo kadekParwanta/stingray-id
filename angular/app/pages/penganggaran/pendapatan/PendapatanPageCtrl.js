@@ -364,7 +364,7 @@
     }
 
     $scope.editAnggaranPendapatan = function(anggaranPendapatan) {
-      AnggaranPendapatan.prototype$updateAttributes({
+      AnggaranPendapatan.prototype$patchAttributes({
         id: anggaranPendapatan.id,
         Nama: anggaranPendapatan.Nama,
         Jumlah: anggaranPendapatan.Jumlah

@@ -466,7 +466,7 @@
                 $scope.open('app/pages/perencanaan/belanja/errorModal.html', 'md', null, 'Mohon pilih waktu pelaksanaan');
                 return;
             }
-            RPJMDes.prototype$updateAttributes({
+            RPJMDes.prototype$patchAttributes({
                 id: rpjmdes.id,
                 SubBidang: rpjmdes.SubBidang,
                 Jenis: rpjmdes.Jenis,

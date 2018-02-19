@@ -50,7 +50,7 @@
   <div class="col-sm-12">
     <div class="form-group has-warning">
       <label class="control-label">Sumber Biaya</label>
-      <select class="form-control selectpicker with-search" data-live-search="true" selectpicker ng-model="selectedRABNode.SumberBiayaId"
+      <select class="form-control" ng-model="selectedRABNode.SumberBiayaId"
         ng-options="item.id as item.Nama for item in sumberBiayaItemList" ng-disabled="!selectedRKP">
           <option value="">---Pilih---</option>
     </select>

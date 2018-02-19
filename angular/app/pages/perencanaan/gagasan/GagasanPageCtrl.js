@@ -91,12 +91,12 @@
             }, function (res) {
               updatedGagasan.RPJMDesId = res.id;
               updatedGagasan.Sah = true;
-              Gagasan.prototype$updateAttributes(updatedGagasan, function (res) {
+              Gagasan.prototype$patchAttributes(updatedGagasan, function (res) {
                 getGagasan();
               })
             })
           } else {
-            Gagasan.prototype$updateAttributes(updatedGagasan, function (res) {
+            Gagasan.prototype$patchAttributes(updatedGagasan, function (res) {
               getGagasan();
             })
           }

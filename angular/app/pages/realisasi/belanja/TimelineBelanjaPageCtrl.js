@@ -361,7 +361,7 @@
                         })
                     })
                 } else {
-                    Realisasi.prototype$updateAttributes({
+                    Realisasi.prototype$patchAttributes({
                         id: id,
                         TanggalMulai: realisasi.TanggalMulai,
                         TanggalSelesai: realisasi.TanggalSelesai,

@@ -53,7 +53,7 @@
 
         $scope.editKeluarga = function (keluarga) {
             if (keluarga.id) {
-                Keluarga.prototype$updateAttributes({
+                Keluarga.prototype$patchAttributes({
                     id: keluarga.id,
                     NoKK: keluarga.NoKK,
                     Alamat: keluarga.Alamat,
@@ -151,7 +151,7 @@
             var promises = listAnggotaKeluarga.map(function (anggotaKeluarga) {
                 var deferred = $q.defer();
                 if (anggotaKeluarga.id) {
-                    Penduduk.prototype$updateAttributes({
+                    Penduduk.prototype$patchAttributes({
                         Nama: anggotaKeluarga.Nama,
                         JenisKelamin: anggotaKeluarga.JenisKelamin,
                         TempatLahir: anggotaKeluarga.TempatLahir,
@@ -183,7 +183,7 @@
             var promises = listKepalaKeluarga.map(function (kepalaKeluarga) {
                 var deferred = $q.defer();
                 if (kepalaKeluarga.id) {
-                    Penduduk.prototype$updateAttributes({
+                    Penduduk.prototype$patchAttributes({
                         Nama: kepalaKeluarga.Nama,
                         JenisKelamin: kepalaKeluarga.JenisKelamin,
                         TempatLahir: kepalaKeluarga.TempatLahir,

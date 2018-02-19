@@ -364,7 +364,7 @@
           $scope.refresh(getActiveTab());
         })
       } else {
-        AnggaranBiaya.prototype$updateAttributes({
+        AnggaranBiaya.prototype$patchAttributes({
           id: anggaranBiaya.id,
           Nama: anggaranBiaya.Nama,
           Jumlah: anggaranBiaya.Jumlah

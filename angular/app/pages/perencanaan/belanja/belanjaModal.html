@@ -70,7 +70,7 @@
     </div>
     <div class="form-group has-warning" ng-hide="vm.isTitleOnly">
       <label class="control-label">Sumber Biaya</label>
-      <select class="form-control selectpicker with-search" data-live-search="true" selectpicker ng-model="vm.newRAB.SumberBiayaId"
+      <select class="form-control" ng-model="vm.newRAB.SumberBiayaId"
         ng-options="item.id as item.Nama for item in vm.sumberBiayaItemList">
           <option value="">---Pilih---</option>
     </select>

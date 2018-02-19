@@ -73,7 +73,7 @@
         var logo = $scope.desa.logo;
         if (logo) {
           siDropbox.filesDelete(logo.path).then(function (success) {
-            Media.prototype$updateAttributes({
+            Media.prototype$patchAttributes({
               id: logo.id,
               name: file.name,
               path: '/' + file.name,
@@ -129,7 +129,7 @@
 
     $scope.save = function (desa) {
       if (desa.id) {
-        Desa.prototype$updateAttributes({
+        Desa.prototype$patchAttributes({
           jalan: desa.jalan,
           desa: desa.desa,
           kecamatan: desa.kecamatan,

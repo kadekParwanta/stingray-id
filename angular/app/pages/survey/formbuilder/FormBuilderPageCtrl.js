@@ -46,11 +46,11 @@
     $scope.saveForm = function (form) {
       var id = $scope.survey.id;
       if (id) {
-        Survey.prototype$updateAttributes({
+        Survey.prototype$patchAttributes({
           Nama: $scope.survey.Nama,
           id: id
         }, function (surveyRes) {
-          Survey.Form.destroy({ id: surveyRes.id }, function (destroyRes) {
+          Survey.Form.destroyAll({ id: surveyRes.id }, function (destroyRes) {
             saveSurveyForm(form, id).then(function (res) {
               $state.go('survey');
             })

@@ -390,7 +390,7 @@
 
     $scope.editRKP = function (rkp) {
       var currentWaktuPelaksanaan = getActiveTab();
-      RKP.prototype$updateAttributes({
+      RKP.prototype$patchAttributes({
         id: rkp.id,
         Nama: rkp.Nama,
         Lokasi: rkp.Lokasi,

@@ -29,7 +29,7 @@
     init();
 
     $scope.editBidang = function (bidang) {
-      Bidang.prototype$updateAttributes({
+      Bidang.prototype$patchAttributes({
         id: bidang.id,
         Nama: bidang.Nama,
         No: bidang.No
@@ -55,7 +55,7 @@
           alert(err.data.error.message);
         })
       } else {
-        RPJM.prototype$updateAttributes($scope.rpjm, function (rpjm) {
+        RPJM.prototype$patchAttributes($scope.rpjm, function (rpjm) {
           $state.go('pengaturan');
         }, function (err) {
           alert(err.data.error.message);

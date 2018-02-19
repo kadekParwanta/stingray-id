@@ -857,7 +857,7 @@
     }
 
     $scope.editRAB = function (rab) {
-      RAB.prototype$updateAttributes({
+      RAB.prototype$patchAttributes({
         id: rab.id,
         Nama: rab.Nama,
         Durasi: rab.Durasi,
